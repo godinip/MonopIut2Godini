@@ -1,3 +1,5 @@
+package main_package;
+
 import Diagramme_du_domaine.*;
 
 public abstract class Gare extends Propriete {

@@ -1,5 +1,10 @@
 package Diagramme_de_packages;
 
+import main_package.IHM;
+import main_package.Monopoly;
+import main_package.Joueur;
+import main_package.Carreau;
+
 public class Controleur {
 
 	IHM ihm;

@@ -1,5 +1,7 @@
 package Diagramme_du_domaine;
 
+import main_package.Groupe;
+
 public class ProprieteAConstruire extends Propriete {
 
 	private Groupe couleur;

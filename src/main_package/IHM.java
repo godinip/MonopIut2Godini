@@ -1,3 +1,5 @@
+package main_package;
+
 import Diagramme_de_packages.*;
 
 public class IHM {
