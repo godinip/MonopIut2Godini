@@ -1,5 +1,8 @@
 package Diagramme_du_domaine;
 
+import main_package.Groupe;
+import main_package.Joueur;
+
 public abstract class Propriete {
 
 	private Joueur proprietaire;
