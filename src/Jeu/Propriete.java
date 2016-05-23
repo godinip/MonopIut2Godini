@@ -1,7 +1,7 @@
-package Ui;
+package Jeu;
 
-import Data.Groupe;
-import Data.Joueur;
+import Jeu.Groupe;
+import Jeu.Joueur;
 
 public abstract class Propriete {
 

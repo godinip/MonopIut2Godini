@@ -1,6 +1,7 @@
-package Ui;
+package Jeu;
 
-import Data.Groupe;
+import Jeu.Propriete;
+import Jeu.Groupe;
 
 public class ProprieteAConstruire extends Propriete {
 

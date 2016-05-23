@@ -1,25 +1,26 @@
-package Data;
+package Jeu;
 
-import Ui.Propriete;
-import Ui.Compagnie;
-import Ui.ProprieteAConstruire;
+import Data.ArayList;
+import Jeu.Gare;
+import Jeu.Compagnie;
+import Jeu.Carreau;
 import java.util.*;
 
 public class Joueur {
     
     private String  nomJoueur;
     private int     argent;
-    private ArayList<Gare> gares;
+    /*private ArayList<Gare> gares;
     private Carreau positionCourante;
     private ArrayList<ProprieteAConstruire> proprietes;
-    private ArrayList<Compagnie> compagnies;
+    private ArrayList<Compagnie> compagnies;*/
     
     public Joueur() {
         this.argent = 1500;
     }
     
     public void avancer(int dés) {
-        ;
+        null;
     }
     
     public void payer(int prix) {
@@ -30,6 +31,14 @@ public class Joueur {
         setArgent(argent+gain);
     }
     
+    public void setNomJoueur(int argent) {
+	this.argent = argent;
+    }
+    
+    public int getNomJoueur() {
+        return argent;
+    }
+    
     public void setArgent(int argent) {
 	this.argent = argent;
     }
@@ -37,9 +46,6 @@ public class Joueur {
     public int getArgent() {
         return argent;
     }
-    
-    
-    
     
 /*	
         
@@ -69,5 +75,5 @@ public class Joueur {
 	}
         
 	*/
-        
+
 }
