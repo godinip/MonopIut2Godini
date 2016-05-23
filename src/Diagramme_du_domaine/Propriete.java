@@ -6,6 +6,8 @@ import main_package.Joueur;
 public abstract class Propriete {
 
 	private Joueur proprietaire;
+        
+        private int prix;
 
 	public abstract int getPrix();
 
@@ -30,7 +32,7 @@ public abstract class Propriete {
 	 */
 	public void setPropriete(Joueur j) {
 		// TODO - implement Propriete.setPropriete
-		throw new UnsupportedOperationException();
+		proprietaire = j;
 	}
 
 	/**
