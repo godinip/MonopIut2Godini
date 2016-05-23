@@ -19,7 +19,7 @@ public abstract class Propriete {
 
 	public abstract int getPrix();
 
-	public abstract int getLoyer();
+	public abstract int getLoyer(Joueur j);
 
 	public Joueur getProprietaire() {
 		return this.proprietaire;
