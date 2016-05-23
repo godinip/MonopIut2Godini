@@ -20,7 +20,7 @@ public class Joueur {
     }
     
     public void avancer(int dés) {
-        null;
+        
     }
     
     public void payer(int prix) {
@@ -29,6 +29,30 @@ public class Joueur {
     
     public void gagnerArgent(int gain) {
         setArgent(argent+gain);
+    }
+    
+    public Carreau getPositionCourante() {
+        
+    }
+    
+    public void addPropriété(Propriete P) {
+        
+    }
+    
+    public void addGare(Gare G) {
+        
+    }
+    
+    public void addCompagnie(Gare G) {
+        
+    }
+    
+    public int getNbGare() {
+        
+    }
+    
+    public int getNbCompagnie() {
+        
     }
     
     public void setNomJoueur(int argent) {
@@ -47,33 +71,4 @@ public class Joueur {
         return argent;
     }
     
-/*	
-        
-	public int avancer(int dés) {
-		// TODO - implement Joueur.avancer
-		throw new UnsupportedOperationException();
-	}
-        
-	public int getNbGare() {
-		// TODO - implement Joueur.getNbGare
-		throw new UnsupportedOperationException();
-	}
-        
-	public void addGare(Gare G) {
-		// TODO - implement Joueur.addGare
-		throw new UnsupportedOperationException();
-	}
-        
-	public Carreau getPositionsCourante() {
-		// TODO - implement Joueur.getPositionsCourante
-		throw new UnsupportedOperationException();
-	}
-        
-	public void addPropriété(Propriete P) {
-		// TODO - implement Joueur.addPropriété
-		throw new UnsupportedOperationException();
-	}
-        
-	*/
-
 }
