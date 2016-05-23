@@ -1,5 +1,8 @@
-package Jeu;
+package Ui;
 
+import Jeu.Carreau;
+import Jeu.Joueur;
+import Jeu.Monopoly;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

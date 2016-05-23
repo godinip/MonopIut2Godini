@@ -1,7 +1,6 @@
 package Ui;
 
 import Jeu.Joueur;
-import Jeu.Controleur;
 
 public class IHM {
 
