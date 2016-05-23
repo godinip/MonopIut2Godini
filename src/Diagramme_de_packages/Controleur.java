@@ -16,7 +16,8 @@ public class Controleur {
 	 */
 	public void jouerUnCoup(Joueur j) {
 		// TODO - implement Controleur.jouerUnCoup
-		throw new UnsupportedOperationException();
+//		throw new UnsupportedOperationException();
+                System.out.println("Diagramme_de_packages.Controleur.jouerUnCoup()");
 	}
 
 	/**
