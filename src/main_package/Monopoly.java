@@ -1,5 +1,3 @@
-package main_package;
-
 import java.util.*;
 
 public class Monopoly {
