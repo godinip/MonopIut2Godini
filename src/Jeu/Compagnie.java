@@ -8,12 +8,17 @@ public class Compagnie extends Propriete {
 
     @Override
     public int getPrix() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 150;
     }
 
+    
     @Override
-    public int getLoyer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getLoyer(Joueur j) {
+        if (this.getProprietaire().getNbCompagnie()==1){
+            return 4*j.getNbCompagnie();
+        }else{
+            return 10*j.getNbCompagnie();
+        }
     }
 
 }
