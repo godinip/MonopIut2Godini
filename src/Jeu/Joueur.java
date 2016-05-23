@@ -1,6 +1,6 @@
 package Jeu;
 
-import Data.ArayList;
+
 import Jeu.Gare;
 import Jeu.Compagnie;
 import Jeu.Carreau;
@@ -32,7 +32,7 @@ public class Joueur {
     }
     
     public Carreau getPositionCourante() {
-        
+        return null;
     }
     
     public void addPropriété(Propriete P) {
@@ -48,11 +48,11 @@ public class Joueur {
     }
     
     public int getNbGare() {
-        
+       return 0; 
     }
     
     public int getNbCompagnie() {
-        
+        return 0; 
     }
     
     public void setNomJoueur(int argent) {
