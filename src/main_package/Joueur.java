@@ -54,7 +54,7 @@ public class Joueur {
 	}
 
 	public int getCash() {
-		return this.cash;
+		return this.argent;
 	}
 
 	public Carreau getPositionsCourante() {
@@ -76,7 +76,7 @@ public class Joueur {
 	 * @param money
 	 */
 	public void setCash(int money) {
-		this.cash = money;
+		this.argent = money;
 	}
 
 }

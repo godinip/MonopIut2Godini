@@ -8,6 +8,10 @@ public class ProprieteAConstruire extends Propriete {
 	private int prix;
 	private int loyer;
 
+    public ProprieteAConstruire(String nm, int prx) {
+        super(nm, prx);
+    }
+
 	public int getPrix() {
 		return this.prix;
 	}
