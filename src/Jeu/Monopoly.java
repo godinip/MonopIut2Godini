@@ -1,4 +1,4 @@
-package Data;
+package Jeu;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

@@ -1,8 +1,8 @@
-package Data;
+package Jeu;
 
-import Ui.Propriete;
-import Ui.Compagnie;
-import Ui.ProprieteAConstruire;
+import Jeu.Gare;
+import Jeu.Compagnie;
+import Jeu.Carreau;
 import java.util.*;
 
 public class Joueur {

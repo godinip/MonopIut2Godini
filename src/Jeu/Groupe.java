@@ -1,6 +1,6 @@
-package Data;
+package Jeu;
 
-import Ui.ProprieteAConstruire;
+import Data.CouleurPropriete;
 import java.util.*;
 
 public class Groupe {

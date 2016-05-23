@@ -1,6 +1,4 @@
-package Ui;
-
-import Data.Carreau;
+package Jeu;
 
 public class AutreCarreau extends Carreau {
 }

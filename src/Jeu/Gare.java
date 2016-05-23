@@ -1,6 +1,4 @@
-package Data;
-
-import Ui.Propriete;
+package Jeu;
 
 public abstract class Gare extends Propriete {
 
