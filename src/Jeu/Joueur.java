@@ -1,6 +1,5 @@
 package Jeu;
 
-
 import Jeu.Gare;
 import Jeu.Compagnie;
 import Jeu.Carreau;
@@ -8,59 +7,60 @@ import java.util.*;
 
 public class Joueur {
     
-    private String  nomJoueur;
-    private int     argent;
-    /*private ArayList<Gare> gares;
-    private Carreau positionCourante;
-    private ArrayList<ProprieteAConstruire> proprietes;
-    private ArrayList<Compagnie> compagnies;*/
+    private String                              nomJoueur;
+    private int                                 argent;
+    private Carreau                             positionCourante;
+    private ArrayList<ProprieteAConstruire>     proprietes;
+    private ArrayList<Gare>                     gares;
+    private ArrayList<Compagnie>                compagnies;
     
     public Joueur() {
-        this.argent = 1500;
+        nomJoueur = "Joueur";
+        argent = 1500;
+        gares = new ArrayList();
+        positionCourante = new Carreau();
+        proprietes = new ArrayList();
+        compagnies = new ArrayList();
     }
     
-    public void avancer(int dés) {
-        
+    public Joueur(String nomJoueur,int argent,ArrayList<Gare> gares,Carreau positionCourante,ArrayList<ProprieteAConstruire> proprietes,ArrayList<Compagnie> compagnies) {
+        this.nomJoueur = nomJoueur;
+        this.argent = argent;
+        this.gares = gares;
+        this.positionCourante = positionCourante;
+        this.proprietes = proprietes;
+        this.compagnies = compagnies;
     }
     
     public void payer(int prix) {
-        setArgent(argent-prix);
+        if (argent>=prix) {
+            setArgent(argent-prix);
+        } else {
+            argent = 0;
+        }
     }
     
     public void gagnerArgent(int gain) {
         setArgent(argent+gain);
     }
     
-    public Carreau getPositionCourante() {
-        return null;
+    public void avancer(int dés) {
+        Carreau carreau = new Carreau();
+        for (carreau Carreau : carreau.getCarreaux()) {
+            if (carreau.getNumero()+dés<=40 && carreau.getNumero() == positionCourante.getNumero()+dés) {
+                setPositionCourante(carreau);
+            } else if (carreau.getNumero()+dés>40 && carreau.getNumero() == positionCourante.getNumero()+dés-40) {
+                setPositionCourante(carreau);
+            }
+        }
     }
     
-    public void addPropriété(Propriete P) {
-        
+    public void setNomJoueur(String nomJoueur) {
+	this.nomJoueur = nomJoueur;
     }
     
-    public void addGare(Gare G) {
-        
-    }
-    
-    public void addCompagnie(Gare G) {
-        
-    }
-    
-    public int getNbGare() {
-       return 0; 
-    }
-    
-    public int getNbCompagnie() {
-        return 0; 
-    }
-    
-    public void setNomJoueur(int argent) {
-	this.argent = argent;
-    }
-    
-    public int getNomJoueur() {
-        return argent;
+    public String getNomJoueur() {
+        return nomJoueur;
     }
     
     public void setArgent(int argent) {
@@ -69,6 +69,38 @@ public class Joueur {
     
     public int getArgent() {
         return argent;
+    }
+    
+    public void setPositionCourante(Carreau carreau) {
+        positionCourante = carreau;
+    }
+    
+    public Carreau getPositionCourante() {
+        return positionCourante;
+    }
+    
+    public void addPropriete(ProprieteAConstruire propriete) {
+        proprietes.add(propriete);
+    }
+    
+    public ArrayList getProprietes(){
+        return proprietes;
+    }
+    
+    public void addGare(Gare gare) {
+        gares.add(gare);
+    }
+    
+    public int getNbGare() {
+        return gares.size();
+    }
+    
+    public void addCompagnie(Compagnie compagnie) {
+        compagnies.add(compagnie);
+    }
+    
+    public int getNbCompagnie() {
+        return compagnies.size();
     }
     
 }
