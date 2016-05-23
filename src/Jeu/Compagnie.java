@@ -12,7 +12,7 @@ public class Compagnie extends Propriete {
     }
 
     
-    @Override
+    
     public int getLoyer(Joueur j) {
         if (this.getProprietaire().getNbCompagnie()==1){
             return 4*j.getNbCompagnie();
