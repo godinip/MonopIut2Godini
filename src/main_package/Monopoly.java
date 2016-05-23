@@ -7,6 +7,7 @@ public class Monopoly {
 	private Collection<Joueur> joueurs;
         
         public Monopoly(){
+            System.out.println("Monopoly.<init>()");
     
     }
 }
