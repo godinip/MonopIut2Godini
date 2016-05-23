@@ -21,15 +21,6 @@ public abstract class Propriete {
 
 	public abstract int getLoyer();
 
-	/**
-	 * 
-	 * @param j
-	 */
-	private void acheterPropriete(Joueur j) {
-		// TODO - implement Propriete.acheterPropriete
-		null;
-	}
-
 	public Joueur getProprietaire() {
 		return this.proprietaire;
 	}
@@ -43,23 +34,10 @@ public abstract class Propriete {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param J
-	 */
-	public void addPropriétaire(Joueur J) {
-		// TODO - implement Propriete.addPropriétaire
-		throw new UnsupportedOperationException();
-	}
 
 	public String getNom() {
 		// TODO - implement Propriete.getNom
 		return nom;
-	}
-
-	public Groupe getGroupe() {
-		// TODO - implement Propriete.getGroupe
-		throw new UnsupportedOperationException();
 	}
 
 	/**
