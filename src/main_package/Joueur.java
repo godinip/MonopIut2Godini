@@ -7,16 +7,16 @@ public class Joueur {
 
 	Collection<Gare> gares;
 	private Carreau positionCourante;
-	private Collection<ProprieteAConstruire> proprietes;
-	private Collection<Compagnie> compagnies;
+	private ArrayList<ProprieteAConstruire> proprietes;
+	private ArrayList<Compagnie> compagnies;
 	private String nomJoueur;
-	private int cash = 1500;
+	private int argent = 1500;
 
 	/**
 	 * 
 	 * @param l
 	 */
-	public void payerLoyer(int l) {
+	public void payer(int prix) {
 		// TODO - implement Joueur.payerLoyer
 		throw new UnsupportedOperationException();
 	}

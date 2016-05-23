@@ -8,6 +8,14 @@ public abstract class Propriete {
 	private Joueur proprietaire;
         
         private int prix;
+        
+        private String nom;
+        
+        
+        public Propriete(String nm, int prx){
+            prix = prx;
+            nom = nm;
+        }
 
 	public abstract int getPrix();
 
@@ -19,20 +27,11 @@ public abstract class Propriete {
 	 */
 	private void acheterPropriete(Joueur j) {
 		// TODO - implement Propriete.acheterPropriete
-		throw new UnsupportedOperationException();
+		null;
 	}
 
 	public Joueur getProprietaire() {
 		return this.proprietaire;
-	}
-
-	/**
-	 * 
-	 * @param j
-	 */
-	public void setPropriete(Joueur j) {
-		// TODO - implement Propriete.setPropriete
-		proprietaire = j;
 	}
 
 	/**
@@ -55,7 +54,7 @@ public abstract class Propriete {
 
 	public String getNom() {
 		// TODO - implement Propriete.getNom
-		throw new UnsupportedOperationException();
+		return nom;
 	}
 
 	public Groupe getGroupe() {
@@ -69,7 +68,7 @@ public abstract class Propriete {
 	 */
 	public void setPropriétaire(Joueur J) {
 		// TODO - implement Propriete.setPropriétaire
-		throw new UnsupportedOperationException();
+		proprietaire = J;
 	}
 
 }
