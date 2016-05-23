@@ -1,7 +1,7 @@
-package main_package;
+package Data;
 
+import Ui.ProprieteAConstruire;
 import java.util.*;
-import Diagramme_du_domaine.*;
 
 public class Groupe {
 

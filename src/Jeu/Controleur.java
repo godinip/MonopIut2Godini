@@ -1,14 +1,13 @@
-package Diagramme_de_packages;
+package Jeu;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import main_package.IHM;
-
-import main_package.Joueur;
-import main_package.Carreau;
+import Data.IHM;
+import Data.Joueur;
+import Data.Carreau;
 
 public class Controleur {
 

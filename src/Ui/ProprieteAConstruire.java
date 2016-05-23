@@ -1,6 +1,6 @@
-package Diagramme_du_domaine;
+package Ui;
 
-import main_package.Groupe;
+import Data.Groupe;
 
 public class ProprieteAConstruire extends Propriete {
 

@@ -1,6 +1,6 @@
-package main_package;
+package Data;
 
-import Diagramme_de_packages.*;
+import Jeu.Controleur;
 
 public class IHM {
 

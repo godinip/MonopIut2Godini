@@ -1,6 +1,6 @@
-package main_package;
+package Data;
 
-import Diagramme_du_domaine.*;
+import Ui.Propriete;
 
 public abstract class Gare extends Propriete {
 

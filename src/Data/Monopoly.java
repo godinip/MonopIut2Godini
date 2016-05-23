@@ -1,3 +1,5 @@
+package Data;
+
 import java.util.*;
 
 
@@ -7,7 +9,7 @@ public class Monopoly {
 	private Collection<Joueur> joueurs;
         
         public Monopoly(){
-            null;
+            
     
     }
 }

@@ -1,7 +1,7 @@
-package Diagramme_du_domaine;
+package Ui;
 
-import main_package.Groupe;
-import main_package.Joueur;
+import Data.Groupe;
+import Data.Joueur;
 
 public abstract class Propriete {
 

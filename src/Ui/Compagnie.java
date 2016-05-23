@@ -1,4 +1,4 @@
-package Diagramme_du_domaine;
+package Ui;
 
 public class Compagnie extends Propriete {
 

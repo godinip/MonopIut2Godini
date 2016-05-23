@@ -1,4 +1,4 @@
-package main_package;
+package Data;
 
 public abstract class Carreau {
 
