@@ -6,79 +6,68 @@ import Ui.ProprieteAConstruire;
 import java.util.*;
 
 public class Joueur {
-
-	Collection<Gare> gares;
-	private Carreau positionCourante;
-	private ArrayList<ProprieteAConstruire> proprietes;
-	private ArrayList<Compagnie> compagnies;
-	private String nomJoueur;
-	private int argent = 1500;
-
-	/**
-	 * 
-	 * @param l
-	 */
-	public void payer(int prix) {
-		// TODO - implement Joueur.payerLoyer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param l
-	 */
-	public void recevoirLoyer(int l) {
-		// TODO - implement Joueur.recevoirLoyer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param dés
-	 */
+    
+    private String  nomJoueur;
+    private int     argent;
+    private ArayList<Gare> gares;
+    private Carreau positionCourante;
+    private ArrayList<ProprieteAConstruire> proprietes;
+    private ArrayList<Compagnie> compagnies;
+    
+    public Joueur() {
+        this.argent = 1500;
+    }
+    
+    public void avancer(int dés) {
+        ;
+    }
+    
+    public void payer(int prix) {
+        setArgent(argent-prix);
+    }
+    
+    public void gagnerArgent(int gain) {
+        setArgent(argent+gain);
+    }
+    
+    public void setArgent(int argent) {
+	this.argent = argent;
+    }
+    
+    public int getArgent() {
+        return argent;
+    }
+    
+    
+    
+    
+/*	
+        
 	public int avancer(int dés) {
 		// TODO - implement Joueur.avancer
 		throw new UnsupportedOperationException();
 	}
-
+        
 	public int getNbGare() {
 		// TODO - implement Joueur.getNbGare
 		throw new UnsupportedOperationException();
 	}
-
-	/**
-	 * 
-	 * @param G
-	 */
+        
 	public void addGare(Gare G) {
 		// TODO - implement Joueur.addGare
 		throw new UnsupportedOperationException();
 	}
-
-	public int getCash() {
-		return this.argent;
-	}
-
+        
 	public Carreau getPositionsCourante() {
 		// TODO - implement Joueur.getPositionsCourante
 		throw new UnsupportedOperationException();
 	}
-
-	/**
-	 * 
-	 * @param P
-	 */
+        
 	public void addPropriété(Propriete P) {
 		// TODO - implement Joueur.addPropriété
 		throw new UnsupportedOperationException();
 	}
-
-	/**
-	 * 
-	 * @param money
-	 */
-	public void setCash(int money) {
-		this.argent = money;
-	}
-
+        
+	*/
+        
 }
