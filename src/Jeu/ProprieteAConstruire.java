@@ -13,6 +13,7 @@ public class ProprieteAConstruire extends Propriete {
         super(nm, prx);
     }
 
+        @Override
 	public int getPrix() {
 		return this.prix;
 	}
