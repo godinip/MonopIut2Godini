@@ -3,7 +3,7 @@ package Jeu;
 import Jeu.Groupe;
 import Jeu.Joueur;
 
-public abstract class Propriete {
+public abstract class Propriete extends Carreau{
 
 	private Joueur proprietaire;
         
