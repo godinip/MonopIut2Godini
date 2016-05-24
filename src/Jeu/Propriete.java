@@ -13,8 +13,7 @@ public abstract class Propriete extends Carreau{
         
         
         public Propriete(String nm, int prx){
-            prix = prx;
-            nom = nm;
+            super(prx, nom);
         }
 
 	public abstract int getPrix();

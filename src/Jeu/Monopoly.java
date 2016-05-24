@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Monopoly {
 
-	private HashMap<Integer,Carreau> carreaux;
+	private HashMap<Integer,Carreau> carreaux = new HashMap<>();
 	private HashSet<Joueur> joueurs;
         
         public Monopoly(){
@@ -17,8 +17,8 @@ public class Monopoly {
         }
         public void CreationJoueurs(){
             
-            Joueur j1;
-            j1 = new Joueur("Joueur 1", 1500, null, carreaux, proprietes, compagnies);
+//            Joueur j1;
+//            j1 = new Joueur("Joueur 1", 1500, null, carreaux, proprietes, compagnies);
         }
         public void CreerPlateau(String dataFilename){
 		buildGamePlateau(dataFilename);
@@ -26,6 +26,7 @@ public class Monopoly {
 	
 	private void buildGamePlateau(String dataFilename)
 	{
+          
 		try{
 			ArrayList<String[]> data = readDataFile(dataFilename, ",");
 			
@@ -34,16 +35,27 @@ public class Monopoly {
 				String caseType = data.get(i)[0];
 				if(caseType.compareTo("P") == 0){
 					System.out.println("Propriété :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        Carreau carreau  = new Carreau() {};			
+                                        
+                                        ProprieteAConstruire nouvellePropriete = new ProprieteAConstruire(data.get(i)[2],Integer.parseInt(data.get(i)[1]));
+                                        carreaux.put(Integer.parseInt(data.get(i)[1]), nouvellePropriete);
                                 }
 				else if(caseType.compareTo("G") == 0){
 					System.out.println("Gare :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
+                                        
+                                        Gare nouvelleGare = new Gare(data.get(i)[2],Integer.parseInt(data.get(i)[1]));
+                                        carreaux.put(Integer.parseInt(data.get(i)[1]), nouvelleGare);
 				}
 				else if(caseType.compareTo("C") == 0){
 					System.out.println("Compagnie :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
+                                        
+                                        Compagnie nouvelleCompagnie = new Compagnie(data.get(i)[2],Integer.parseInt(data.get(i)[1]));
+                                        carreaux.put(Integer.parseInt(data.get(i)[1]), nouvelleCompagnie);
 				}
 				else if(caseType.compareTo("AU") == 0){
 					System.out.println("Case Autre :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
+                                        
+                                        AutreCarreau nouvelleCompagnie = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]));
+                                        carreaux.put(Integer.parseInt(data.get(i)[1]), nouvelleCompagnie);
 				}
 				else
 					System.err.println("[buildGamePleateau()] : Invalid Data type");
