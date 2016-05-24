@@ -18,11 +18,11 @@ public class Controleur {
         
     }
     
-    public void jouerUnCoup(Joueur j) {
+    public void jouerUnCoup(Joueur joueur) {
         
     }
     
-    private Carreau lancerDésAvancer(Joueur j) {
+    private Carreau lancerDésAvancer(Joueur joueur) {
         
         
     }
@@ -31,7 +31,7 @@ public class Controleur {
         
     }
     
-    public Carreau getCarreau(int s) {
+    public Carreau getCarreau(int numero) {
         
     }
     

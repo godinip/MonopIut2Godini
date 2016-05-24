@@ -9,8 +9,8 @@ public class ProprieteAConstruire extends Propriete {
     private int     prix;
     private int     loyer;
 
-    public ProprieteAConstruire(String nm, int prx) {
-        super(nm, prx);
+    public ProprieteAConstruire(String nom, int prix) {
+        super(nom, prix);
     }
     
     public ProprieteAConstruire(String nm, int prx,Groupe groupe,int loyer) {
@@ -22,7 +22,7 @@ public class ProprieteAConstruire extends Propriete {
 
     @Override
     public int getPrix() {
-	return this.prix;
+	return prix;
     }
     
     public void setPrix(int prix) {
@@ -30,7 +30,7 @@ public class ProprieteAConstruire extends Propriete {
     }
     
     public int getLoyer() {
-        return this.loyer;
+        return loyer;
     }
     
     public void setLoyer(int loyer) {

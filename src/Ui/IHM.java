@@ -6,7 +6,7 @@ public class IHM {
     
     Controleur  controleur;
     
-    public void messageEtatJouer(Joueur j) {
+    public void messageEtatJouer(Joueur joueur) {
         
     }
     

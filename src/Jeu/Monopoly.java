@@ -26,11 +26,9 @@ public class Monopoly {
 	
 	private void buildGamePlateau(String dataFilename)
 	{
-          
+            
 		try{
 			ArrayList<String[]> data = readDataFile(dataFilename, ",");
-			
-			
 			for(int i=0; i<data.size(); ++i){
 				String caseType = data.get(i)[0];
 				if(caseType.compareTo("P") == 0){

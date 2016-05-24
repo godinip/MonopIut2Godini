@@ -16,11 +16,11 @@ public class Joueur {
     
     public Joueur(String nomJoueur,Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
-        this.argent = 1500;
-        this.gares = new ArrayList();
+        argent = 1500;
+        gares = new ArrayList();
         this.positionCourante = positionCourante;
-        this.proprietes = new ArrayList();
-        this.compagnies = new ArrayList();
+        proprietes = new ArrayList();
+        compagnies = new ArrayList();
     }
     
     public void payer(int prix) {
