@@ -12,7 +12,15 @@ public class ProprieteAConstruire extends Propriete {
     public ProprieteAConstruire(String nm, int prx) {
         super(nm, prx);
     }
+    
+    public ProprieteAConstruire(String nm, int prx,Groupe groupe,int loyer) {
+        super(nm, prx);
+        this.setLoyer(loyer);
+        this.setCouleur(couleur);
+        
+    }
 
+        @Override
 	public int getPrix() {
 		return this.prix;
 	}
@@ -28,5 +36,19 @@ public class ProprieteAConstruire extends Propriete {
 	public void setLoyer(int loyer) {
 		this.loyer = loyer;
 	}
+
+    /**
+     * @return the couleur
+     */
+    public Groupe getCouleur() {
+        return couleur;
+    }
+
+    /**
+     * @param couleur the couleur to set
+     */
+    public void setCouleur(Groupe couleur) {
+        this.couleur = couleur;
+    }
 
 }
