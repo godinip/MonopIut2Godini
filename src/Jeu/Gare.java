@@ -1,6 +1,6 @@
 package Jeu;
 
-public abstract class Gare extends Propriete {
+public class Gare extends Propriete {
 
     public Gare(String nm, int prx) {
         super(nm, prx);
@@ -12,7 +12,12 @@ public abstract class Gare extends Propriete {
 	 */
 	private void acheterPropriete(Joueur j) {
 		// TODO - implement Gare.acheterPropriete
-		throw new UnsupportedOperationException();
+		this.setPropriétaire(j);
 	}
+        
+    @Override
+        public int getPrix(){
+            return 25;
+        }
 
 }
