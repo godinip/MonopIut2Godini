@@ -1,24 +1,22 @@
 package Jeu;
 
 public class Compagnie extends Propriete {
-
-    public Compagnie(String nm, int prx) {
-        super(nm, prx);
+    
+    public Compagnie(String nom, int prix) {
+        super(nom, prix);
     }
-
+    
     @Override
     public int getPrix() {
         return 150;
     }
-
     
-    
-    public int getLoyer(Joueur j) {
+    public int getLoyer(Joueur joueur) {
         if (this.getProprietaire().getNbCompagnie()==1){
-            return 4*j.getDernierLancée();
+            return 4*joueur.getDernierLancé();
         }else{
-            return 10*j.getDernierLancée();
+            return 10*joueur.getDernierLancé();
         }
     }
-
+    
 }
