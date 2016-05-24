@@ -9,13 +9,17 @@ import java.util.*;
 
 public class Monopoly {
 
-	private Carreau carreaux;
+	private HashMap<Integer,Carreau> carreaux;
 	private HashSet<Joueur> joueurs;
         
         public Monopoly(){
+        
+        }
+        public void CreationJoueurs(){
             
-    
-    }
+            Joueur j1;
+            j1 = new Joueur("Joueur 1", 1500, null, carreaux, proprietes, compagnies);
+        }
         public void CreerPlateau(String dataFilename){
 		buildGamePlateau(dataFilename);
 	}
@@ -25,11 +29,12 @@ public class Monopoly {
 		try{
 			ArrayList<String[]> data = readDataFile(dataFilename, ",");
 			
-			//TODO: create cases instead of displaying
+			
 			for(int i=0; i<data.size(); ++i){
 				String caseType = data.get(i)[0];
 				if(caseType.compareTo("P") == 0){
 					System.out.println("Propriété :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
+                                        
 				}
 				else if(caseType.compareTo("G") == 0){
 					System.out.println("Gare :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);

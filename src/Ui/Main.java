@@ -5,12 +5,17 @@
  */
 package Ui;
 
+import Jeu.*;
+import Data.*;
+        
+
 /**
  *
  * @author godinip
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("TEST");
+       Monopoly monopoly = new Monopoly();
+       monopoly.CreerPlateau("/users/info/etu-s2/godinip/data.txt");
     }
 }
