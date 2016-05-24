@@ -82,9 +82,5 @@ public class Joueur {
     public int getNbCompagnie() {
         return compagnies.size();
     }
-    /* A FAIRE */
-    public int getDernierLancée(){
-        return 0;
-    }
     
 }
