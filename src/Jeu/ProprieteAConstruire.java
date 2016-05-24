@@ -8,6 +8,7 @@ public class ProprieteAConstruire extends Propriete {
     private Groupe  couleur;
     private int     prix;
     private int[]     loyer;
+    private int    maisons;
 
     public ProprieteAConstruire(int numero,String nom, int prix) {
         super(numero,nom, prix);
