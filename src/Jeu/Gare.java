@@ -14,6 +14,7 @@ public class Gare extends Propriete {
 		// TODO - implement Gare.acheterPropriete
 		this.setPropriétaire(j);
 	}
+        /*connection*/
         
     @Override
         public int getPrix(){
