@@ -11,50 +11,28 @@ import java.util.ArrayList;
 import Ui.IHM;
 
 public class Controleur {
-
-	IHM ihm;
-	Monopoly monopoly;
+    IHM         ihm;
+    Monopoly    monopoly;
+    
+    public Controleur(){
         
-        public Controleur(){
-            
-        }
-
-
-	
-
-
-
-	/**
-	 * 
-	 * @param j
-	 */
-	public void jouerUnCoup(Joueur j) {
-		// TODO - implement Controleur.jouerUnCoup
-//		throw new UnsupportedOperationException();
-                System.out.println("Diagramme_de_packages.Controleur.jouerUnCoup()");
-	}
-
-	/**
-	 * 
-	 * @param j
-	 */
-	private Carreau lancerDésAvancer(Joueur j) {
-		// TODO - implement Controleur.lancerDésAvancer
-		throw new UnsupportedOperationException();
-	}
-
-	public int lancerDés() {
-		// TODO - implement Controleur.lancerDés
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param s
-	 */
-	public Carreau getCarreau(int s) {
-		// TODO - implement Controleur.getCarreau
-		throw new UnsupportedOperationException();
-	}
-
+    }
+    
+    public void jouerUnCoup(Joueur j) {
+        
+    }
+    
+    private Carreau lancerDésAvancer(Joueur j) {
+        
+        
+    }
+    
+    public int lancerDés() {
+        
+    }
+    
+    public Carreau getCarreau(int s) {
+        
+    }
+    
 }
