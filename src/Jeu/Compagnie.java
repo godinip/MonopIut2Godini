@@ -15,7 +15,7 @@ public class Compagnie extends Propriete {
     
     public int getLoyer(Joueur j) {
         if (this.getProprietaire().getNbCompagnie()==1){
-            return 4*j.getNbCompagnie();
+            return 4*j.
         }else{
             return 10*j.getNbCompagnie();
         }
