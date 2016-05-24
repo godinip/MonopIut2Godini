@@ -21,4 +21,12 @@ public class Gare extends Propriete {
             return 25;
         }
 
+        
+        public int getLoyer(Joueur j){
+            if (j.getNbGare()!=0){
+                return (j.getNbGare()*this.getPrix());
+            }else{
+                return 0;
+            }
+        }
 }
