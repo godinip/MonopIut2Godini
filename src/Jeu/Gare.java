@@ -2,31 +2,25 @@ package Jeu;
 
 public class Gare extends Propriete {
 
-    public Gare(String nm, int prx) {
-        super(nm, prx);
+    public Gare(String nom, int prix) {
+        super(nom, prix);
     }
-
-	/**
-	 * 
-	 * @param j
-	 */
-	private void acheterPropriete(Joueur j) {
-		// TODO - implement Gare.acheterPropriete
-		this.setPropriétaire(j);
-	}
-        /*connection*/
+    
+    private void acheterPropriete(Joueur joueur) {
+	this.setPropriétaire(joueur);
+    }
         
     @Override
-        public int getPrix(){
-            return 25;
+    public int getPrix(){
+        return 200;
+    }
+    
+    public int getLoyer(Joueur joueur){
+        if (joueur.getNbGare()!=0){
+            return (joueur.getNbGare()*25);
+        }else{
+            return 0;
         }
-
-        
-        public int getLoyer(Joueur j){
-            if (j.getNbGare()!=0){
-                return (j.getNbGare()*this.getPrix());
-            }else{
-                return 0;
-            }
-        }
+    }
+    
 }
