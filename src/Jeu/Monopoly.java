@@ -34,8 +34,8 @@ public class Monopoly {
 				String caseType = data.get(i)[0];
 				if(caseType.compareTo("P") == 0){
 					System.out.println("Propriété :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
-                                        
-				}
+                                        Carreau carreau  = new Carreau() {};			
+                                }
 				else if(caseType.compareTo("G") == 0){
 					System.out.println("Gare :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
 				}
@@ -71,4 +71,6 @@ public class Monopoly {
 		
 		return data;
 	}
+
+    
 }
