@@ -103,4 +103,8 @@ public class Joueur {
         return compagnies.size();
     }
     
+    public int getDernierLancée(){
+        return 0;
+    }
+    
 }
