@@ -14,22 +14,13 @@ public class Joueur {
     private ArrayList<Gare>                     gares;
     private ArrayList<Compagnie>                compagnies;
     
-    public Joueur() {
-        nomJoueur = "Joueur";
-        argent = 1500;
-        gares = new ArrayList();
-        positionCourante = new Carreau();
-        proprietes = new ArrayList();
-        compagnies = new ArrayList();
-    }
-    
-    public Joueur(String nomJoueur,int argent,ArrayList<Gare> gares,Carreau positionCourante,ArrayList<ProprieteAConstruire> proprietes,ArrayList<Compagnie> compagnies) {
+    public Joueur(String nomJoueur,Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
-        this.argent = argent;
-        this.gares = gares;
+        this.argent = 1500;
+        this.gares = new ArrayList();
         this.positionCourante = positionCourante;
-        this.proprietes = proprietes;
-        this.compagnies = compagnies;
+        this.proprietes = new ArrayList();
+        this.compagnies = new ArrayList();
     }
     
     public void payer(int prix) {
@@ -42,17 +33,6 @@ public class Joueur {
     
     public void gagnerArgent(int gain) {
         setArgent(argent+gain);
-    }
-    
-    public void avancer(int dés) {
-        Carreau carreau = new Carreau();
-        for (carreau Carreau : carreau.getCarreaux()) {
-            if (carreau.getNumero()+dés<=40 && carreau.getNumero() == positionCourante.getNumero()+dés) {
-                setPositionCourante(carreau);
-            } else if (carreau.getNumero()+dés>40 && carreau.getNumero() == positionCourante.getNumero()+dés-40) {
-                setPositionCourante(carreau);
-            }
-        }
     }
     
     public void setNomJoueur(String nomJoueur) {
