@@ -45,7 +45,7 @@ public class Groupe {
         while (i<this.getProprietesdugroupe().size() && this.getProprietesdugroupe().get(i).getProprietaire()==j){
             i++;
         }
-        return i==this.getProprietesdugroupe().size();
+        return i>=this.getProprietesdugroupe().size();
     }
 
 }
