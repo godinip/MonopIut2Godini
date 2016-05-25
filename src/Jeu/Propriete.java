@@ -41,8 +41,6 @@ public abstract class Propriete extends Carreau{
     public void setPrix(int prix) {
         this.prix = prix;
     }
-        
-    public abstract void addPropriete();
 
     
     public abstract void achatPropriete(Joueur joueur);
