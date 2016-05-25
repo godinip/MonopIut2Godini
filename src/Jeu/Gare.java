@@ -2,8 +2,8 @@ package Jeu;
 
 public class Gare extends Propriete {
 
-    public Gare(String nom, int prix) {
-        super(nom, prix);
+    public Gare(int numero,String nom, int prix) {
+        super(numero,nom, prix);
     }
     
     private void acheterPropriete(Joueur joueur) {
