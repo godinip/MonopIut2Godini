@@ -9,9 +9,11 @@ public abstract class Propriete extends Carreau{
         private int     prix;
         private String  nom;
         
+
         public Propriete(int numero,String nom, int prix){
             super(numero, nom);
             this.setPrix(prix);
+
         }
         
 	public abstract int getPrix();
@@ -27,7 +29,7 @@ public abstract class Propriete extends Carreau{
         
 	public String getNom() {
 		// TODO - implement Propriete.getNom
-		return nom;
+		return super.getNom();
 	}
         
 	public void setPropriétaire(Joueur J) {

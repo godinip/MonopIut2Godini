@@ -16,6 +16,7 @@ public class ProprieteAConstruire extends Propriete {
     
     public ProprieteAConstruire(int numero,String nm, int prx,Groupe groupe,int[] loyer) {
         super(numero,nm, prx);
+        this.setMaisons(0);
         this.setLoyer(loyer);
         this.setCouleur(couleur);
         
@@ -31,6 +32,9 @@ public class ProprieteAConstruire extends Propriete {
     }
     
     public int getLoyer() {
+        if (this.getMaisons()==0 {
+            
+        }
         return loyer[this.getMaisons()];
     }
     

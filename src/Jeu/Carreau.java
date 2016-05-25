@@ -13,6 +13,10 @@ public abstract class Carreau {
 	public int getNumero() {
 		return numero;
 	}
+        
+        public String getNom(){
+            return nomCarreau;
+        }
 
     /**
      * @return the nomCarreau
