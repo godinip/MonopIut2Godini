@@ -44,4 +44,6 @@ public abstract class Propriete extends Carreau{
         
     public abstract void addPropriete();
 
+    
+    public abstract void achatPropriete(Joueur joueur);
 }
