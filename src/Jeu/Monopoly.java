@@ -1,5 +1,6 @@
 package Jeu;
 
+import Data.CouleurPropriete;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -10,15 +11,14 @@ import java.util.*;
 public class Monopoly {
 
 	private HashMap<Integer,Carreau> carreaux = new HashMap<>();
+        private HashMap<String,Groupe> groupes = new HashMap<>();
 	private HashSet<Joueur> joueurs;
         
         public Monopoly(){
         
         }
         public void CreationJoueurs(){
-            
-//            Joueur j1;
-//            j1 = new Joueur("Joueur 1", 1500, null, carreaux, proprietes, compagnies);
+
         }
         public void CreerPlateau(String dataFilename){
 		buildGamePlateau(dataFilename);
@@ -34,15 +34,20 @@ public class Monopoly {
 				if(caseType.compareTo("P") == 0){
 					System.out.println("Propriété :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
-                                        int[] loyer = new int[4];
+                                        int[] loyer = new int[6];
                                         loyer[0] = Integer.parseInt(data.get(i)[5]); 
                                         loyer[1] = Integer.parseInt(data.get(i)[6]); 
                                         loyer[2] = Integer.parseInt(data.get(i)[7]); 
                                         loyer[3] = Integer.parseInt(data.get(i)[8]); 
                                         loyer[4] = Integer.parseInt(data.get(i)[9]); 
+                                        loyer[5] = Integer.parseInt(data.get(i)[10]); 
                                         
-                                        
-                                        ProprieteAConstruire nouvellePropriete = new ProprieteAConstruire(Integer.parseInt(data.get(i)[1]), data.get(i)[2], Integer.parseInt(data.get(i)[4]));
+                                        if(!groupes.containsValue(data.get(i)[3])){
+                                            Groupe nouvGroupe = new Groupe(CouleurPropriete.valueOf(data.get(i)[3]));
+                                            groupes.put(data.get(i)[3], nouvGroupe);
+                                        }
+                                       
+                                        ProprieteAConstruire nouvellePropriete = new ProprieteAConstruire(Integer.parseInt(data.get(i)[1]), data.get(i)[2], Integer.parseInt(data.get(i)[4]));//groupes.get(1),loyer);
                                         carreaux.put(Integer.parseInt(data.get(i)[1]), nouvellePropriete);
                                 }
 				else if(caseType.compareTo("G") == 0){
@@ -74,6 +79,9 @@ public class Monopoly {
 		catch(IOException e){
 			System.err.println("[buildGamePlateau()] : Error while reading file!");
 		}
+                
+                
+                
 	}
 	
 	private ArrayList<String[]> readDataFile(String filename, String token) throws FileNotFoundException, IOException
