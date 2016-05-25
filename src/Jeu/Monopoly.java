@@ -29,31 +29,31 @@ public class Monopoly {
             
 		try{
 			ArrayList<String[]> data = readDataFile(dataFilename, ",");
-			for(int i=0; i<data.size(); ++i){
+			for(int i=0; i<data.size(); ++iCarreau){
 				String caseType = data.get(i)[0];
 				if(caseType.compareTo("P") == 0){
 					System.out.println("Propriété :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
                                         ProprieteAConstruire nouvellePropriete = new ProprieteAConstruire(data.get(i)[2],Integer.parseInt(data.get(i)[1]));
-                                        carreaux.put(Integer.parseInt(data.get(i)[1]), nouvellePropriete);
+                                        getCarreaux().put(Integer.parseInt(data.get(i)[1]), nouvellePropriete);
                                 }
 				else if(caseType.compareTo("G") == 0){
 					System.out.println("Gare :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
                                         Gare nouvelleGare = new Gare(data.get(i)[2],Integer.parseInt(data.get(i)[1]));
-                                        carreaux.put(Integer.parseInt(data.get(i)[1]), nouvelleGare);
+                                        getCarreaux().put(Integer.parseInt(data.get(i)[1]), nouvelleGare);
 				}
 				else if(caseType.compareTo("C") == 0){
 					System.out.println("Compagnie :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
                                         Compagnie nouvelleCompagnie = new Compagnie(data.get(i)[2],Integer.parseInt(data.get(i)[1]));
-                                        carreaux.put(Integer.parseInt(data.get(i)[1]), nouvelleCompagnie);
+                                        getCarreaux().put(Integer.parseInt(data.get(i)[1]), nouvelleCompagnie);
 				}
 				else if(caseType.compareTo("AU") == 0){
 					System.out.println("Case Autre :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
                                         AutreCarreau nouvelleCompagnie = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]));
-                                        carreaux.put(Integer.parseInt(data.get(i)[1]), nouvelleCompagnie);
+                                        getCarreaux().put(Integer.parseInt(data.get(i)[1]), nouvelleCompagnie);
 				}
 				else
 					System.err.println("[buildGamePleateau()] : Invalid Data type");
@@ -81,6 +81,20 @@ public class Monopoly {
 		
 		return data;
 	}
+
+    /**
+     * @return the carreaux
+     */
+    public HashMap<Integer,Carreau> getCarreaux() {
+        return carreaux;
+    }
+
+    /**
+     * @return the joueurs
+     */
+    public HashSet<Joueur> getJoueurs() {
+        return joueurs;
+    }
 
     
 }
