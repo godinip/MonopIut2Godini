@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import Ui.IHM;
+import java.util.HashSet;
 
 public class Controleur {
     
@@ -22,6 +23,12 @@ public class Controleur {
     
     public void jouerUnCoup(Joueur joueur) {
         lancerDésAvancer(joueur);
+    }
+    
+    public void initialiserPartie(HashSet<Joueur> joueurs) {
+        for (Joueur joueur : joueurs) {
+            monopoly.addJoueur(joueur);
+        }
     }
     
     private void lancerDésAvancer(Joueur joueur) {
