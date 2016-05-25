@@ -26,6 +26,7 @@ public class Controleur {
     
     public void initialiserPartie(HashSet<Joueur> joueurs) {
         for (Joueur joueur : joueurs) {
+            joueur.setPositionCourante(getCarreau(1));
             monopoly.addJoueur(joueur);
         }
     }
