@@ -24,12 +24,17 @@ public class Controleur {
         lancerDésAvancer(joueur);
     }
     
-    public void initialiserPartie(HashSet<Joueur> joueurs) {
-        for (Joueur joueur : joueurs) {
-            joueur.setPositionCourante(getCarreau(1));
-            monopoly.addJoueur(joueur);
+    public void initialiserPartie() {
+        monopoly.CreerPlateau("./src/Data/data.txt");
+        for(Carreau h : monopoly.getCarreaux().values()) {
+            System.out.println(""+h.getNumero()+" "+h.getNom());
         }
+        monopoly.CreationJoueurs();
     }
+    
+    /*public void acheterPropriété() {
+        monopoly.;
+    }*/
     
     private void lancerDésAvancer(Joueur joueur) {
         int n = lancerDé();
