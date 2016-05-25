@@ -75,15 +75,15 @@ public class ProprieteAConstruire extends Propriete {
     }
     
     
-    
+    /*
     @Override
     public void action(Joueur J){
        Scanner choix = new  Scanner(System.in);
         if (this.getProprietaire()==null){
-            if (J.getArgent()<this.getPrix()){
+            if (J.getArgent()>=this.getPrix()){
                 System.out.println("Vous n'avez pas assez d'argent");
             }else{
-                System.out.println("Vouler vous acheter la Propriete: "+this.getNom()+" (oui/non)");  
+                System.out.println("Vouler vous acheter la Propriete: "+this.getNom()+" (oui/non)");
                 
                   }
         
@@ -93,6 +93,6 @@ public class ProprieteAConstruire extends Propriete {
         
         
     }
-
+*/
 
 }
