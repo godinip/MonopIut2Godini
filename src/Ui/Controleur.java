@@ -23,12 +23,27 @@ public class Controleur {
     }
     
     private Carreau lancerDésAvancer(Joueur joueur) {
+        int n = lancerDé();
+        int m = lancerDé();
+        for (Carreau carreau : monopoly.getCarreaux().values()) {
+            if (joueur.getPositionCourante().getNumero()+n+m>40) {
+                if (carreau.getNumero() == joueur.getPositionCourante().getNumero()+n+m-40) {
+                    joueur.setPositionCourante(carreau);
+                }
+            } else {
+                if (carreau.getNumero() == joueur.getPositionCourante().getNumero()) {
+                    joueur.setPositionCourante(carreau);
+                }
+            }
+        }
         
-        
+        if (n == m ) {
+            lancerDésAvancer(joueur);
+        }
     }
     
-    public int lancerDés() {
-        
+    public int lancerDé() {
+        return (int) Math.random()*(6-1);
     }
     
     public Carreau getCarreau(int numero) {
