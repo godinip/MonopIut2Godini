@@ -12,7 +12,7 @@ public class Monopoly {
 
 	private HashMap<Integer,Carreau> carreaux = new HashMap<>();
         private HashMap<String,Groupe> groupes = new HashMap<String,Groupe>();
-	private HashSet<Joueur> joueurs;
+	private HashSet<Joueur> joueurs = new HashSet<>();
         
         public Monopoly(){
         
