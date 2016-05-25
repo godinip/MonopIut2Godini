@@ -14,27 +14,24 @@ public class Controleur {
     IHM         ihm;
     Monopoly    monopoly;
     
-    public Controleur(){
-        
+    public Controleur(IHM ihm,Monopoly monopoly){
+        this.ihm = ihm;
+        this.monopoly = monopoly;
     }
     
     public void jouerUnCoup(Joueur joueur) {
         lancerDésAvancer(joueur);
     }
     
-    private Carreau lancerDésAvancer(Joueur joueur) {
+    private void lancerDésAvancer(Joueur joueur) {
         int n = lancerDé();
         int m = lancerDé();
-        joueur
+        joueur.setDernierLancé(n+m);
         if (joueur.getPositionCourante().getNumero()+n+m>40) {
-                if (carreau.getNumero() == joueur.getPositionCourante().getNumero()+n+m-40) {
-                    joueur.setPositionCourante(carreau);
-                }
-            } else {
-                if (carreau.getNumero() == joueur.getPositionCourante().getNumero()) {
-                    joueur.setPositionCourante(carreau);
-                }
-            }
+            joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m-40));
+                
+        } else {
+            joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m-40));
         }
         if (n == m ) {
             lancerDésAvancer(joueur);
@@ -51,6 +48,7 @@ public class Controleur {
                 return carreau;
             }
         }
+        return null;
     }
     
 }
