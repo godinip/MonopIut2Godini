@@ -40,7 +40,7 @@ public class Monopoly {
 				else if(caseType.compareTo("G") == 0){
 					System.out.println("Gare :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
-                                        Gare nouvelleGare = new Gare(data.get(i)[2],Integer.parseInt(data.get(i)[1]));
+                                        Gare nouvelleGare = new Gare(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
                                         carreaux.put(Integer.parseInt(data.get(i)[1]), nouvelleGare);
 				}
 				else if(caseType.compareTo("C") == 0){
