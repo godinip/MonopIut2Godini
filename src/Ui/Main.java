@@ -8,8 +8,8 @@ public class Main {
     
     public static void main(String[] args) {
        Monopoly monopoly = new Monopoly();
-       IHM ihm = new IHM();
-       Controleur controleur = new Controleur(ihm,monopoly);
+       Controleur controleur = new Controleur(monopoly);
+       IHM ihm = new IHM(controleur);
        monopoly.CreerPlateau("./src/Data/data.txt");
        for(Carreau h : monopoly.getCarreaux().values()) {
            System.out.println(""+h.getNumero()+" "+h.getNom());

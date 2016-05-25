@@ -16,8 +16,7 @@ public class Controleur {
     IHM         ihm;
     Monopoly    monopoly;
     
-    public Controleur(IHM ihm,Monopoly monopoly){
-        this.ihm = ihm;
+    public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
     }
     
