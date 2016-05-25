@@ -46,7 +46,7 @@ public class Monopoly {
 				else if(caseType.compareTo("C") == 0){
 					System.out.println("Compagnie :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
-                                        Compagnie nouvelleCompagnie = new Compagnie(data.get(i)[2],Integer.parseInt(data.get(i)[1]));
+                                        Compagnie nouvelleCompagnie = new Compagnie(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
                                         carreaux.put(Integer.parseInt(data.get(i)[1]), nouvelleCompagnie);
 				}
 				else if(caseType.compareTo("AU") == 0){
