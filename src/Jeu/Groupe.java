@@ -12,6 +12,12 @@ public class Groupe {
             this.setCouleur(couleur);
             proprietesdugroupe = new ArrayList();
         }
+        
+        
+        public void addPropriete(ProprieteAConstruire propriete){
+        this.getProprietesdugroupe().add(propriete);
+    }
+
 
     /**
      * @return the couleur
@@ -27,10 +33,6 @@ public class Groupe {
         this.couleur = couleur;
     }
     
-    public void addPropriete(ProprieteAConstruire propriete){
-        this.getProprietesdugroupe().add(propriete);
-    }
-
     /**
      * @return the proprietesdugroupe
      */
