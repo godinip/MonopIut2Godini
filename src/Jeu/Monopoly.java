@@ -96,5 +96,12 @@ public class Monopoly {
         return joueurs;
     }
 
+    /**
+     * @param joueurs the joueurs to set
+     */
+    public void setJoueurs(HashSet<Joueur> joueurs) {
+        this.joueurs = joueurs;
+    }
+
     
 }
