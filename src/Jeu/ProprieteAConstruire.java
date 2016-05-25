@@ -7,14 +7,15 @@ public class ProprieteAConstruire extends Propriete {
 
     private Groupe  couleur;
     private int     prix;
-    private int     loyer;
+    private int[]     loyer;
 
     public ProprieteAConstruire(String nom, int prix) {
         super(nom, prix);
     }
     
-    public ProprieteAConstruire(String nm, int prx,Groupe groupe,int loyer) {
+    public ProprieteAConstruire(String nm, int prx,Groupe groupe,int[] loyer) {
         super(nm, prx);
+        this.loyer = new int [5];
         this.setLoyer(loyer);
         this.setCouleur(couleur);
         
@@ -33,7 +34,7 @@ public class ProprieteAConstruire extends Propriete {
         return loyer;
     }
     
-    public void setLoyer(int loyer) {
+    public void setLoyer(int[] loyer) {
         this.loyer = loyer;
     }
     
