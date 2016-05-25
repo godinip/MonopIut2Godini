@@ -34,6 +34,14 @@ public class Monopoly {
 				if(caseType.compareTo("P") == 0){
 					System.out.println("Propriété :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
+                                        int[] loyer = new int[4];
+                                        loyer[0] = Integer.parseInt(data.get(i)[5]); 
+                                        loyer[1] = Integer.parseInt(data.get(i)[6]); 
+                                        loyer[2] = Integer.parseInt(data.get(i)[7]); 
+                                        loyer[3] = Integer.parseInt(data.get(i)[8]); 
+                                        loyer[4] = Integer.parseInt(data.get(i)[9]); 
+                                        
+                                        
                                         ProprieteAConstruire nouvellePropriete = new ProprieteAConstruire(Integer.parseInt(data.get(i)[1]), data.get(i)[2], Integer.parseInt(data.get(i)[4]));
                                         carreaux.put(Integer.parseInt(data.get(i)[1]), nouvellePropriete);
                                 }
