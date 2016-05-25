@@ -9,8 +9,9 @@ public abstract class Propriete extends Carreau{
         private int     prix;
         private String  nom;
         
-        public Propriete(String nom, int prix){
-            super(nom, prix);
+        public Propriete(int numero,String nom, int prix){
+            super(numero, nom);
+            this.setPrix(prix);
         }
         
 	public abstract int getPrix();
@@ -32,5 +33,12 @@ public abstract class Propriete extends Carreau{
 	public void setPropriétaire(Joueur J) {
             proprietaire = J;
 	}
+
+    /**
+     * @param prix the prix to set
+     */
+    public void setPrix(int prix) {
+        this.prix = prix;
+    }
 
 }
