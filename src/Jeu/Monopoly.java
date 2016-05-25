@@ -102,6 +102,9 @@ public class Monopoly {
     public void setJoueurs(HashSet<Joueur> joueurs) {
         this.joueurs = joueurs;
     }
+    public void addJoueur(Joueur J){
+        this.joueurs.add(J);
+    }
 
     
 }
