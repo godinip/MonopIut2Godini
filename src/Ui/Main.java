@@ -9,11 +9,10 @@ public class Main {
     public static void main(String[] args) {
        Monopoly monopoly = new Monopoly();
        monopoly.CreerPlateau("/users/info/etu-s2/godinip/data.txt");
-       
-         for(Carreau h : monopoly.getCarreaux().values()) {
-             System.out.println(""+h.getNumero()+" "+h.getNomCarreau()); 
-         }
-       
+       for(Carreau h : monopoly.getCarreaux().values()) {
+           System.out.println(""+h.getNumero()+" "+h.getNom());
+       }
+       //Controleur(ihm,monopoly);
     }
     
 }

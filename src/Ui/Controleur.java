@@ -39,11 +39,11 @@ public class Controleur {
         }
     }
     
-    public int lancerDé() {
+    private int lancerDé() {
         return (int) Math.random()*(6-1);
     }
     
-    public Carreau getCarreau(int numero) {
+    private Carreau getCarreau(int numero) {
         for (Carreau carreau : monopoly.getCarreaux().values()) {
             if (carreau.getNumero() == numero) {
                 return carreau;
