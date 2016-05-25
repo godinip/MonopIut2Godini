@@ -30,25 +30,19 @@ public class Controleur {
         for(Carreau carreau : monopoly.getCarreaux().values()) {
             System.out.println(""+carreau.getNumero()+" "+carreau.getNom());
         }
-        monopoly.addJoueur(new Joueur("Quentin",getCarreau(1)));
+        /*monopoly.addJoueur(new Joueur("Quentin",getCarreau(1)));
         monopoly.addJoueur(new Joueur("Valérian",getCarreau(1)));
         monopoly.addJoueur(new Joueur("Maxime",getCarreau(1)));
         monopoly.addJoueur(new Joueur("Paul",getCarreau(1)));
-        //TEST GROUPE
-        /*for(Groupe groupe : monopoly.getGroupes().values()) {
-            System.out.println("groupe "+groupe.getCouleur().toString());
-        }*/
         //TEST JOUEUR déplacement
-        //while (monopoly.getJoueurs().size() > 1) {
-            for (Joueur joueur : monopoly.getJoueurs()) {
-                //jouerUnCoup(j);
-                System.out.println("Le joueur "+joueur.getNomJoueur()+" se situe sur la case "+joueur.getPositionCourante().getNumero());
-            }
-        //}
+        for (Joueur joueur : monopoly.getJoueurs()) {
+            //jouerUnCoup(j);
+            System.out.println("Le joueur "+joueur.getNomJoueur()+" se situe sur la case "+joueur.getPositionCourante().getNumero());
+        }*/
     }
     
     public void acheterPropriété() {
-        ;
+        
     }
     
     private void lancerDésAvancer(Joueur joueur) {
