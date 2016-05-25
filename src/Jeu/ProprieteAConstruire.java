@@ -32,10 +32,11 @@ public class ProprieteAConstruire extends Propriete {
     }
     
     public int getLoyer() {
-        if (this.getMaisons()==0 {
-            
+        if (this.getMaisons()==0 && this.getProprietaire().PossèdeGroupe(this.getCouleur())){
+            return 2*loyer[0];
+        }else{
+            return loyer[this.getMaisons()];
         }
-        return loyer[this.getMaisons()];
     }
     
     public void setLoyer(int[] loyer) {
