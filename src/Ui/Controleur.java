@@ -26,8 +26,7 @@ public class Controleur {
         int n = lancerDé();
         int m = lancerDé();
         joueur
-        for (Carreau carreau : monopoly.getCarreaux().values()) {
-            if (joueur.getPositionCourante().getNumero()+n+m>40) {
+        if (joueur.getPositionCourante().getNumero()+n+m>40) {
                 if (carreau.getNumero() == joueur.getPositionCourante().getNumero()+n+m-40) {
                     joueur.setPositionCourante(carreau);
                 }
@@ -47,7 +46,11 @@ public class Controleur {
     }
     
     public Carreau getCarreau(int numero) {
-        
+        for (Carreau carreau : monopoly.getCarreaux().values()) {
+            if (carreau.getNumero() == numero) {
+                return carreau;
+            }
+        }
     }
     
 }
