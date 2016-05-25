@@ -10,7 +10,7 @@ public class Main {
        Monopoly monopoly = new Monopoly();
        IHM ihm = new IHM();
        Controleur controleur = new Controleur(ihm,monopoly);
-       monopoly.CreerPlateau("/users/info/etu-s2/godinip/data.txt");
+       monopoly.CreerPlateau("./src/Data/data.txt");
        for(Carreau h : monopoly.getCarreaux().values()) {
            System.out.println(""+h.getNumero()+" "+h.getNom());
        }
