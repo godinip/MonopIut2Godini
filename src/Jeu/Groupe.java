@@ -5,7 +5,26 @@ import java.util.*;
 
 public class Groupe {
 
-	private Collection<ProprieteAConstruire> proprietesdugroupe;
+	private ArrayList<ProprieteAConstruire> proprietesdugroupe;
 	private CouleurPropriete couleur;
+        
+        public Groupe(CouleurPropriete couleur){
+            this.setCouleur(couleur);
+            proprietesdugroupe = new ArrayList();
+        }
+
+    /**
+     * @return the couleur
+     */
+    public CouleurPropriete getCouleur() {
+        return couleur;
+    }
+
+    /**
+     * @param couleur the couleur to set
+     */
+    public void setCouleur(CouleurPropriete couleur) {
+        this.couleur = couleur;
+    }
 
 }
