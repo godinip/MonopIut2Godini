@@ -41,11 +41,11 @@ public class Groupe {
     }
     
     public boolean LoyerDouble(Joueur j){
-        int i;
+        int i=0;
         while (i<this.getProprietesdugroupe().size() && this.getProprietesdugroupe().get(i).getProprietaire()==j){
             i++;
         }
-        return i
+        return i==this.getProprietesdugroupe().size();
     }
 
 }
