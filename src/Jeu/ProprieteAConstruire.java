@@ -62,7 +62,7 @@ public class ProprieteAConstruire extends Propriete {
      * @param maisons the maisons to set
      */
     public void setMaisons(int maisons) {
-        if (maisons>5){
+    if (maisons>5){
         throw new IllegalArgumentException();
     }else{
         this.maisons = maisons;    
