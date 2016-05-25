@@ -31,6 +31,15 @@ public class Controleur {
             System.out.println(""+h.getNumero()+" "+h.getNom());
         }
         monopoly.CreationJoueurs();
+        //TEST
+        
+        //TEST 
+        /*while (monopoly.getJoueurs() != null) {
+            for (Joueur joueur : monopoly.getJoueurs()) {
+                jouerUnCoup(joueur);
+                System.out.println("Le joueur "+joueur.getNomJoueur()+" se situe sur la case "+joueur.getPositionCourante().getNumero());
+            }
+        }*/
     }
     
     /*public void acheterPropriété() {
