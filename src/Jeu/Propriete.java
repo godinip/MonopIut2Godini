@@ -7,8 +7,7 @@ public abstract class Propriete extends Carreau{
 
 	private Joueur  proprietaire;
         private int     prix;
-        private String  nom;
-        
+        private String  nom;      
 
         public Propriete(int numero,String nom, int prix){
             super(numero, nom);
@@ -42,5 +41,7 @@ public abstract class Propriete extends Carreau{
     public void setPrix(int prix) {
         this.prix = prix;
     }
+        
+    public abstract void addPropriete();
 
 }
