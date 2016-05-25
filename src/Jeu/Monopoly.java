@@ -29,7 +29,7 @@ public class Monopoly {
             
 		try{
 			ArrayList<String[]> data = readDataFile(dataFilename, ",");
-			for(int i=0; i<data.size(); ++iCarreau){
+			for(int i=0; i<data.size(); ++i){
 				String caseType = data.get(i)[0];
 				if(caseType.compareTo("P") == 0){
 					System.out.println("Propriété :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
