@@ -15,8 +15,8 @@ public class Groupe {
         
         
         public void addPropriete(ProprieteAConstruire propriete){
-        this.getProprietesdugroupe().add(propriete);
-    }
+            this.getProprietesdugroupe().add(propriete);
+        }
 
 
     /**
@@ -38,6 +38,11 @@ public class Groupe {
      */
     public ArrayList<ProprieteAConstruire> getProprietesdugroupe() {
         return proprietesdugroupe;
+    }
+    
+    public boolean LoyerDouble(Joueur j){
+        int i=0;
+        while (i)
     }
 
 }
