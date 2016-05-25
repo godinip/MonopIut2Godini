@@ -36,7 +36,7 @@ public class Controleur {
             for (Joueur joueur : monopoly.getJoueurs()) {
                 System.out.println("Le joueur "+joueur.getNomJoueur()+" se situe sur la case "+joueur.getPositionCourante().getNom());
                 jouerUnCoup(joueur);
-                //System.out.println("Le joueur "+joueur.getNomJoueur()+" avance de "+joueur.getDernierLancé()+"case et arrive sur la case"+joueur.getPositionCourante().getNom());
+                System.out.println("Le joueur "+joueur.getNomJoueur()+" avance de "+joueur.getDernierLancé()+" case et arrive sur la case "+joueur.getPositionCourante().getNom());
             }
         }
     }
@@ -46,12 +46,11 @@ public class Controleur {
     }
     
     private void lancerDésAvancer(Joueur joueur) {
-        int n = lancerDé();
-        int m = lancerDé();
+        int n = lancerDé()+1;
+        int m = lancerDé()+1;
         joueur.setDernierLancé(n+m);
         if (joueur.getPositionCourante().getNumero()+n+m>40) {
             joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m-40));
-                
         } else {
             joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m));
         }
@@ -61,7 +60,7 @@ public class Controleur {
     }
     
     private int lancerDé() {
-        return (int) Math.random()*(6-1);
+        return (int) (Math.random()*(6-1));
     }
     
     private Carreau getCarreau(int numero) {
