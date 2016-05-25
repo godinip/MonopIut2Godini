@@ -31,7 +31,7 @@ public class ProprieteAConstruire extends Propriete {
     }
     
     public int getLoyer() {
-        return loyer;
+        return loyer[this.getMaisons()];
     }
     
     public void setLoyer(int[] loyer) {
