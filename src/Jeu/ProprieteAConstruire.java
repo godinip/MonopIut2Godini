@@ -45,5 +45,19 @@ public class ProprieteAConstruire extends Propriete {
     public void setCouleur(Groupe couleur) {
         this.couleur = couleur;
     }
+
+    /**
+     * @return the maisons
+     */
+    public int getMaisons() {
+        return maisons;
+    }
+
+    /**
+     * @param maisons the maisons to set
+     */
+    public void setMaisons(int maisons) {
+        this.maisons = maisons;
+    }
     
 }
