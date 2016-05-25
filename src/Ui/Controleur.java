@@ -1,6 +1,7 @@
 package Ui;
 
 import Jeu.Carreau;
+import Jeu.Groupe;
 import Jeu.Joueur;
 import Jeu.Monopoly;
 import java.io.BufferedReader;
@@ -26,25 +27,33 @@ public class Controleur {
     
     public void initialiserPartie() {
         this.monopoly.CreerPlateau("./src/Data/data.txt");
-        
-        for(Carreau h : monopoly.getCarreaux().values()) {
-            System.out.println(""+h.getNumero()+" "+h.getNom());
+        for(Carreau carreau : monopoly.getCarreaux().values()) {
+            System.out.println(""+carreau.getNumero()+" "+carreau.getNom());
         }
-        monopoly.CreationJoueurs();
-        //TEST
-        
-        //TEST 
-        /*while (monopoly.getJoueurs() != null) {
-            for (Joueur joueur : monopoly.getJoueurs()) {
-                jouerUnCoup(joueur);
+        Joueur joueur = new Joueur("Quentin",getCarreau(1));
+        monopoly.addJoueur(joueur);
+        joueur = new Joueur("Valérian",getCarreau(1));
+        monopoly.addJoueur(joueur);
+        joueur = new Joueur("Maxime",getCarreau(1));
+        monopoly.addJoueur(joueur);
+        joueur = new Joueur("Paul",getCarreau(1));
+        monopoly.addJoueur(joueur);
+        //TEST GROUPE
+        /*for(Groupe groupe : monopoly.getGroupes().values()) {
+            System.out.println("groupe "+groupe.getCouleur().toString());
+        }*/
+        //TEST JOUEUR déplacement
+        while (monopoly.getJoueurs().size() > 1) {
+            for (Joueur j : monopoly.getJoueurs()) {
+                jouerUnCoup(j);
                 System.out.println("Le joueur "+joueur.getNomJoueur()+" se situe sur la case "+joueur.getPositionCourante().getNumero());
             }
-        }*/
+        }
     }
     
-    /*public void acheterPropriété() {
-        monopoly.;
-    }*/
+    public void acheterPropriété() {
+        ;
+    }
     
     private void lancerDésAvancer(Joueur joueur) {
         int n = lancerDé();
