@@ -26,6 +26,7 @@ public abstract class Propriete extends Carreau{
 		throw new UnsupportedOperationException();
 	}
         
+        @Override
 	public String getNom() {
 		// TODO - implement Propriete.getNom
 		return super.getNom();
@@ -40,7 +41,7 @@ public abstract class Propriete extends Carreau{
      */
     public void setPrix(int prix) {
         this.prix = prix;
-    }
+    } 
 
     
     public abstract void achatPropriete(Joueur joueur);
