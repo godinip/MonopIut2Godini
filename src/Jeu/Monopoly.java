@@ -11,7 +11,7 @@ import java.util.*;
 public class Monopoly {
 
 	private HashMap<Integer,Carreau> carreaux = new HashMap<>();
-        private HashMap<String,Groupe> groupes = new HashMap<>();
+        private HashMap<String,Groupe> groupes = new HashMap<String,Groupe>();
 	private HashSet<Joueur> joueurs;
         
         public Monopoly(){
@@ -44,10 +44,10 @@ public class Monopoly {
                                         
                                         if(!groupes.containsValue(data.get(i)[3])){
                                             Groupe nouvGroupe = new Groupe(CouleurPropriete.valueOf(data.get(i)[3]));
-                                            groupes.put(data.get(i)[3], nouvGroupe);
+                                            getGroupes().put(data.get(i)[3], nouvGroupe);
                                         }
                                        
-                                        ProprieteAConstruire nouvellePropriete = new ProprieteAConstruire(Integer.parseInt(data.get(i)[1]), data.get(i)[2], Integer.parseInt(data.get(i)[4]));//groupes.get(1),loyer);
+                                        ProprieteAConstruire nouvellePropriete = new ProprieteAConstruire(Integer.parseInt(data.get(i)[1]), data.get(i)[2], Integer.parseInt(data.get(i)[4]),getGroupes().get(data.get(i)[3]),loyer);
                                         carreaux.put(Integer.parseInt(data.get(i)[1]), nouvellePropriete);
                                 }
 				else if(caseType.compareTo("G") == 0){
@@ -120,6 +120,13 @@ public class Monopoly {
     }
     public void addJoueur(Joueur J){
         this.joueurs.add(J);
+    }
+
+    /**
+     * @return the groupes
+     */
+    public HashMap<String,Groupe> getGroupes() {
+        return groupes;
     }
 
     
