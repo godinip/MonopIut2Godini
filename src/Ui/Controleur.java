@@ -27,22 +27,22 @@ public class Controleur {
     
     public void initialiserPartie() {
         this.monopoly.CreerPlateau("./src/Data/data.txt");
-        for(Carreau carreau : monopoly.getCarreaux().values()) {
-            System.out.println(""+carreau.getNumero()+" "+carreau.getNom());
-        }
+        //TEST
         monopoly.addJoueur(new Joueur("Quentin",getCarreau(1)));
         monopoly.addJoueur(new Joueur("Valérian",getCarreau(1)));
         monopoly.addJoueur(new Joueur("Maxime",getCarreau(1)));
         monopoly.addJoueur(new Joueur("Paul",getCarreau(1)));
-        //TEST JOUEUR déplacement
-        for (Joueur joueur : monopoly.getJoueurs()) {
-            //jouerUnCoup(j);
-            System.out.println("Le joueur "+joueur.getNomJoueur()+" se situe sur la case "+joueur.getPositionCourante().getNumero());
+        for (int i=0;i<2;i++) {
+            for (Joueur joueur : monopoly.getJoueurs()) {
+                System.out.println("Le joueur "+joueur.getNomJoueur()+" se situe sur la case "+joueur.getPositionCourante().getNom());
+                jouerUnCoup(joueur);
+                //System.out.println("Le joueur "+joueur.getNomJoueur()+" avance de "+joueur.getDernierLancé()+"case et arrive sur la case"+joueur.getPositionCourante().getNom());
+            }
         }
     }
     
     public void acheterPropriété() {
-        
+        ;
     }
     
     private void lancerDésAvancer(Joueur joueur) {
