@@ -25,7 +25,8 @@ public class Controleur {
     }
     
     public void initialiserPartie() {
-        monopoly.CreerPlateau("./src/Data/data.txt");
+        this.monopoly.CreerPlateau("./src/Data/data.txt");
+        
         for(Carreau h : monopoly.getCarreaux().values()) {
             System.out.println(""+h.getNumero()+" "+h.getNom());
         }

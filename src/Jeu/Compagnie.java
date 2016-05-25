@@ -18,5 +18,10 @@ public class Compagnie extends Propriete {
             return 10*joueur.getDernierLancé();
         }
     }
+
+    @Override
+    public void addPropriete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

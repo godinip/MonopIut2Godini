@@ -68,4 +68,9 @@ public class ProprieteAConstruire extends Propriete {
         this.maisons = maisons;    
          }
     }
+
+    @Override
+    public void addPropriete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

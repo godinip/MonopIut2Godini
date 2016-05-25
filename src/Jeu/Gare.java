@@ -22,5 +22,10 @@ public class Gare extends Propriete {
             return 0;
         }
     }
+
+    @Override
+    public void addPropriete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
