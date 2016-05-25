@@ -9,7 +9,7 @@ public class Gare extends Propriete {
     @Override
     public void achatPropriete(Joueur joueur) {
 	super.setPropriétaire(joueur);
-        this.getProprietaire().addGare(this); 
+        this.addPropriete(); 
     }
         
     @Override
