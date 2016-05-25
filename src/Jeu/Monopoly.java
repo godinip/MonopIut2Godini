@@ -17,9 +17,6 @@ public class Monopoly {
         public Monopoly(){
         
         }
-        public void CreationJoueurs(){
-
-        }
         public void CreerPlateau(String dataFilename){
 		buildGamePlateau(dataFilename);
 	}

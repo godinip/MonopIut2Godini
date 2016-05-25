@@ -8,6 +8,7 @@ public class Groupe {
 	private ArrayList<ProprieteAConstruire> proprietesdugroupe;
 	private CouleurPropriete couleur;
         
+        
         public Groupe(CouleurPropriete couleur){
             this.setCouleur(couleur);
             proprietesdugroupe = new ArrayList();
