@@ -9,13 +9,12 @@ public class ProprieteAConstruire extends Propriete {
     private int     prix;
     private int[]     loyer;
 
-    public ProprieteAConstruire(String nom, int prix) {
-        super(nom, prix);
+    public ProprieteAConstruire(int numero,String nom, int prix) {
+        super(numero,nom, prix);
     }
     
-    public ProprieteAConstruire(String nm, int prx,Groupe groupe,int[] loyer) {
-        super(nm, prx);
-        this.loyer = new int [5];
+    public ProprieteAConstruire(int numero,String nm, int prx,Groupe groupe,int[] loyer) {
+        super(numero,nm, prx);
         this.setLoyer(loyer);
         this.setCouleur(couleur);
         
