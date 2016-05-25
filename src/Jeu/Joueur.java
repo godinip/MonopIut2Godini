@@ -10,7 +10,7 @@ public class Joueur {
     private String                              nomJoueur;
     private int                                 argent;
     private Carreau                             positionCourante;
-    private int                                 dernierLancer;
+    private int                                 dernierLancé;
     private ArrayList<ProprieteAConstruire>     proprietes;
     private ArrayList<Gare>                     gares;
     private ArrayList<Compagnie>                compagnies;
@@ -19,7 +19,7 @@ public class Joueur {
         this.nomJoueur = nomJoueur;
         argent = 1500;
         this.positionCourante = positionCourante;
-        dernierLancer = 0;
+        dernierLancé = 0;
         proprietes = new ArrayList();
         gares = new ArrayList();
         compagnies = new ArrayList();
@@ -61,12 +61,12 @@ public class Joueur {
         return positionCourante;
     }
     
-    public void setDernierLancé(int lancer) {
-        dernierLancer = lancer;
+    public void setDernierLancé(int lancé) {
+        dernierLancé = lancé;
     }
     
-    public int getDernierLancer() {
-        return dernierLancer;
+    public int getDernierLancé() {
+        return dernierLancé;
     }
     
     public void addPropriete(ProprieteAConstruire propriete) {

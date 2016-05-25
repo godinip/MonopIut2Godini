@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import Ui.IHM;
 
 public class Controleur {
+    
     IHM         ihm;
     Monopoly    monopoly;
     
