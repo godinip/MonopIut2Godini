@@ -20,8 +20,9 @@ public class Compagnie extends Propriete {
     }
 
     @Override
-    public void addPropriete() {
+    public void achatPropriete(Joueur joueur) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     
 }

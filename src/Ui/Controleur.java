@@ -30,7 +30,7 @@ public class Controleur {
         for(Carreau carreau : monopoly.getCarreaux().values()) {
             System.out.println(""+carreau.getNumero()+" "+carreau.getNom());
         }
-        /*monopoly.addJoueur(new Joueur("Quentin",getCarreau(1)));
+        monopoly.addJoueur(new Joueur("Quentin",getCarreau(1)));
         monopoly.addJoueur(new Joueur("Valérian",getCarreau(1)));
         monopoly.addJoueur(new Joueur("Maxime",getCarreau(1)));
         monopoly.addJoueur(new Joueur("Paul",getCarreau(1)));
@@ -38,7 +38,7 @@ public class Controleur {
         for (Joueur joueur : monopoly.getJoueurs()) {
             //jouerUnCoup(j);
             System.out.println("Le joueur "+joueur.getNomJoueur()+" se situe sur la case "+joueur.getPositionCourante().getNumero());
-        }*/
+        }
     }
     
     public void acheterPropriété() {
