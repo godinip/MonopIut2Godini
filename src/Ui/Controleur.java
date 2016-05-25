@@ -19,12 +19,13 @@ public class Controleur {
     }
     
     public void jouerUnCoup(Joueur joueur) {
-        
+        lancerDésAvancer(joueur);
     }
     
     private Carreau lancerDésAvancer(Joueur joueur) {
         int n = lancerDé();
         int m = lancerDé();
+        joueur
         for (Carreau carreau : monopoly.getCarreaux().values()) {
             if (joueur.getPositionCourante().getNumero()+n+m>40) {
                 if (carreau.getNumero() == joueur.getPositionCourante().getNumero()+n+m-40) {
@@ -36,7 +37,6 @@ public class Controleur {
                 }
             }
         }
-        
         if (n == m ) {
             lancerDésAvancer(joueur);
         }
