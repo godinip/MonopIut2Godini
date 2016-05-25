@@ -32,7 +32,7 @@ public class Controleur {
             joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m-40));
                 
         } else {
-            joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m-40));
+            joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m));
         }
         if (n == m ) {
             lancerDésAvancer(joueur);

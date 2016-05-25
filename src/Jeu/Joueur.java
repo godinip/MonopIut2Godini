@@ -29,7 +29,7 @@ public class Joueur {
         if (argent>=prix) {
             setArgent(argent-prix);
         } else {
-            argent = 0;
+            //PERDU
         }
     }
     
