@@ -13,16 +13,13 @@ public abstract class Carreau {
 	public int getNumero() {
 		return numero;
 	}
-        
+     /**
+       * @return the nomCarreau
+       */
         public String getNom(){
             return nomCarreau;
         }
 
-    /**
-     * @return the nomCarreau
-     */
-    public String getNomCarreau() {
-        return nomCarreau;
-    }
+    
 
 }
