@@ -87,8 +87,12 @@ public class ProprieteAConstruire extends Propriete {
                if (true){//il veut acheter
                    
                }
-                }
+            
+            }
         
+        }else if(this.getProprietaire()==J){
+            //IHM.Ne rien faire//
+            
         }else{
             J.payer(this.getLoyer());
             this.getProprietaire().gagnerArgent(this.getLoyer());            
