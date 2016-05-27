@@ -21,6 +21,7 @@ public abstract class Propriete extends Carreau{
 		return this.proprietaire;
 	}
         
+        @Override
 	public void action(Joueur j) {
 		// TODO - implement Propriete.action
 		throw new UnsupportedOperationException();
