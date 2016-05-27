@@ -49,10 +49,17 @@ public class Controleur {
         } else {
             joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m));
         }
-        if (joueur.getPositionCourante().action(joueur) == depart) {
-            
+        if (joueur.getPositionCourante().action(joueur) == gain) {
+            joueur.gagnerArgent(joueur.getPositionCourante());
+        } else if (joueur.getPositionCourante().action(joueur) == payerLoyer) {
+            ;
+        } else if (joueur.getPositionCourante().action(joueur) == acheter) {
+            ;
+        } else if (joueur.getPositionCourante().action(joueur) == payer) {
+            ;
+        } else if (joueur.getPositionCourante().action(joueur) == neRienFaire) {
+            ;
         }
-        
         if (n == m ) {
             lancerDésAvancer(joueur);
         }
