@@ -21,12 +21,6 @@ public class Compagnie extends Propriete {
         }
     }
 
-    @Override
-    public void achatPropriete(Joueur joueur) {
-        joueur.payer(this.getPrix());
-        this.setPropriétaire(joueur);
-        joueur.addCompagnie(this);
-    }
     
     @Override
     public Data.Actions action(Joueur J){

@@ -71,14 +71,6 @@ public class ProprieteAConstruire extends Propriete {
         this.maisons = maisons;    
          }
     }
-
-    @Override
-    public void achatPropriete(Joueur joueur) {
-        joueur.payer(this.getPrix());
-        this.setPropriétaire(joueur);
-        joueur.addPropriete(this);
-    }
-    
     
     
     @Override
