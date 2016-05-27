@@ -84,9 +84,8 @@ public class ProprieteAConstruire extends Propriete {
                //IHM.Message//
             }else{
                //IHM.ACHETER MAISON//
-               if (true){
-                  J.payer(this.getPrix());
-                  this.setPropriétaire(J);
+               if (true){//il veut acheter
+                   
                }
                 }
         
