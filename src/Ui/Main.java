@@ -10,6 +10,7 @@ public class Main {
         Monopoly monopoly = new Monopoly();
         Controleur controleur = new Controleur(monopoly);
         controleur.initialiserPartie();
+        controleur.Test();
     }
     
 }
