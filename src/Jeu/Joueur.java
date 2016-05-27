@@ -69,8 +69,8 @@ public class Joueur {
         return dernierLancé;
     }
     
-    public void addPropriete(ProprieteAConstruire propriete) {
-        proprietes.add(propriete);
+    public void addPropriete(Propriete propriete) {
+        this.getProprietes().add(propriete);
     }
     
     public ArrayList getProprietes(){

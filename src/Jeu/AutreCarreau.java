@@ -1,5 +1,7 @@
 package Jeu;
 
+import Data.Actions;
+
 public class AutreCarreau extends Carreau {
     
         private int montant;
@@ -11,7 +13,25 @@ public class AutreCarreau extends Carreau {
         }
 
         @Override
-        public void action(Joueur J) {
-        
+        public Data.Actions action(Joueur J) {
+            if (this.getMontant()<0){
+                return Actions.gain;
+            }else{
+                return Actions.payer;
+            }
         }
+
+    /**
+     * @return the montant
+     */
+    public int getMontant() {
+        return montant;
+    }
+
+    /**
+     * @param montant the montant to set
+     */
+    public void setMontant(int montant) {
+        this.montant = montant;
+    }
 }

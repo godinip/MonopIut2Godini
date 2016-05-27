@@ -22,7 +22,7 @@ public abstract class Propriete extends Carreau{
 	}
         
         @Override
-	public void action(Joueur j) {
+	public Data.Actions action(Joueur j) {
 		// TODO - implement Propriete.action
 		throw new UnsupportedOperationException();
 	}

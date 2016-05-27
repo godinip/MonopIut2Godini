@@ -2,6 +2,7 @@ package Jeu;
 
 import Jeu.Propriete;
 import Ui.*;
+import Data.*;
 import Jeu.Groupe;
 import java.util.Scanner;
 
@@ -73,29 +74,28 @@ public class ProprieteAConstruire extends Propriete {
 
     @Override
     public void achatPropriete(Joueur joueur) {
+        joueur.payer(this.getPrix());
+        this.setPropriétaire(joueur);
+        joueur.addPropriete(this);
     }
     
     
     
     @Override
-    public void action(Joueur J){
+    public Data.Actions action(Joueur J){
         if (this.getProprietaire()==null){
             if (J.getArgent()<this.getPrix()){
-               //IHM.Message//
+                return Actions.neRienFaire;
             }else{
-               //IHM.ACHETER MAISON//
-               if (true){//il veut acheter
-                   
-               }
-            
+                return Actions.acheter;
             }
         
         }else if(this.getProprietaire()==J){
-            //IHM.Ne rien faire//
-            
+            return Actions.neRienFaire;
         }else{
             J.payer(this.getLoyer());
-            this.getProprietaire().gagnerArgent(this.getLoyer());            
+            this.getProprietaire().gagnerArgent(this.getLoyer());           
+            return Actions.payerLoyer;    
         }
         
         
