@@ -23,7 +23,9 @@ public class Compagnie extends Propriete {
 
     @Override
     public void achatPropriete(Joueur joueur) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        joueur.payer(this.getPrix());
+        this.setPropriétaire(joueur);
+        joueur.addCompagnie(this);
     }
     
     @Override
@@ -39,7 +41,7 @@ public class Compagnie extends Propriete {
             return Actions.neRienFaire;
         }else{
             J.payer(this.getLoyer(this.getProprietaire()));
-            this.getProprietaire().gagnerArgent(this.getLoyer());           
+            this.getProprietaire().gagnerArgent(this.getLoyer(this.getProprietaire()));           
             return Actions.payerLoyer;    
         }
         
