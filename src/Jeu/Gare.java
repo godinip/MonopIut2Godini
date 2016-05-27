@@ -26,7 +26,7 @@ public class Gare extends Propriete {
     }
     
     @Override
-    public void action(Joueur J){
+    public Data.Actions action(Joueur J){
         if (J==)
         
         

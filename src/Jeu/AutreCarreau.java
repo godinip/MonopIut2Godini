@@ -11,7 +11,7 @@ public class AutreCarreau extends Carreau {
         }
 
         @Override
-        public void action(Joueur J) {
+        public Data.Actions action(Joueur J) {
         
         }
 }

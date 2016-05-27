@@ -20,6 +20,11 @@ public abstract class Carreau {
             return nomCarreau;
         }
 
-        public abstract void action(Joueur J);
+    /**
+     *
+     * @param J
+     * @return
+     */
+    public abstract Data.Actions action(Joueur J);
 
 }
