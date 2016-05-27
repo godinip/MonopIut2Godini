@@ -45,5 +45,9 @@ public abstract class Propriete extends Carreau{
     } 
 
     
-    public abstract void achatPropriete(Joueur joueur);
+    public  void achatPropriete(Joueur joueur){
+        joueur.payer(this.getPrix());
+        this.setPropriétaire(joueur);
+        joueur.addPropriete(this);
+    }
 }

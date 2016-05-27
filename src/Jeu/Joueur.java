@@ -70,27 +70,41 @@ public class Joueur {
     }
     
     public void addPropriete(Propriete propriete) {
-        this.getProprietes().add(propriete);
+        if (propriete instanceof ProprieteAConstruire){
+            this.getProprietes().add(propriete);
+        }else if(propriete instanceof Gare){
+            this.getGares().add((Gare)propriete);
+        }else{
+            this.getCompagnies().add((Compagnie)propriete);
+        }
     }
     
     public ArrayList getProprietes(){
         return proprietes;
     }
     
-    public void addGare(Gare gare) {
-        gares.add(gare);
-    }
     
     public int getNbGare() {
-        return gares.size();
+        return getGares().size();
     }
     
-    public void addCompagnie(Compagnie compagnie) {
-        compagnies.add(compagnie);
-    }
     
     public int getNbCompagnie() {
-        return compagnies.size();
+        return getCompagnies().size();
+    }
+
+    /**
+     * @return the gares
+     */
+    public ArrayList<Gare> getGares() {
+        return gares;
+    }
+
+    /**
+     * @return the compagnies
+     */
+    public ArrayList<Compagnie> getCompagnies() {
+        return compagnies;
     }
     
 }
