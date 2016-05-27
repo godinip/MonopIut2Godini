@@ -5,6 +5,7 @@ import Jeu.Carreau;
 import Jeu.Groupe;
 import Jeu.Joueur;
 import Jeu.Monopoly;
+import Jeu.Propriete;
 import Jeu.ProprieteAConstruire;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -31,13 +32,11 @@ public class Controleur {
         this.monopoly.CreerPlateau("./src/Data/data.txt");
     }
     
-    public void acheterPropriété(Joueur j, ProprieteAConstruire proprieteAConstruire) {
-        if (j.getArgent()>=proprieteAConstruire.getPrix()) {
-            if (IHM.afficherBoiteDialogue("Voulez-vous acheter la propriété "+proprieteAConstruire.getNom(), 1)) {
-                j.payer(proprieteAConstruire.getPrix()); 
-                j.addPropriete(proprieteAConstruire);
+    public void acheterPropriete(Joueur joueur, Propriete achat) {
+        if (IHM.afficherBoiteDialogue("Voulez-vous acheter "+achat.getNom()+" pour "+achat.getPrix()+" ?", 1)) {
+            joueur.payer(achat.getPrix());
+            joueur.addPropriete(achat);
             }
-        }
     }
     
     private void lancerDésAvancer(Joueur joueur) {
@@ -49,16 +48,16 @@ public class Controleur {
         } else {
             joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m));
         }
-        if (joueur.getPositionCourante().action(joueur) == gain) {
-            joueur.gagnerArgent(joueur.getPositionCourante());
-        } else if (joueur.getPositionCourante().action(joueur) == payerLoyer) {
-            ;
-        } else if (joueur.getPositionCourante().action(joueur) == acheter) {
-            ;
-        } else if (joueur.getPositionCourante().action(joueur) == payer) {
-            ;
-        } else if (joueur.getPositionCourante().action(joueur) == neRienFaire) {
-            ;
+        if (joueur.getPositionCourante().action(joueur) == Actions.gain) {
+            IHM.afficherBoiteDialogue("Vous avez gagné", 0);
+        } else if (joueur.getPositionCourante().action(joueur) == Actions.payerLoyer) {
+            IHM.afficherBoiteDialogue("", 0);
+        } else if (joueur.getPositionCourante().action(joueur) == Actions.acheter) {
+            acheterPropriete(joueur,joueur.getPositionCourante());
+        } else if (joueur.getPositionCourante().action(joueur) == Actions.payer) {
+            IHM.afficherBoiteDialogue("", 0);
+        } else if (joueur.getPositionCourante().action(joueur) == Actions.neRienFaire) {
+            IHM.afficherBoiteDialogue("", 0);
         }
         if (n == m ) {
             lancerDésAvancer(joueur);

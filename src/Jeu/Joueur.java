@@ -69,7 +69,7 @@ public class Joueur {
         return dernierLancé;
     }
     
-    public void addPropriete(ProprieteAConstruire propriete) {
+    public void addPropriete(Propriete propriete) {
         proprietes.add(propriete);
     }
     
