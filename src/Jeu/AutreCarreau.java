@@ -9,4 +9,9 @@ public class AutreCarreau extends Carreau {
             super(numero,nom);
             montant = Montant;
         }
+
+        @Override
+        public void action(Joueur J) {
+        
+        }
 }
