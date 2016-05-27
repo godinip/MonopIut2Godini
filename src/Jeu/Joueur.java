@@ -70,7 +70,7 @@ public class Joueur {
     }
     
     public void addPropriete(Propriete propriete) {
-        proprietes.add(propriete);
+        this.getProprietes().add(propriete);
     }
     
     public ArrayList getProprietes(){
