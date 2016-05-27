@@ -90,8 +90,8 @@ public class ProprieteAConstruire extends Propriete {
                 }
         
         }else{
-            J.payer(this.getMaisons());
-            this.getProprietaire().gagnerArgent(this.getMaisons());            
+            J.payer(this.getLoyer());
+            this.getProprietaire().gagnerArgent(this.getLoyer());            
         }
         
         
