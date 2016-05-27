@@ -10,8 +10,9 @@ public class Gare extends Propriete {
     
     @Override
     public void achatPropriete(Joueur joueur) {
-	super.setPropriétaire(joueur);
-        this.getProprietaire().addGare(this);
+        joueur.payer(this.getPrix());
+        this.setPropriétaire(joueur);
+        joueur.addGare(this);
     }
         
     @Override
