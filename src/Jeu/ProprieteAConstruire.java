@@ -1,6 +1,7 @@
 package Jeu;
 
 import Jeu.Propriete;
+import Ui.*;
 import Jeu.Groupe;
 import java.util.Scanner;
 
@@ -75,24 +76,28 @@ public class ProprieteAConstruire extends Propriete {
     }
     
     
-    /*
+    
     @Override
     public void action(Joueur J){
-       Scanner choix = new  Scanner(System.in);
         if (this.getProprietaire()==null){
             if (J.getArgent()>=this.getPrix()){
-                System.out.println("Vous n'avez pas assez d'argent");
+               
             }else{
-                System.out.println("Vouler vous acheter la Propriete: "+this.getNom()+" (oui/non)");
+                
+                if(0==0){
+                    
+                }
                 
                   }
         
         }else{
+            J.payer(this.getMaisons());
+            this.getProprietaire().gagnerArgent(this.getMaisons());
             
         }
         
         
     }
-*/
+
 
 }
