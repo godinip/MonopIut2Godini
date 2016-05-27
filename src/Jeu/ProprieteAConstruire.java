@@ -80,20 +80,19 @@ public class ProprieteAConstruire extends Propriete {
     @Override
     public void action(Joueur J){
         if (this.getProprietaire()==null){
-            if (J.getArgent()>=this.getPrix()){
-               
+            if (J.getArgent()<this.getPrix()){
+               //IHM.Message//
             }else{
-                
-                if(0==0){
-                    
+               //IHM.ACHETER MAISON//
+               if (true){
+                  J.payer(this.getPrix());
+                  this.setPropriétaire(J);
+               }
                 }
-                
-                  }
         
         }else{
             J.payer(this.getMaisons());
-            this.getProprietaire().gagnerArgent(this.getMaisons());
-            
+            this.getProprietaire().gagnerArgent(this.getMaisons());            
         }
         
         
