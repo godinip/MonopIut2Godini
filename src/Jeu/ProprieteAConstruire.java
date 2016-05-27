@@ -82,21 +82,17 @@ public class ProprieteAConstruire extends Propriete {
     public Data.Actions action(Joueur J){
         if (this.getProprietaire()==null){
             if (J.getArgent()<this.getPrix()){
-               return
+                return Data.Actions.neRienFaire;
             }else{
-               //IHM.ACHETER MAISON//
-               if (true){//il veut acheter
-                   
-               }
-            
+                return Data.Actions.acheter;
             }
         
         }else if(this.getProprietaire()==J){
-            //IHM.Ne rien faire//
-            
+            return Data.Actions.neRienFaire;
         }else{
             J.payer(this.getLoyer());
-            this.getProprietaire().gagnerArgent(this.getLoyer());            
+            this.getProprietaire().gagnerArgent(this.getLoyer());
+            return Data.Actions.payerLoyer;    
         }
         
         
