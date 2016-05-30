@@ -87,6 +87,7 @@ public class Controleur {
         for (int i=0;i<2;i++) {
             for (Joueur joueur : monopoly.getJoueurs()) {
                 System.out.println("Le joueur "+joueur.getNomJoueur()+" se situe sur la case "+joueur.getPositionCourante().getNom());
+                joueur.setTourDeJeu(true);
                 jouerUnCoup(joueur);
                 System.out.println("Le joueur "+joueur.getNomJoueur()+" avance de "+joueur.getDernierLancé()+" case et arrive sur la case "+joueur.getPositionCourante().getNom());
             }
