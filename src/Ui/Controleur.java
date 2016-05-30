@@ -69,12 +69,7 @@ public class Controleur {
     }
     
     private Carreau getCarreau(int numero) {
-        for (Carreau carreau : monopoly.getCarreaux().values()) {
-            if (carreau.getNumero() == numero) {
-                return carreau;
-            }
-        }
-        return null;
+        return monopoly.getCarreaux().get(numero);
     }
     
     public void Test() {
