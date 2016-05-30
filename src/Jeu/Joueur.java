@@ -71,7 +71,7 @@ public class Joueur {
     
     public void addPropriete(Propriete propriete) {
         if (propriete instanceof ProprieteAConstruire){
-            this.getProprietes().add(propriete);
+            this.getProprietes().add((ProprieteAConstruire)propriete);
         }else if(propriete instanceof Gare){
             this.getGares().add((Gare)propriete);
         }else{
