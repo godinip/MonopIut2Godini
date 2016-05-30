@@ -85,9 +85,7 @@ public class ProprieteAConstruire extends Propriete {
         
         }else if(this.getProprietaire()==J){
             return Actions.neRienFaire;
-        }else{
-            J.payer(this.getLoyer());
-            this.getProprietaire().gagnerArgent(this.getLoyer());           
+        }else{         
             return Actions.payerLoyer;    
         }
         
