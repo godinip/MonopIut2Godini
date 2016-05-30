@@ -25,7 +25,18 @@ public class Controleur {
     }
     
     public void jouerUnCoup(Joueur joueur) {
-        lancerDésAvancer(joueur);
+        Carreau c = lancerDésAvancer(joueur);
+        if (c.action(joueur) == Actions.gain) {
+            IHM.afficherBoiteDialogue("Vous avez gagné", 0);
+        } else if (c.action(joueur) == Actions.payerLoyer) {
+            IHM.afficherBoiteDialogue("", 0);
+        } else if (c.action(joueur) == Actions.acheter) {
+            acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
+        } else if (c.action(joueur) == Actions.payer) {
+            IHM.afficherBoiteDialogue("", 0);
+        } else if (c.action(joueur) == Actions.neRienFaire) {
+            IHM.afficherBoiteDialogue("", 0);
+        }
     }
     
     public void initialiserPartie() {
@@ -39,29 +50,22 @@ public class Controleur {
             }
     }
     
-    private void lancerDésAvancer(Joueur joueur) {
+    private Carreau lancerDésAvancer(Joueur joueur) {
+        int pos = joueur.getPositionCourante().getNumero();
         int n = lancerDé();
         int m = lancerDé();
-        joueur.setDernierLancé(n+m);
-        if (joueur.getPositionCourante().getNumero()+n+m>40) {
-            joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m-40));
-        } else {
-            joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m));
-        }
-        if (joueur.getPositionCourante().action(joueur) == Actions.gain) {
-            IHM.afficherBoiteDialogue("Vous avez gagné", 0);
-        } else if (joueur.getPositionCourante().action(joueur) == Actions.payerLoyer) {
-            IHM.afficherBoiteDialogue("", 0);
-        } else if (joueur.getPositionCourante().action(joueur) == Actions.acheter) {
-            acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
-        } else if (joueur.getPositionCourante().action(joueur) == Actions.payer) {
-            IHM.afficherBoiteDialogue("", 0);
-        } else if (joueur.getPositionCourante().action(joueur) == Actions.neRienFaire) {
-            IHM.afficherBoiteDialogue("", 0);
-        }
         if (n == m ) {
             lancerDésAvancer(joueur);
         }
+        pos = pos + n + m;
+        joueur.setDernierLancé(n+m);
+        if (pos >40) {
+            return getCarreau(pos - 40);
+        } else {
+            return getCarreau(pos);
+        }
+        
+        
     }
     
     private int lancerDé() {
