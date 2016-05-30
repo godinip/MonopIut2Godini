@@ -30,6 +30,7 @@ public class ProprieteAConstruire extends Propriete {
 	return prix;
     }
     
+    @Override
     public void setPrix(int prix) {
 	this.prix = prix;
     }
