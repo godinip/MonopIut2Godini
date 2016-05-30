@@ -17,6 +17,13 @@ public abstract class Propriete extends Carreau{
         
 	public abstract int getPrix();
         
+    /**
+     *
+     * @param joueur
+     * @return
+     */
+    public abstract int getLoyer(Joueur joueur);
+        
 	public Joueur getProprietaire() {
 		return this.proprietaire;
 	}

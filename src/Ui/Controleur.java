@@ -1,12 +1,7 @@
 package Ui;
 
 import Data.Actions;
-import Jeu.Carreau;
-import Jeu.Groupe;
-import Jeu.Joueur;
-import Jeu.Monopoly;
-import Jeu.Propriete;
-import Jeu.ProprieteAConstruire;
+import Jeu.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -29,8 +24,14 @@ public class Controleur {
             joueur.setTourDeJeu(false);
             Carreau c = lancerDésAvancer(joueur);
             if (c.action(joueur) == Actions.gain) {
-                IHM.afficherBoiteDialogue("Vous avez gagné", 0);
+                AutreCarreau AC = (AutreCarreau) c;
+                int R = AC.getMontant();
+                joueur.gagnerArgent(R);
+                IHM.afficherBoiteDialogue("Vous avez gagné: "+R, 0);
             } else if (c.action(joueur) == Actions.payerLoyer) {
+                Propriete P = (Propriete) c;
+                joueur.payer(P.getLoyer(P.getProprietaire()));
+                P.getProprietaire().gagnerArgent(P.getLoyer(P.getProprietaire()));
                 IHM.afficherBoiteDialogue("", 0);
             } else if (c.action(joueur) == Actions.acheter) {
                 acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());

@@ -35,7 +35,7 @@ public class ProprieteAConstruire extends Propriete {
 	this.prix = prix;
     }
     
-    public int getLoyer() {
+    public int getLoyer(Joueur joueur) {
         if (this.getCouleur().LoyerDouble(this.getProprietaire()) && this.getMaisons()==0){
             return 2*loyer[0];
         }else{

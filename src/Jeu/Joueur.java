@@ -115,5 +115,5 @@ public class Joueur {
     public void setTourDeJeu(boolean tdj){
         tourDeJeu = tdj;
     }
-    
+       
 }
