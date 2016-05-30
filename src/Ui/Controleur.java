@@ -36,7 +36,10 @@ public class Controleur {
             } else if (c.action(joueur) == Actions.acheter) {
                 acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
             } else if (c.action(joueur) == Actions.payer) {
-                IHM.afficherBoiteDialogue("", 0);
+                AutreCarreau AC = (AutreCarreau) c;
+                int R = AC.getMontant();
+                joueur.payer(-R);
+                IHM.afficherBoiteDialogue("Vous avez perdue: "+R, 0);
             } else if (c.action(joueur) == Actions.neRienFaire) {
                 IHM.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
             }
