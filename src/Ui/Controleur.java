@@ -53,7 +53,7 @@ public class Controleur {
         } else if (joueur.getPositionCourante().action(joueur) == Actions.payerLoyer) {
             IHM.afficherBoiteDialogue("", 0);
         } else if (joueur.getPositionCourante().action(joueur) == Actions.acheter) {
-            acheterPropriete(joueur,joueur.getPositionCourante());
+            acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
         } else if (joueur.getPositionCourante().action(joueur) == Actions.payer) {
             IHM.afficherBoiteDialogue("", 0);
         } else if (joueur.getPositionCourante().action(joueur) == Actions.neRienFaire) {
