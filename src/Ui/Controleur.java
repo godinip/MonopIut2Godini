@@ -40,8 +40,8 @@ public class Controleur {
     }
     
     private void lancerDésAvancer(Joueur joueur) {
-        int n = lancerDé()+1;
-        int m = lancerDé()+1;
+        int n = lancerDé();
+        int m = lancerDé();
         joueur.setDernierLancé(n+m);
         if (joueur.getPositionCourante().getNumero()+n+m>40) {
             joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m-40));
@@ -65,7 +65,7 @@ public class Controleur {
     }
     
     private int lancerDé() {
-        return (int) (Math.random()*(6));
+        return (int) (Math.random()*(6) +1);
     }
     
     private Carreau getCarreau(int numero) {
