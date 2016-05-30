@@ -25,17 +25,20 @@ public class Controleur {
     }
     
     public void jouerUnCoup(Joueur joueur) {
-        Carreau c = lancerDésAvancer(joueur);
-        if (c.action(joueur) == Actions.gain) {
-            IHM.afficherBoiteDialogue("Vous avez gagné", 0);
-        } else if (c.action(joueur) == Actions.payerLoyer) {
-            IHM.afficherBoiteDialogue("", 0);
-        } else if (c.action(joueur) == Actions.acheter) {
-            acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
-        } else if (c.action(joueur) == Actions.payer) {
-            IHM.afficherBoiteDialogue("", 0);
-        } else if (c.action(joueur) == Actions.neRienFaire) {
-            IHM.afficherBoiteDialogue("", 0);
+        while (joueur.getTourDeJeu()){
+            joueur.setTourDeJeu(false);
+            Carreau c = lancerDésAvancer(joueur);
+            if (c.action(joueur) == Actions.gain) {
+                IHM.afficherBoiteDialogue("Vous avez gagné", 0);
+            } else if (c.action(joueur) == Actions.payerLoyer) {
+                IHM.afficherBoiteDialogue("", 0);
+            } else if (c.action(joueur) == Actions.acheter) {
+                acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
+            } else if (c.action(joueur) == Actions.payer) {
+                IHM.afficherBoiteDialogue("", 0);
+            } else if (c.action(joueur) == Actions.neRienFaire) {
+                IHM.afficherBoiteDialogue("", 0);
+            }
         }
     }
     
@@ -55,7 +58,7 @@ public class Controleur {
         int n = lancerDé();
         int m = lancerDé();
         if (n == m ) {
-            lancerDésAvancer(joueur);
+            joueur.setTourDeJeu(true);
         }
         pos = pos + n + m;
         joueur.setDernierLancé(n+m);
