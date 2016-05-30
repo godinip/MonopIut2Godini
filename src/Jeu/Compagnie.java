@@ -33,9 +33,7 @@ public class Compagnie extends Propriete {
         
         }else if(this.getProprietaire()==J){
             return Actions.neRienFaire;
-        }else{
-            J.payer(this.getLoyer(this.getProprietaire()));
-            this.getProprietaire().gagnerArgent(this.getLoyer(this.getProprietaire()));           
+        }else{      
             return Actions.payerLoyer;    
         }
         
