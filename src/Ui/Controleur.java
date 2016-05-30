@@ -32,13 +32,13 @@ public class Controleur {
                 Propriete P = (Propriete) c;
                 joueur.payer(P.getLoyer(P.getProprietaire()));
                 P.getProprietaire().gagnerArgent(P.getLoyer(P.getProprietaire()));
-                IHM.afficherBoiteDialogue("", 0);
+                IHM.afficherBoiteDialogue("le Joueur "+joueur.getNomJoueur()+" a payer "+P.getLoyer(P.getProprietaire())+" au joueur "+P.getProprietaire(), 0);
             } else if (c.action(joueur) == Actions.acheter) {
                 acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
             } else if (c.action(joueur) == Actions.payer) {
                 IHM.afficherBoiteDialogue("", 0);
             } else if (c.action(joueur) == Actions.neRienFaire) {
-                IHM.afficherBoiteDialogue("", 0);
+                IHM.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
             }
         }
     }
