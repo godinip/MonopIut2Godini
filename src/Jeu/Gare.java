@@ -9,10 +9,6 @@ public class Gare extends Propriete {
     }
     
         
-    @Override
-    public int getPrix(){
-        return 200;
-    }
     
     public int getLoyer(Joueur joueur){
         if (joueur.getNbGare()!=0){

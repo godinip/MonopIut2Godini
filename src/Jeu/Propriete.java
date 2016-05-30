@@ -12,16 +12,13 @@ public abstract class Propriete extends Carreau{
         public Propriete(int numero,String nom, int prix){
             super(numero, nom);
             this.setPrix(prix);
-
         }
         
-	public abstract int getPrix();
+	public int getPrix(){
+            return prix;
+        }
         
-    /**
-     *
-     * @param joueur
-     * @return
-     */
+
     public abstract int getLoyer(Joueur joueur);
         
 	public Joueur getProprietaire() {

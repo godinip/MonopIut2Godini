@@ -8,10 +8,7 @@ public class Compagnie extends Propriete {
         super(numero, nom, prix);
     }
     
-    @Override
-    public int getPrix() {
-        return 150;
-    }
+
     
     public int getLoyer(Joueur joueur) {
         if (this.getProprietaire().getNbCompagnie()==1){

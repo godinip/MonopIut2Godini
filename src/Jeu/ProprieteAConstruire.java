@@ -25,10 +25,6 @@ public class ProprieteAConstruire extends Propriete {
         
     }
 
-    @Override
-    public int getPrix() {
-	return prix;
-    }
     
     @Override
     public void setPrix(int prix) {
