@@ -38,7 +38,7 @@ public class IHM {
         return joueurs;
      }
     
-    public boolean afficherBoiteDialogue(String string, int i) {
+    public static boolean afficherBoiteDialogue(String string, int i) {
         if (i == 0){
             System.out.println(string);
             return true;
