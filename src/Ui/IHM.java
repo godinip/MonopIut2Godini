@@ -7,13 +7,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class IHM {
-
-    static boolean afficherBoiteDialogue(String string, int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     Controleur  controleur;
     Scanner sc ;
+    
     public IHM(Controleur controleur) {
         sc = new Scanner(System.in);
     }
@@ -40,6 +37,17 @@ public class IHM {
         }
         return joueurs;
      }
+    
+    public boolean afficherBoiteDialogue(String string, int i) {
+        if (i == 0){
+            System.out.println(string);
+            return true;
+        } else {
+            System.out.println(string);
+            System.out.println("Oui / Non ?");
+            
+        }
+    }
     
 
             
