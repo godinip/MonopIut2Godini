@@ -45,7 +45,7 @@ public class IHM {
         } else {
             System.out.println(string);
             System.out.println("Oui / Non ?");
-            
+            return true;
         }
     }
     
