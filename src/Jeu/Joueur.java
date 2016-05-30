@@ -14,6 +14,7 @@ public class Joueur {
     private ArrayList<ProprieteAConstruire>     proprietes;
     private ArrayList<Gare>                     gares;
     private ArrayList<Compagnie>                compagnies;
+    private Boolean                             tourDeJeu;
     
     public Joueur(String nomJoueur,Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
@@ -105,6 +106,14 @@ public class Joueur {
      */
     public ArrayList<Compagnie> getCompagnies() {
         return compagnies;
+    }
+    
+    public boolean getTourDeJeu(){
+        return tourDeJeu;
+    }
+    
+    public void setTourDeJeu(boolean tdj){
+        tourDeJeu = tdj;
     }
     
 }
