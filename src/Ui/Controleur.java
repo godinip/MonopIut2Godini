@@ -40,7 +40,7 @@ public class Controleur {
                 AutreCarreau AC = (AutreCarreau) c;
                 int R = AC.getMontant();
                 joueur.payer(-R);
-                IHM.afficherBoiteDialogue("Vous avez perdue: "+R, 0);
+                IHM.afficherBoiteDialogue("Vous avez perdue: "+(-R), 0);
             } else if (c.action(joueur) == Actions.neRienFaire) {
                 IHM.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
             }
