@@ -8,8 +8,11 @@ public class Gare extends Propriete {
         super(numero,nom, prix);
     }
     
-        
-    
+    /**
+     *
+     * @param joueur
+     * @return
+     */
     @Override
     public int getLoyer(Joueur joueur){
         if (joueur.getNbGare()!=0){
