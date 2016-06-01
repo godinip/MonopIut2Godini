@@ -41,12 +41,15 @@ public class IHM {
         return joueurs;
      }
     
-
-            
-        
-
+    public void afficher(String s){
+        System.out.println(s);
+    }
+     
     public void messageEtatJouer(Joueur joueur) {
-    
+        System.out.println("o---------------------------------------------o");
+        System.out.println("Position Joueur : Case "+joueur.getPositionCourante().getNumero()+" " +joueur.getPositionCourante().getNom());
+        System.out.println("Cash Joueur : "+joueur.getArgent()+"€");
+        System.out.println("o---------------------------------------------o");
         
         
     }
