@@ -26,9 +26,7 @@ public class Controleur {
         while (monopoly.getJoueurs().size() > 1) {
             for (Joueur joueur : monopoly.getJoueurs()) {
                 joueur.setTourDeJeu(true);
-                while (joueur.getTourDeJeu()) {
-                    jouerUnCoup(joueur);
-                }
+                jouerUnCoup(joueur);
             }
         }
         if (monopoly.getJoueurs().size() == 1) {
@@ -67,7 +65,7 @@ public class Controleur {
                 joueurs = monopoly.getJoueurs();
                 joueurs.remove(joueur);
                 monopoly.setJoueurs(joueurs);
-                ihm.afficherBoiteDialogue("Vous n'avez plus d'argent et perdez", 0);
+                ihm.afficherBoiteDialogue(joueur.getNomJoueur()+", vous n'avez plus d'argent et perdez", 0);
             }
         }
     }
@@ -84,18 +82,18 @@ public class Controleur {
     }
     
     private Carreau lancerDésAvancer(Joueur joueur) {
-        int pos = joueur.getPositionCourante().getNumero();
+        int position = joueur.getPositionCourante().getNumero();
         int n = lancerDé();
         int m = lancerDé();
         if (n == m ) {
             joueur.setTourDeJeu(true);
         }
-        pos = pos + n + m;
+        joueur.setPositionCourante(getCarreau(position+n+m));
         joueur.setDernierLancé(n+m);
-        if (pos >40) {
-            return getCarreau(pos - 40);
+        if (joueur.getPositionCourante().getNumero() >40) {
+            return getCarreau(position - 40);
         } else {
-            return getCarreau(pos);
+            return getCarreau(position);
         }
         
         
