@@ -20,6 +20,16 @@ public class Controleur {
         IHM ihm = new IHM(this);
         initialiserPartie();
         ihm.CreationJoueur();
+        while (monopoly.getJoueurs().size() > 1) {
+            for (Joueur joueur : monopoly.getJoueurs()) {
+                jouerUnCoup(joueur);
+            }
+        }
+        if (monopoly.getJoueurs().size() == 1) {
+            for (Joueur joueur : monopoly.getJoueurs()){
+               IHM.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0); 
+            }
+        }
     }
     
     public void jouerUnCoup(Joueur joueur) {
@@ -45,6 +55,13 @@ public class Controleur {
                 IHM.afficherBoiteDialogue("Vous avez perdue: "+(-R), 0);
             } else if (c.action(joueur) == Actions.neRienFaire) {
                 IHM.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
+            }
+            if (joueur.getPerdu()) {
+                HashSet<Joueur> joueurs = new HashSet();
+                joueurs = monopoly.getJoueurs();
+                joueurs.remove(joueur);
+                monopoly.setJoueurs(joueurs);
+                IHM.afficherBoiteDialogue("Vous n'avez plus d'argent et perdez", 0);
             }
         }
     }
