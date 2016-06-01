@@ -17,6 +17,7 @@ public class Controleur {
     
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
+        initialiserPartie();
     }
     
     public void jouerUnCoup(Joueur joueur) {

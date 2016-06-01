@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Monopoly monopoly = new Monopoly();
         Controleur controleur = new Controleur(monopoly);
-        controleur.initialiserPartie();
+        IHM ihm = new IHM(controleur);
     }
     
 }
