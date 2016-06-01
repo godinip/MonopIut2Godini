@@ -31,7 +31,7 @@ public class Controleur {
         }
         if (monopoly.getJoueurs().size() == 1) {
             for (Joueur joueur : monopoly.getJoueurs()) {
-               ihm.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
+               Boolean b = ihm.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
             }
         }
     }
@@ -40,32 +40,33 @@ public class Controleur {
         while (joueur.getTourDeJeu()){
             joueur.setTourDeJeu(false);
             Carreau c = lancerDésAvancer(joueur);
-            if (c.action(joueur) == Actions.gain) {
+            Actions a = c.action(joueur);
+            if (a == Actions.gain) {
                 AutreCarreau AC = (AutreCarreau) c;
                 int R = AC.getMontant();
                 joueur.gagnerArgent(R);
-                ihm.afficherBoiteDialogue("Vous avez gagné: "+R, 0);
-            } else if (c.action(joueur) == Actions.payerLoyer) {
+                Boolean b = ihm.afficherBoiteDialogue("Vous avez gagné: "+R, 0);
+            } else if (a == Actions.payerLoyer) {
                 Propriete P = (Propriete) c;
                 joueur.payer(P.getLoyer(P.getProprietaire()));
                 P.getProprietaire().gagnerArgent(P.getLoyer(P.getProprietaire()));
-                ihm.afficherBoiteDialogue("le Joueur "+joueur.getNomJoueur()+" a payer "+P.getLoyer(P.getProprietaire())+" au joueur "+P.getProprietaire(), 0);
-            } else if (c.action(joueur) == Actions.acheter) {
+                Boolean b = ihm.afficherBoiteDialogue("le Joueur "+joueur.getNomJoueur()+" a payer "+P.getLoyer(P.getProprietaire())+" au joueur "+P.getProprietaire(), 0);
+            } else if (a == Actions.acheter) {
                 acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
-            } else if (c.action(joueur) == Actions.payer) {
+            } else if (a == Actions.payer) {
                 AutreCarreau AC = (AutreCarreau) c;
                 int R = AC.getMontant();
                 joueur.payer(-R);
-                ihm.afficherBoiteDialogue("Vous avez perdue: "+(-R), 0);
-            } else if (c.action(joueur) == Actions.neRienFaire) {
-                ihm.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
+                Boolean b = ihm.afficherBoiteDialogue("Vous avez perdue: "+(-R), 0);
+            } else if (a == Actions.neRienFaire) {
+                Boolean b = ihm.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
             }
             if (joueur.getPerdu()) {
                 HashSet<Joueur> joueurs = new HashSet();
                 joueurs = monopoly.getJoueurs();
                 joueurs.remove(joueur);
                 monopoly.setJoueurs(joueurs);
-                ihm.afficherBoiteDialogue(joueur.getNomJoueur()+", vous n'avez plus d'argent et perdez", 0);
+                Boolean b = ihm.afficherBoiteDialogue(joueur.getNomJoueur()+", vous n'avez plus d'argent et perdez", 0);
             }
         }
     }
