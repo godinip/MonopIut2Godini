@@ -17,7 +17,9 @@ public class Controleur {
     
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
+        IHM ihm = new IHM(this);
         initialiserPartie();
+        ihm.CreationJoueur();
     }
     
     public void jouerUnCoup(Joueur joueur) {
