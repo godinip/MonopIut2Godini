@@ -13,9 +13,6 @@ public class ProprieteAConstruire extends Propriete {
     private int[] loyer;
     private int    maisons;
 
-    public ProprieteAConstruire(int numero,String nom, int prix) {
-        super(numero,nom, prix);
-    }
     
     public ProprieteAConstruire(int numero,String nm, int prx,Groupe couleur,int[] loyer) {
         super(numero,nm, prx);
