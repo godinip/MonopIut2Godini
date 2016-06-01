@@ -25,16 +25,13 @@ public class ProprieteAConstruire extends Propriete {
         
     }
 
-    @Override
-    public int getPrix() {
-	return prix;
-    }
     
+    @Override
     public void setPrix(int prix) {
 	this.prix = prix;
     }
     
-    public int getLoyer() {
+    public int getLoyer(Joueur joueur) {
         if (this.getCouleur().LoyerDouble(this.getProprietaire()) && this.getMaisons()==0){
             return 2*loyer[0];
         }else{
@@ -84,9 +81,7 @@ public class ProprieteAConstruire extends Propriete {
         
         }else if(this.getProprietaire()==J){
             return Actions.neRienFaire;
-        }else{
-            J.payer(this.getLoyer());
-            this.getProprietaire().gagnerArgent(this.getLoyer());           
+        }else{         
             return Actions.payerLoyer;    
         }
         

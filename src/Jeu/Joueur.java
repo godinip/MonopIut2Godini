@@ -14,6 +14,7 @@ public class Joueur {
     private ArrayList<ProprieteAConstruire>     proprietes;
     private ArrayList<Gare>                     gares;
     private ArrayList<Compagnie>                compagnies;
+    private Boolean                             tourDeJeu;
     
     public Joueur(String nomJoueur,Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
@@ -71,7 +72,7 @@ public class Joueur {
     
     public void addPropriete(Propriete propriete) {
         if (propriete instanceof ProprieteAConstruire){
-            this.getProprietes().add(propriete);
+            this.getProprietes().add((ProprieteAConstruire)propriete);
         }else if(propriete instanceof Gare){
             this.getGares().add((Gare)propriete);
         }else{
@@ -107,4 +108,12 @@ public class Joueur {
         return compagnies;
     }
     
+    public boolean getTourDeJeu(){
+        return tourDeJeu;
+    }
+    
+    public void setTourDeJeu(boolean tdj){
+        tourDeJeu = tdj;
+    }
+       
 }
