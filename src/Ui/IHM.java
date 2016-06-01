@@ -14,6 +14,7 @@ public class IHM {
     
     public IHM(Controleur controleur) {
         sc = new Scanner(System.in);
+        this.controleur = controleur;
     }
     public ArrayList<String> CreationJoueur(){
         boolean isOk = false;
