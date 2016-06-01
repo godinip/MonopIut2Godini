@@ -6,8 +6,8 @@ public abstract class Carreau {
 	private String nomCarreau;
         
         public Carreau(int numero,String nomCarreau){
-            this.numero = numero;
-            this.nomCarreau = nomCarreau;
+            this.setNumero(numero);
+            this.setNomCarreau(nomCarreau);
         }
 
 	public int getNumero() {
@@ -26,5 +26,19 @@ public abstract class Carreau {
      * @return
      */
     public abstract Data.Actions action(Joueur J);
+
+    /**
+     * @param numero the numero to set
+     */
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    /**
+     * @param nomCarreau the nomCarreau to set
+     */
+    public void setNomCarreau(String nomCarreau) {
+        this.nomCarreau = nomCarreau;
+    }
 
 }
