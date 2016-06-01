@@ -19,15 +19,21 @@ public class Controleur {
         this.monopoly = monopoly;
         IHM ihm = new IHM(this);
         initialiserPartie();
-        ihm.CreationJoueur();
+        for (String nom : ihm.CreationJoueur()) {
+            Joueur joueur = new Joueur(nom,getCarreau(1));
+            monopoly.addJoueur(joueur);
+        }
         while (monopoly.getJoueurs().size() > 1) {
             for (Joueur joueur : monopoly.getJoueurs()) {
-                jouerUnCoup(joueur);
+                joueur.setTourDeJeu(true);
+                while (joueur.getTourDeJeu()) {
+                    jouerUnCoup(joueur);
+                }
             }
         }
         if (monopoly.getJoueurs().size() == 1) {
-            for (Joueur joueur : monopoly.getJoueurs()){
-               IHM.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0); 
+            for (Joueur joueur : monopoly.getJoueurs()) {
+               ihm.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
             }
         }
     }
@@ -40,28 +46,28 @@ public class Controleur {
                 AutreCarreau AC = (AutreCarreau) c;
                 int R = AC.getMontant();
                 joueur.gagnerArgent(R);
-                IHM.afficherBoiteDialogue("Vous avez gagné: "+R, 0);
+                ihm.afficherBoiteDialogue("Vous avez gagné: "+R, 0);
             } else if (c.action(joueur) == Actions.payerLoyer) {
                 Propriete P = (Propriete) c;
                 joueur.payer(P.getLoyer(P.getProprietaire()));
                 P.getProprietaire().gagnerArgent(P.getLoyer(P.getProprietaire()));
-                IHM.afficherBoiteDialogue("le Joueur "+joueur.getNomJoueur()+" a payer "+P.getLoyer(P.getProprietaire())+" au joueur "+P.getProprietaire(), 0);
+                ihm.afficherBoiteDialogue("le Joueur "+joueur.getNomJoueur()+" a payer "+P.getLoyer(P.getProprietaire())+" au joueur "+P.getProprietaire(), 0);
             } else if (c.action(joueur) == Actions.acheter) {
                 acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
             } else if (c.action(joueur) == Actions.payer) {
                 AutreCarreau AC = (AutreCarreau) c;
                 int R = AC.getMontant();
                 joueur.payer(-R);
-                IHM.afficherBoiteDialogue("Vous avez perdue: "+(-R), 0);
+                ihm.afficherBoiteDialogue("Vous avez perdue: "+(-R), 0);
             } else if (c.action(joueur) == Actions.neRienFaire) {
-                IHM.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
+                ihm.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
             }
             if (joueur.getPerdu()) {
                 HashSet<Joueur> joueurs = new HashSet();
                 joueurs = monopoly.getJoueurs();
                 joueurs.remove(joueur);
                 monopoly.setJoueurs(joueurs);
-                IHM.afficherBoiteDialogue("Vous n'avez plus d'argent et perdez", 0);
+                ihm.afficherBoiteDialogue("Vous n'avez plus d'argent et perdez", 0);
             }
         }
     }
@@ -71,7 +77,7 @@ public class Controleur {
     }
     
     public void acheterPropriete(Joueur joueur, Propriete achat) {
-        if (IHM.afficherBoiteDialogue("Voulez-vous acheter "+achat.getNom()+" pour "+achat.getPrix()+" ?", 1)) {
+        if (ihm.afficherBoiteDialogue("Voulez-vous acheter "+achat.getNom()+" pour "+achat.getPrix()+" ?", 1)) {
             joueur.payer(achat.getPrix());
             joueur.addPropriete(achat);
             }
