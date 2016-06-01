@@ -83,19 +83,4 @@ public class Controleur {
         return monopoly.getCarreaux().get(numero);
     }
     
-    public void Test() {
-        monopoly.addJoueur(new Joueur("Quentin",getCarreau(1)));
-        monopoly.addJoueur(new Joueur("Valérian",getCarreau(1)));
-        monopoly.addJoueur(new Joueur("Maxime",getCarreau(1)));
-        monopoly.addJoueur(new Joueur("Paul",getCarreau(1)));
-        for (int i=0;i<2;i++) {
-            for (Joueur joueur : monopoly.getJoueurs()) {
-                System.out.println("Le joueur "+joueur.getNomJoueur()+" se situe sur la case "+joueur.getPositionCourante().getNom());
-                joueur.setTourDeJeu(true);
-                jouerUnCoup(joueur);
-                System.out.println("Le joueur "+joueur.getNomJoueur()+" avance de "+joueur.getDernierLancé()+" case et arrive sur la case "+joueur.getPositionCourante().getNom());
-            }
-        }
-    }
-    
 }
