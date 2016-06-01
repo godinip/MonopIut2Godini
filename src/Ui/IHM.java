@@ -8,8 +8,9 @@ import java.util.Scanner;
 
 public class IHM {
     
-    Controleur  controleur;
-    Scanner sc ;
+    private Controleur  controleur;
+    private Scanner sc;
+    private String scVal;
     
     public IHM(Controleur controleur) {
         sc = new Scanner(System.in);
@@ -26,6 +27,7 @@ public class IHM {
                 isOk = true;
             }
         }while (!isOk);
+        
         for (int i = 1; i < nb+1; i++) {  
             String nom;
             do {                
@@ -38,14 +40,22 @@ public class IHM {
         return joueurs;
      }
     
-    public static boolean afficherBoiteDialogue(String string, int i) {
+    public boolean afficherBoiteDialogue(String string, int i) {
         if (i == 0){
             System.out.println(string);
             return true;
         } else {
-            System.out.println(string);
-            System.out.println("Oui / Non ?");
-            return true;
+            do{
+                System.out.print(string);
+                System.out.println(" Oui / Non (o/n): ");
+                scVal = sc.nextLine();
+            }while( !(scVal.equals("o") || scVal.equals("n")));
+            
+            if(scVal.contains("o") || scVal.equals("O")){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 
