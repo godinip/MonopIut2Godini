@@ -19,17 +19,14 @@ public abstract class Propriete extends Carreau{
         }
         
 
-    public abstract int getLoyer(Joueur joueur);
+        public abstract int getLoyer(Joueur joueur);
         
 	public Joueur getProprietaire() {
 		return this.proprietaire;
 	}
         
         @Override
-	public Data.Actions action(Joueur j) {
-		// TODO - implement Propriete.action
-		throw new UnsupportedOperationException();
-	}
+	public abstract Data.Actions action(Joueur j);
         
         @Override
 	public String getNom() {
