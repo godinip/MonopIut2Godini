@@ -15,6 +15,7 @@ public class Joueur {
     private ArrayList<Gare>                     gares;
     private ArrayList<Compagnie>                compagnies;
     private Boolean                             tourDeJeu;
+    private Boolean                             perdu = false;
     
     public Joueur(String nomJoueur,Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
@@ -30,7 +31,7 @@ public class Joueur {
         if (argent>=prix) {
             setArgent(argent-prix);
         } else {
-            //PERDU
+            perdu = true;
         }
     }
     
@@ -114,6 +115,10 @@ public class Joueur {
     
     public void setTourDeJeu(boolean tdj){
         tourDeJeu = tdj;
+    }
+    
+    public boolean getPerdu() {
+        return perdu;
     }
        
 }
