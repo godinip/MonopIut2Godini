@@ -69,6 +69,7 @@ public class Controleur {
                 joueurs = monopoly.getJoueurs();
                 joueurs.remove(joueur);
                 monopoly.setJoueurs(joueurs);
+                joueur.setTourDeJeu(false);
                 Boolean b = ihm.afficherBoiteDialogue(joueur.getNomJoueur()+", vous n'avez plus d'argent et perdez", 0);
             }
             
@@ -90,6 +91,7 @@ public class Controleur {
         int position = joueur.getPositionCourante().getNumero();
         int n = lancerDé();
         int m = lancerDé();
+        ihm.afficher("Vous avez fait " + n + " et "+ m + " avec les dés");
         if (n == m ) {
             joueur.setTourDeJeu(true);
         }
