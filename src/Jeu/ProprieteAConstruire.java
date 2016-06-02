@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class ProprieteAConstruire extends Propriete {
 
     private Groupe  couleur;
-    private int     prix;
     private int[] loyer;
     private int    maisons;
 
