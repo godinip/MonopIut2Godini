@@ -81,7 +81,7 @@ public class Joueur {
         }
     }
     
-    public ArrayList getProprietes(){
+    public ArrayList<ProprieteAConstruire> getProprietes(){
         return proprietes;
     }
     

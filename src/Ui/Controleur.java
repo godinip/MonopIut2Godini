@@ -52,7 +52,7 @@ public class Controleur {
                 Propriete P = (Propriete) c;
                 joueur.payer(P.getLoyer(P.getProprietaire()));
                 P.getProprietaire().gagnerArgent(P.getLoyer(P.getProprietaire()));
-                Boolean b = ihm.afficherBoiteDialogue("le joueur "+joueur.getNomJoueur()+" a payé "+P.getLoyer(P.getProprietaire())+" au joueur "+P.getProprietaire(), 0);
+                Boolean b = ihm.afficherBoiteDialogue("le joueur "+joueur.getNomJoueur()+" a payé "+P.getLoyer(P.getProprietaire())+" au joueur "+P.getProprietaire().getNomJoueur(), 0);
             } else if (a == Actions.acheter) {
                 acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
             } else if (a == Actions.payer) {
@@ -94,6 +94,7 @@ public class Controleur {
         joueur.setDernierLancé(n+m);
         if (position+n+m>40) {
             joueur.setPositionCourante(getCarreau(position+n+m-40));
+            joueur.gagnerArgent(200);
             ihm.messageEtatJouer(joueur);
             return joueur.getPositionCourante();
         } else {

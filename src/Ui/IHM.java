@@ -1,8 +1,6 @@
 package Ui;
 
-import Jeu.Carreau;
-import Jeu.Joueur;
-import Jeu.Monopoly;
+import Jeu.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,7 +8,7 @@ public class IHM {
     
     private Controleur  controleur;
     private Scanner sc;
-    private String scVal;
+    private String scVal = "o";
     
     public IHM(Controleur controleur) {
         sc = new Scanner(System.in);
@@ -46,7 +44,7 @@ public class IHM {
             System.out.println(string);
             return true;
         } else {
-            do{
+            do {
                 System.out.print(string);
                 System.out.println(" Oui / Non (o/n): ");
                 scVal = sc.nextLine();
@@ -68,7 +66,12 @@ public class IHM {
         System.out.println("o---------------------------------------------o");
         System.out.println("Position Joueur : Case "+joueur.getPositionCourante().getNumero()+" " +joueur.getPositionCourante().getNom());
         System.out.println("Cash Joueur : "+joueur.getArgent()+"€");
+        System.out.println("Propriétés :");
+        for (ProprieteAConstruire p : joueur.getProprietes()){
+            System.out.println(p.getNom());
+        }
         System.out.println("o---------------------------------------------o");
+        System.out.println();
         
         
     }
