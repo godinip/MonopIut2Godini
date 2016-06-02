@@ -64,11 +64,32 @@ public class IHM {
      
     public void messageEtatJouer(Joueur joueur) {
         System.out.println("o---------------------------------------------o");
-        System.out.println("Position Joueur : Case "+joueur.getPositionCourante().getNumero()+" " +joueur.getPositionCourante().getNom());
-        System.out.println("Cash Joueur : "+joueur.getArgent()+"€");
+        System.out.println("Position Joueur : " + joueur.getPositionCourante().getNom());
+        System.out.println("Argent actuel : "+joueur.getArgent()+"€");
         System.out.println("Propriétés :");
+        if (joueur.getProprietes().isEmpty()){
+            System.out.println("Aucune Propriété construisible n'est possédée");
+        } else {
         for (ProprieteAConstruire p : joueur.getProprietes()){
             System.out.println(p.getNom());
+        }}
+        System.out.println("----------");
+        System.out.println("Gares :");
+        if (joueur.getGares().isEmpty()){
+            System.out.println("Aucune Gare n'est possédée");
+        } else {
+        for (Gare g : joueur.getGares()){
+            System.out.println(g.getNom());
+        }}
+        
+        System.out.println("----------");
+        System.out.println("Compagnies :");
+        if (joueur.getCompagnies().isEmpty()){
+            System.out.println("Aucune Compagnie n'est possédée");
+        } else {
+            for (Compagnie c : joueur.getCompagnies()){
+                System.out.println(c.getNom());
+            }
         }
         System.out.println("o---------------------------------------------o");
         System.out.println();

@@ -27,6 +27,7 @@ public class Controleur {
             for (Joueur joueur : monopoly.getJoueurs()) {
                 joueur.setTourDeJeu(true);
                 ihm.afficher("Au tour de " + joueur.getNomJoueur() + " de jouer");
+                ihm.messageEtatJouer(joueur);
                 jouerUnCoup(joueur);
             }
         }
@@ -95,11 +96,13 @@ public class Controleur {
         if (position+n+m>40) {
             joueur.setPositionCourante(getCarreau(position+n+m-40));
             joueur.gagnerArgent(200);
-            ihm.messageEtatJouer(joueur);
+            ihm.afficher("Vous êtes arrivé sur : " + joueur.getPositionCourante().getNom());
+            ihm.afficher("Argent actuel :" + joueur.getArgent());
             return joueur.getPositionCourante();
         } else {
             joueur.setPositionCourante(getCarreau(position+n+m));
-            ihm.messageEtatJouer(joueur);
+            ihm.afficher("Vous êtes arrivé sur : " + joueur.getPositionCourante().getNom());
+            ihm.afficher("Argent actuel :" + joueur.getArgent());
             return joueur.getPositionCourante();
         }
     }
