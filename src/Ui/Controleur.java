@@ -78,25 +78,28 @@ public class Controleur {
     }    
     
     public void acheterPropriete(Joueur joueur, Propriete achat) {
-        if (ihm.afficherBoiteDialogue("Voulez-vous acheter "+achat.getNom()+" pour "+achat.getPrix()+" ?", 1)) {
-            joueur.payer(achat.getPrix());
-            joueur.addPropriete(achat);
+        boolean b = ihm.afficherBoiteDialogue("Voulez-vous acheter "+achat.getNom()+" pour "+achat.getPrix()+"€ ?", 1);
+        if (b) {
+            achat.achatPropriete(joueur);
             }
     }
     
     private Carreau lancerDésAvancer(Joueur joueur) {
+        int position = joueur.getPositionCourante().getNumero();
         int n = lancerDé();
         int m = lancerDé();
         if (n == m ) {
             joueur.setTourDeJeu(true);
         }
         joueur.setDernierLancé(n+m);
-        if (joueur.getPositionCourante().getNumero()+n+m>40) {
-            joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m-40));
-            return getCarreau(joueur.getPositionCourante().getNumero()+n+m-40);
+        if (position+n+m>40) {
+            joueur.setPositionCourante(getCarreau(position+n+m-40));
+            ihm.messageEtatJouer(joueur);
+            return joueur.getPositionCourante();
         } else {
-            joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m));
-            return getCarreau(joueur.getPositionCourante().getNumero()+n+m);
+            joueur.setPositionCourante(getCarreau(position+n+m));
+            ihm.messageEtatJouer(joueur);
+            return joueur.getPositionCourante();
         }
     }
     
