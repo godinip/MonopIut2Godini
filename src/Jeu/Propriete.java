@@ -7,7 +7,6 @@ public abstract class Propriete extends Carreau{
 
 	private Joueur  proprietaire;
         private int     prix;
-        private String  nom;      
 
         public Propriete(int numero,String nom, int prix){
             super(numero, nom);
