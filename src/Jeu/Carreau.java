@@ -7,7 +7,7 @@ public abstract class Carreau {
         
         public Carreau(int numero,String nomCarreau){
             this.setNumero(numero);
-            this.setNomCarreau(nomCarreau);
+            this.setNom(nomCarreau);
         }
 
 	public int getNumero() {
@@ -37,7 +37,7 @@ public abstract class Carreau {
     /**
      * @param nomCarreau the nomCarreau to set
      */
-    public void setNomCarreau(String nomCarreau) {
+    public void setNom(String nomCarreau) {
         this.nomCarreau = nomCarreau;
     }
 
