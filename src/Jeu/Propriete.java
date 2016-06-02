@@ -24,16 +24,8 @@ public abstract class Propriete extends Carreau{
 		return this.proprietaire;
 	}
         
-        @Override
-	public abstract Data.Actions action(Joueur j);
         
-        @Override
-	public String getNom() {
-		// TODO - implement Propriete.getNom
-		return super.getNom();
-	}
-        
-	public void setPropriétaire(Joueur J) {
+	public void setProprietaire(Joueur J) {
             proprietaire = J;
 	}
 
@@ -47,7 +39,7 @@ public abstract class Propriete extends Carreau{
     
     public  void achatPropriete(Joueur joueur){
         joueur.payer(this.getPrix());
-        this.setPropriétaire(joueur);
+        this.setProprietaire(joueur);
         joueur.addPropriete(this);
     }
 }
