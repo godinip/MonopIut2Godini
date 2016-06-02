@@ -48,19 +48,19 @@ public class Controleur {
                 AutreCarreau AC = (AutreCarreau) c;
                 int R = AC.getMontant();
                 joueur.gagnerArgent(R);
-                Boolean b = ihm.afficherBoiteDialogue("Vous avez gagné: "+R, 0);
+                Boolean b = ihm.afficherBoiteDialogue("Vous avez gagné: "+R+"€", 0);
             } else if (a == Actions.payerLoyer) {
                 Propriete P = (Propriete) c;
                 joueur.payer(P.getLoyer(P.getProprietaire()));
                 P.getProprietaire().gagnerArgent(P.getLoyer(P.getProprietaire()));
-                Boolean b = ihm.afficherBoiteDialogue("le joueur "+joueur.getNomJoueur()+" a payé "+P.getLoyer(P.getProprietaire())+" au joueur "+P.getProprietaire().getNomJoueur(), 0);
+                Boolean b = ihm.afficherBoiteDialogue("le joueur "+joueur.getNomJoueur()+" a payé "+P.getLoyer(P.getProprietaire())+"€ au joueur "+P.getProprietaire().getNomJoueur(), 0);
             } else if (a == Actions.acheter) {
                 acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
             } else if (a == Actions.payer) {
                 AutreCarreau AC = (AutreCarreau) c;
                 int R = AC.getMontant();
                 joueur.payer(-R);
-                Boolean b = ihm.afficherBoiteDialogue("Vous avez perdu: "+(-R), 0);
+                Boolean b = ihm.afficherBoiteDialogue("Vous avez perdu: "+(-R)+"€", 0);
             } else if (a == Actions.neRienFaire) {
                 Boolean b = ihm.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
             }
@@ -99,13 +99,14 @@ public class Controleur {
         if (position+n+m>40) {
             joueur.setPositionCourante(getCarreau(position+n+m-40));
             joueur.gagnerArgent(200);
+            ihm.afficher("Vous êtes passé par la case départ. Vous avez donc gagné 200€");
             ihm.afficher("Vous êtes arrivé sur : " + joueur.getPositionCourante().getNom());
-            ihm.afficher("Argent actuel :" + joueur.getArgent());
+            ihm.afficher("Argent actuel :" + joueur.getArgent() + "€");
             return joueur.getPositionCourante();
         } else {
             joueur.setPositionCourante(getCarreau(position+n+m));
             ihm.afficher("Vous êtes arrivé sur : " + joueur.getPositionCourante().getNom());
-            ihm.afficher("Argent actuel :" + joueur.getArgent());
+            ihm.afficher("Argent actuel :" + joueur.getArgent() + "€");
             return joueur.getPositionCourante();
         }
     }
