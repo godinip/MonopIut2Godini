@@ -22,9 +22,9 @@ public class Joueur {
         argent = 1500;
         this.positionCourante = positionCourante;
         dernierLancé = 0;
-        proprietes = new ArrayList();
-        gares = new ArrayList();
-        compagnies = new ArrayList();
+        proprietes = new ArrayList<>();
+        gares = new ArrayList<>();
+        compagnies = new ArrayList<>();
     }
     
     public void payer(int prix) {
