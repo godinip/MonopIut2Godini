@@ -21,18 +21,7 @@ public class ProprieteAConstruire extends Propriete {
         this.setCouleur(couleur);
         
     }
-
     
-    @Override
-    public void setPrix(int prix) {
-	this.prix = prix;
-    }
-    
-    /**
-     *
-     * @param joueur
-     * @return
-     */
     @Override
     public int getLoyer(Joueur joueur) {
         if (this.getCouleur().LoyerDouble(this.getProprietaire()) && this.getMaisons()==0){
