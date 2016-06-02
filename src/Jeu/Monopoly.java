@@ -20,6 +20,7 @@ public class Monopoly {
     public void CreerPlateau(String dataFilename) {
         buildGamePlateau(dataFilename);
     }
+    
     private void buildGamePlateau(String dataFilename) {
         try {
             ArrayList<String[]> data = readDataFile(dataFilename, ",");
