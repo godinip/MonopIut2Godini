@@ -26,6 +26,7 @@ public class Controleur {
         while (monopoly.getJoueurs().size() > 1) {
             for (Joueur joueur : monopoly.getJoueurs()) {
                 joueur.setTourDeJeu(true);
+                ihm.afficher("Au tour de " + joueur.getNomJoueur() + " de jouer");
                 jouerUnCoup(joueur);
             }
         }
@@ -38,7 +39,6 @@ public class Controleur {
     }
     
     public void jouerUnCoup(Joueur joueur) {
-        ihm.afficher("Au tour de " + joueur.getNomJoueur() + " de jouer");
         while (joueur.getTourDeJeu()){
             joueur.setTourDeJeu(false);
             Carreau c = lancerDésAvancer(joueur);
@@ -52,14 +52,14 @@ public class Controleur {
                 Propriete P = (Propriete) c;
                 joueur.payer(P.getLoyer(P.getProprietaire()));
                 P.getProprietaire().gagnerArgent(P.getLoyer(P.getProprietaire()));
-                Boolean b = ihm.afficherBoiteDialogue("le Joueur "+joueur.getNomJoueur()+" a payer "+P.getLoyer(P.getProprietaire())+" au joueur "+P.getProprietaire(), 0);
+                Boolean b = ihm.afficherBoiteDialogue("le joueur "+joueur.getNomJoueur()+" a payé "+P.getLoyer(P.getProprietaire())+" au joueur "+P.getProprietaire(), 0);
             } else if (a == Actions.acheter) {
                 acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
             } else if (a == Actions.payer) {
                 AutreCarreau AC = (AutreCarreau) c;
                 int R = AC.getMontant();
                 joueur.payer(-R);
-                Boolean b = ihm.afficherBoiteDialogue("Vous avez perdue: "+(-R), 0);
+                Boolean b = ihm.afficherBoiteDialogue("Vous avez perdu: "+(-R), 0);
             } else if (a == Actions.neRienFaire) {
                 Boolean b = ihm.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
             }
@@ -85,21 +85,19 @@ public class Controleur {
     }
     
     private Carreau lancerDésAvancer(Joueur joueur) {
-        int position = joueur.getPositionCourante().getNumero();
         int n = lancerDé();
         int m = lancerDé();
         if (n == m ) {
             joueur.setTourDeJeu(true);
         }
-        joueur.setPositionCourante(getCarreau(position+n+m));
         joueur.setDernierLancé(n+m);
-        if (joueur.getPositionCourante().getNumero() >40) {
-            return getCarreau(position - 40);
+        if (joueur.getPositionCourante().getNumero()+n+m>40) {
+            joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m-40));
+            return getCarreau(joueur.getPositionCourante().getNumero()+n+m-40);
         } else {
-            return getCarreau(position);
+            joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()+n+m));
+            return getCarreau(joueur.getPositionCourante().getNumero()+n+m);
         }
-        
-        
     }
     
     private int lancerDé() {
