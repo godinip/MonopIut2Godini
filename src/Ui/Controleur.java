@@ -17,11 +17,11 @@ public class Controleur {
     
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
-        IHM ihm = new IHM(this);
+        ihm = new IHM(this);
         initialiserPartie();
-        for (String nom : ihm.CreationJoueur()) {
-            Joueur joueur = new Joueur(nom,getCarreau(1));
-            monopoly.addJoueur(joueur);
+        ArrayList<String> noms = ihm.CreationJoueur();
+        for (String nom : noms) {
+            monopoly.addJoueur(new Joueur(nom,getCarreau(1)));
         }
         while (monopoly.getJoueurs().size() > 1) {
             for (Joueur joueur : monopoly.getJoueurs()) {
@@ -34,9 +34,11 @@ public class Controleur {
                Boolean b = ihm.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
             }
         }
+    
     }
     
     public void jouerUnCoup(Joueur joueur) {
+        ihm.afficher("Au tour de " + joueur.getNomJoueur() + " de jouer");
         while (joueur.getTourDeJeu()){
             joueur.setTourDeJeu(false);
             Carreau c = lancerDésAvancer(joueur);
@@ -73,7 +75,7 @@ public class Controleur {
     
     public void initialiserPartie() {
         this.monopoly.CreerPlateau("./src/Data/data.txt");
-    }
+    }    
     
     public void acheterPropriete(Joueur joueur, Propriete achat) {
         if (ihm.afficherBoiteDialogue("Voulez-vous acheter "+achat.getNom()+" pour "+achat.getPrix()+" ?", 1)) {
@@ -107,5 +109,5 @@ public class Controleur {
     private Carreau getCarreau(int numero) {
         return monopoly.getCarreaux().get(numero);
     }
-    
+        
 }
