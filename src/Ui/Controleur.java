@@ -14,6 +14,8 @@ public class Controleur {
     
     private IHM         ihm;
     private Monopoly    monopoly;
+    private int[] dés = {3,2,2,2,4,1,2,2,5,1,4,2,4,6,5,5,6,6,1,1,3,1,5,5,1,1,1,1,3,2,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5};
+    private int dé = -1;
     
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
@@ -112,7 +114,9 @@ public class Controleur {
     }
     
     private int lancerDé() {
-        return (int) (Math.random()*(6) +1);
+        dé = dé + 1;
+        return dés[dé];
+    //    return (int) (Math.random()*(6) +1);
     }
     
     private Carreau getCarreau(int numero) {
