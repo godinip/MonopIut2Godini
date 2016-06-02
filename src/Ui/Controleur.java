@@ -71,6 +71,7 @@ public class Controleur {
                 monopoly.setJoueurs(joueurs);
                 Boolean b = ihm.afficherBoiteDialogue(joueur.getNomJoueur()+", vous n'avez plus d'argent et perdez", 0);
             }
+            
         }
     }
     

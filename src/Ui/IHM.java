@@ -42,6 +42,8 @@ public class IHM {
     public boolean afficherBoiteDialogue(String string, int i) {
         if (i == 0){
             System.out.println(string);
+            System.out.println("Appuyez sur entrée pour continuer");
+            scVal = sc.nextLine();
             return true;
         } else {
             do {
