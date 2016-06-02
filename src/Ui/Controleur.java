@@ -12,8 +12,8 @@ import java.util.HashSet;
 
 public class Controleur {
     
-    IHM         ihm;
-    Monopoly    monopoly;
+    private IHM         ihm;
+    private Monopoly    monopoly;
     
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
