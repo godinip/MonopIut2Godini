@@ -73,7 +73,7 @@ public class IHM {
         System.out.println("Argent actuel : "+joueur.getArgent()+"€");
         System.out.println("Propriétés :");
         if (joueur.getProprietes().isEmpty()){
-            System.out.println("Aucune Propriété construisible n'est possédée");
+            System.out.println("Aucune Propriété constructible n'est possédée");
         } else {
         for (ProprieteAConstruire p : joueur.getProprietes()){
             System.out.println(p.getNom());
