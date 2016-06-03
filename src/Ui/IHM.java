@@ -52,7 +52,7 @@ public class IHM {
                 System.out.print(string);
                 System.out.println(" Oui / Non (o/n): ");
                 scVal = sc.next();
-                System.out.println("Test + "+scVal);
+                
             }while( !(scVal.equals("o") || scVal.equals("n")));
             
             if(scVal.contains("o") || scVal.equals("O")){

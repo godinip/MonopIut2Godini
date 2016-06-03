@@ -27,7 +27,8 @@ public class Controleur {
         while (monopoly.getJoueurs().size() > 1) {
             for (Joueur joueur : monopoly.getJoueurs()) {
                 joueur.setTourDeJeu(true);
-                ihm.afficher("Au tour de " + joueur.getNomJoueur() + " de jouer");
+                
+                ihm.afficher("\nAu tour de " + joueur.getNomJoueur() + " de jouer");
                 ihm.messageEtatJouer(joueur);
                 jouerUnCoup(joueur);
             }
