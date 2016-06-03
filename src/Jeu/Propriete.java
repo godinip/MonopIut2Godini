@@ -1,5 +1,6 @@
 package Jeu;
 
+import Data.Actions;
 import Jeu.Groupe;
 import Jeu.Joueur;
 
@@ -42,4 +43,20 @@ public abstract class Propriete extends Carreau{
         this.setProprietaire(joueur);
         joueur.addPropriete(this);
     }
+    
+    @Override
+    public Data.Actions action(Joueur J){
+     if (this.getProprietaire()==null){
+            if (J.getArgent()<this.getPrix()){
+                return Actions.neRienFaire;
+            }else{
+                return Actions.acheter;
+            }
+        
+        }else if(this.getProprietaire()==J){
+            return Actions.neRienFaire;
+        }else{         
+            return Actions.payerLoyer;    
+        }
+        }
 }

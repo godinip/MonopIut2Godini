@@ -55,7 +55,7 @@ public class IHM {
                 
             }while( !(scVal.equals("o") || scVal.equals("n")));
             
-            if(scVal.contains("o") || scVal.equals("O")){
+            if(scVal.contains("o")){
                 return true;
             }else{
                 return false;

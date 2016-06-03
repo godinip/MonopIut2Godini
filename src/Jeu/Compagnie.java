@@ -18,24 +18,5 @@ public class Compagnie extends Propriete {
         }
     }
 
-    
-    @Override
-    public Data.Actions action(Joueur J){
-        if (this.getProprietaire()==null){
-            if (J.getArgent()<this.getPrix()){
-                return Actions.neRienFaire;
-            }else{
-                return Actions.acheter;
-            }
-        
-        }else if(this.getProprietaire()==J){
-            return Actions.neRienFaire;
-        }else{      
-            return Actions.payerLoyer;    
-        }
-        
-        
-    }
-
-    
+      
 }
