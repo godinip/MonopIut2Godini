@@ -2,6 +2,8 @@ package Ui;
 
 import Jeu.*;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class IHM {
@@ -14,9 +16,9 @@ public class IHM {
         sc = new Scanner(System.in);
         this.controleur = controleur;
     }
-    public ArrayList<String> CreationJoueur(){
+    public LinkedList<Joueur> CreationJoueur(){
         boolean isOk = false;
-        ArrayList<String> joueurs = new ArrayList<>();
+        LinkedList<Joueur> joueurs = new LinkedList<>();
         int nb;
         do{
             System.out.println("Combien de Joueurs voulez vous ajouter (2 à 6) ? ");
@@ -33,7 +35,7 @@ public class IHM {
                 System.out.print("Nom du joueur "+i+": ");
                 nom = sc.next();
             }while(joueurs.contains(nom));
-            joueurs.add(nom);
+            joueurs.addLast(new Joueur(nom, controleur.getCarreau(1)));
             
         }
         return joueurs;

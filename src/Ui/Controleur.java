@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import Ui.IHM;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 public class Controleur {
     
@@ -21,10 +22,8 @@ public class Controleur {
         this.monopoly = monopoly;
         ihm = new IHM(this);
         initialiserPartie();
-        ArrayList<String> noms = ihm.CreationJoueur();
-        for (String nom : noms) {
-            monopoly.addJoueur(new Joueur(nom,getCarreau(1)));
-        }
+        monopoly.setJoueurs(ihm.CreationJoueur());
+
         while (monopoly.getJoueurs().size() > 1) {
             for (Joueur joueur : monopoly.getJoueurs()) {
                 joueur.setTourDeJeu(true);
@@ -67,7 +66,7 @@ public class Controleur {
                 Boolean b = ihm.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
             }
             if (joueur.getPerdu()) {
-                HashSet<Joueur> joueurs = new HashSet();
+                LinkedList<Joueur> joueurs = new LinkedList();
                 joueurs = monopoly.getJoueurs();
                 joueurs.remove(joueur);
                 monopoly.setJoueurs(joueurs);
@@ -119,7 +118,7 @@ public class Controleur {
     //    return (int) (Math.random()*(6) +1);
     }
     
-    private Carreau getCarreau(int numero) {
+    public Carreau getCarreau(int numero) {
         return monopoly.getCarreaux().get(numero);
     }
         

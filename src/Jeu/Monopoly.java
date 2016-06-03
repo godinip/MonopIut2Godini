@@ -11,7 +11,7 @@ public class Monopoly {
     
     private HashMap<Integer,Carreau> carreaux = new HashMap<>();
     private HashMap<String,Groupe> groupes = new HashMap<String,Groupe>();
-    private HashSet<Joueur> joueurs = new HashSet<>();
+    private LinkedList<Joueur> joueurs = new LinkedList<>();
     
     public Monopoly() {
         
@@ -81,16 +81,16 @@ public class Monopoly {
         return carreaux;
     }
     
-    public HashSet<Joueur> getJoueurs() {
+    public LinkedList<Joueur> getJoueurs() {
         return joueurs;
     }
     
-    public void setJoueurs(HashSet<Joueur> joueurs) {
+    public void setJoueurs(LinkedList<Joueur> joueurs) {
         this.joueurs = joueurs;
     }
     
-    public void addJoueur(Joueur J){
-        this.joueurs.add(J);
+    public void addJoueur(Joueur j){
+        this.joueurs.add(j);
     }
     
     public HashMap<String,Groupe> getGroupes() {
