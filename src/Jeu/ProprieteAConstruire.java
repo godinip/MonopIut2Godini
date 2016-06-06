@@ -85,6 +85,14 @@ public class ProprieteAConstruire extends Propriete {
         }
         return false;
     }
+    
+    public boolean retirerHotel(){
+        if (this.getMaisons()==5){
+            this.setMaisons(4);
+            return true;
+        }
+        return false;
+    }
 
     /**
      * @return the coutmaison
