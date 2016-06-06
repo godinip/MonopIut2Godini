@@ -23,9 +23,8 @@ public class Compagnie extends Propriete {
             if (J.getArgent()<this.getPrix()){
                 return Actions.neRienFaire;
             }else{
-                J.payer(this.getPrix());
-                this.setProprietaire(J);
                 return Actions.acheter;
+                
             }
         
         }else if(this.getProprietaire()==J){

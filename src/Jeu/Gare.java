@@ -28,8 +28,6 @@ public class Gare extends Propriete {
             if (J.getArgent()<this.getPrix()){
                 return Actions.neRienFaire;
             }else{
-                J.payer(this.getPrix());
-                this.setProprietaire(J);
                 return Actions.acheter;
             }
         
