@@ -68,8 +68,15 @@ public class Controleur {
                     joueur.setTourDeJeu(true);
                     jouerUnCoup(joueur);
                 } else {
-                    IhmBoiteMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas un double et restez en prison pour encore "+joueur.getPrison()+" tours", 0);
-                    joueur.setPrison(joueur.getPrison()-1);
+                    if (joueur.getPrison() == 1) {
+                        joueur.payer(50);
+                        if (joueur.getPerdu() != true) {
+                            IhmBoiteMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et payez 50€ pour sortir de prison", 0);
+                        }
+                    } else {
+                        IhmBoiteMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et restez en prison pour encore "+joueur.getPrison()+" tours", 0);
+                        joueur.setPrison(joueur.getPrison()-1);
+                    }
                 }
             } else {
                 Carreau c = lancerDésAvancer(joueur);
@@ -95,6 +102,8 @@ public class Controleur {
                     //tirer une carte chance et l'exécuter
                 }else if (a == Actions.carteCommunaute) {
                     //tirer une carte communaute et l'exécuter
+                } else if (a == Actions.prison) {
+                    joueur.setPrison(3);
                 } else if (a == Actions.neRienFaire) {
                     IhmBoiteMessage.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
                 }
