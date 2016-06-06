@@ -14,20 +14,20 @@ public class Monopoly {
     private LinkedList<Joueur> joueurs = new LinkedList<>();
     private int nbMaisons = 32;
     private int nbHotels = 12;
-    private ArrayList<Carte> cartesChance = new ArrayList();
-    private ArrayList<Carte> cartesCommunaute = new ArrayList();
+    private ArrayList<AutreCarreau> cartesChance = new ArrayList();
+    private ArrayList<AutreCarreau> cartesCommunaute = new ArrayList();
     
     public Monopoly() {
         
     }
     
     public void CreerPlateau(String dataFilename) {
-        buildGamePlateau(dataFilename);
+        buildGamePlateau();
     }
     
-    private void buildGamePlateau(String dataFilename) {
+    private void buildGamePlateau() {
         try {
-            ArrayList<String[]> data = readDataFile(dataFilename, ",");
+            ArrayList<String[]> data = readDataFile("./src/Data/data.txt", ",");
             for (int i=0; i<data.size(); ++i) {
                 String caseType = data.get(i)[0];
                 if (caseType.compareTo("P") == 0) {
@@ -55,16 +55,15 @@ public class Monopoly {
                 }
                 else if (caseType.compareTo("AU") == 0) {
                     if (data.get(i)[2].compareTo("Chance") == 0) {
-                        Chance nouveauCarreau = new Chance(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                        Chance nouveauCarreau = new Chance(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]),"");
                         carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
                     } else if (data.get(i)[2].compareTo("Caisse de Communauté") == 0) {
-                        Communaute nouveauCarreau = new Communaute(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                        Chance nouveauCarreau = new Chance(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]),"");
                         carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                    } else {
+                        System.err.println("[buildGamePlateau()] : Invalid Data type");
                     }
                 }
-                else {
-                    System.err.println("[buildGamePleateau()] : Invalid Data type");
-		}
             }
         }
         catch (FileNotFoundException e) {
