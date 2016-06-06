@@ -7,7 +7,9 @@ package Ui;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -15,16 +17,26 @@ import javax.swing.JPanel;
  */
 public class JoueurIhm extends  JPanel{
     JFrame window;
+    int nbJoueur;
     
-    public JoueurIhm(JFrame w){
+    public JoueurIhm(JFrame w,int nbj){
         super();
         window =w;
+        
+        nbJoueur = nbj;
+        System.out.println(nbj);
         displayJIhm();
         
     }
     public  void displayJIhm(){
-        JButton retour = new JButton("Retour");
-        this.add(retour);
+       
+        
+        for (int i = 1; i < nbJoueur+1; i++) {
+             this.add(new JLabel("Joueur "+i+" :"));
+             JTextField champNom = new JTextField(20);
+            this.add(champNom);
+        }
+ 
     }
     
 }
