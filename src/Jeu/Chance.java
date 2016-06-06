@@ -4,7 +4,7 @@ public class Chance extends AutreCarreau {
     
     private String message;
 
-    public Communaute(String nom, int numero, int Montant, String message) {
+    public Chance(String nom, int numero, int Montant, String message) {
         super(nom, numero, Montant);
         this.message = message;
     }
