@@ -61,8 +61,16 @@ public class ProprieteAConstruire extends Propriete {
          }
     }
     
+    public boolean retirerMaison(){
+        if (this.getMaisons()>0 && this.getCouleur().maisonUniformeMoins(maisons)){
+            this.setMaisons(this.getMaisons()-1);
+            return true;
+        }
+        return false;
+    }
+    
     public boolean ajouterMaison(){
-        if (couleur.LoyerDouble(super.getProprietaire()) && this.getMaisons()<4 && this.getCouleur().maisonUniforme(this.getMaisons())){
+        if (couleur.LoyerDouble(super.getProprietaire()) && this.getMaisons()<4 && this.getCouleur().maisonUniformePlus(this.getMaisons())){
             super.getProprietaire().payer(this.getCoutmaison());
             this.setMaisons(this.getMaisons()+1);
             return true;
