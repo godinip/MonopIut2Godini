@@ -27,6 +27,7 @@ import javax.swing.JPanel;
  */
 public class IhmGraph extends JPanel{
     JFrame window;
+    JComboBox listJ ;
     
     public IhmGraph(JFrame w){
          super();
@@ -43,7 +44,7 @@ public class IhmGraph extends JPanel{
         JPanel panSelection = new JPanel();
         
         panSelection.add(new JLabel("Nombre de Joueur :"));
-        JComboBox listJ = new JComboBox();
+         listJ = new JComboBox();
         for (int i = 2; i < 7; i++) {
             listJ.addItem(String.valueOf(i));
         }
@@ -67,8 +68,9 @@ public class IhmGraph extends JPanel{
                 JFrame frame = new JFrame();
                 frame.setTitle("Joueur");
                 frame.setSize(350,200);
-                JoueurIhm jIhm = new  JoueurIhm(frame);
-                
+
+                JoueurIhm jIhm = new  JoueurIhm(frame,listJ.getSelectedIndex()+2);
+                frame.add(jIhm);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true); 
  
