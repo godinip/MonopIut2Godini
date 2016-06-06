@@ -62,7 +62,7 @@ public class ProprieteAConstruire extends Propriete {
     }
     
     public boolean ajouterMaison(){
-        if (couleur.LoyerDouble(super.getProprietaire()) && this.getMaisons()<=4 && this.getCouleur().maisonUniforme(this.getMaisons())){
+        if (couleur.LoyerDouble(super.getProprietaire()) && this.getMaisons()<4 && this.getCouleur().maisonUniforme(this.getMaisons())){
             super.getProprietaire().payer(this.getCoutmaison());
             this.setMaisons(this.getMaisons()+1);
             return true;
