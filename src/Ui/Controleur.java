@@ -40,6 +40,10 @@ public class Controleur {
     public void jouerUnCoup(Joueur joueur) {
         while (joueur.getTourDeJeu()){
             joueur.setTourDeJeu(false);
+            if (joueur.getPrison() > 0) {
+                Boolean b = ihm.afficherBoiteDialogue("Vous êtes en prison", 0);
+                if (joueur.communautePrison)
+            }
             Carreau c = lancerDésAvancer(joueur);
             Actions a = c.action(joueur);
             if (a == Actions.gain) {

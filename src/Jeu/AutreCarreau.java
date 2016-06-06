@@ -13,10 +13,11 @@ public class AutreCarreau extends Carreau {
     
     @Override
     public Data.Actions action(Joueur J){
-        if (montant == 0) {
+        if (montant < 0) {
             return Actions.payer;
+        } else {
+            return Actions.gain;
         }
-        return null;
     }
     
     public int getMontant() {

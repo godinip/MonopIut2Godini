@@ -2,7 +2,7 @@ package Jeu;
 
 public class Chance extends AutreCarreau {
 
-    public Chance(int numero, String nom, int Montant) {
+    public Chance(String nom, int numero, int Montant) {
         super(nom, numero, Montant);
     }
     

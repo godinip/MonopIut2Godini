@@ -17,6 +17,7 @@ public class Monopoly {
     private ArrayList<AutreCarreau> cartesChance = new ArrayList();
     private ArrayList<AutreCarreau> cartesCommunaute = new ArrayList();
     
+    
     public Monopoly() {
         
     }
@@ -55,13 +56,16 @@ public class Monopoly {
                 }
                 else if (caseType.compareTo("AU") == 0) {
                     if (data.get(i)[2].compareTo("Chance") == 0) {
-                        Chance nouveauCarreau = new Chance(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
-                        carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                        Chance nouvelleChance =  new Chance(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                        carreaux.put(nouvelleChance.getNumero(), nouvelleChance);
                     } else if (data.get(i)[2].compareTo("Caisse de Communauté") == 0) {
-                        Chance nouveauCarreau = new Chance(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
-                        carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                        Communaute nouvelleCommunaute = new Communaute(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                        carreaux.put(nouvelleCommunaute.getNumero(), nouvelleCommunaute);
+                    } else if (0 == 2) {
+                        
                     } else {
                         AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                        carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
                     }
                 }
             }

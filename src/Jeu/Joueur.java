@@ -16,6 +16,8 @@ public class Joueur {
     private ArrayList<Compagnie>                compagnies;
     private Boolean                             tourDeJeu;
     private Boolean                             perdu = false;
+    private int                                 prison = 0;
+    private int                                 sortiedeprison = 0;
     
     public Joueur(String nomJoueur,Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
@@ -85,26 +87,18 @@ public class Joueur {
         return proprietes;
     }
     
-    
     public int getNbGare() {
         return getGares().size();
     }
     
-    
     public int getNbCompagnie() {
         return getCompagnies().size();
     }
-
-    /**
-     * @return the gares
-     */
+    
     public ArrayList<Gare> getGares() {
         return gares;
     }
-
-    /**
-     * @return the compagnies
-     */
+    
     public ArrayList<Compagnie> getCompagnies() {
         return compagnies;
     }
@@ -120,5 +114,12 @@ public class Joueur {
     public boolean getPerdu() {
         return perdu;
     }
-       
+    public void setPrison(int prison) {
+        this.prison = prison;
+    }
+    
+    public int getPrison() {
+        return prison;
+    }
+    
 }
