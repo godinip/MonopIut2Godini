@@ -5,12 +5,14 @@
  */
 package Ui;
 
+import Jeu.Joueur;
 import Jeu.Monopoly;
 import java.awt.BorderLayout;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,13 +28,14 @@ public class JoueurIhm extends  JPanel{
     private JFrame window;
     private int nbJoueur;
     private ArrayList<JTextField> nomJList = new ArrayList<>();
-    Controleur c;
-    Monopoly m;
+   Controleur controleur;
+    Monopoly monopoly;
     
     public JoueurIhm(JFrame w,int nbj,Controleur c,Monopoly m){
         super();
         window =w;
-        
+        monopoly = m;
+        controleur = c;
         nbJoueur = nbj;
         displayJIhm();
         
@@ -63,34 +66,51 @@ public class JoueurIhm extends  JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 ArrayList<String> erreurNom = new ArrayList<>();
+                ArrayList<String> nomJoueur = new ArrayList<>();
+                nomJoueur.clear();
+                
                 boolean erreur = true;
                 for (JTextField jt1  : nomJList) {
-                    for (JTextField jt2  : nomJList) {
-                        if(nomJList.indexOf(jt1) ==  nomJList.indexOf(jt2)){
-                        }else{
-                            if(jt1.getText().equals( jt2.getText())){
-                                if(!erreurNom.contains(jt1.getText())){
-                                    erreur = false;
-                                    erreurNom.add(jt1.getText());
-                                }
-                            }
+                     if(!nomJoueur.contains(jt1.getText() )){
+                           nomJoueur.add(jt1.getText());
+                     }
+                        for (JTextField jt2  : nomJList) {
+                                if(nomJList.indexOf(jt1) ==  nomJList.indexOf(jt2)){
+                                    }else{
+                                             if(jt1.getText().equals( jt2.getText())){
+                                                    if(!erreurNom.contains(jt1.getText())){
+                                                            erreur = false;
+                                                            erreurNom.add(jt1.getText());
+                                                    }
+                                            }
+                                            
+                                    }
                         }
-                    }
                     
                 }
                 if(!erreur){
-                    String message = null;
-                    for (String s : erreurNom) {
-                        if( message == null){
-                            message = s;
-                        }else{
-                            message = message +", "+s;
-                        }
-                    }
-                    IhmBoiteMessage.afficherBoiteDialogue("Le(s) pseudo(s) "+message+" sont enregistré(s) plusieurs fois\nCorrigez le !", 0);
+                            String message = null;
+                            for (String s : erreurNom) {
+                                if( message == null){
+                                    message = s;
+                                }else{
+                                    message = message +", "+s;
+                                }
+                            }
+
+                            IhmBoiteMessage.afficherBoiteDialogue("Le(s) pseudo(s) "+message+" sont enregistré(s) plusieurs fois\nCorrigez le !", 0);
                     
                 }else{
-                    
+                    LinkedList<Joueur> joueurs = new LinkedList<>();
+                    int desMax = 0;
+                    int des = 0;
+                        for (String string : nomJoueur) {
+                          Joueur j = new Joueur(string,controleur.getCarreau(1));
+                         joueurs.addLast(j);
+                         
+                        }
+                        monopoly.setJoueurs(joueurs);
+                        controleur.setOk(true);
                 }
                 
  

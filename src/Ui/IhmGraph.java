@@ -36,7 +36,8 @@ public class IhmGraph extends JPanel{
          super();
          window = w;
          displaySelection();
-        
+         controleur = c ;
+        monopoly = m;
     }
     
     public void displaySelection(){

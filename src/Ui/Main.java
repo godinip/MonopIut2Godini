@@ -13,13 +13,7 @@ public class Main {
         Monopoly monopoly = new Monopoly();
         Controleur controleur = new Controleur(monopoly);  
         
-        JFrame frame = new JFrame();
-        frame.setTitle("Monopoly");
-        frame.setSize(350,200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        IhmGraph graph = new IhmGraph(frame,controleur,monopoly);
-        frame.add(graph);
-        frame.setVisible(true); 
+        
         
         
         

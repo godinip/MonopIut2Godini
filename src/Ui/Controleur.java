@@ -10,36 +10,48 @@ import java.util.ArrayList;
 import Ui.IHM;
 import java.util.HashSet;
 import java.util.LinkedList;
+import javax.swing.JFrame;
 
 public class Controleur {
     
     private IHM         ihm;
     private Monopoly    monopoly;
+    private boolean ok = false;
     
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
         ihm = new IHM(this);
         initialiserPartie();
-        if(IhmBoiteMessage.afficherBoiteDialogue("Paul est un bg ?", 1)){
-        
-        }else{
-            
-        
+        if(!IhmBoiteMessage.afficherBoiteDialogue("ihm?", 1)){
         monopoly.setJoueurs(ihm.CreationJoueur());
+        }else{
+        JFrame frame = new JFrame();
+        frame.setTitle("Monopoly");
+        frame.setSize(350,200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        IhmGraph graph = new IhmGraph(frame,this,monopoly);
+        frame.add(graph);
+        frame.setVisible(true); 
+        }
+        
+        
+        while(!ok){
+            System.out.print("  ");
         while (monopoly.getJoueurs().size() > 1) {
             for (Joueur joueur : monopoly.getJoueurs()) {
                 joueur.setTourDeJeu(true);
                 ihm.afficher("\nAu tour de " + joueur.getNomJoueur() + " de jouer");
                 ihm.messageEtatJouer(joueur);
                 jouerUnCoup(joueur);
-            }
+            
         }
         if (monopoly.getJoueurs().size() == 1) {
             for (Joueur joueur : monopoly.getJoueurs()) {
                IhmBoiteMessage.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
             }
         }
-        }
+        }}
+        
     }
     
     public void jouerUnCoup(Joueur joueur) {
@@ -123,12 +135,16 @@ public class Controleur {
         }
     }
     
-    private int lancerDé() {
+    public int lancerDé() {
         return (int) (Math.random()*(6) +1);
     }
     
     public Carreau getCarreau(int numero) {
         return monopoly.getCarreaux().get(numero);
+    }
+
+    public void setOk(boolean ok) {
+        this.ok = ok;
     }
         
 }
