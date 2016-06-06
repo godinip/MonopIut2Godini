@@ -1,5 +1,5 @@
 SP|Vous êtes libéré de prison. Cette carte peut être conservée jusqu'à ce qu'elle soit utilisée.
-RE|Reculez de trois cases
+RE|Reculez de trois cases|-3
 PC|Vous êtes imposé pour les réparations de voirie à raison de : 40€ par maison et 115€ par hôtel|40|115
 GP|Amende pour ivresse : 20€|-20
 PC|Faites des réparations dans toutes vos maisons : versez pour chaque maison 25€ et pour chaque hôtel 100€|25|100

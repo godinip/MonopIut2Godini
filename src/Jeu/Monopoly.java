@@ -14,8 +14,8 @@ public class Monopoly {
     private LinkedList<Joueur> joueurs = new LinkedList<>();
     private int nbMaisons = 32;
     private int nbHotels = 12;
-    private ArrayList<CarteChance> cartesChance = new ArrayList();
-    private ArrayList<CarteCommunaute> cartesCommunaute = new ArrayList();
+    private ArrayList<Carte> cartesChance = new ArrayList();
+    private ArrayList<Carte> cartesCommunaute = new ArrayList();
     
     public Monopoly() {
         
@@ -81,24 +81,24 @@ public class Monopoly {
             ArrayList<String[]> data = readDataFile(dataFilename, "|");
             for (int i=0; i<data.size(); ++i) {
                 String caseType = data.get(i)[0];
-                CarteChance c;
+                Carte c;
                 if (caseType.compareTo("SP") == 0) {
-                    cartesChance.add(c = new CarteChance(data.get(i)[1]));
+                    cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
                 }
                 else if (caseType.compareTo("RE") == 0) {
-                    cartesChance.add(c = new CarteChance(data.get(i)[1]));
+                    cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
                 }
                 else if (caseType.compareTo("PC") == 0) {
-                    cartesChance.add(c = new CarteChance(data.get(i)[1]));
+                    cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
                 }
                 else if (caseType.compareTo("GP") == 0) {
-                    cartesChance.add(c = new CarteChance(data.get(i)[1]));
+                    cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
                 }
                 else if (caseType.compareTo("AV") == 0) {
-                    cartesChance.add(c = new CarteChance(data.get(i)[1]));
+                    cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
                 }
                 else if (caseType.compareTo("AP") == 0) {
-                    cartesChance.add(c = new CarteChance(data.get(i)[1]));
+                    cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
                 }
                 else {
                     System.err.println("[buildGamePleateau()] : Invalid Data type");
@@ -118,21 +118,21 @@ public class Monopoly {
             ArrayList<String[]> data = readDataFile(dataFilename, "|");
             for (int i=0; i<data.size(); ++i) {
                 String caseType = data.get(i)[0];
-                CarteCommunaute c;
+                Carte c;
                 if (caseType.compareTo("SP") == 0) {
-                    cartesCommunaute.add(c = new CarteCommunaute(data.get(i)[1])));
+                    cartesCommunaute.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
                 }
                 else if (caseType.compareTo("GP") == 0) {
-                    cartesCommunaute.add(c = new CarteCommunaute(data.get(i)[1])));
+                    cartesCommunaute.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
                 }
                 else if (caseType.compareTo("AN") == 0) {
-                    cartesCommunaute.add(c = new CarteCommunaute(data.get(i)[1])));
+                    cartesCommunaute.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
                 }
                 else if (caseType.compareTo("DE") == 0) {
-                    cartesCommunaute.add(c = new CarteCommunaute(data.get(i)[1])));
+                    cartesCommunaute.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
                 }
                 else if (caseType.compareTo("AP") == 0) {
-                    cartesCommunaute.add(c = new CarteCommunaute(data.get(i)[1])));
+                    cartesCommunaute.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
                 }
                 else if (caseType.compareTo("AV") == 0) {
                     
