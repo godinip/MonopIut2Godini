@@ -77,6 +77,14 @@ public class ProprieteAConstruire extends Propriete {
         }
         return false;
     }
+    
+    public boolean ajouterHotel(){
+        if (this.getCouleur().maisonUniformePlus(this.getMaisons()) && this.getMaisons()==4){
+            this.setMaisons(this.getMaisons()+1);
+            return true;
+        }
+        return false;
+    }
 
     /**
      * @return the coutmaison
@@ -92,6 +100,6 @@ public class ProprieteAConstruire extends Propriete {
         this.coutmaison = coutmaison;
     }
     
-
+    
 
 }
