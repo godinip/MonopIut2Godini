@@ -1,10 +1,12 @@
 package Ui;
 
 import Jeu.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Scanner;
+
 
 public class IHM {
     
@@ -77,6 +79,7 @@ public class IHM {
             System.out.println("Aucune Propriété constructible n'est possédée");
         } else {
         for (ProprieteAConstruire p : joueur.getProprietes()){
+            
             System.out.println(p.getNom());
         }}
         System.out.println("----------");
