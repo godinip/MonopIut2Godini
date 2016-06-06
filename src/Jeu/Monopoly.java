@@ -12,10 +12,10 @@ public class Monopoly {
     private HashMap<Integer,Carreau> carreaux = new HashMap<>();
     private HashMap<String,Groupe> groupes = new HashMap<String,Groupe>();
     private LinkedList<Joueur> joueurs = new LinkedList<>();
-    private final int nbMaisons = 32;
-    private final int nbHotels = 12;
-    private ArrayList<CartesChance> cartesChance = new ArrayList();
-    private ArrayList<CartesCommunaute> cartesCommunaute = new ArrayList();
+    private int nbMaisons = 32;
+    private int nbHotels = 12;
+    private ArrayList<CarteChance> cartesChance = new ArrayList();
+    private ArrayList<CarteCommunaute> cartesCommunaute = new ArrayList();
     
     public Monopoly() {
         
@@ -81,21 +81,24 @@ public class Monopoly {
             ArrayList<String[]> data = readDataFile(dataFilename, "|");
             for (int i=0; i<data.size(); ++i) {
                 String caseType = data.get(i)[0];
+                CarteChance c;
                 if (caseType.compareTo("SP") == 0) {
-                    
+                    cartesChance.add(c = new CarteChance(data.get(i)[1]));
                 }
                 else if (caseType.compareTo("RE") == 0) {
-                    
+                    cartesChance.add(c = new CarteChance(data.get(i)[1]));
                 }
                 else if (caseType.compareTo("PC") == 0) {
-                    
+                    cartesChance.add(c = new CarteChance(data.get(i)[1]));
                 }
                 else if (caseType.compareTo("GP") == 0) {
-                    
-                }else if (caseType.compareTo("AV") == 0) {
-                    
-                }else if (caseType.compareTo("AP") == 0) {
-                    
+                    cartesChance.add(c = new CarteChance(data.get(i)[1]));
+                }
+                else if (caseType.compareTo("AV") == 0) {
+                    cartesChance.add(c = new CarteChance(data.get(i)[1]));
+                }
+                else if (caseType.compareTo("AP") == 0) {
+                    cartesChance.add(c = new CarteChance(data.get(i)[1]));
                 }
                 else {
                     System.err.println("[buildGamePleateau()] : Invalid Data type");
@@ -115,20 +118,23 @@ public class Monopoly {
             ArrayList<String[]> data = readDataFile(dataFilename, "|");
             for (int i=0; i<data.size(); ++i) {
                 String caseType = data.get(i)[0];
+                CarteCommunaute c;
                 if (caseType.compareTo("SP") == 0) {
-                    
+                    cartesCommunaute.add(c = new CarteCommunaute(data.get(i)[1])));
                 }
                 else if (caseType.compareTo("GP") == 0) {
-                    
+                    cartesCommunaute.add(c = new CarteCommunaute(data.get(i)[1])));
                 }
                 else if (caseType.compareTo("AN") == 0) {
-                    
+                    cartesCommunaute.add(c = new CarteCommunaute(data.get(i)[1])));
                 }
                 else if (caseType.compareTo("DE") == 0) {
-                    
-                }else if (caseType.compareTo("AP") == 0) {
-                    
-                }else if (caseType.compareTo("AV") == 0) {
+                    cartesCommunaute.add(c = new CarteCommunaute(data.get(i)[1])));
+                }
+                else if (caseType.compareTo("AP") == 0) {
+                    cartesCommunaute.add(c = new CarteCommunaute(data.get(i)[1])));
+                }
+                else if (caseType.compareTo("AV") == 0) {
                     
                 }
                 else {
@@ -173,6 +179,22 @@ public class Monopoly {
     
     public HashMap<String,Groupe> getGroupes() {
         return groupes;
+    }
+    
+    public void setnbMaisons(int nbMaisons) {
+        this.nbMaisons=nbMaisons;
+    }
+    
+    public int getnbMaisons() {
+        return nbMaisons;
+    }
+    
+    public void setnbHotels(int nbHotels) {
+        this.nbHotels=nbHotels;
+    }
+    
+    public int getnbHotels() {
+        return nbHotels;
     }
     
 }
