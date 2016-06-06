@@ -61,8 +61,9 @@ public class Monopoly {
                     } else if (data.get(i)[2].compareTo("Caisse de Communauté") == 0) {
                         Communaute nouvelleCommunaute = new Communaute(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
                         carreaux.put(nouvelleCommunaute.getNumero(), nouvelleCommunaute);
-                    } else if (0 == 2) {
-                        
+                    } else if (data.get(i)[2].compareTo("Allez en prison") == 0) {
+                        AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                        carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
                     } else {
                         AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
                         carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
