@@ -31,11 +31,7 @@ public class IhmBoiteMessage {
         int response ;
         switch(mode) {
             case 0 :
-                JOptionPane.showConfirmDialog(   null, 
-                                                message, 
-                                                "Confirmation",
-                                                JOptionPane.OK_OPTION, 
-                                                JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, message);
                 return true ;
            case 1 :
                 response = JOptionPane.showConfirmDialog(   null, 

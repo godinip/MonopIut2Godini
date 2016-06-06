@@ -5,6 +5,7 @@
  */
 package Ui;
 
+import Jeu.Monopoly;
 import java.awt.BorderLayout;
 import java.awt.List;
 import java.awt.event.ActionEvent;
@@ -25,8 +26,10 @@ public class JoueurIhm extends  JPanel{
     private JFrame window;
     private int nbJoueur;
     private ArrayList<JTextField> nomJList = new ArrayList<>();
+    Controleur c;
+    Monopoly m;
     
-    public JoueurIhm(JFrame w,int nbj){
+    public JoueurIhm(JFrame w,int nbj,Controleur c,Monopoly m){
         super();
         window =w;
         
@@ -84,7 +87,7 @@ public class JoueurIhm extends  JPanel{
                             message = message +", "+s;
                         }
                     }
-                    IhmBoiteMessage.afficherBoiteDialogue("Le(s) pseudo(s) "+message+" sont enregistré(s) plusieurs fois\nCorrigez le !", 1);
+                    IhmBoiteMessage.afficherBoiteDialogue("Le(s) pseudo(s) "+message+" sont enregistré(s) plusieurs fois\nCorrigez le !", 0);
                     
                 }else{
                     

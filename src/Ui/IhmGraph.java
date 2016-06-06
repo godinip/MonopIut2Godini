@@ -29,8 +29,8 @@ import javax.swing.JPanel;
 public class IhmGraph extends JPanel{
     JFrame window;
     JComboBox listJ ;
-    Controleur c;
-    Monopoly m;
+    Controleur controleur;
+    Monopoly monopoly;
     
     public IhmGraph(JFrame w,Controleur c,Monopoly m){
          super();
@@ -73,7 +73,7 @@ public class IhmGraph extends JPanel{
                 frame.setTitle("Joueur");
                 frame.setSize(350,((listJ.getSelectedIndex()+2)*30)+70);
 
-                JoueurIhm jIhm = new  JoueurIhm(frame,listJ.getSelectedIndex()+2);
+                JoueurIhm jIhm = new  JoueurIhm(frame,listJ.getSelectedIndex()+2,controleur,monopoly);
                 frame.add(jIhm);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true); 
