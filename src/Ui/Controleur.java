@@ -72,6 +72,9 @@ public class Controleur {
                         joueur.payer(50);
                         if (joueur.getPerdu() != true) {
                             IhmBoiteMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et payez 50€ pour sortir de prison", 0);
+                            joueur.setPrison(0);
+                            joueur.setTourDeJeu(true);
+                            jouerUnCoup(joueur);
                         }
                     } else {
                         IhmBoiteMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et restez en prison pour encore "+joueur.getPrison()+" tours", 0);
