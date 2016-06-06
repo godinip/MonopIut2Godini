@@ -12,6 +12,8 @@ public class Monopoly {
     private HashMap<Integer,Carreau> carreaux = new HashMap<>();
     private HashMap<String,Groupe> groupes = new HashMap<String,Groupe>();
     private LinkedList<Joueur> joueurs = new LinkedList<>();
+    private final int nbMaisons = 32;
+    private final int nbHotels = 12;
     
     public Monopoly() {
         
@@ -50,6 +52,63 @@ public class Monopoly {
                     carreaux.put(nouvelleCompagnie.getNumero(), nouvelleCompagnie);
                 }
                 else if (caseType.compareTo("AU") == 0) {
+                    AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                    carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                }
+                else {
+                    System.err.println("[buildGamePleateau()] : Invalid Data type");
+		}
+            }
+        }
+        catch (FileNotFoundException e) {
+            System.err.println("[buildGamePlateau()] : File is not found!");
+        }
+        catch (IOException e) {
+            System.err.println("[buildGamePlateau()] : Error while reading file!");
+        }
+    }
+    
+    private void buildCartesChance(String dataFilename) {
+        try {
+            ArrayList<String[]> data = readDataFile(dataFilename, "|");
+            for (int i=0; i<data.size(); ++i) {
+                String caseType = data.get(i)[0];
+                if (caseType.compareTo("SP") == 0) {
+                    int[] loyer = new int[6];
+                    loyer[0] = Integer.parseInt(data.get(i)[5]);
+                    loyer[1] = Integer.parseInt(data.get(i)[6]);
+                    loyer[2] = Integer.parseInt(data.get(i)[7]);
+                    loyer[3] = Integer.parseInt(data.get(i)[8]);
+                    loyer[4] = Integer.parseInt(data.get(i)[9]);
+                    loyer[5] = Integer.parseInt(data.get(i)[10]);
+                    if (!groupes.containsValue(data.get(i)[3])) {
+                        Groupe nouvGroupe = new Groupe(CouleurPropriete.valueOf(data.get(i)[3]));
+                        getGroupes().put(data.get(i)[3], nouvGroupe);
+                    }
+                    ProprieteAConstruire nouvellePropriete = new ProprieteAConstruire(Integer.parseInt(data.get(i)[1]), data.get(i)[2], Integer.parseInt(data.get(i)[4]),getGroupes().get(data.get(i)[3]),loyer);
+                    carreaux.put(nouvellePropriete.getNumero(), nouvellePropriete);
+                }
+                else if (caseType.compareTo("RE") == 0) {
+                    Gare nouvelleGare = new Gare(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
+                    carreaux.put(nouvelleGare.getNumero(), nouvelleGare);
+                }
+                else if (caseType.compareTo("PC") == 0) {
+                    Compagnie nouvelleCompagnie = new Compagnie(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
+                    carreaux.put(nouvelleCompagnie.getNumero(), nouvelleCompagnie);
+                }
+                else if (caseType.compareTo("GP") == 0) {
+                    AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                    carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                }else if (caseType.compareTo("AV") == 0) {
+                    AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                    carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                }else if (caseType.compareTo("AP") == 0) {
+                    AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                    carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                }else if (caseType.compareTo("AN") == 0) {
+                    AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                    carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                }else if (caseType.compareTo("DE") == 0) {
                     AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
                     carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
                 }
