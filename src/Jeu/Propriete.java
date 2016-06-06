@@ -45,6 +45,21 @@ public abstract class Propriete extends Carreau{
     }
     
     @Override
-    public abstract Data.Actions action(Joueur J);
+    public Data.Actions action(Joueur J){
+     if (getProprietaire()==null){
+            if (J.getArgent()<this.getPrix()){
+                return Actions.neRienFaire;
+            }else{
+                return Actions.acheter;
+            }
+        
+        }else if(this.getProprietaire()==J){
+            return Actions.neRienFaire;
+        }else{     
+            this.getProprietaire().gagnerArgent(this.getLoyer(J));
+            J.payer(this.getLoyer(J));
+            return Actions.payerLoyer;    
+        }
+    }
     
 }

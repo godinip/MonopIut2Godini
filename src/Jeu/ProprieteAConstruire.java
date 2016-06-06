@@ -96,23 +96,6 @@ public class ProprieteAConstruire extends Propriete {
         this.coutmaison = coutmaison;
     }
     
-    @Override
-    public Data.Actions action(Joueur J){
-     if (this.getProprietaire()==null){
-            if (J.getArgent()<this.getPrix()){
-                return Actions.neRienFaire;
-            }else{
-                
-                return Actions.acheter;
-            }
-        
-        }else if(this.getProprietaire()==J){
-            return Actions.neRienFaire;
-        }else{         
-            this.getProprietaire().gagnerArgent(this.getLoyer(this.getProprietaire()));
-            J.payer(this.getLoyer(this.getProprietaire()));
-            return Actions.payerLoyer;    
-        }
-    }
+    
 
 }
