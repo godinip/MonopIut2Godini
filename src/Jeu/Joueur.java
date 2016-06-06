@@ -108,8 +108,8 @@ public class Joueur {
         return tourDeJeu;
     }
     
-    public void setTourDeJeu(boolean tdj){
-        setTourDeJeu((Boolean) tdj);
+    public void setTourDeJeu(boolean tourDeJeu){
+        this.tourDeJeu = tourDeJeu;
     }
     
     public void setPerdu(boolean perdu) {
