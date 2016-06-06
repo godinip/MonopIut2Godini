@@ -101,15 +101,15 @@ public class Monopoly {
                     cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
                 }
                 else {
-                    System.err.println("[buildGamePleateau()] : Invalid Data type");
+                    System.err.println("[buildCartesChance()] : Invalid Data type");
 		}
             }
         }
         catch (FileNotFoundException e) {
-            System.err.println("[buildGamePlateau()] : File is not found!");
+            System.err.println("[buildCartesChance()] : File is not found!");
         }
         catch (IOException e) {
-            System.err.println("[buildGamePlateau()] : Error while reading file!");
+            System.err.println("[buildCartesChance()] : Error while reading file!");
         }
     }
     
@@ -138,15 +138,15 @@ public class Monopoly {
                     
                 }
                 else {
-                    System.err.println("[buildGamePleateau()] : Invalid Data type");
+                    System.err.println("[buildCartesCommunaute()] : Invalid Data type");
 		}
             }
         }
         catch (FileNotFoundException e) {
-            System.err.println("[buildGamePlateau()] : File is not found!");
+            System.err.println("[buildCartesCommunaute()] : File is not found!");
         }
         catch (IOException e) {
-            System.err.println("[buildGamePlateau()] : Error while reading file!");
+            System.err.println("[buildCartesCommunaute()] : Error while reading file!");
         }
     }
     
