@@ -5,6 +5,7 @@
  */
 package Ui;
 
+import Jeu.Monopoly;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -28,11 +29,14 @@ import javax.swing.JPanel;
 public class IhmGraph extends JPanel{
     JFrame window;
     JComboBox listJ ;
+    Controleur c;
+    Monopoly m;
     
-    public IhmGraph(JFrame w){
+    public IhmGraph(JFrame w,Controleur c,Monopoly m){
          super();
          window = w;
          displaySelection();
+        
     }
     
     public void displaySelection(){

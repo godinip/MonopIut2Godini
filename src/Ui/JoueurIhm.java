@@ -31,7 +31,6 @@ public class JoueurIhm extends  JPanel{
         window =w;
         
         nbJoueur = nbj;
-        System.out.println(nbj);
         displayJIhm();
         
     }
@@ -85,7 +84,7 @@ public class JoueurIhm extends  JPanel{
                             message = message +", "+s;
                         }
                     }
-                    IhmBoiteMessage.afficherBoiteDialogue("Le(s) pseudo "+message+" sont enregistre plusieur fois\nCorrigé le !", 1);
+                    IhmBoiteMessage.afficherBoiteDialogue("Le(s) pseudo(s) "+message+" sont enregistré(s) plusieurs fois\nCorrigez le !", 1);
                     
                 }else{
                     

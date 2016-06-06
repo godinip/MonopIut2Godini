@@ -20,6 +20,11 @@ public class Controleur {
         this.monopoly = monopoly;
         ihm = new IHM(this);
         initialiserPartie();
+        if(IhmBoiteMessage.afficherBoiteDialogue("Paul est un bg ?", 1)){
+        
+        }else{
+            
+        
         monopoly.setJoueurs(ihm.CreationJoueur());
         while (monopoly.getJoueurs().size() > 1) {
             for (Joueur joueur : monopoly.getJoueurs()) {
@@ -33,6 +38,7 @@ public class Controleur {
             for (Joueur joueur : monopoly.getJoueurs()) {
                IhmBoiteMessage.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
             }
+        }
         }
     }
     
