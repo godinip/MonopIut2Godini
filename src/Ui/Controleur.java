@@ -80,6 +80,7 @@ public class Controleur {
     
     public void initialiserPartie() {
         this.monopoly.CreerPlateau("./src/Data/data.txt");
+        this.monopoly.CreerCartes("./src/Data/Chance", "./src/Data/Communaute");
     }    
     
     public void acheterPropriete(Joueur joueur, Propriete achat) {
