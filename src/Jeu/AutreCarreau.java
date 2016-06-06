@@ -15,8 +15,12 @@ public class AutreCarreau extends Carreau {
     public Data.Actions action(Joueur J){
         if (montant < 0) {
             return Actions.payer;
-        } else {
+        } else if (montant > 0) {
             return Actions.gain;
+        } else if (this.getNumero() == 31) {
+            return Actions.prison;
+        } else {
+            return Actions.neRienFaire;
         }
     }
     
