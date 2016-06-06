@@ -67,7 +67,7 @@ public class IhmGraph extends JPanel{
                 window.setVisible(false);
                 JFrame frame = new JFrame();
                 frame.setTitle("Joueur");
-                frame.setSize(350,200);
+                frame.setSize(350,((listJ.getSelectedIndex()+2)*30)+70);
 
                 JoueurIhm jIhm = new  JoueurIhm(frame,listJ.getSelectedIndex()+2);
                 frame.add(jIhm);
