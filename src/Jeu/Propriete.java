@@ -59,4 +59,5 @@ public abstract class Propriete extends Carreau{
             return Actions.payerLoyer;    
         }
         }
+    
 }

@@ -11,6 +11,7 @@ public class ProprieteAConstruire extends Propriete {
     private Groupe  couleur;
     private int[] loyer;
     private int    maisons;
+    private int coutmaison;
 
     
     public ProprieteAConstruire(int numero,String nm, int prx,Groupe couleur,int[] loyer) {
@@ -60,24 +61,29 @@ public class ProprieteAConstruire extends Propriete {
          }
     }
     
-    
-    @Override
-    public Data.Actions action(Joueur J){
-        if (this.getProprietaire()==null){
-            if (J.getArgent()<this.getPrix()){
-                return Actions.neRienFaire;
-            }else{
-                return Actions.acheter;
-            }
-        
-        }else if(this.getProprietaire()==J){
-            return Actions.neRienFaire;
-        }else{         
-            return Actions.payerLoyer;    
+    public boolean ajouterMaison(){
+        if (couleur.LoyerDouble(super.getProprietaire()) && this.getMaisons()<=4 && this.getCouleur().maisonUniforme(this.getMaisons())){
+            super.getProprietaire().payer(this.getCoutmaison());
+            this.setMaisons(this.getMaisons()+1);
+            return true;
         }
-        
-        
+        return false;
     }
+
+    /**
+     * @return the coutmaison
+     */
+    public int getCoutmaison() {
+        return coutmaison;
+    }
+
+    /**
+     * @param coutmaison the coutmaison to set
+     */
+    public void setCoutmaison(int coutmaison) {
+        this.coutmaison = coutmaison;
+    }
+    
 
 
 }

@@ -49,4 +49,14 @@ public class Groupe {
         return i==this.getProprietesdugroupe().size();
     }
 
+    public boolean maisonUniforme(int nbMaison){
+        for(ProprieteAConstruire propriete : proprietesdugroupe){
+            if(propriete.getMaisons()<nbMaison){
+                return false;
+            }
+            
+        }
+        return true;
+    }
+    
 }
