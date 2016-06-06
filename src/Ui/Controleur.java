@@ -15,8 +15,6 @@ public class Controleur {
     
     private IHM         ihm;
     private Monopoly    monopoly;
-//    private int[] dés = {3,2,2,2,4,1,2,2,5,1,4,2,4,6,5,5,6,6,1,1,3,1,5,5,1,1,1,1,3,2,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5};
-//    private int dé = -1;
     
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
@@ -62,9 +60,9 @@ public class Controleur {
                 joueur.payer(-R);
                 Boolean b = ihm.afficherBoiteDialogue("Vous avez perdu: "+(-R)+"€", 0);
             } else if (a == Actions.carteChance) {
-                
+                //tirer une carte chance et l'exécuter
             }else if (a == Actions.carteCommunaute) {
-                
+                //tirer une carte communaute et l'exécuter
             } else if (a == Actions.neRienFaire) {
                 Boolean b = ihm.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
             }
@@ -116,8 +114,6 @@ public class Controleur {
     }
     
     private int lancerDé() {
-    //    dé = dé + 1;
-    //    return dés[dé];
         return (int) (Math.random()*(6) +1);
     }
     
