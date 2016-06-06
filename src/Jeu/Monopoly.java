@@ -25,12 +25,6 @@ public class Monopoly {
         buildGamePlateau(dataFilename);
     }
     
-    public void CreerCartes(String chance,String communaute) {
-        buildCartesChance(chance);
-        buildCartesCommunaute(communaute);
-                
-    }
-    
     private void buildGamePlateau(String dataFilename) {
         try {
             ArrayList<String[]> data = readDataFile(dataFilename, ",");
@@ -60,6 +54,11 @@ public class Monopoly {
                     carreaux.put(nouvelleCompagnie.getNumero(), nouvelleCompagnie);
                 }
                 else if (caseType.compareTo("AU") == 0) {
+                    if (data.get(i)[2].compareTo("Chance") == 0) {
+                        
+                    } else if (data.get(i)[2].compareTo("Caisse de Communauté") == 0) {
+                        
+                    }
                     AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
                     carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
                 }
@@ -73,80 +72,6 @@ public class Monopoly {
         }
         catch (IOException e) {
             System.err.println("[buildGamePlateau()] : Error while reading file!");
-        }
-    }
-    
-    private void buildCartesChance(String dataFilename) {
-        try {
-            ArrayList<String[]> data = readDataFile(dataFilename, "|");
-            for (int i=0; i<data.size(); ++i) {
-                String caseType = data.get(i)[0];
-                Carte c;
-                if (caseType.compareTo("SP") == 0) {
-                    cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
-                }
-                else if (caseType.compareTo("RE") == 0) {
-                    cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
-                }
-                else if (caseType.compareTo("PC") == 0) {
-                    cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
-                }
-                else if (caseType.compareTo("GP") == 0) {
-                    cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
-                }
-                else if (caseType.compareTo("AV") == 0) {
-                    cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
-                }
-                else if (caseType.compareTo("AP") == 0) {
-                    cartesChance.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
-                }
-                else {
-                    System.err.println("[buildCartesChance()] : Invalid Data type");
-		}
-            }
-        }
-        catch (FileNotFoundException e) {
-            System.err.println("[buildCartesChance()] : File is not found!");
-        }
-        catch (IOException e) {
-            System.err.println("[buildCartesChance()] : Error while reading file!");
-        }
-    }
-    
-    private void buildCartesCommunaute(String dataFilename) {
-        try {
-            ArrayList<String[]> data = readDataFile(dataFilename, "|");
-            for (int i=0; i<data.size(); ++i) {
-                String caseType = data.get(i)[0];
-                Carte c;
-                if (caseType.compareTo("SP") == 0) {
-                    cartesCommunaute.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
-                }
-                else if (caseType.compareTo("GP") == 0) {
-                    cartesCommunaute.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
-                }
-                else if (caseType.compareTo("AN") == 0) {
-                    cartesCommunaute.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
-                }
-                else if (caseType.compareTo("DE") == 0) {
-                    cartesCommunaute.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
-                }
-                else if (caseType.compareTo("AP") == 0) {
-                    cartesCommunaute.add(c = new Carte(data.get(i)[1],data.get(i)[0]));
-                }
-                else if (caseType.compareTo("AV") == 0) {
-                    
-                }
-                else {
-                    System.err.println("[buildCartesCommunaute()] : Invalid Data type");
-		}
-            }
-        }
-        catch (FileNotFoundException e) {
-            System.err.println("[buildCartesCommunaute()] : File is not found!");
-        }
-        catch (IOException e) {
-            System.err.println("[buildCartesCommunaute()] : Error while reading file!");
         }
     }
     

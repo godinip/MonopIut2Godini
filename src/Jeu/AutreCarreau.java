@@ -2,7 +2,7 @@ package Jeu;
 
 import Data.Actions;
 
-public class AutreCarreau extends Carreau {
+public abstract class AutreCarreau extends Carreau {
     
     private int montant;
     
@@ -11,17 +11,6 @@ public class AutreCarreau extends Carreau {
         montant = Montant;
     }
     
-    @Override
-    public Data.Actions action(Joueur J) {
-        if (montant == 0){
-            return Actions.neRienFaire;
-        }else if (montant > 0){
-            return Actions.gain;
-        } else {
-            return Actions.payer;
-        }
-    }
-        
     public int getMontant() {
         return montant;
     }
@@ -29,4 +18,5 @@ public class AutreCarreau extends Carreau {
     public void setMontant(int montant) {
         this.montant = montant;
     }
+    
 }
