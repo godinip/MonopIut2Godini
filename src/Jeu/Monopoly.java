@@ -60,10 +60,12 @@ public class Monopoly {
                     } else if (data.get(i)[2].compareTo("Caisse de Communauté") == 0) {
                         Communaute nouveauCarreau = new Communaute(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
                         carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                    } else {
+                        System.err.println("[buildGamePlateau()] : Invalid Data type");
                     }
                 }
                 else {
-                    System.err.println("[buildGamePleateau()] : Invalid Data type");
+                    System.err.println("[buildGamePlateau()] : Invalid Data type");
 		}
             }
         }

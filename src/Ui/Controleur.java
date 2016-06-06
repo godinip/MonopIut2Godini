@@ -23,7 +23,6 @@ public class Controleur {
         ihm = new IHM(this);
         initialiserPartie();
         monopoly.setJoueurs(ihm.CreationJoueur());
-
         while (monopoly.getJoueurs().size() > 1) {
             for (Joueur joueur : monopoly.getJoueurs()) {
                 joueur.setTourDeJeu(true);
@@ -38,7 +37,6 @@ public class Controleur {
                Boolean b = ihm.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
             }
         }
-    
     }
     
     public void jouerUnCoup(Joueur joueur) {
@@ -63,6 +61,10 @@ public class Controleur {
                 int R = AC.getMontant();
                 joueur.payer(-R);
                 Boolean b = ihm.afficherBoiteDialogue("Vous avez perdu: "+(-R)+"€", 0);
+            } else if (a == Actions.carteChance) {
+                
+            }else if (a == Actions.carteCommunaute) {
+                
             } else if (a == Actions.neRienFaire) {
                 Boolean b = ihm.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
             }
