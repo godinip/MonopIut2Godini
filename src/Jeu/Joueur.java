@@ -17,7 +17,8 @@ public class Joueur {
     private Boolean                             tourDeJeu;
     private Boolean                             perdu = false;
     private int                                 prison = 0;
-    private int                                 sortiedeprison = 0;
+    private int                                 chancePrison = 0;
+    private int                                 communautePrison = 0;
     
     public Joueur(String nomJoueur,Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
@@ -30,15 +31,15 @@ public class Joueur {
     }
     
     public void payer(int prix) {
-        if (argent>=prix) {
-            setArgent(argent-prix);
+        if (getArgent()>=prix) {
+            setArgent(getArgent()-prix);
         } else {
-            perdu = true;
+            setPerdu((Boolean) true);
         }
     }
     
     public void gagnerArgent(int gain) {
-        setArgent(argent+gain);
+        setArgent(getArgent()+gain);
     }
     
     public void setNomJoueur(String nomJoueur) {
@@ -108,18 +109,35 @@ public class Joueur {
     }
     
     public void setTourDeJeu(boolean tdj){
-        tourDeJeu = tdj;
+        setTourDeJeu((Boolean) tdj);
     }
     
     public boolean getPerdu() {
         return perdu;
     }
+    
     public void setPrison(int prison) {
         this.prison = prison;
     }
     
     public int getPrison() {
         return prison;
+    }
+    
+    public int getChancePrison() {
+        return chancePrison;
+    }
+    
+    public void setChancePrison(int chancePrison) {
+        this.chancePrison = chancePrison;
+    }
+    
+    public int getCommunautePrison() {
+        return communautePrison;
+    }
+    
+    public void setCommunautePrison(int communautePrison) {
+        this.communautePrison = communautePrison;
     }
     
 }

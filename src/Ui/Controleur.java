@@ -42,7 +42,7 @@ public class Controleur {
             joueur.setTourDeJeu(false);
             if (joueur.getPrison() > 0) {
                 Boolean b = ihm.afficherBoiteDialogue("Vous êtes en prison", 0);
-                if (joueur.communautePrison)
+                if (joueur.communautePrison = 1)
             }
             Carreau c = lancerDésAvancer(joueur);
             Actions a = c.action(joueur);
