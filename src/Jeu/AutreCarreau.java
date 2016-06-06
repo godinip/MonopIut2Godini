@@ -2,13 +2,21 @@ package Jeu;
 
 import Data.Actions;
 
-public abstract class AutreCarreau extends Carreau {
+public class AutreCarreau extends Carreau {
     
     private int montant;
     
     public AutreCarreau(String nom, int numero, int Montant){
         super(numero,nom);
         montant = Montant;
+    }
+    
+    @Override
+    public Data.Actions action(Joueur J){
+        if (montant == 0) {
+            return Actions.payer;
+        }
+        return null;
     }
     
     public int getMontant() {

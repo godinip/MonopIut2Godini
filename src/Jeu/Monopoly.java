@@ -61,7 +61,7 @@ public class Monopoly {
                         Chance nouveauCarreau = new Chance(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
                         carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
                     } else {
-                        AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
+                        AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
                     }
                 }
             }
