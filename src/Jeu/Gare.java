@@ -16,7 +16,7 @@ public class Gare extends Propriete {
     @Override
     public int getLoyer(Joueur joueur){
         if (joueur.getNbGare()!=0){
-            return (joueur.getNbGare()*25);
+            return (getProprietaire().getNbGare()*25);
         }else{
             return 0;
         }
@@ -34,8 +34,8 @@ public class Gare extends Propriete {
         }else if(this.getProprietaire()==J){
             return Actions.neRienFaire;
         }else{     
-            this.getProprietaire().gagnerArgent(this.getLoyer(this.getProprietaire()));
-            J.payer(this.getLoyer(this.getProprietaire()));
+            this.getProprietaire().gagnerArgent(this.getLoyer(J));
+            J.payer(this.getLoyer(J));
             return Actions.payerLoyer;    
         }
     }
