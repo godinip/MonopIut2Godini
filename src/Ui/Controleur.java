@@ -60,44 +60,77 @@ public class Controleur {
             if (joueur.getPrison() > 0) {
                 IhmBoiteMessage.afficherBoiteDialogue("Vous êtes en prison pour encore "+joueur.getPrison()+" tours", 0);
                 if (joueur.getCommunautePrison()) {
-                   IhmBoiteMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte communauté Sortie de prison?", 1);
+                   if (IhmBoiteMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte communauté Sortie de prison?", 1)) {
+                       joueur.setPrison(0);
+                       joueur.setTourDeJeu(true);
+                       jouerUnCoup(joueur);
+                   }
+                }
+                if (joueur.getChancePrison()) {
+                   if (IhmBoiteMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte chance Sortie de prison?", 1)) {
+                       joueur.setPrison(0);
+                       joueur.setTourDeJeu(true);
+                       jouerUnCoup(joueur);
+                   }
+                }
+                int a,b;
+                if (lancerDé() == lancerDé()) {
+                    IhmBoiteMessage.afficherBoiteDialogue("Vous lancez les dés, faites un double et sortez de prison", 0);
+                    joueur.setPrison(0);
+                    joueur.setTourDeJeu(true);
+                    jouerUnCoup(joueur);
+                } else {
+                    if (joueur.getPrison() == 1) {
+                        joueur.payer(50);
+                        if (joueur.getPerdu() != true) {
+                            IhmBoiteMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et payez 50€ pour sortir de prison", 0);
+                            joueur.setPrison(0);
+                            joueur.setTourDeJeu(true);
+                            jouerUnCoup(joueur);
+                        }
+                    } else {
+                        IhmBoiteMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et restez en prison pour encore "+joueur.getPrison()+" tours", 0);
+                        joueur.setPrison(joueur.getPrison()-1);
+                    }
+                }
+            } else {
+                Carreau c = lancerDésAvancer(joueur);
+                Actions a = c.action(joueur);
+                if (a == Actions.gain) {
+                    AutreCarreau AC = (AutreCarreau) c;
+                    int R = AC.getMontant();
+                    joueur.gagnerArgent(R);
+                    IhmBoiteMessage.afficherBoiteDialogue("Vous avez gagné: "+R+"€", 0);
+                } else if (a == Actions.payerLoyer) {
+                    Propriete P = (Propriete) c;
+                    joueur.payer(P.getLoyer(P.getProprietaire()));
+                    P.getProprietaire().gagnerArgent(P.getLoyer(P.getProprietaire()));
+                    IhmBoiteMessage.afficherBoiteDialogue("le joueur "+joueur.getNomJoueur()+" a payé "+P.getLoyer(P.getProprietaire())+"€ au joueur "+P.getProprietaire().getNomJoueur(), 0);
+                } else if (a == Actions.acheter) {
+                    acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
+                } else if (a == Actions.payer) {
+                    AutreCarreau AC = (AutreCarreau) c;
+                    int R = AC.getMontant();
+                    joueur.payer(-R);
+                    IhmBoiteMessage.afficherBoiteDialogue("Vous avez perdu: "+(-R)+"€", 0);
+                } else if (a == Actions.carteChance) {
+                    //tirer une carte chance et l'exécuter
+                }else if (a == Actions.carteCommunaute) {
+                    //tirer une carte communaute et l'exécuter
+                } else if (a == Actions.prison) {
+                    joueur.setPrison(3);
+                } else if (a == Actions.neRienFaire) {
+                    IhmBoiteMessage.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
+                }
+                if (joueur.getPerdu()) {
+                    LinkedList<Joueur> joueurs = new LinkedList();
+                    joueurs = monopoly.getJoueurs();
+                    joueurs.remove(joueur);
+                    monopoly.setJoueurs(joueurs);
+                    joueur.setTourDeJeu(false);
+                    IhmBoiteMessage.afficherBoiteDialogue(joueur.getNomJoueur()+", vous n'avez plus d'argent et perdez", 0);
                 }
             }
-            Carreau c = lancerDésAvancer(joueur);
-            Actions a = c.action(joueur);
-            if (a == Actions.gain) {
-                AutreCarreau AC = (AutreCarreau) c;
-                int R = AC.getMontant();
-                joueur.gagnerArgent(R);
-                IhmBoiteMessage.afficherBoiteDialogue("Vous avez gagné: "+R+"€", 0);
-            } else if (a == Actions.payerLoyer) {
-                Propriete P = (Propriete) c;
-                joueur.payer(P.getLoyer(P.getProprietaire()));
-                P.getProprietaire().gagnerArgent(P.getLoyer(P.getProprietaire()));
-                IhmBoiteMessage.afficherBoiteDialogue("le joueur "+joueur.getNomJoueur()+" a payé "+P.getLoyer(P.getProprietaire())+"€ au joueur "+P.getProprietaire().getNomJoueur(), 0);
-            } else if (a == Actions.acheter) {
-                acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
-            } else if (a == Actions.payer) {
-                AutreCarreau AC = (AutreCarreau) c;
-                int R = AC.getMontant();
-                joueur.payer(-R);
-                IhmBoiteMessage.afficherBoiteDialogue("Vous avez perdu: "+(-R)+"€", 0);
-            } else if (a == Actions.carteChance) {
-                //tirer une carte chance et l'exécuter
-            }else if (a == Actions.carteCommunaute) {
-                //tirer une carte communaute et l'exécuter
-            } else if (a == Actions.neRienFaire) {
-                IhmBoiteMessage.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
-            }
-            if (joueur.getPerdu()) {
-                LinkedList<Joueur> joueurs = new LinkedList();
-                joueurs = monopoly.getJoueurs();
-                joueurs.remove(joueur);
-                monopoly.setJoueurs(joueurs);
-                joueur.setTourDeJeu(false);
-                IhmBoiteMessage.afficherBoiteDialogue(joueur.getNomJoueur()+", vous n'avez plus d'argent et perdez", 0);
-            }
-            
         }
     }
     

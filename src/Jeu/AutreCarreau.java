@@ -12,15 +12,15 @@ public class AutreCarreau extends Carreau {
     }
     
     @Override
-    public Data.Actions action(Joueur J){
+    public Data.Actions action(Joueur joueur){
         if (montant < 0) {
-            J.payer(-1 * montant);
+            joueur.payer(-montant);
             return Actions.payer;
         } else if (montant > 0) {
-            J.gagnerArgent(montant);
+            joueur.gagnerArgent(montant);
             return Actions.gain;
         } else if (this.getNumero() == 31) {
-            J.setPrison(3);
+            joueur.setPrison(3);
             return Actions.prison;
         } else {
             return Actions.neRienFaire;
