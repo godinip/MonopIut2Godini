@@ -94,16 +94,10 @@ public class ProprieteAConstruire extends Propriete {
         return false;
     }
 
-    /**
-     * @return the coutmaison
-     */
     public int getCoutmaison() {
         return coutmaison;
     }
 
-    /**
-     * @param coutmaison the coutmaison to set
-     */
     public void setCoutmaison(int coutmaison) {
         this.coutmaison = coutmaison;
     }
