@@ -17,8 +17,8 @@ public class Joueur {
     private Boolean                             tourDeJeu;
     private Boolean                             perdu = false;
     private int                                 prison = 0;
-    private int                                 chancePrison = 0;
-    private int                                 communautePrison = 0;
+    private boolean                             chancePrison = false;
+    private boolean                             communautePrison = false;
     
     public Joueur(String nomJoueur,Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
@@ -112,6 +112,10 @@ public class Joueur {
         setTourDeJeu((Boolean) tdj);
     }
     
+    public void setPerdu(boolean perdu) {
+        this.perdu = perdu;
+    }
+    
     public boolean getPerdu() {
         return perdu;
     }
@@ -124,19 +128,19 @@ public class Joueur {
         return prison;
     }
     
-    public int getChancePrison() {
+    public boolean getChancePrison() {
         return chancePrison;
     }
     
-    public void setChancePrison(int chancePrison) {
+    public void setChancePrison(boolean chancePrison) {
         this.chancePrison = chancePrison;
     }
     
-    public int getCommunautePrison() {
+    public boolean getCommunautePrison() {
         return communautePrison;
     }
     
-    public void setCommunautePrison(int communautePrison) {
+    public void setCommunautePrison(boolean communautePrison) {
         this.communautePrison = communautePrison;
     }
     
