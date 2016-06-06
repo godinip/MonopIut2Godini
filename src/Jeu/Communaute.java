@@ -1,12 +1,9 @@
 package Jeu;
 
 public class Communaute extends AutreCarreau {
-    
-    private String message;
 
-    public Communaute(String nom, int numero, int Montant, String message) {
+    public Communaute(String nom, int numero, int Montant) {
         super(nom, numero, Montant);
-        this.message = message;
     }
     
     @Override

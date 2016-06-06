@@ -55,13 +55,13 @@ public class Monopoly {
                 }
                 else if (caseType.compareTo("AU") == 0) {
                     if (data.get(i)[2].compareTo("Chance") == 0) {
-                        Chance nouveauCarreau = new Chance(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]),"");
+                        Chance nouveauCarreau = new Chance(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
                         carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
                     } else if (data.get(i)[2].compareTo("Caisse de Communauté") == 0) {
-                        Chance nouveauCarreau = new Chance(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]),"");
+                        Chance nouveauCarreau = new Chance(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
                         carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
                     } else {
-                        System.err.println("[buildGamePlateau()] : Invalid Data type");
+                        AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
                     }
                 }
             }

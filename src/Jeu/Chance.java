@@ -1,12 +1,9 @@
 package Jeu;
 
 public class Chance extends AutreCarreau {
-    
-    private String message;
 
-    public Chance(int numero, String nom, int Montant, String message) {
+    public Chance(int numero, String nom, int Montant) {
         super(nom, numero, Montant);
-        this.message = message;
     }
     
     @Override
