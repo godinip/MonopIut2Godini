@@ -80,7 +80,7 @@ public class ProprieteAConstruire extends Propriete {
     
     public boolean ajouterHotel(){
         if (this.getCouleur().maisonUniformePlus(this.getMaisons()) && this.getMaisons()==4){
-            this.setMaisons(this.getMaisons()+1);
+            this.setMaisons(5);
             return true;
         }
         return false;
