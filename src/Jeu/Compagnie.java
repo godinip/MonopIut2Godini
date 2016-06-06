@@ -8,8 +8,6 @@ public class Compagnie extends Propriete {
         super(numero, nom, prix);
     }
     
-
-    
     public int getLoyer(Joueur joueur) {
         if (this.getProprietaire().getNbCompagnie()==1){
             return 4*joueur.getDernierLancé();
