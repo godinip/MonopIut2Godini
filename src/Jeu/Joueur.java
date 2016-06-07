@@ -171,7 +171,7 @@ public class Joueur {
         return tot;
     }
     
-    public int getNbHotel(){
+    public int getNbHotels(){
         int tot = 0;
         for (ProprieteAConstruire p : proprietes){
             if(p.getMaisons() == 5){
