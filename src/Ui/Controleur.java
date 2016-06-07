@@ -23,35 +23,32 @@ public class Controleur {
         ihm = new IHM(this);
         initialiserPartie();
         if(!IhmBoiteMessage.afficherBoiteDialogue("ihm?", 1)){
-        monopoly.setJoueurs(ihm.CreationJoueur());
+            monopoly.setJoueurs(ihm.CreationJoueur());
         }else{
-        JFrame frame = new JFrame();
-        frame.setTitle("Monopoly");
-        frame.setSize(350,200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        IhmGraph graph = new IhmGraph(frame,this,monopoly);
-        frame.add(graph);
-        frame.setVisible(true); 
+            JFrame frame = new JFrame();
+            frame.setTitle("Monopoly");
+            frame.setSize(350,200);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            IhmGraph graph = new IhmGraph(frame,this,monopoly);
+            frame.add(graph);
+            frame.setVisible(true); 
         }
-        
-        
         while(!ok){
             System.out.print("  ");
-        while (monopoly.getJoueurs().size() > 1) {
-            for (Joueur joueur : monopoly.getJoueurs()) {
-                joueur.setTourDeJeu(true);
-                ihm.afficher("\nAu tour de " + joueur.getNomJoueur() + " de jouer");
-                ihm.messageEtatJouer(joueur);
-                jouerUnCoup(joueur);
-            
-        }
-        if (monopoly.getJoueurs().size() == 1) {
-            for (Joueur joueur : monopoly.getJoueurs()) {
-               IhmBoiteMessage.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
+            while (monopoly.getJoueurs().size() > 1) {
+                for (Joueur joueur : monopoly.getJoueurs()) {
+                    joueur.setTourDeJeu(true);
+                    ihm.afficher("\nAu tour de " + joueur.getNomJoueur() + " de jouer");
+                    ihm.messageEtatJouer(joueur);
+                    jouerUnCoup(joueur);
+                }
+                if (monopoly.getJoueurs().size() == 1) {
+                    for (Joueur joueur : monopoly.getJoueurs()) {
+                       IhmBoiteMessage.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
+                    }
+                }
             }
         }
-        }}
-        
     }
     
     public void jouerUnCoup(Joueur joueur) {
@@ -114,9 +111,9 @@ public class Controleur {
                     joueur.payer(-R);
                     IhmBoiteMessage.afficherBoiteDialogue("Vous avez perdu: "+(-R)+"€", 0);
                 } else if (a == Actions.carteChance) {
-                    //tirer une carte chance et l'exécuter
+                    
                 }else if (a == Actions.carteCommunaute) {
-                    //tirer une carte communaute et l'exécuter
+                    
                 } else if (a == Actions.prison) {
                     joueur.setPrison(3);
                 } else if (a == Actions.neRienFaire) {

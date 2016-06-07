@@ -14,8 +14,8 @@ public class Monopoly {
     private LinkedList<Joueur> joueurs = new LinkedList<>();
     private int nbMaisons = 32;
     private int nbHotels = 12;
-    private ArrayList<AutreCarreau> cartesChance = new ArrayList();
-    private ArrayList<AutreCarreau> cartesCommunaute = new ArrayList();
+    private ArrayList<Carte> cartesChance = new ArrayList();
+    private ArrayList<Carte> cartesCommunaute = new ArrayList();
     
     
     public Monopoly() {
@@ -70,6 +70,32 @@ public class Monopoly {
                     }
                 }
             }
+        }
+        catch (FileNotFoundException e) {
+            System.err.println("[buildGamePlateau()] : File is not found!");
+        }
+        catch (IOException e) {
+            System.err.println("[buildGamePlateau()] : Error while reading file!");
+        }
+    }
+    
+    private void buildCartesChance() {
+        try {
+            ArrayList<String[]> data = readDataFile("./src/Data/Chance.txt", "|");
+            
+        }
+        catch (FileNotFoundException e) {
+            System.err.println("[buildGamePlateau()] : File is not found!");
+        }
+        catch (IOException e) {
+            System.err.println("[buildGamePlateau()] : Error while reading file!");
+        }
+    }
+    
+    private void buildCartesCommunaute() {
+        try {
+            ArrayList<String[]> data = readDataFile("./src/Data/Communaute.txt", "|");
+            
         }
         catch (FileNotFoundException e) {
             System.err.println("[buildGamePlateau()] : File is not found!");
