@@ -189,9 +189,5 @@ public class Controleur {
             ihm.afficherBoiteDialogue("Il est imposible de construire un hotel sur " + p.getNom(), 0);
         }
     }
-    
-    public void suppJoueur(){
-        
-    }
             
 }
