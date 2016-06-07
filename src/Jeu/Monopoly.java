@@ -1,5 +1,6 @@
 package Jeu;
 
+import Data.ActionsCarte;
 import Data.CouleurPropriete;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -90,7 +91,7 @@ public class Monopoly {
                     
                 }
                 else if (ActionCarteType.compareTo("G") == 0) {
-                    Carte nouvelleCarte = new Carte(data.get(i)[0]);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.valueOf(data.get(i)[0]));
                 }
                 else if (ActionCarteType.compareTo("C") == 0) {
                     
