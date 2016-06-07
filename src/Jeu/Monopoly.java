@@ -88,7 +88,6 @@ public class Monopoly {
                         ActionCarteType = ActionCarteType+data.get(i)[j];
                     }
                 }
-                System.out.println(ActionCarteType+" et son texte est ");
                 if (ActionCarteType.compareTo("SP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],0,0);
                     cartesChance.add(nouvelleCarte);
@@ -129,7 +128,6 @@ public class Monopoly {
                         ActionCarteType = ActionCarteType+data.get(i)[j];
                     }
                 }
-                System.out.println(ActionCarteType);
                 if (ActionCarteType.compareTo("SP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],0,0);
                     cartesChance.add(nouvelleCarte);
