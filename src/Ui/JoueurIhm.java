@@ -27,41 +27,47 @@ import javax.swing.JTextField;
 public class JoueurIhm extends  JFrame{
     private JFrame window;
     private int nbJoueur;
+    private  JButton play,exit;
     private ArrayList<JTextField> nomJList = new ArrayList<>();
-   Controleur controleur;
-    Monopoly monopoly;
-    
-    public JoueurIhm(int nbj,Controleur c,Monopoly m){
-        super();
-        window =w;
-        monopoly = m;
+    private Controleur controleur;
+    private JPanel cadrePanel;
+    private JPanel affichage,panelBouton;
+    public JoueurIhm(int nbj,Controleur c){
+        super("Joueurs");
         controleur = c;
         nbJoueur = nbj;
         displayJIhm();
+        initUiLIsten();
         
     }
     public  void displayJIhm(){
         
-        JButton play,exit;
-        JPanel affichage = new JPanel();
+       
+        affichage = new JPanel();
         affichage.setLayout(new BoxLayout(affichage, BoxLayout.PAGE_AXIS));
         
-        this.add(affichage,BorderLayout.CENTER);
          for (int i = 1; i < nbJoueur+1; i++) {
-           JPanel panelNom = new JPanel();
-                  affichage.add(panelNom);
-                 panelNom.add(new JLabel("Joueur "+i+" :"));
-                 JTextField champNom = new JTextField(20);
-                 champNom.setText("Test "+ i);
-                 panelNom.add(champNom);
-                 nomJList.add(champNom);
-          
+             JPanel panelNom = new JPanel();
+             affichage.add(panelNom);
+             panelNom.add(new JLabel("Joueur "+i+" :"));
+             JTextField champNom = new JTextField(20);
+             champNom.setText("Test "+ i);
+             panelNom.add(champNom);
+             nomJList.add(champNom);
         }
-         JPanel panelBouton = new JPanel();
-         this.add(panelBouton,BorderLayout.SOUTH);
+         
+        panelBouton = new JPanel();
         panelBouton.add(play = new  JButton("Jouer !"),BorderLayout.CENTER);
         panelBouton.add(exit = new  JButton("Quitter"),BorderLayout.CENTER);
         
+        cadrePanel = new JPanel();
+        cadrePanel.add(affichage,BorderLayout.CENTER);
+        cadrePanel.add(panelBouton,BorderLayout.SOUTH);
+        
+        add(cadrePanel);
+        
+    }
+    private void initUiLIsten(){
         play.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -97,9 +103,7 @@ public class JoueurIhm extends  JFrame{
                                     message = message +", "+s;
                                 }
                             }
-
                             IhmBoiteMessage.afficherBoiteDialogue("Le(s) pseudo(s) "+message+" sont enregistré(s) plusieurs fois\nCorrigez le !", 0);
-                    
                 }else{
                     LinkedList<Joueur> joueurs = new LinkedList<>();
                     int desMax = 0;
@@ -107,13 +111,9 @@ public class JoueurIhm extends  JFrame{
                         for (String string : nomJoueur) {
                           Joueur j = new Joueur(string,controleur.getCarreau(1));
                          joueurs.addLast(j);
-                         
                         }
-                        monopoly.setJoueurs(joueurs);
                         controleur.setOk(true);
                 }
-                
- 
             }
         });
         exit.addActionListener(new ActionListener() {
@@ -122,10 +122,11 @@ public class JoueurIhm extends  JFrame{
                 System.exit(0);
             }
         });
-        
     }
     public void affiche(){
-        setSize(350,((controleur.getnbJoueur)*30)+70);
+        setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        setSize(350,((controleur.getNbJoueur())*30)+70);
+        setVisible(true);
     }
     
 }

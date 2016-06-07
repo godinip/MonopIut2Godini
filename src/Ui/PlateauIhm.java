@@ -5,10 +5,12 @@
  */
 package Ui;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author godinip
  */
-public class PlateauIhm extends J{
+public class PlateauIhm extends JFrame{
     
 }
