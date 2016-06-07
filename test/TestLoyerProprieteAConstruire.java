@@ -17,7 +17,9 @@ public class TestLoyerProprieteAConstruire {
     public static void main(String[] args) throws IOException {
         Carreau c1 = new AutreCarreau("c1",1,0);   
         int[] loyer = new int[]{60,65,70,75,80};
+        
         Groupe g1 = new Groupe(CouleurPropriete.rouge);
+        
         Joueur j1 = new Joueur("j1",c1);
         Joueur j2 = new Joueur("j2",c1);
         
