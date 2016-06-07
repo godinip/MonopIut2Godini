@@ -159,4 +159,26 @@ public class Joueur {
         proprietes.clear();
     }
     
+    public int getNbMaisons(){
+        int temp;
+        int tot = 0;
+        for (ProprieteAConstruire p : proprietes){
+            temp = p.getMaisons();
+            if(temp < 5){
+                tot = tot + temp;
+            }
+        }
+        return tot;
+    }
+    
+    public int getNbHotel(){
+        int tot = 0;
+        for (ProprieteAConstruire p : proprietes){
+            if(p.getMaisons() == 5){
+                tot = tot + 1;
+            }
+        }
+        return tot;
+    }
+    
 }
