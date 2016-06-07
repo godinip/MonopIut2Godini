@@ -74,12 +74,16 @@ public class IhmGraph extends JFrame{
         
          
     }
+    
     private void initUiLIsten(){
         play.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setNbJoueur(listJ.getSelectedIndex()+2);
                 controleur.setEtat(1);
+                setVisible(false);
+                controleur.etatPartie();
+                
             }
         });
         exit.addActionListener(new ActionListener() {
@@ -94,7 +98,9 @@ public class IhmGraph extends JFrame{
         setSize(350,200);
         setVisible(true);   
     }
-
+    public void setVisibles(boolean etat){
+        setVisibles(etat);
+    }
     public int getNbJoueur() {
         return nbJoueur;
     }

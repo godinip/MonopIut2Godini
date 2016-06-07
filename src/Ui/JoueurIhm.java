@@ -32,6 +32,7 @@ public class JoueurIhm extends  JFrame{
     private Controleur controleur;
     private JPanel cadrePanel;
     private JPanel affichage,panelBouton;
+    private LinkedList<Joueur> joueurs = new LinkedList<>();
     public JoueurIhm(int nbj,Controleur c){
         super("Joueurs");
         controleur = c;
@@ -102,14 +103,16 @@ public class JoueurIhm extends  JFrame{
                             }
                             IhmBoiteMessage.afficherBoiteDialogue("Le(s) pseudo(s) "+message+" sont enregistré(s) plusieurs fois\nCorrigez le !", 0);
                 }else{
-                    LinkedList<Joueur> joueurs = new LinkedList<>();
+                    
                     int desMax = 0;
                     int des = 0;
                         for (String string : nomJoueur) {
                           Joueur j = new Joueur(string,controleur.getCarreau(1));
-                         joueurs.addLast(j);
+                         getJoueurs().addLast(j);
                         }
                         controleur.setEtat(2);
+                        setVisible(false);
+                        controleur.etatPartie();
                         
                 }
             }
@@ -122,9 +125,19 @@ public class JoueurIhm extends  JFrame{
         });
     }
     public void affiche(){
+       
         setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         setSize(350,((controleur.getNbJoueur())*30)+70);
         setVisible(true);
+        
+    }
+
+    public LinkedList<Joueur> getJoueurs() {
+        return joueurs;
+    }
+
+    public void setJoueurs(LinkedList<Joueur> joueurs) {
+        this.joueurs = joueurs;
     }
     
 }
