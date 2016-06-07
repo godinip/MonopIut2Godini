@@ -127,24 +127,22 @@ public class Monopoly {
                 if (ActionCarteType.compareTo("SP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.SP,data.get(i)[0],0,0);
                     cartesChance.add(nouvelleCarte);
-                }
-                else if (ActionCarteType.compareTo("GP") == 0) {
+                } else if (ActionCarteType.compareTo("GP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.GP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                }
-                else if (ActionCarteType.compareTo("AN") == 0) {
+                } else if (ActionCarteType.compareTo("AN") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.AN,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                }else if (ActionCarteType.compareTo("DE") == 0) {
+                } else if (ActionCarteType.compareTo("DE") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.DE,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                }else if (ActionCarteType.compareTo("AP") == 0) {
+                } else if (ActionCarteType.compareTo("AP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.AP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                }else if (ActionCarteType.compareTo("AV") == 0) {
+                } else if (ActionCarteType.compareTo("AV") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.AV,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                }else {
+                } else {
                     System.err.println("[buildGamePlateau()] : unknown action at "+i);
                 }
             }
