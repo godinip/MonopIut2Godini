@@ -2,7 +2,7 @@ SP|Vous êtes libéré de prison. Cette carte peut être conservée jusqu'à ce 
 RE|Reculez de trois cases|-3
 MH|Vous êtes imposé pour les réparations de voirie à raison de : 40€ par maison et 115€ par hôtel|40|115
 GP|Amende pour ivresse : 20€|-20
-MH|Faites des réparations dans toutes vos maisons : versez pour chaque maison 25€ et pour chaque hôtel 100€|25|100
+MH|Faites des réparations dans toutes vos maisons : versez pour chaque maison 25€ et pour chaque hôtel 100|25|100
 AV|Avancez jusqu'à la case départ|0
 AP|Allez en prison. Avancez tout droit en prison. Ne passez pas par la case Départ. Ne recevez pas 200€
 AV|Rendez-vous à l'avenue Henri-Martin. Si vous passez par la case Départ, recevez 200€|24

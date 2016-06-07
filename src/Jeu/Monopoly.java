@@ -1,11 +1,7 @@
 package Jeu;
 
-import Data.ActionsCarte;
-import Data.CouleurPropriete;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import Data.*;
+import java.io.*;
 import java.util.*;
 
 public class Monopoly {
@@ -127,19 +123,19 @@ public class Monopoly {
                 if (ActionCarteType.compareTo("SP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.SP,data.get(i)[0],0,0);
                     cartesChance.add(nouvelleCarte);
-                } else if (ActionCarteType.compareTo("GP") == 0) {
+                } else if (ActionCarteType.compareTo("RE") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.GP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                } else if (ActionCarteType.compareTo("AN") == 0) {
+                } else if (ActionCarteType.compareTo("MH") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.AN,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                } else if (ActionCarteType.compareTo("DE") == 0) {
+                } else if (ActionCarteType.compareTo("GP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.DE,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                } else if (ActionCarteType.compareTo("AP") == 0) {
+                } else if (ActionCarteType.compareTo("AV") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.AP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                } else if (ActionCarteType.compareTo("AV") == 0) {
+                } else if (ActionCarteType.compareTo("AP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.AV,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 } else {
