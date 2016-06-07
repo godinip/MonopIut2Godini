@@ -19,21 +19,15 @@ public class Controleur {
     private Monopoly    monopoly;
     private boolean ok = false;
     private IhmGraph ihmGraph;
-    
+    private JoueurIhm joueurIhm;
+    private int etat = 0;
     public Controleur(Monopoly monopoly){
+        
         this.monopoly = monopoly;
         ihm = new IHM(this);
         initialiserPartie();
-        if(!IhmBoiteMessage.afficherBoiteDialogue("ihm?", 1)){
-            monopoly.setJoueurs(ihm.CreationJoueur());
-        }else{
-            ihmGraph = new IhmGraph(this);
-            ihmGraph.affiche();
-        }
-        while(!ok){
-            System.out.print(" ");
-            tourdejeu();
-        }
+        
+        etatPartie();
     }
     
     public void tourdejeu() {
@@ -234,6 +228,41 @@ public class Controleur {
     }
     public  int getNbJoueur(){
         return ihmGraph.getNbJoueur();
+    }
+    public  void etatPartie(){
+        
+        switch(etat){
+            case 0:
+                 if(!IhmBoiteMessage.afficherBoiteDialogue("ihm?", 1)){
+                       monopoly.setJoueurs(ihm.CreationJoueur());
+                       setEtat(2);
+                }else{
+                    ihmGraph = new IhmGraph(this);
+                    ihmGraph.affiche();
+                }
+                break;
+            case 1:
+                    joueurIhm = new JoueurIhm(getNbJoueur(), this);
+                    joueurIhm.affiche();
+                break;
+            case 2:
+                    tourdejeu();
+                break;
+            case 3:
+                
+                break;
+            default:
+                
+                break;
+        }
+    }
+
+    public int getEtat() {
+        return etat;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
     }
     
 }

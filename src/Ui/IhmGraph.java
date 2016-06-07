@@ -79,6 +79,7 @@ public class IhmGraph extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 setNbJoueur(listJ.getSelectedIndex()+2);
+                controleur.setEtat(1);
             }
         });
         exit.addActionListener(new ActionListener() {

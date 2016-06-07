@@ -38,7 +38,6 @@ public class JoueurIhm extends  JFrame{
         nbJoueur = nbj;
         displayJIhm();
         initUiLIsten();
-        
     }
     public  void displayJIhm(){
         
@@ -88,11 +87,9 @@ public class JoueurIhm extends  JFrame{
                                                             erreur = false;
                                                             erreurNom.add(jt1.getText());
                                                     }
-                                            }
-                                            
+                                            }  
                                     }
                         }
-                    
                 }
                 if(!erreur){
                             String message = null;
@@ -112,7 +109,8 @@ public class JoueurIhm extends  JFrame{
                           Joueur j = new Joueur(string,controleur.getCarreau(1));
                          joueurs.addLast(j);
                         }
-                        controleur.setOk(true);
+                        controleur.setEtat(2);
+                        
                 }
             }
         });
