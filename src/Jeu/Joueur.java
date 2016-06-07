@@ -144,21 +144,6 @@ public class Joueur {
         this.communautePrison = communautePrison;
     }
     
-    public void clean(){
-        for(Compagnie c : compagnies){
-            c.clean();
-        }
-        compagnies.clear();
-        for (Gare g : gares){
-            g.clean();
-        }
-        gares.clear();
-        for (ProprieteAConstruire p : proprietes){
-            p.clean();
-        }
-        proprietes.clear();
-    }
-    
     public int getNbMaisons(){
         int temp;
         int tot = 0;
