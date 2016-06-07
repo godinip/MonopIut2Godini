@@ -1,5 +1,6 @@
 package Jeu;
 
+import Data.ActionsCarte;
 import Data.CouleurPropriete;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -86,25 +87,28 @@ public class Monopoly {
             ArrayList<String[]> data = readDataFile("./src/Data/Chance.txt", "|");
             for (int i=0; i<data.size(); ++i) {
                 String ActionCarteType = data.get(i)[0];
-                if (ActionCarteType.compareTo("AP") == 0) {
-                    
+                if (ActionCarteType.compareTo("SP") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.SP,0,0);
+                    cartesChance.add(nouvelleCarte);
                 }
-                else if (ActionCarteType.compareTo("G") == 0) {
-                    Carte nouvelleCarte = new Carte(data.get(i)[0]);
+                else if (ActionCarteType.compareTo("RE") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.RE,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
                 }
-                else if (ActionCarteType.compareTo("C") == 0) {
-                    
-                }else if (ActionCarteType.compareTo("C") == 0) {
-                    
-                }else if (ActionCarteType.compareTo("C") == 0) {
-                    
-                }else if (ActionCarteType.compareTo("C") == 0) {
-                    
-                }else if (ActionCarteType.compareTo("C") == 0) {
-                    
-                }
-                else if (ActionCarteType.compareTo("AU") == 0) {
-                    
+                else if (ActionCarteType.compareTo("MH") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.MH,Integer.parseInt(data.get(i)[2]),Integer.parseInt(data.get(i)[3]));
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("GP") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.GP,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("AV") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AV,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("AP") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AP,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }else {
+                    System.err.println("[buildGamePlateau()] : unknown action");
                 }
             }
         }
@@ -119,7 +123,30 @@ public class Monopoly {
     private void buildCartesCommunaute() {
         try {
             ArrayList<String[]> data = readDataFile("./src/Data/Communaute.txt", "|");
-            
+            for (int i=0; i<data.size(); ++i) {
+                String ActionCarteType = data.get(i)[0];
+                if (ActionCarteType.compareTo("SP") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.SP,);
+                    cartesChance.add(nouvelleCarte);
+                }
+                else if (ActionCarteType.compareTo("GP") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.GP,);
+                    cartesChance.add(nouvelleCarte);
+                }
+                else if (ActionCarteType.compareTo("AN") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AN,);
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("DE") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.DE,);
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("AP") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AP,);
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("AV") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AV,);
+                    cartesChance.add(nouvelleCarte);
+                }
+            }
         }
         catch (FileNotFoundException e) {
             System.err.println("[buildGamePlateau()] : File is not found!");

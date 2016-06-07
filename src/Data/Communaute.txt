@@ -1,6 +1,6 @@
 SP|Vous êtes libéré de prison. Cette carte peut être conservée jusqu'à ce qu'elle soit utilisée.
 GP|Payez une amende de 10€|-10
-AN|C'est votre anniversaire. Chaque joueur doit vous donner 10|10
+AN|C'est votre anniversaire. Chaque joueur doit vous donner 10€|10
 GP|20|Erreur de la banque en votre faveur. Recevez 200€|200
 DE|Retournez à Belleville|2
 GP|50|Payez la note du médecin : 50€|-50
