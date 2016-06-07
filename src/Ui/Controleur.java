@@ -176,5 +176,10 @@ public class Controleur {
     public void setOk(boolean ok) {
         this.ok = ok;
     }
-        
+    public void achatMaison(ProprieteAConstruire p){
+        if (p.ajouterMaison()){
+            ihm.afficherBoiteDialogue("Une maison a bel et bien été construite sur " + p.getNom(), 0);
+        } else { ihm.afficherBoiteDialogue("Il est impossible de construire sur maison sur " + p.getNom(), 0);}
+    }    
+            
 }
