@@ -8,10 +8,10 @@ public class Carte {
     private int x = 0;
     private int y = 0;
     
-    public Carte(String texte, int numero, Data.ActionsCarte action, int x, int y) {
-        this.texte = texte;
+    public Carte(int numero, Data.ActionsCarte action, String texte, int x, int y) {
         this.numero = numero;
         this.action = action;
+        this.texte = texte;
         this.x = x;
         this.y = y;
     }
