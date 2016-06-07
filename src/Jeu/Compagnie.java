@@ -10,7 +10,7 @@ public class Compagnie extends Propriete {
     
     @Override
     public int getLoyer(Joueur joueur) {
-        if (this.getProprietaire().getNbCompagnie()==1){
+        if (super.getProprietaire().getNbCompagnie()==1){
             return 4*joueur.getDernierLancé();
         }else{
             return 10*joueur.getDernierLancé();

@@ -50,7 +50,7 @@ public class Groupe {
     }
 
     public boolean maisonUniformePlus(int nbMaison){
-        for(ProprieteAConstruire propriete : proprietesdugroupe){
+        for(ProprieteAConstruire propriete : this.getProprietesdugroupe()){
             if(propriete.getMaisons()<nbMaison){
                 return false;
             }
@@ -59,7 +59,7 @@ public class Groupe {
         return true;
     }
     public boolean maisonUniformeMoins(int nbMaison){
-        for(ProprieteAConstruire propriete : proprietesdugroupe){
+        for(ProprieteAConstruire propriete : this.getProprietesdugroupe()){
             if(propriete.getMaisons()>nbMaison){
                 return false;
             }
