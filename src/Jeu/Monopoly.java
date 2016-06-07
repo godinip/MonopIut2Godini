@@ -82,27 +82,31 @@ public class Monopoly {
         try {
             ArrayList<String[]> data = readDataFile("./src/Data/Chance.txt", "|");
             for (int i=0; i<data.size(); ++i) {
-                String ActionCarteType = data.get(i)[0];
+                String ActionCarteType = new String();
+                for (int j=0;j<data.get(i).length;j++) {
+                    if ((data.get(i)[j]) != "|") {
+                        ActionCarteType = ActionCarteType+data.get(i)[j];
+                    }
+                }
+                System.out.println(ActionCarteType+" et son texte est ");
                 if (ActionCarteType.compareTo("SP") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.SP,data.get(i)[0],0,0);
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],0,0);
                     cartesChance.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("RE") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.RE,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("MH") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.MH,data.get(i)[0],Integer.parseInt(data.get(i)[2]),Integer.parseInt(data.get(i)[3]));
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],Integer.parseInt(data.get(i)[2]),Integer.parseInt(data.get(i)[3]));
                     cartesChance.add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("GP") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.GP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AV") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.AV,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AP") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.AP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                }else {
-                    System.err.println("[buildGamePlateau()] : unknown action at "+i);
                 }
             }
             Collections.shuffle(cartesChance);
@@ -118,28 +122,32 @@ public class Monopoly {
     private void buildCartesCommunaute() {
         try {
             ArrayList<String[]> data = readDataFile("./src/Data/Communaute.txt", "|");
-            for (int i=0; i<data.size(); ++i) {
-                String ActionCarteType = data.get(i)[0];
+            for (int i=1; i<data.size(); ++i) {
+                String ActionCarteType = new String();
+                for (int j=0;j<data.get(i).length;j++) {
+                    if ((data.get(i)[j]) != "|") {
+                        ActionCarteType = ActionCarteType+data.get(i)[j];
+                    }
+                }
+                System.out.println(ActionCarteType);
                 if (ActionCarteType.compareTo("SP") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.SP,data.get(i)[0],0,0);
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],0,0);
                     cartesChance.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("RE") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.GP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("MH") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.AN,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("GP") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.DE,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("AV") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.AP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("AP") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.AV,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                } else {
-                    System.err.println("[buildGamePlateau()] : unknown action at "+i);
                 }
             }
             Collections.shuffle(cartesCommunaute);
