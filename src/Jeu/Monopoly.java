@@ -252,6 +252,8 @@ public class Monopoly {
         rendreMaisons(m);
         rendreHotels(h);
         
+        joueurs.remove(j);
+        
     }
     
 }
