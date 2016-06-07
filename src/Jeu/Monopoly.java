@@ -109,7 +109,7 @@ public class Monopoly {
                     System.err.println("[buildGamePlateau()] : unknown action at "+i);
                 }
             }
-            Collections.shuffle(getCartesChance());
+            Collections.shuffle(cartesChance);
         }
         catch (FileNotFoundException e) {
             System.err.println("[buildGamePlateau()] : File is not found!");
@@ -148,7 +148,7 @@ public class Monopoly {
                     System.err.println("[buildGamePlateau()] : unknown action at "+i);
                 }
             }
-            Collections.shuffle(getCartesCommunaute());
+            Collections.shuffle(cartesCommunaute);
         }
         catch (FileNotFoundException e) {
             System.err.println("[buildGamePlateau()] : File is not found!");
