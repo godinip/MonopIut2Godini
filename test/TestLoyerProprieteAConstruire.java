@@ -29,14 +29,16 @@ public class TestLoyerProprieteAConstruire {
  
         
         p1.achatPropriete(j1);
-        p2.achatPropriete(j1);      
-        p3.achatPropriete(j1);       
+        p2.achatPropriete(j1);       
+        p3.achatPropriete(j1);
         
         System.out.println("Loyer: "+p1.getLoyer(j2));        
         System.out.println("Loyer: "+p2.getLoyer(j2));            
         System.out.println("Loyer: "+p3.getLoyer(j2));  
         
         p4.achatPropriete(j1);
+              
+
         
         System.out.println("Loyer: "+p1.getLoyer(j2));        
         System.out.println("Loyer: "+p2.getLoyer(j2));            
