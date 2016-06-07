@@ -144,19 +144,26 @@ public class Joueur {
         this.communautePrison = communautePrison;
     }
     
-    public void clean(){
-        for(Compagnie c : compagnies){
-            c.setProprietaire(null);
-        }
-        compagnies.clear();
-        for (Gare g : gares){
-            g.setProprietaire(null);
-        }
-        gares.clear();
+    public int getNbMaisons(){
+        int temp;
+        int tot = 0;
         for (ProprieteAConstruire p : proprietes){
-            p.setProprietaire(null);
+            temp = p.getMaisons();
+            if(temp < 5){
+                tot = tot + temp;
+            }
         }
-        proprietes.clear();
+        return tot;
+    }
+    
+    public int getNbHotels(){
+        int tot = 0;
+        for (ProprieteAConstruire p : proprietes){
+            if(p.getMaisons() == 5){
+                tot = tot + 1;
+            }
+        }
+        return tot;
     }
     
 }

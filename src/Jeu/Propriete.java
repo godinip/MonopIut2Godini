@@ -62,4 +62,8 @@ public abstract class Propriete extends Carreau{
         }
     }
     
+    public void clean(){
+        proprietaire = null;
+    }
+    
 }
