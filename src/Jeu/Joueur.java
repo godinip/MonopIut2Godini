@@ -144,4 +144,19 @@ public class Joueur {
         this.communautePrison = communautePrison;
     }
     
+    public void clean(){
+        for(Compagnie c : compagnies){
+            c.setProprietaire(null);
+        }
+        compagnies.clear();
+        for (Gare g : gares){
+            g.setProprietaire(null);
+        }
+        gares.clear();
+        for (ProprieteAConstruire p : proprietes){
+            p.setProprietaire(null);
+        }
+        proprietes.clear();
+    }
+    
 }

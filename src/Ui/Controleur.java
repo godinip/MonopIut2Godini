@@ -1,6 +1,7 @@
 package Ui;
 // Idee on va faire un switch qui selon le nombre affiche ou masque un truc selon les listner 
 import Data.Actions;
+import Data.ActionsCarte;
 import Jeu.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -106,16 +107,50 @@ public class Controleur {
                     IhmBoiteMessage.afficherBoiteDialogue("Vous avez perdu: "+(-R)+"€", 0);
                 } else if (a == Actions.carteChance) {
                     IhmBoiteMessage.afficherBoiteDialogue("Vous tirez une carte Chance", 0);
-                    Carte Communaute = monopoly.getCarteChance();
-                    
-                    monopoly.addCarteChance(Communaute);
-                    
+                    Carte communaute = monopoly.getCarteChance();
+                    ActionsCarte actionCarte = communaute.getAction();
+                    if (actionCarte == ActionsCarte.SP) {
+                        IhmBoiteMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                        
+                    } else if (actionCarte == ActionsCarte.RE) {
+                        IhmBoiteMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                        
+                    } else if (actionCarte == ActionsCarte.MH) {
+                        IhmBoiteMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                        
+                    } else if (actionCarte == ActionsCarte.GP) {
+                        IhmBoiteMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                        
+                    } else if (actionCarte == ActionsCarte.AV) {
+                        IhmBoiteMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                        
+                    } else if (actionCarte == ActionsCarte.AP) {
+                        IhmBoiteMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                        
+                    }
                 }else if (a == Actions.carteCommunaute) {
                     IhmBoiteMessage.afficherBoiteDialogue("Vous tirez une carte Caisse de Communanuté", 0);
-                    Carte Chance = monopoly.getCarteCommunaute();
-                    
-                    monopoly.addCarteCommunaute(Chance);
-                    
+                    Carte chance = monopoly.getCarteCommunaute();
+                    ActionsCarte actionCarte = chance.getAction();
+                    if (chance.getAction() == ActionsCarte.SP) {
+                        IhmBoiteMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                        
+                    } else if (chance.getAction() == ActionsCarte.GP) {
+                        IhmBoiteMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                        
+                    } else if (chance.getAction() == ActionsCarte.AN) {
+                        IhmBoiteMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                        
+                    } else if (chance.getAction() == ActionsCarte.DE) {
+                        IhmBoiteMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                        
+                    } else if (chance.getAction() == ActionsCarte.AP) {
+                        IhmBoiteMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                        
+                    } else if (chance.getAction() == ActionsCarte.AV) {
+                        IhmBoiteMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                        
+                    }
                 } else if (a == Actions.prison) {
                     joueur.setPrison(3);
                 } else if (a == Actions.neRienFaire) {

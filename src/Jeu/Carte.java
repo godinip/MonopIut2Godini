@@ -2,18 +2,33 @@ package Jeu;
 
 public class Carte {
     
-    private int numero;
     private String texte;
     private Data.ActionsCarte action;
     private int x = 0;
     private int y = 0;
     
-    public Carte(int numero, Data.ActionsCarte action, String texte, int x, int y) {
-        this.numero = numero;
+    public Carte(Data.ActionsCarte action, String texte, int x, int y) {
         this.action = action;
         this.texte = texte;
         this.x = x;
         this.y = y;
+    }
+    
+    public String getTexte() {
+        return texte;
+    }
+    
+    public Data.ActionsCarte getAction() {
+        return action;
+    }
+    public int getX() {
+        return x;
+    }
+    public void setX(int x) {
+        this.x = x;
+    }
+    public int getY() {
+        return y;
     }
     
 }
