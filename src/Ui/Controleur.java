@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 
 public class Controleur {
     
-    private IHM         ihm;
+    private IHM  ihm;
     private Monopoly    monopoly;
     private boolean ok = false;
     private IhmGraph ihmGraph;
