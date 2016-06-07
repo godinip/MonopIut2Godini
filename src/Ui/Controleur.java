@@ -1,5 +1,5 @@
 package Ui;
-
+// Idee on va faire un switch qui selon le nombre affiche ou masque un truc selon les listner 
 import Data.Actions;
 import Jeu.*;
 import java.io.BufferedReader;
@@ -17,21 +17,17 @@ public class Controleur {
     private IHM         ihm;
     private Monopoly    monopoly;
     private boolean ok = false;
+    private IhmGraph ihmGraph;
     
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
         ihm = new IHM(this);
-        initialiserPartie();
+//        initialiserPartie();
         if(!IhmBoiteMessage.afficherBoiteDialogue("ihm?", 1)){
             monopoly.setJoueurs(ihm.CreationJoueur());
         }else{
-            JFrame frame = new JFrame();
-            frame.setTitle("Monopoly");
-            frame.setSize(350,200);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            IhmGraph graph = new IhmGraph(frame,this,monopoly);
-            frame.add(graph);
-            frame.setVisible(true); 
+            ihmGraph = new IhmGraph(this);
+            ihmGraph.affiche();
         }
         while(!ok){
             System.out.print("  ");

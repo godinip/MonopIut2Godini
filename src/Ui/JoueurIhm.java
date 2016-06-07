@@ -24,14 +24,14 @@ import javax.swing.JTextField;
  *
  * @author godinip
  */
-public class JoueurIhm extends  JPanel{
+public class JoueurIhm extends  JFrame{
     private JFrame window;
     private int nbJoueur;
     private ArrayList<JTextField> nomJList = new ArrayList<>();
    Controleur controleur;
     Monopoly monopoly;
     
-    public JoueurIhm(JFrame w,int nbj,Controleur c,Monopoly m){
+    public JoueurIhm(int nbj,Controleur c,Monopoly m){
         super();
         window =w;
         monopoly = m;
@@ -123,6 +123,9 @@ public class JoueurIhm extends  JPanel{
             }
         });
         
+    }
+    public void affiche(){
+        setSize(350,((controleur.getnbJoueur)*30)+70);
     }
     
 }
