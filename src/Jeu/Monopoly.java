@@ -211,20 +211,45 @@ public class Monopoly {
         cartesCommunaute.add(commmunaute);
     }
     
-    public void rendreMaison(){
-        nbMaisons += 1;
+    public void rendreMaisons(int i){
+        nbMaisons += i;
     }
     
     public void prendreMaison(){
         nbMaisons -= 1;
     }
     
-    public void rendreHotel(){
-        nbHotels += 1;
+    public void rendreHotels(int i){
+        nbHotels += i;
     }
     
     public void prendreHotel(){
         nbHotels -= 1;
+    }
+    
+    public void suppJoueur(Joueur j){
+        int m = 0;
+        int h = 0;
+        for(Compagnie c : j.getCompagnies()){
+            c.clean();
+        }
+        for (Gare g : j.getGares()){
+            g.clean();
+        }
+        for (ProprieteAConstruire p : j.getProprietes()){
+            int a = p.getMaisons();
+            if (a < 5){
+                m += a;
+            } else {
+                h += 1;
+            }
+            p.clean();
+        }
+        rendreMaisons(m);
+        rendreHotels(h);
+        
+        joueurs.remove(j);
+        
     }
     
 }
