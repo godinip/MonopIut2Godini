@@ -90,12 +90,10 @@ public class Monopoly {
                 if (ActionCarteType.compareTo("SP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.SP,0,0);
                     cartesChance.add(nouvelleCarte);
-                }
-                else if (ActionCarteType.compareTo("RE") == 0) {
+                } else if (ActionCarteType.compareTo("RE") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.RE,Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                }
-                else if (ActionCarteType.compareTo("MH") == 0) {
+                } else if (ActionCarteType.compareTo("MH") == 0) {
                     Carte nouvelleCarte = new Carte(ActionsCarte.MH,Integer.parseInt(data.get(i)[2]),Integer.parseInt(data.get(i)[3]));
                     cartesChance.add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("GP") == 0) {
@@ -108,7 +106,7 @@ public class Monopoly {
                     Carte nouvelleCarte = new Carte(ActionsCarte.AP,Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 }else {
-                    System.err.println("[buildGamePlateau()] : unknown action");
+                    System.err.println("[buildGamePlateau()] : unknown action at "+i);
                 }
             }
         }
@@ -126,25 +124,27 @@ public class Monopoly {
             for (int i=0; i<data.size(); ++i) {
                 String ActionCarteType = data.get(i)[0];
                 if (ActionCarteType.compareTo("SP") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.SP,);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.SP,0,0);
                     cartesChance.add(nouvelleCarte);
                 }
                 else if (ActionCarteType.compareTo("GP") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.GP,);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.GP,Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 }
                 else if (ActionCarteType.compareTo("AN") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.AN,);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AN,Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("DE") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.DE,);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.DE,Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AP") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.AP,);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AP,Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AV") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionsCarte.AV,);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AV,Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
+                }else {
+                    System.err.println("[buildGamePlateau()] : unknown action at "+i);
                 }
             }
         }
