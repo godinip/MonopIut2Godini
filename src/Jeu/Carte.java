@@ -8,7 +8,7 @@ public class Carte {
     private int x = 0;
     private int y = 0;
     
-    public Carte(int numero, String texte, Data.ActionsCarte action, int x, int y) {
+    public Carte(String texte, int numero, Data.ActionsCarte action, int x, int y) {
         this.texte = texte;
         this.numero = numero;
         this.action = action;
