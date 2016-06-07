@@ -26,59 +26,59 @@ import javax.swing.JPanel;
  *
  * @author godinip
  */
-public class IhmGraph extends JPanel{
-    JFrame window;
-    JComboBox listJ ;
-    Controleur controleur;
-    Monopoly monopoly;
+public class IhmGraph extends JFrame{
+    private JComboBox listJ ;
+    private Controleur controleur;
+    private JButton play,exit; 
+    private JPanel panSelection,monopPanel;
+    private JLabel labMonop;
+    private int nbJoueur;
+    private JPanel bouton;
     
-    public IhmGraph(JFrame w,Controleur c,Monopoly m){
-         super();
-         window = w;
-         displaySelection();
-         controleur = c ;
-        monopoly = m;
+    public IhmGraph(Controleur c){
+        super("Monopoly");
+        controleur = c ;
+        initUIComponents();
+        initUiLIsten();
     }
     
-    public void displaySelection(){
+    public void initUIComponents(){
         
         Font f = new Font("Helvetica", Font.PLAIN, 50); // par exemple
-        JLabel labMonop = new JLabel("MONOPOLY");
+        labMonop = new JLabel("MONOPOLY");
         labMonop.setFont(f);
-        this.add(labMonop,BorderLayout.NORTH);
-        JPanel panSelection = new JPanel();
+        
+        
+        panSelection = new JPanel();
         
         panSelection.add(new JLabel("Nombre de Joueur :"));
-         listJ = new JComboBox();
+        listJ = new JComboBox();
         for (int i = 2; i < 7; i++) {
             listJ.addItem(String.valueOf(i));
         }
         panSelection.add(listJ);
         
-        JButton play = new JButton("Jouer !");
-        JButton exit = new JButton("Quitter");
-        JPanel bouton = new JPanel();
+        play = new JButton("Jouer !");
+        exit = new JButton("Quitter");
+        bouton = new JPanel();
         bouton.add(play);
         bouton.add(exit);
         play.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
         exit.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
-    
-        this.add(panSelection,BorderLayout.CENTER);
-        this.add(bouton);
         
-         play.addActionListener(new ActionListener() {
+        monopPanel = new JPanel();
+        monopPanel.add(labMonop,BorderLayout.NORTH);
+        monopPanel.add(panSelection,BorderLayout.CENTER);
+        monopPanel.add(bouton);
+        add(monopPanel);
+        
+         
+    }
+    private void initUiLIsten(){
+        play.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                window.setVisible(false);
-                JFrame frame = new JFrame();
-                frame.setTitle("Joueur");
-                frame.setSize(350,((listJ.getSelectedIndex()+2)*30)+70);
-
-                JoueurIhm jIhm = new  JoueurIhm(frame,listJ.getSelectedIndex()+2,controleur,monopoly);
-                frame.add(jIhm);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setVisible(true); 
- 
+                setNbJoueur(listJ.getSelectedIndex()+2);
             }
         });
         exit.addActionListener(new ActionListener() {
@@ -87,6 +87,19 @@ public class IhmGraph extends JPanel{
                 System.exit(0);
             }
         });
+    }
+    public void affiche(){
+        setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        setSize(350,200);
+        setVisible(true);   
+    }
+
+    public int getNbJoueur() {
+        return nbJoueur;
+    }
+
+    public void setNbJoueur(int nbJoueur) {
+        this.nbJoueur = nbJoueur;
     }
 
    
