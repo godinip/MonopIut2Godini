@@ -42,11 +42,14 @@ public class Groupe {
     }
     
     public boolean LoyerDouble(Joueur j){
-        int i=0;
-        while (i<this.getProprietesdugroupe().size() && this.getProprietesdugroupe().get(i).getProprietaire()==j){
-            i++;
+        
+        if (proprietesdugroupe.size()==0){return false;}
+        for(ProprieteAConstruire Propriete : proprietesdugroupe){
+            if (Propriete.getProprietaire()!=j){
+                return false;
+            }
         }
-        return i==this.getProprietesdugroupe().size()+1;
+        return true;
     }
 
     public boolean maisonUniformePlus(int nbMaison){

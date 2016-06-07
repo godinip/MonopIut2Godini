@@ -17,7 +17,9 @@ public class TestLoyerProprieteAConstruire {
     public static void main(String[] args) throws IOException {
         Carreau c1 = new AutreCarreau("c1",1,0);   
         int[] loyer = new int[]{60,65,70,75,80};
+        
         Groupe g1 = new Groupe(CouleurPropriete.rouge);
+        
         Joueur j1 = new Joueur("j1",c1);
         Joueur j2 = new Joueur("j2",c1);
         
@@ -29,14 +31,16 @@ public class TestLoyerProprieteAConstruire {
  
         
         p1.achatPropriete(j1);
-        p2.achatPropriete(j1);      
-        p3.achatPropriete(j1);       
+        p2.achatPropriete(j1);       
+        p3.achatPropriete(j1);
         
         System.out.println("Loyer: "+p1.getLoyer(j2));        
         System.out.println("Loyer: "+p2.getLoyer(j2));            
         System.out.println("Loyer: "+p3.getLoyer(j2));  
         
         p4.achatPropriete(j1);
+              
+
         
         System.out.println("Loyer: "+p1.getLoyer(j2));        
         System.out.println("Loyer: "+p2.getLoyer(j2));            
