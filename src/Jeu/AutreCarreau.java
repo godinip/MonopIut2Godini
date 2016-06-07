@@ -13,11 +13,11 @@ public class AutreCarreau extends Carreau {
     
     @Override
     public Data.Actions action(Joueur joueur){
-        if (montant < 0) {
-            joueur.payer(-montant);
+        if (this.getMontant()< 0) {
+            joueur.payer(-this.getMontant());
             return Actions.payer;
-        } else if (montant > 0) {
-            joueur.gagnerArgent(montant);
+        } else if (this.getMontant() > 0) {
+            joueur.gagnerArgent(this.getMontant());
             return Actions.gain;
         } else if (this.getNumero() == 31) {
             joueur.setPrison(3);

@@ -21,10 +21,10 @@ public class Joueur {
     private boolean                             communautePrison = false;
     
     public Joueur(String nomJoueur,Carreau positionCourante) {
-        this.nomJoueur = nomJoueur;
-        argent = 1500;
-        this.positionCourante = positionCourante;
-        dernierLancé = 0;
+        this.setNomJoueur(nomJoueur);
+        this.setArgent(1500);
+        this.setPositionCourante(positionCourante);
+        this.setDernierLancé(0);
         proprietes = new ArrayList<>();
         gares = new ArrayList<>();
         compagnies = new ArrayList<>();

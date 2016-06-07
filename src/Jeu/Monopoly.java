@@ -1,5 +1,6 @@
 package Jeu;
 
+import Data.ActionsCarte;
 import Data.CouleurPropriete;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -85,32 +86,27 @@ public class Monopoly {
         try {
             ArrayList<String[]> data = readDataFile("./src/Data/Chance.txt", "|");
             for (int i=0; i<data.size(); ++i) {
-                String caseType = data.get(i)[0];
-                if (caseType.compareTo("P") == 0) {
-                    
-                }
-                else if (caseType.compareTo("G") == 0) {
-                    Gare nouvelleGare = new Gare(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
-                    carreaux.put(nouvelleGare.getNumero(), nouvelleGare);
-                }
-                else if (caseType.compareTo("C") == 0) {
-                    Compagnie nouvelleCompagnie = new Compagnie(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
-                    carreaux.put(nouvelleCompagnie.getNumero(), nouvelleCompagnie);
-                }
-                else if (caseType.compareTo("AU") == 0) {
-                    if (data.get(i)[2].compareTo("Chance") == 0) {
-                        Chance nouvelleChance =  new Chance(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
-                        carreaux.put(nouvelleChance.getNumero(), nouvelleChance);
-                    } else if (data.get(i)[2].compareTo("Caisse de Communauté") == 0) {
-                        Communaute nouvelleCommunaute = new Communaute(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
-                        carreaux.put(nouvelleCommunaute.getNumero(), nouvelleCommunaute);
-                    } else if (data.get(i)[2].compareTo("Allez en prison") == 0) {
-                        AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
-                        carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
-                    } else {
-                        AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
-                        carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
-                    }
+                String ActionCarteType = data.get(i)[0];
+                if (ActionCarteType.compareTo("SP") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.SP,0,0);
+                    cartesChance.add(nouvelleCarte);
+                } else if (ActionCarteType.compareTo("RE") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.RE,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                } else if (ActionCarteType.compareTo("MH") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.MH,Integer.parseInt(data.get(i)[2]),Integer.parseInt(data.get(i)[3]));
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("GP") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.GP,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("AV") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AV,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("AP") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AP,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }else {
+                    System.err.println("[buildGamePlateau()] : unknown action at "+i);
                 }
             }
         }
@@ -125,7 +121,32 @@ public class Monopoly {
     private void buildCartesCommunaute() {
         try {
             ArrayList<String[]> data = readDataFile("./src/Data/Communaute.txt", "|");
-            
+            for (int i=0; i<data.size(); ++i) {
+                String ActionCarteType = data.get(i)[0];
+                if (ActionCarteType.compareTo("SP") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.SP,0,0);
+                    cartesChance.add(nouvelleCarte);
+                }
+                else if (ActionCarteType.compareTo("GP") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.GP,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }
+                else if (ActionCarteType.compareTo("AN") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AN,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("DE") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.DE,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("AP") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AP,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("AV") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AV,Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }else {
+                    System.err.println("[buildGamePlateau()] : unknown action at "+i);
+                }
+            }
         }
         catch (FileNotFoundException e) {
             System.err.println("[buildGamePlateau()] : File is not found!");
