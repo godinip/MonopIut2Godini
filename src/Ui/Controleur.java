@@ -22,7 +22,7 @@ public class Controleur {
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
         ihm = new IHM(this);
-//        initialiserPartie();
+        initialiserPartie();
         if(!IhmBoiteMessage.afficherBoiteDialogue("ihm?", 1)){
             monopoly.setJoueurs(ihm.CreationJoueur());
         }else{
