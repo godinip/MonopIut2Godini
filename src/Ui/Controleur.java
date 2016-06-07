@@ -111,8 +111,16 @@ public class Controleur {
                     joueur.payer(-R);
                     IhmBoiteMessage.afficherBoiteDialogue("Vous avez perdu: "+(-R)+"€", 0);
                 } else if (a == Actions.carteChance) {
+                    IhmBoiteMessage.afficherBoiteDialogue("Vous tirez une carte Chance", 0);
+                    Carte Communaute = monopoly.getCarteChance();
+                    
+                    monopoly.addCarteChance(Communaute);
                     
                 }else if (a == Actions.carteCommunaute) {
+                    IhmBoiteMessage.afficherBoiteDialogue("Vous tirez une carte Caisse de Communanuté", 0);
+                    Carte Chance = monopoly.getCarteCommunaute();
+                    
+                    monopoly.addCarteCommunaute(Chance);
                     
                 } else if (a == Actions.prison) {
                     joueur.setPrison(3);

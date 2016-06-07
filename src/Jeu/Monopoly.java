@@ -47,29 +47,29 @@ public class Monopoly {
                         getGroupes().put(data.get(i)[3], nouvGroupe);
                     }
                     ProprieteAConstruire nouvellePropriete = new ProprieteAConstruire(Integer.parseInt(data.get(i)[1]), data.get(i)[2], Integer.parseInt(data.get(i)[4]),getGroupes().get(data.get(i)[3]),loyer);
-                    carreaux.put(nouvellePropriete.getNumero(), nouvellePropriete);
+                    getCarreaux().put(nouvellePropriete.getNumero(), nouvellePropriete);
                 }
                 else if (caseType.compareTo("G") == 0) {
                     Gare nouvelleGare = new Gare(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
-                    carreaux.put(nouvelleGare.getNumero(), nouvelleGare);
+                    getCarreaux().put(nouvelleGare.getNumero(), nouvelleGare);
                 }
                 else if (caseType.compareTo("C") == 0) {
                     Compagnie nouvelleCompagnie = new Compagnie(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
-                    carreaux.put(nouvelleCompagnie.getNumero(), nouvelleCompagnie);
+                    getCarreaux().put(nouvelleCompagnie.getNumero(), nouvelleCompagnie);
                 }
                 else if (caseType.compareTo("AU") == 0) {
                     if (data.get(i)[2].compareTo("Chance") == 0) {
                         Chance nouvelleChance =  new Chance(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
-                        carreaux.put(nouvelleChance.getNumero(), nouvelleChance);
+                        getCarreaux().put(nouvelleChance.getNumero(), nouvelleChance);
                     } else if (data.get(i)[2].compareTo("Caisse de Communauté") == 0) {
                         Communaute nouvelleCommunaute = new Communaute(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
-                        carreaux.put(nouvelleCommunaute.getNumero(), nouvelleCommunaute);
+                        getCarreaux().put(nouvelleCommunaute.getNumero(), nouvelleCommunaute);
                     } else if (data.get(i)[2].compareTo("Allez en prison") == 0) {
                         AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
-                        carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                        getCarreaux().put(nouveauCarreau.getNumero(), nouveauCarreau);
                     } else {
                         AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
-                        carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                        getCarreaux().put(nouveauCarreau.getNumero(), nouveauCarreau);
                     }
                 }
             }
@@ -89,27 +89,27 @@ public class Monopoly {
                 String ActionCarteType = data.get(i)[0];
                 if (ActionCarteType.compareTo("SP") == 0) {
                     Carte nouvelleCarte = new Carte(i,ActionsCarte.SP,data.get(i)[0],0,0);
-                    cartesChance.add(nouvelleCarte);
+                    getCartesChance().add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("RE") == 0) {
                     Carte nouvelleCarte = new Carte(i,ActionsCarte.RE,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    getCartesChance().add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("MH") == 0) {
                     Carte nouvelleCarte = new Carte(i,ActionsCarte.MH,data.get(i)[0],Integer.parseInt(data.get(i)[2]),Integer.parseInt(data.get(i)[3]));
-                    cartesChance.add(nouvelleCarte);
+                    getCartesChance().add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("GP") == 0) {
                     Carte nouvelleCarte = new Carte(i,ActionsCarte.GP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    getCartesChance().add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AV") == 0) {
                     Carte nouvelleCarte = new Carte(i,ActionsCarte.AV,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    getCartesChance().add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AP") == 0) {
                     Carte nouvelleCarte = new Carte(i,ActionsCarte.AP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    getCartesChance().add(nouvelleCarte);
                 }else {
                     System.err.println("[buildGamePlateau()] : unknown action at "+i);
                 }
             }
-            
+            Collections.shuffle(getCartesChance());
         }
         catch (FileNotFoundException e) {
             System.err.println("[buildGamePlateau()] : File is not found!");
@@ -126,28 +126,29 @@ public class Monopoly {
                 String ActionCarteType = data.get(i)[0];
                 if (ActionCarteType.compareTo("SP") == 0) {
                     Carte nouvelleCarte = new Carte(i,ActionsCarte.SP,data.get(i)[0],0,0);
-                    cartesChance.add(nouvelleCarte);
+                    getCartesChance().add(nouvelleCarte);
                 }
                 else if (ActionCarteType.compareTo("GP") == 0) {
                     Carte nouvelleCarte = new Carte(i,ActionsCarte.GP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    getCartesChance().add(nouvelleCarte);
                 }
                 else if (ActionCarteType.compareTo("AN") == 0) {
                     Carte nouvelleCarte = new Carte(i,ActionsCarte.AN,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    getCartesChance().add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("DE") == 0) {
                     Carte nouvelleCarte = new Carte(i,ActionsCarte.DE,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    getCartesChance().add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AP") == 0) {
                     Carte nouvelleCarte = new Carte(i,ActionsCarte.AP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    getCartesChance().add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AV") == 0) {
                     Carte nouvelleCarte = new Carte(i,ActionsCarte.AV,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    getCartesChance().add(nouvelleCarte);
                 }else {
                     System.err.println("[buildGamePlateau()] : unknown action at "+i);
                 }
             }
+            Collections.shuffle(getCartesCommunaute());
         }
         catch (FileNotFoundException e) {
             System.err.println("[buildGamePlateau()] : File is not found!");
@@ -181,27 +182,47 @@ public class Monopoly {
     }
     
     public void addJoueur(Joueur j){
-        this.joueurs.add(j);
+        this.getJoueurs().add(j);
     }
     
     public HashMap<String,Groupe> getGroupes() {
         return groupes;
     }
     
-    public void setnbMaisons(int nbMaisons) {
-        this.nbMaisons=nbMaisons;
-    }
-    
-    public int getnbMaisons() {
+    public int getNbMaisons() {
         return nbMaisons;
     }
     
-    public void setnbHotels(int nbHotels) {
-        this.nbHotels=nbHotels;
+    public void setNbMaisons(int nbMaisons) {
+        this.nbMaisons = nbMaisons;
     }
     
-    public int getnbHotels() {
+    public int getNbHotels() {
         return nbHotels;
+    }
+    
+    public void setNbHotels(int nbHotels) {
+        this.nbHotels = nbHotels;
+    }
+    
+    public Carte getCarteChance() {
+        Carte carte = cartesChance.get(0);
+        cartesChance.remove(carte);
+        return carte;
+    }
+    
+    public void addCarteChance(Carte chance) {
+        cartesChance.add(chance);
+    }
+    
+    public Carte getCarteCommunaute() {
+        Carte carte = cartesCommunaute.get(0);
+        cartesChance.remove(carte);
+        return carte;
+    }
+    
+    public void addCarteCommunaute(Carte commmunaute) {
+        cartesCommunaute.add(commmunaute);
     }
     
 }
