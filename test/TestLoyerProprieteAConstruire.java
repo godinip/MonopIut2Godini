@@ -21,10 +21,10 @@ public class TestLoyerProprieteAConstruire {
         Joueur j1 = new Joueur("j1",c1);
         Joueur j2 = new Joueur("j2",c1);
         
-        Propriete p1 = new ProprieteAConstruire(1,"p1",50,g1,new int[]{60,65,70,75,80});    
-        Propriete p2 = new ProprieteAConstruire(2,"p1",52,g1,new int[]{62,67,72,77,82});
-        Propriete p3 = new ProprieteAConstruire(3,"p1",54,g1,new int[]{64,69,76,79,84});
-        Propriete p4 = new ProprieteAConstruire(4,"p1",56,g1,new int[]{66,71,76,81,86});    
+        Propriete p1 = new ProprieteAConstruire(1,"p1",50,g1,new int[]{60,165,170,175,180});    
+        Propriete p2 = new ProprieteAConstruire(2,"p1",52,g1,new int[]{62,167,172,177,182});
+        Propriete p3 = new ProprieteAConstruire(3,"p1",54,g1,new int[]{64,169,176,179,184});
+        Propriete p4 = new ProprieteAConstruire(4,"p1",56,g1,new int[]{66,171,176,181,186});    
 
  
         
