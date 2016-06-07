@@ -88,22 +88,22 @@ public class Monopoly {
             for (int i=0; i<data.size(); ++i) {
                 String ActionCarteType = data.get(i)[0];
                 if (ActionCarteType.compareTo("SP") == 0) {
-                    Carte nouvelleCarte = new Carte(i,ActionsCarte.SP,data.get(i)[0],0,0);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.SP,data.get(i)[0],0,0);
                     getCartesChance().add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("RE") == 0) {
-                    Carte nouvelleCarte = new Carte(i,ActionsCarte.RE,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.RE,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     getCartesChance().add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("MH") == 0) {
-                    Carte nouvelleCarte = new Carte(i,ActionsCarte.MH,data.get(i)[0],Integer.parseInt(data.get(i)[2]),Integer.parseInt(data.get(i)[3]));
+                    Carte nouvelleCarte = new Carte(ActionsCarte.MH,data.get(i)[0],Integer.parseInt(data.get(i)[2]),Integer.parseInt(data.get(i)[3]));
                     getCartesChance().add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("GP") == 0) {
-                    Carte nouvelleCarte = new Carte(i,ActionsCarte.GP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.GP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     getCartesChance().add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AV") == 0) {
-                    Carte nouvelleCarte = new Carte(i,ActionsCarte.AV,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AV,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     getCartesChance().add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AP") == 0) {
-                    Carte nouvelleCarte = new Carte(i,ActionsCarte.AP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     getCartesChance().add(nouvelleCarte);
                 }else {
                     System.err.println("[buildGamePlateau()] : unknown action at "+i);
@@ -125,24 +125,24 @@ public class Monopoly {
             for (int i=0; i<data.size(); ++i) {
                 String ActionCarteType = data.get(i)[0];
                 if (ActionCarteType.compareTo("SP") == 0) {
-                    Carte nouvelleCarte = new Carte(i,ActionsCarte.SP,data.get(i)[0],0,0);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.SP,data.get(i)[0],0,0);
                     getCartesChance().add(nouvelleCarte);
                 }
                 else if (ActionCarteType.compareTo("GP") == 0) {
-                    Carte nouvelleCarte = new Carte(i,ActionsCarte.GP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.GP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     getCartesChance().add(nouvelleCarte);
                 }
                 else if (ActionCarteType.compareTo("AN") == 0) {
-                    Carte nouvelleCarte = new Carte(i,ActionsCarte.AN,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AN,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     getCartesChance().add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("DE") == 0) {
-                    Carte nouvelleCarte = new Carte(i,ActionsCarte.DE,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.DE,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     getCartesChance().add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AP") == 0) {
-                    Carte nouvelleCarte = new Carte(i,ActionsCarte.AP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     getCartesChance().add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AV") == 0) {
-                    Carte nouvelleCarte = new Carte(i,ActionsCarte.AV,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(ActionsCarte.AV,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     getCartesChance().add(nouvelleCarte);
                 }else {
                     System.err.println("[buildGamePlateau()] : unknown action at "+i);
@@ -206,9 +206,9 @@ public class Monopoly {
     }
     
     public Carte getCarteChance() {
-        Carte carte = cartesChance.get(0);
-        cartesChance.remove(carte);
-        return carte;
+        Carte chance = cartesChance.get(0);
+        cartesChance.remove(chance);
+        return chance;
     }
     
     public void addCarteChance(Carte chance) {
@@ -216,9 +216,9 @@ public class Monopoly {
     }
     
     public Carte getCarteCommunaute() {
-        Carte carte = cartesCommunaute.get(0);
-        cartesChance.remove(carte);
-        return carte;
+        Carte communaute = cartesCommunaute.get(0);
+        cartesChance.remove(communaute);
+        return communaute;
     }
     
     public void addCarteCommunaute(Carte commmunaute) {
