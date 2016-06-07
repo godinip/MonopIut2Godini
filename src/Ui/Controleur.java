@@ -132,7 +132,7 @@ public class Controleur {
     }
     
     public void initialiserPartie() {
-        this.monopoly.CreerPlateau("./src/Data/data.txt");
+        this.monopoly.CreerPlateau();
     }    
     
     public void acheterPropriete(Joueur joueur, Propriete achat) {
