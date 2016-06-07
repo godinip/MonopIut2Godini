@@ -267,7 +267,8 @@ public class Controleur {
             case 0:
                  if(!IhmBoiteMessage.afficherBoiteDialogue("ihm?", 1)){
                        monopoly.setJoueurs(ihm.CreationJoueur());
-                       setEtat(2);
+                       setEtat(3);
+                       etatPartie();
                 }else{
                     ihmGraph = new IhmGraph(this);
                     ihmGraph.affiche();
@@ -278,10 +279,12 @@ public class Controleur {
                     joueurIhm.affiche();
                 break;
             case 2:
-                    tourdejeu();
+                   monopoly.setJoueurs(joueurIhm.getJoueurs());
+                   setEtat(3);
+                   etatPartie();
                 break;
             case 3:
-                
+                tourdejeu();
                 break;
             default:
                 
@@ -292,7 +295,6 @@ public class Controleur {
     public int getEtat() {
         return etat;
     }
-
     public void setEtat(int etat) {
         this.etat = etat;
     }
