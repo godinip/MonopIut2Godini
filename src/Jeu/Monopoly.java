@@ -91,19 +91,19 @@ public class Monopoly {
                     Carte nouvelleCarte = new Carte(data.get(i)[0],i,ActionsCarte.SP,0,0);
                     cartesChance.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("RE") == 0) {
-                    Carte nouvelleCarte = new Carte(data.get(i)[0],i,ActionsCarte.RE,Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(i,ActionsCarte.RE,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("MH") == 0) {
-                    Carte nouvelleCarte = new Carte(data.get(i)[0],i,ActionsCarte.MH,Integer.parseInt(data.get(i)[2]),Integer.parseInt(data.get(i)[3]));
+                    Carte nouvelleCarte = new Carte(i,ActionsCarte.MH,data.get(i)[0],Integer.parseInt(data.get(i)[2]),Integer.parseInt(data.get(i)[3]));
                     cartesChance.add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("GP") == 0) {
-                    Carte nouvelleCarte = new Carte(data.get(i)[0],i,ActionsCarte.GP,Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(i,ActionsCarte.GP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AV") == 0) {
-                    Carte nouvelleCarte = new Carte(data.get(i)[0],i,ActionsCarte.AV,Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(i,ActionsCarte.AV,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AP") == 0) {
-                    Carte nouvelleCarte = new Carte(data.get(i)[0],i,ActionsCarte.AP,Integer.parseInt(data.get(i)[2]),0);
+                    Carte nouvelleCarte = new Carte(i,ActionsCarte.AP,data.get(i)[0],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 }else {
                     System.err.println("[buildGamePlateau()] : unknown action at "+i);

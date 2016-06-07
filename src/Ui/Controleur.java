@@ -30,18 +30,22 @@ public class Controleur {
             ihmGraph.affiche();
         }
         while(!ok){
-            System.out.print("  ");
-            while (monopoly.getJoueurs().size() > 1) {
+            System.out.print(" ");
+            tourdejeu();
+        }
+    }
+    
+    public void tourdejeu() {
+        while (monopoly.getJoueurs().size() > 1) {
+            for (Joueur joueur : monopoly.getJoueurs()) {
+                joueur.setTourDeJeu(true);
+                ihm.afficher("\nAu tour de " + joueur.getNomJoueur() + " de jouer");
+                ihm.messageEtatJouer(joueur);
+                jouerUnCoup(joueur);
+            }
+            if (monopoly.getJoueurs().size() == 1) {
                 for (Joueur joueur : monopoly.getJoueurs()) {
-                    joueur.setTourDeJeu(true);
-                    ihm.afficher("\nAu tour de " + joueur.getNomJoueur() + " de jouer");
-                    ihm.messageEtatJouer(joueur);
-                    jouerUnCoup(joueur);
-                }
-                if (monopoly.getJoueurs().size() == 1) {
-                    for (Joueur joueur : monopoly.getJoueurs()) {
-                       IhmBoiteMessage.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
-                    }
+                   IhmBoiteMessage.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
                 }
             }
         }
@@ -188,8 +192,4 @@ public class Controleur {
     public  int getNbJoueur(){
         return ihmGraph.getNbJoueur();
     }
-    public void suppJoueur(){
-        
-    }
-            
 }
