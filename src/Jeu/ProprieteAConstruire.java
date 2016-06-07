@@ -12,6 +12,7 @@ public class ProprieteAConstruire extends Propriete {
     private int[] loyer;
     private int    maisons;
     private int coutmaison;
+    
 
     
     public ProprieteAConstruire(int numero,String nm, int prx,Groupe couleur,int[] loyer) {
@@ -46,6 +47,10 @@ public class ProprieteAConstruire extends Propriete {
 
     public int getMaisons() {
         return maisons;
+    }
+    
+    public void setHotels(int h){
+        setMaisons(5 * h);
     }
 
     public void setMaisons(int maisons) {
@@ -95,6 +100,13 @@ public class ProprieteAConstruire extends Propriete {
 
     public void setCoutmaison(int coutmaison) {
         this.coutmaison = coutmaison;
+    }
+    
+    @Override
+    public void clean(){
+        super.clean();
+        setMaisons(0);
+        setHotels(0);
     }
     
     

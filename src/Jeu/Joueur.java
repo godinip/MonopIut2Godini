@@ -146,15 +146,15 @@ public class Joueur {
     
     public void clean(){
         for(Compagnie c : compagnies){
-            c.setProprietaire(null);
+            c.clean();
         }
         compagnies.clear();
         for (Gare g : gares){
-            g.setProprietaire(null);
+            g.clean();
         }
         gares.clear();
         for (ProprieteAConstruire p : proprietes){
-            p.setProprietaire(null);
+            p.clean();
         }
         proprietes.clear();
     }
