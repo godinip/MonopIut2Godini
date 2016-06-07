@@ -42,7 +42,8 @@ public class Groupe {
     }
     
     public boolean LoyerDouble(Joueur j){
-
+        
+        if (proprietesdugroupe.size()==0){return false;}
         for(ProprieteAConstruire Propriete : proprietesdugroupe){
             if (Propriete.getProprietaire()!=j){
                 return false;
