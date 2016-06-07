@@ -109,6 +109,7 @@ public class Monopoly {
                     System.err.println("[buildGamePlateau()] : unknown action at "+i);
                 }
             }
+            
         }
         catch (FileNotFoundException e) {
             System.err.println("[buildGamePlateau()] : File is not found!");
