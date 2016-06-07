@@ -191,16 +191,8 @@ public class Monopoly {
         return nbMaisons;
     }
     
-    public void setNbMaisons(int nbMaisons) {
-        this.nbMaisons = nbMaisons;
-    }
-    
     public int getNbHotels() {
         return nbHotels;
-    }
-    
-    public void setNbHotels(int nbHotels) {
-        this.nbHotels = nbHotels;
     }
     
     public Carte getCarteChance() {
@@ -221,6 +213,22 @@ public class Monopoly {
     
     public void addCarteCommunaute(Carte commmunaute) {
         cartesCommunaute.add(commmunaute);
+    }
+    
+    public void rendreMaison(){
+        nbMaisons += 1;
+    }
+    
+    public void prendreMaison(){
+        nbMaisons -= 1;
+    }
+    
+    public void rendreHotel(){
+        nbHotels += 1;
+    }
+    
+    public void prendreHotel(){
+        nbHotels -= 1;
     }
     
 }
