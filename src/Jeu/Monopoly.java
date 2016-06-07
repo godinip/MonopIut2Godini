@@ -207,7 +207,7 @@ public class Monopoly {
     
     public Carte getCarteChance() {
         Carte chance = cartesChance.get(0);
-        cartesChance.remove(chance);
+        cartesChance.remove(0);
         return chance;
     }
     
@@ -217,7 +217,7 @@ public class Monopoly {
     
     public Carte getCarteCommunaute() {
         Carte communaute = cartesCommunaute.get(0);
-        cartesChance.remove(communaute);
+        cartesChance.remove(0);
         return communaute;
     }
     
