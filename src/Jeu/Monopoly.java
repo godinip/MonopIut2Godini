@@ -24,6 +24,8 @@ public class Monopoly {
     
     public void CreerPlateau(String dataFilename) {
         buildGamePlateau();
+        buildCartesChance();
+        buildCartesCommunaute();
     }
     
     private void buildGamePlateau() {
@@ -82,7 +84,35 @@ public class Monopoly {
     private void buildCartesChance() {
         try {
             ArrayList<String[]> data = readDataFile("./src/Data/Chance.txt", "|");
-            
+            for (int i=0; i<data.size(); ++i) {
+                String caseType = data.get(i)[0];
+                if (caseType.compareTo("P") == 0) {
+                    
+                }
+                else if (caseType.compareTo("G") == 0) {
+                    Gare nouvelleGare = new Gare(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
+                    carreaux.put(nouvelleGare.getNumero(), nouvelleGare);
+                }
+                else if (caseType.compareTo("C") == 0) {
+                    Compagnie nouvelleCompagnie = new Compagnie(Integer.parseInt(data.get(i)[1]),data.get(i)[2],Integer.parseInt(data.get(i)[3]));
+                    carreaux.put(nouvelleCompagnie.getNumero(), nouvelleCompagnie);
+                }
+                else if (caseType.compareTo("AU") == 0) {
+                    if (data.get(i)[2].compareTo("Chance") == 0) {
+                        Chance nouvelleChance =  new Chance(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                        carreaux.put(nouvelleChance.getNumero(), nouvelleChance);
+                    } else if (data.get(i)[2].compareTo("Caisse de Communauté") == 0) {
+                        Communaute nouvelleCommunaute = new Communaute(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                        carreaux.put(nouvelleCommunaute.getNumero(), nouvelleCommunaute);
+                    } else if (data.get(i)[2].compareTo("Allez en prison") == 0) {
+                        AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                        carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                    } else {
+                        AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                        carreaux.put(nouveauCarreau.getNumero(), nouveauCarreau);
+                    }
+                }
+            }
         }
         catch (FileNotFoundException e) {
             System.err.println("[buildGamePlateau()] : File is not found!");

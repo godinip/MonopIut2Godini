@@ -2,9 +2,9 @@ package Jeu;
 
 public class Carte {
     
-    private Data.Actions action;
+    private Data.ActionsCarte action;
     
-    public Carte(Data.Actions action) {
+    public Carte(Data.ActionsCarte action) {
         this.action = action;
     }
     
