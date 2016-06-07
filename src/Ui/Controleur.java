@@ -192,4 +192,5 @@ public class Controleur {
     public  int getNbJoueur(){
         return ihmGraph.getNbJoueur();
     }
+    
 }
