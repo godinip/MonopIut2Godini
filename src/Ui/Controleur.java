@@ -178,8 +178,20 @@ public class Controleur {
     }
     public void achatMaison(ProprieteAConstruire p){
         if (p.ajouterMaison()){
-            ihm.afficherBoiteDialogue("Une maison a bel et bien été construite sur " + p.getNom(), 0);
+            ihm.afficherBoiteDialogue("Une maison a été construite sur " + p.getNom(), 0);
         } else { ihm.afficherBoiteDialogue("Il est impossible de construire sur maison sur " + p.getNom(), 0);}
-    }    
+    }
+    
+    public void achatHotel(ProprieteAConstruire p){
+        if (p.ajouterHotel()){
+            ihm.afficherBoiteDialogue("Un Hotel a été construit sur " + p.getNom(), 0);
+        } else {
+            ihm.afficherBoiteDialogue("Il est imposible de construire un hotel sur " + p.getNom(), 0);
+        }
+    }
+    
+    public void suppJoueur(){
+        
+    }
             
 }
