@@ -5,38 +5,32 @@ import Jeu.Groupe;
 import Jeu.Joueur;
 
 public abstract class Propriete extends Carreau{
-
-	private Joueur  proprietaire;
-        private int     prix;
-
-        public Propriete(int numero,String nom, int prix){
-            super(numero, nom);
-            this.setPrix(prix);
-        }
+    
+    private Joueur  proprietaire;
+    private int     prix;
+    
+    public Propriete(int numero,String nom, int prix){
+        super(numero, nom);
+        this.setPrix(prix);
+    }
+    
+    public int getPrix(){
+        return prix;
+    }
+    
+    public abstract int getLoyer(Joueur joueur);
+    
+    public Joueur getProprietaire() {
+        return this.proprietaire;
+    }
+    
+    public void setProprietaire(Joueur J) {
+        proprietaire = J;
+    }
         
-	public int getPrix(){
-            return prix;
-        }
-        
-
-        public abstract int getLoyer(Joueur joueur);
-        
-	public Joueur getProprietaire() {
-		return this.proprietaire;
-	}
-        
-        
-	public void setProprietaire(Joueur J) {
-            proprietaire = J;
-	}
-
-    /**
-     * @param prix the prix to set
-     */
     public void setPrix(int prix) {
         this.prix = prix;
-    } 
-
+    }
     
     public  void achatPropriete(Joueur joueur){
         joueur.payer(this.getPrix());
@@ -51,7 +45,6 @@ public abstract class Propriete extends Carreau{
             }else{
                 return new Events(Actions.acheter, joueur, this.getPrix());
             }
-        
         }else if(this.getProprietaire()==joueur){
             return new Events(Actions.neRienFaire, joueur);
         }else{     

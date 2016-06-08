@@ -16,6 +16,5 @@ public class Compagnie extends Propriete {
             return 10*joueur.getDernierLancé();
         }
     }
-
-     
+    
 }
