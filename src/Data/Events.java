@@ -31,7 +31,7 @@ public class Events {
     }
     
     public String message(){
-        String message = "";
+        String message;
         switch(acte.toString()){
             case "gain":
                 message = jjoue.getNomJoueur() + " a gagné " + montant + "€";

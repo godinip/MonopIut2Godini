@@ -14,7 +14,6 @@ public class Joueur {
     private ArrayList<ProprieteAConstruire>     proprietes;
     private ArrayList<Gare>                     gares;
     private ArrayList<Compagnie>                compagnies;
-    private Boolean                             tourDeJeu;
     private Boolean                             perdu = false;
     private int                                 prison = 0;
     private boolean                             chancePrison = false;
@@ -102,14 +101,6 @@ public class Joueur {
     
     public ArrayList<Compagnie> getCompagnies() {
         return compagnies;
-    }
-    
-    public boolean getTourDeJeu(){
-        return tourDeJeu;
-    }
-    
-    public void setTourDeJeu(boolean tourDeJeu){
-        this.tourDeJeu = tourDeJeu;
     }
     
     public void setPerdu(boolean perdu) {
