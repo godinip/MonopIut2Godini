@@ -130,22 +130,28 @@ public class Monopoly {
                 String ActionCarteType = data.get(i)[0];
                 System.out.println(ActionCarteType);
                 if (ActionCarteType.compareTo("SP") == 0) {
+                    System.out.println(data.get(i)[0]+","+data.get(i)[1]);/**/
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],0,0);
                     cartesChance.add(nouvelleCarte);
-                } else if (ActionCarteType.compareTo("RE") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
-                } else if (ActionCarteType.compareTo("MH") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("GP") == 0) {
+                    System.out.println(data.get(i)[0]+","+data.get(i)[1]+","+data.get(i)[2]);/**/
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                } else if (ActionCarteType.compareTo("AV") == 0) {
+                } else if (ActionCarteType.compareTo("AN") == 0) {
+                    System.out.println(data.get(i)[0]+","+data.get(i)[1]+","+data.get(i)[2]);/**/
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                } else if (ActionCarteType.compareTo("DE") == 0) {
+                    System.out.println(data.get(i)[0]+","+data.get(i)[1]+","+data.get(i)[2]);/**/
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("AP") == 0) {
-                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
+                    System.out.println(data.get(i)[0]+","+data.get(i)[1]+","+data.get(i)[2]);/**/
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],0,0);
+                    cartesChance.add(nouvelleCarte);
+                } else if (ActionCarteType.compareTo("AV") == 0) {
+                    System.out.println(data.get(i)[0]+","+data.get(i)[1]);/**/
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[1]),0);
                     cartesChance.add(nouvelleCarte);
                 } else {
                     System.err.println("caseType not found at "+(i+1));

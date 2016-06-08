@@ -1,9 +1,9 @@
 package Jeu;
 
-public class Communaute extends AutreCarreau {
+public class Communaute extends Carreau {
 
-    public Communaute(String nom, int numero, int Montant) {
-        super(nom, numero, Montant);
+    public Communaute(String nom, int numero) {
+        super(nom, numero);
     }
     
     @Override
