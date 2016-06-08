@@ -10,7 +10,7 @@ GP;Vous héritez : 100€;100
 AP;Allez en prison. Avancez tout droit en prison. Ne passez pas par la case Départ. Ne recevez pas 200€
 GP;Payez votre Police d'Assurance : 50€;-50
 GP;La vente de votre stock vous rapporte : 50€;50
-AV;Avancez jusqu'à la case Départ.
+AV;Avancez jusqu'à la case Départ.;0
 GP;Recevez votre intérêt sur l'emprunt à 7% : 25€;25
 GP;Recevez votre revenu annuel : 100€;100
 GP;Vous avez gagné le deuxième prix de beauté : recevez 10€;10
