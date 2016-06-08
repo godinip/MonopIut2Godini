@@ -9,11 +9,11 @@ import javax.swing.*;
 
 public class Controleur {
     
+    private Monopoly monopoly;
     private IHM  ihm;
-    private Monopoly    monopoly;
-    private boolean ok = false;
-    private IhmGraph ihmGraph;
     private JoueurIhm joueurIhm;
+    private IhmGraph ihmGraph;
+    private boolean ok = false;
     private int etat = 0;
     
     public Controleur(Monopoly monopoly){
@@ -201,9 +201,13 @@ public class Controleur {
         }
     }
     
-    public int lancerDé() {
+    private int lancerDé() {
         return (int) (Math.random()*(6) +1);
     }
+    
+    
+    
+    
     
     public Carreau getCarreau(int numero) {
         return monopoly.getCarreaux().get(numero);
@@ -212,6 +216,7 @@ public class Controleur {
     public void setOk(boolean ok) {
         this.ok = ok;
     }
+    
     public void achatMaison(ProprieteAConstruire p){
         if (p.ajouterMaison()){
             ihm.afficherBoiteDialogue("Une maison a été construite sur " + p.getNom(), 0);
@@ -225,9 +230,11 @@ public class Controleur {
             ihm.afficherBoiteDialogue("Il est imposible de construire un hotel sur " + p.getNom(), 0);
         }
     }
+    
     public  int getNbJoueur(){
         return ihmGraph.getNbJoueur();
     }
+    
     public  void etatPartie(){
         switch(etat){
             case 0:
@@ -261,16 +268,9 @@ public class Controleur {
     public int getEtat() {
         return etat;
     }
+    
     public void setEtat(int etat) {
         this.etat = etat;
-    }
-    
-    public HashMap<Integer, Carreau> getCarreaux() {
-        return monopoly.getCarreaux();
-    }
-    
-    public HashMap<String, Groupe> getGroupes() {
-        return monopoly.getGroupes();
     }
     
 }

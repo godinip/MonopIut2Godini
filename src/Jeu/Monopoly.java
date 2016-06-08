@@ -261,4 +261,6 @@ public class Monopoly {
             cartesCommunaute.add(commmunaute);
         }
     
+    //
+        
 }
