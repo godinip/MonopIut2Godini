@@ -24,10 +24,13 @@ public class TestCompagniePayerLoyer {
         Joueur j2 = new Joueur("j2",c1);
         
         c2.achatPropriete(j1);
+        
+        j2.setDernierLancé(9);
+        System.out.println(c2.getLoyer(j2));
+        
         c3.achatPropriete(j1);       
         
         j2.setDernierLancé(9);
-        
         System.out.println(c2.getLoyer(j2));
         
         
