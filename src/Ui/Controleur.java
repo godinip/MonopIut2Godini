@@ -164,12 +164,10 @@ public class Controleur {
                     }
                 } else { IhmBoiteMessage.afficherBoiteDialogue(e.message(),0);}
                 if (joueur.getPerdu()) {
-                    LinkedList<Joueur> joueurs = new LinkedList();
-                    joueurs = monopoly.getJoueurs();
-                    joueurs.remove(joueur);
-                    monopoly.setJoueurs(joueurs);
-                    joueur.setTourDeJeu(false);
                     IhmBoiteMessage.afficherBoiteDialogue(joueur.getNomJoueur()+", vous n'avez plus d'argent et perdez", 0);
+                    joueur.setTourDeJeu(false);
+                    monopoly.suppJoueur(joueur);
+                    
                 }
             }
         }
