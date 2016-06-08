@@ -1,14 +1,15 @@
 package Jeu;
 
+import Data.*;
+
 public class Communaute extends Carreau {
 
     public Communaute(String nom, int numero) {
-        super(nom, numero);
+        super(numero, nom);
     }
     
-    @Override
-    public Data.Actions action(Joueur J){
-        return Data.Actions.carteCommunaute;
+    public Events action(Joueur J){
+        return new Events(Data.Actions.carteCommunaute, J);
     }
     
 }

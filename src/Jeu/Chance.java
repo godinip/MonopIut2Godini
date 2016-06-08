@@ -8,8 +8,8 @@ public class Chance extends Carreau {
         super(numero, nom);
     }
     
-    @
-    public Data.Actions action(Joueur J){
+    
+    public Events action(Joueur J){
         return new Events(Data.Actions.carteChance, J);
     }
     
