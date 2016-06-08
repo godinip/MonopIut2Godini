@@ -55,10 +55,10 @@ public class Monopoly {
                 }
                 else if (caseType.compareTo("AU") == 0) {
                     if (data.get(i)[2].compareTo("Chance") == 0) {
-                        Chance nouvelleChance =  new Chance(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                        Chance nouvelleChance =  new Chance(data.get(i)[2],Integer.parseInt(data.get(i)[1]));
                         getCarreaux().put(nouvelleChance.getNumero(), nouvelleChance);
                     } else if (data.get(i)[2].compareTo("Caisse de Communauté") == 0) {
-                        Communaute nouvelleCommunaute = new Communaute(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
+                        Communaute nouvelleCommunaute = new Communaute(data.get(i)[2],Integer.parseInt(data.get(i)[1]));
                         getCarreaux().put(nouvelleCommunaute.getNumero(), nouvelleCommunaute);
                     } else if (data.get(i)[2].compareTo("Allez en prison") == 0) {
                         AutreCarreau nouveauCarreau = new AutreCarreau(data.get(i)[2],Integer.parseInt(data.get(i)[1]),Integer.parseInt(data.get(i)[3]));
@@ -128,7 +128,6 @@ public class Monopoly {
             ArrayList<String[]> data = readDataFile("./src/Data/Communaute.txt", ";");
             for (int i=1; i<data.size(); ++i) {
                 String ActionCarteType = data.get(i)[0];
-                System.out.println(ActionCarteType);
                 if (ActionCarteType.compareTo("SP") == 0) {
                     System.out.println(data.get(i)[0]+","+data.get(i)[1]);/**/
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],0,0);
