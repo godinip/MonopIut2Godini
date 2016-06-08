@@ -123,25 +123,25 @@ public class Monopoly {
                 String ActionCarteType = data.get(i)[0];
                 if (ActionCarteType.compareTo("SP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],0,0);
-                    cartesChance.add(nouvelleCarte);
+                    cartesCommunaute.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("GA") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    cartesCommunaute.add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("PA") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    cartesCommunaute.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("AN") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    cartesCommunaute.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("DE") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    cartesCommunaute.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("AP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],0,0);
-                    cartesChance.add(nouvelleCarte);
+                    cartesCommunaute.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("AV") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
-                    cartesChance.add(nouvelleCarte);
+                    cartesCommunaute.add(nouvelleCarte);
                 }
             }
             Collections.shuffle(cartesCommunaute);
@@ -205,7 +205,7 @@ public class Monopoly {
     
     public Carte getCarteCommunaute() {
         Carte communaute = cartesCommunaute.get(0);
-        cartesChance.remove(0);
+        cartesCommunaute.remove(0);
         return communaute;
     }
     
