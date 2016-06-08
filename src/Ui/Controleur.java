@@ -81,26 +81,11 @@ public class Controleur {
                 }
             } else {
                 Carreau c = lancerDésAvancer(joueur);
-                Actions a = c.action(joueur);
-                if (a == Actions.gain) {
-                    AutreCarreau AC = (AutreCarreau) c;
-                    int R = AC.getMontant();
-                    joueur.gagnerArgent(R);
-                    IhmBoiteMessage.afficherBoiteDialogue("Vous avez gagné: "+R+"€", 0);
-                } else if (a == Actions.payerLoyer) {
-                    Propriete P = (Propriete) c;
-                    joueur.payer(P.getLoyer(P.getProprietaire()));
-                    P.getProprietaire().gagnerArgent(P.getLoyer(P.getProprietaire()));
-                    IhmBoiteMessage.afficherBoiteDialogue("le joueur "+joueur.getNomJoueur()+" a payé "+P.getLoyer(P.getProprietaire())+"€ au joueur "+P.getProprietaire().getNomJoueur(), 0);
-                } else if (a == Actions.acheter) {
+                Events e = c.action(joueur);
+                if (e.getAction() == Actions.acheter) {
                     acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
-                } else if (a == Actions.payer) {
-                    AutreCarreau AC = (AutreCarreau) c;
-                    int R = AC.getMontant();
-                    joueur.payer(-R);
-                    IhmBoiteMessage.afficherBoiteDialogue("Vous avez perdu: "+(-R)+"€", 0);
-                } else if (a == Actions.carteChance) {
-                    IhmBoiteMessage.afficherBoiteDialogue("Vous tirez une carte Chance", 0);
+                } else if (e.getAction() == Actions.carteChance) {
+                    IhmBoiteMessage.afficherBoiteDialogue(e.message(), 0);
                     Carte chance = monopoly.getCarteChance();
                     ActionsCarte actionCarte = chance.getAction();
                     if (actionCarte == ActionsCarte.SP) {
@@ -135,8 +120,8 @@ public class Controleur {
                         joueur.setPrison(3);
                         monopoly.addCarteChance(chance);
                     }
-                }else if (a == Actions.carteCommunaute) {
-                    IhmBoiteMessage.afficherBoiteDialogue("Vous tirez une carte Caisse de Communanuté", 0);
+                }else if (e.getAction() == Actions.carteCommunaute) {
+                    IhmBoiteMessage.afficherBoiteDialogue(e.message(), 0);
                     Carte communaute = monopoly.getCarteCommunaute();
                     ActionsCarte actionCarte = communaute.getAction();
                     if (communaute.getAction() == ActionsCarte.SP) {
@@ -177,11 +162,7 @@ public class Controleur {
                         joueur.setPositionCourante(getCarreau(communaute.getX()));
                         monopoly.addCarteCommunaute(communaute);
                     }
-                } else if (a == Actions.prison) {
-                    joueur.setPrison(3);
-                } else if (a == Actions.neRienFaire) {
-                    IhmBoiteMessage.afficherBoiteDialogue("Vous ne pouvez effectuer aucune action", 0);
-                }
+                } else { IhmBoiteMessage.afficherBoiteDialogue(e.message(),0);}
                 if (joueur.getPerdu()) {
                     LinkedList<Joueur> joueurs = new LinkedList();
                     joueurs = monopoly.getJoueurs();
