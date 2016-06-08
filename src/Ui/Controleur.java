@@ -1,5 +1,5 @@
 package Ui;
-// Idee on va faire un switch qui selon le nombre affiche ou masque un truc selon les listner 
+
 import Data.*;
 import Jeu.*;
 import java.io.*;
@@ -15,12 +15,10 @@ public class Controleur {
     private IhmGraph ihmGraph;
     private JoueurIhm joueurIhm;
     private int etat = 0;
+    
     public Controleur(Monopoly monopoly){
-        
         this.monopoly = monopoly;
         ihm = new IHM(this);
-        initialiserPartie();
-        
         etatPartie();
     }
     
@@ -171,11 +169,7 @@ public class Controleur {
                 }
             }
         }
-    }
-    
-    public void initialiserPartie() {
-        this.monopoly.CreerPlateau();
-    }    
+    }   
     
     public void acheterPropriete(Joueur joueur, Propriete achat) {
         if (IhmBoiteMessage.afficherBoiteDialogue("Voulez-vous acheter "+achat.getNom()+" pour "+achat.getPrix()+"€ ?", 1)) {
@@ -235,7 +229,6 @@ public class Controleur {
         return ihmGraph.getNbJoueur();
     }
     public  void etatPartie(){
-        
         switch(etat){
             case 0:
                  if(!IhmBoiteMessage.afficherBoiteDialogue("ihm?", 1)){
