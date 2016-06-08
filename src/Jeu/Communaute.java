@@ -6,9 +6,8 @@ public class Communaute extends Carreau {
         super(nom, numero);
     }
     
-    @Override
-    public Data.Actions action(Joueur J){
-        return Data.Actions.carteCommunaute;
+    public Events action(Joueur J){
+        return new Events(Data.Actions.carteCommunaute, J);
     }
     
 }
