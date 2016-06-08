@@ -15,7 +15,6 @@ public class Controleur {
     private IhmGraph ihmGraph;
     private JoueurIhm joueurIhm;
     private int etat = 0;
-    private Joueur jTour;
     public Controleur(Monopoly monopoly){
         
         this.monopoly = monopoly;
@@ -27,14 +26,14 @@ public class Controleur {
     
     public void tourdejeu() {
         while (monopoly.getJoueurs().size() > 1) {
-            for (Joueur joueur : monopoly.getJoueurs().values()) {
+            for (Joueur joueur : monopoly.getJoueurs()) {
                 joueur.setTourDeJeu(true);
                 ihm.afficher("\nAu tour de " + joueur.getNomJoueur() + " de jouer");
                 ihm.messageEtatJouer(joueur);
                 jouerUnCoup(joueur);
             }
             if (monopoly.getJoueurs().size() == 1) {
-                for (Joueur joueur : monopoly.getJoueurs().values()) {
+                for (Joueur joueur : monopoly.getJoueurs()) {
                    IhmBoiteMessage.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
                 }
             }
@@ -139,7 +138,7 @@ public class Controleur {
                     } else if (communaute.getAction() == ActionsCarte.AN) {
                         IhmBoiteMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
                         int i = 0;
-                        for (Joueur j : monopoly.getJoueurs().values()) {
+                        for (Joueur j : monopoly.getJoueurs()) {
                             if (j != joueur) {
                                 j.payer(communaute.getX());
                                 i++;

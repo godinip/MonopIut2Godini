@@ -19,7 +19,6 @@ public class Joueur {
     private int                                 prison = 0;
     private boolean                             chancePrison = false;
     private boolean                             communautePrison = false;
-    private int                                 ordre;
     
     public Joueur(String nomJoueur,Carreau positionCourante) {
         this.setNomJoueur(nomJoueur);
@@ -111,14 +110,6 @@ public class Joueur {
     
     public void setTourDeJeu(boolean tourDeJeu){
         this.tourDeJeu = tourDeJeu;
-    }
-    
-    public void setOrdre(int t){
-        this.ordre = t;
-    }
-    
-    public int getOrdre(){
-        return this.ordre;
     }
     
     public void setPerdu(boolean perdu) {
