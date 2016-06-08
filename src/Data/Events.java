@@ -71,4 +71,8 @@ public class Events {
         }
         return message;
         }
+    
+    public Actions getAction(){
+        return acte;
+    }
     }
