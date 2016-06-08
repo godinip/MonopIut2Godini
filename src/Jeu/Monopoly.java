@@ -92,7 +92,10 @@ public class Monopoly {
                 } else if (ActionCarteType.compareTo("MH") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),Integer.parseInt(data.get(i)[3]));
                     cartesChance.add(nouvelleCarte);
-                }else if (ActionCarteType.compareTo("GP") == 0) {
+                }else if (ActionCarteType.compareTo("GA") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("PA") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 }else if (ActionCarteType.compareTo("AV") == 0) {
@@ -101,8 +104,6 @@ public class Monopoly {
                 }else if (ActionCarteType.compareTo("AP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],0,0);
                     cartesChance.add(nouvelleCarte);
-                } else {
-                    System.err.println("caseType not found at "+(i+1)+" avec ActionCarteType = "+ActionCarteType);
                 }
             }
             Collections.shuffle(cartesChance);
@@ -123,7 +124,10 @@ public class Monopoly {
                 if (ActionCarteType.compareTo("SP") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],0,0);
                     cartesChance.add(nouvelleCarte);
-                } else if (ActionCarteType.compareTo("GP") == 0) {
+                } else if (ActionCarteType.compareTo("GA") == 0) {
+                    Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
+                    cartesChance.add(nouvelleCarte);
+                }else if (ActionCarteType.compareTo("PA") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
                 } else if (ActionCarteType.compareTo("AN") == 0) {
@@ -138,8 +142,6 @@ public class Monopoly {
                 } else if (ActionCarteType.compareTo("AV") == 0) {
                     Carte nouvelleCarte = new Carte(ActionCarteType,data.get(i)[1],Integer.parseInt(data.get(i)[2]),0);
                     cartesChance.add(nouvelleCarte);
-                } else {
-                    System.err.println("caseType not found at "+(i+1));
                 }
             }
             Collections.shuffle(cartesCommunaute);

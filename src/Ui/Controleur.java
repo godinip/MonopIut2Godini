@@ -99,13 +99,13 @@ public class Controleur {
                         IhmBoiteMessage.afficherBoiteDialogue(chance.getTexte(), 0);
                         joueur.payer(joueur.getNbMaisons()*chance.getX()+joueur.getNbHotels()*chance.getY());
                         monopoly.addCarteChance(chance);
-                    } else if (actionCarte == ActionsCarte.GP) {
+                    } else if (chance.getAction() == ActionsCarte.GA) {
                         IhmBoiteMessage.afficherBoiteDialogue(chance.getTexte(), 0);
-                        if (chance.getX() > 0) {
-                            joueur.gagnerArgent(chance.getX());
-                        } else {
-                            joueur.payer(chance.getX());
-                        }
+                        joueur.gagnerArgent(chance.getX());
+                        monopoly.addCarteChance(chance);
+                    } else if (chance.getAction() == ActionsCarte.PA) {
+                        IhmBoiteMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                        joueur.payer(chance.getX());
                         monopoly.addCarteChance(chance);
                     } else if (actionCarte == ActionsCarte.AV) {
                         IhmBoiteMessage.afficherBoiteDialogue(chance.getTexte(), 0);
@@ -127,13 +127,13 @@ public class Controleur {
                     if (communaute.getAction() == ActionsCarte.SP) {
                         IhmBoiteMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
                         joueur.setCommunautePrison(true);
-                    } else if (communaute.getAction() == ActionsCarte.GP) {
+                    } else if (communaute.getAction() == ActionsCarte.GA) {
                         IhmBoiteMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
-                        if (communaute.getX() > 0) {
-                            joueur.gagnerArgent(communaute.getX());
-                        } else {
-                            joueur.payer(communaute.getX());
-                        }
+                        joueur.gagnerArgent(communaute.getX());
+                        monopoly.addCarteCommunaute(communaute);
+                    } else if (communaute.getAction() == ActionsCarte.PA) {
+                        IhmBoiteMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                        joueur.payer(communaute.getX());
                         monopoly.addCarteCommunaute(communaute);
                     } else if (communaute.getAction() == ActionsCarte.AN) {
                         IhmBoiteMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
