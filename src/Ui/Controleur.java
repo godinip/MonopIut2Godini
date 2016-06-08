@@ -1,17 +1,11 @@
 package Ui;
 // Idee on va faire un switch qui selon le nombre affiche ou masque un truc selon les listner 
-import Data.Actions;
-import Data.ActionsCarte;
+import Data.*;
 import Jeu.*;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import Ui.IHM;
-import java.util.HashSet;
-import java.util.LinkedList;
-import javax.swing.JFrame;
+import java.io.*;
+import Ui.*;
+import java.util.*;
+import javax.swing.*;
 
 public class Controleur {
     
@@ -297,6 +291,14 @@ public class Controleur {
     }
     public void setEtat(int etat) {
         this.etat = etat;
+    }
+    
+    public HashMap<Integer, Carreau> getCarreaux() {
+        return monopoly.getCarreaux();
+    }
+    
+    public HashMap<String, Groupe> getGroupes() {
+        return monopoly.getGroupes();
     }
     
 }
