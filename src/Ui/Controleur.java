@@ -27,14 +27,14 @@ public class Controleur {
     
     public void tourdejeu() {
         while (monopoly.getJoueurs().size() > 1) {
-            for (Joueur joueur : monopoly.getJoueurs()) {
+            for (Joueur joueur : monopoly.getJoueurs().values()) {
                 joueur.setTourDeJeu(true);
                 ihm.afficher("\nAu tour de " + joueur.getNomJoueur() + " de jouer");
                 ihm.messageEtatJouer(joueur);
                 jouerUnCoup(joueur);
             }
             if (monopoly.getJoueurs().size() == 1) {
-                for (Joueur joueur : monopoly.getJoueurs()) {
+                for (Joueur joueur : monopoly.getJoueurs().values()) {
                    IhmBoiteMessage.afficherBoiteDialogue(joueur.getNomJoueur()+", vous avez gagné !", 0);
                 }
             }
@@ -139,9 +139,9 @@ public class Controleur {
                     } else if (communaute.getAction() == ActionsCarte.AN) {
                         IhmBoiteMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
                         int i = 0;
-                        for (Object j : monopoly.getJoueurs().toArray()) {
-                            if ((Joueur)j != joueur) {
-                                ((Joueur)j).payer(communaute.getX());
+                        for (Joueur j : monopoly.getJoueurs().values()) {
+                            if (j != joueur) {
+                                j.payer(communaute.getX());
                                 i++;
                             }
                         }
