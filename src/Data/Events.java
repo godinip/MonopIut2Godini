@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Data;
 
 import Jeu.*;
 
-/**
- *
- * @author coulonv
- */
 public class Events {
+    
     private Actions acte;
     private int montant;
     private Joueur jjoue,jreceveur;
-    
     
     public Events(){
         acte = Actions.neRienFaire;
@@ -70,9 +61,10 @@ public class Events {
                 message = "ce cas n'est pas géré";
         }
         return message;
-        }
+    }
     
     public Actions getAction(){
         return acte;
     }
-    }
+    
+}
