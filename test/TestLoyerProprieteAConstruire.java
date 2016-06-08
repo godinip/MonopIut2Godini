@@ -82,14 +82,13 @@ public class TestLoyerProprieteAConstruire {
         
         p1.ajouterHotel();
         System.out.println("nbMaison: "+p1.getMaisons()+"Loyer: "+p1.getLoyer(j2));
+         
         
-        
-        System.out.println();
-        
-        
+
         
         
         
         
+               
     }
 }
