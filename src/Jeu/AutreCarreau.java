@@ -8,7 +8,7 @@ public class AutreCarreau extends Carreau {
     
     public AutreCarreau(String nom, int numero, int Montant){
         super(numero,nom);
-        montant = Montant;
+        this.setMontant(Montant);
     }
     
     public Events action(Joueur joueur){
