@@ -1,6 +1,6 @@
 package Jeu;
 
-import Data.Actions;
+import Data.*;
 
 public class AutreCarreau extends Carreau {
     
@@ -11,19 +11,18 @@ public class AutreCarreau extends Carreau {
         montant = Montant;
     }
     
-    @Override
-    public Data.Actions action(Joueur joueur){
+    public Events action(Joueur joueur){
         if (this.getMontant()< 0) {
             joueur.payer(-this.getMontant());
-            return Actions.payer;
+            return new Events(Actions.payer,joueur, - this.getMontant());
         } else if (this.getMontant() > 0) {
             joueur.gagnerArgent(this.getMontant());
-            return Actions.gain;
+            return new Events(Actions.gain, joueur, this.getMontant());
         } else if (this.getNumero() == 31) {
             joueur.setPrison(3);
-            return Actions.prison;
+            return new Events(Actions.prison,joueur);
         } else {
-            return Actions.neRienFaire;
+            return new Events(Actions.neRienFaire, joueur);
         }
     }
     

@@ -1,14 +1,16 @@
 package Jeu;
 
-public class Chance extends AutreCarreau {
+import Data.*;
 
-    public Chance(String nom, int numero, int Montant) {
-        super(nom, numero, Montant);
+public class Chance extends Carreau {
+
+    public Chance(String nom, int numero) {
+        super(numero, nom);
     }
     
-    @Override
+    @
     public Data.Actions action(Joueur J){
-        return Data.Actions.carteChance;
+        return new Events(Data.Actions.carteChance, J);
     }
     
 }
