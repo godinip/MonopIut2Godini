@@ -103,7 +103,7 @@ public class JoueurIhm extends  JFrame{
                                     message = message +", "+s;
                                 }
                             }
-                            IhmBoiteMessage.afficherBoiteDialogue("Le(s) pseudo(s) "+message+" sont enregistré(s) plusieurs fois\nCorrigez le !", 0);
+                            IhmMessage.afficherBoiteDialogue("Le(s) pseudo(s) "+message+" sont enregistré(s) plusieurs fois\nCorrigez le !", 0);
                 }else{
                     
                     int desMax = 0;
@@ -112,9 +112,7 @@ public class JoueurIhm extends  JFrame{
                           Joueur j = new Joueur(string,controleur.getCarreau(1));
                          getJoueurs().addLast(j);
                         }
-                        controleur.setEtat(2);
                         setVisible(false);
-                        controleur.etatPartie();
                         
                 }
             }
@@ -127,9 +125,8 @@ public class JoueurIhm extends  JFrame{
         });
     }
     public void affiche(){
-       
         setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        setSize(350,((controleur.getNbJoueur())*30)+70);
+        setSize(350,((controleur.getNbJoueurs())*30)+70);
         setVisible(true);
         
     }

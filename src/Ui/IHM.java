@@ -102,8 +102,6 @@ public class IHM {
         }
         System.out.println("o---------------------------------------------o");
         System.out.println();
-        
-        
     }
     
 }

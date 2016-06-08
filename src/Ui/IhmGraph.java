@@ -1,31 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Ui;
 
-import Jeu.Monopoly;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import Jeu.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import javax.swing.*;
 
-/**
- *
- * @author godinip
- */
 public class IhmGraph extends JFrame{
     private JComboBox listJ ;
     private Controleur controleur;
@@ -43,21 +23,16 @@ public class IhmGraph extends JFrame{
     }
     
     public void initUIComponents(){
-        
-        Font f = new Font("Helvetica", Font.PLAIN, 50); // par exemple
+        Font f = new Font("Helvetica", Font.PLAIN, 50);
         labMonop = new JLabel("MONOPOLY");
         labMonop.setFont(f);
-        
-        
         panSelection = new JPanel();
-        
         panSelection.add(new JLabel("Nombre de Joueur :"));
         listJ = new JComboBox();
         for (int i = 2; i < 7; i++) {
             listJ.addItem(String.valueOf(i));
         }
         panSelection.add(listJ);
-        
         play = new JButton("Jouer !");
         exit = new JButton("Quitter");
         bouton = new JPanel();
@@ -80,10 +55,8 @@ public class IhmGraph extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 setNbJoueur(listJ.getSelectedIndex()+2);
-                controleur.setEtat(1);
                 setVisible(false);
-                controleur.etatPartie();
-                
+                controleur.getJoueurIhm().affiche();
             }
         });
         exit.addActionListener(new ActionListener() {
@@ -93,14 +66,17 @@ public class IhmGraph extends JFrame{
             }
         });
     }
+    
     public void affiche(){
         setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         setSize(350,200);
         setVisible(true);   
     }
+    
     public void setVisibles(boolean etat){
         setVisibles(etat);
     }
+    
     public int getNbJoueur() {
         return nbJoueur;
     }
@@ -108,6 +84,5 @@ public class IhmGraph extends JFrame{
     public void setNbJoueur(int nbJoueur) {
         this.nbJoueur = nbJoueur;
     }
-
-   
+    
 }
