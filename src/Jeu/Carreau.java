@@ -1,5 +1,7 @@
 package Jeu;
 
+import Data.*;
+
 public abstract class Carreau {
 
 	private int numero;
@@ -25,7 +27,7 @@ public abstract class Carreau {
      * @param J
      * @return
      */
-    public abstract Data.Actions action(Joueur J);
+    public abstract Events action(Joueur J);
 
     /**
      * @param numero the numero to set

@@ -1,6 +1,6 @@
 package Jeu;
 
-import Data.Actions;
+import Data.*;
 import Jeu.Groupe;
 import Jeu.Joueur;
 
@@ -44,21 +44,20 @@ public abstract class Propriete extends Carreau{
         joueur.addPropriete(this);
     }
     
-    @Override
-    public Data.Actions action(Joueur J){
+    public Events action(Joueur joueur){
      if (getProprietaire()==null){
-            if (J.getArgent()<this.getPrix()){
-                return Actions.neRienFaire;
+            if (joueur.getArgent()<this.getPrix()){
+                return new Events(Actions.neRienFaire, joueur);
             }else{
-                return Actions.acheter;
+                return new Events(Actions.acheter, joueur, this.getPrix());
             }
         
-        }else if(this.getProprietaire()==J){
-            return Actions.neRienFaire;
+        }else if(this.getProprietaire()==joueur){
+            return new Events(Actions.neRienFaire, joueur);
         }else{     
-            this.getProprietaire().gagnerArgent(this.getLoyer(J));
-            J.payer(this.getLoyer(J));
-            return Actions.payerLoyer;    
+            this.getProprietaire().gagnerArgent(this.getLoyer(joueur));
+            joueur.payer(this.getLoyer(joueur));
+            return new Events(Actions.payerLoyer,joueur, this.getProprietaire(), this.getLoyer(joueur));    
         }
     }
     
