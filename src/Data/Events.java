@@ -49,22 +49,22 @@ public class Events {
                 message = jjoue.getNomJoueur() + " est arrivé sur la propriete de " + jreceveur.getNomJoueur() + " et lui a versé" + montant + "€";
                 break;
             case "acheter":
-                message = jjoue + " a acheté la propriete " + jjoue.getPositionCourante().getNom() + " pour " + montant + "€";
+                message = jjoue.getNomJoueur() + " a acheté la propriete " + jjoue.getPositionCourante().getNom() + " pour " + montant + "€";
                 break;
             case "payer":
-                message = jjoue + " paye " + montant + "€";
+                message = jjoue.getNomJoueur() + " paye " + montant + "€";
                 break;
             case "neRienFaire":
                 message = "Il ne se passe rien...";
                 break;
             case "carteChance":
-                message = jjoue + " tire une carte Chance";
+                message = jjoue.getNomJoueur() + " tire une carte Chance";
                 break;
             case "carteCommunaute":
-                message = jjoue + " tire une carte Caisse de Communauté";
+                message = jjoue.getNomJoueur() + " tire une carte Caisse de Communauté";
                 break;
             case "prison":
-                message = jjoue + " va tout droit à la prison. Eat shit m*therf*cking nigga";
+                message = jjoue.getNomJoueur() + " va tout droit à la prison. Eat shit m*therf*cking nigga";
                 break;
             default:
                 message = "ce cas n'est pas géré";
