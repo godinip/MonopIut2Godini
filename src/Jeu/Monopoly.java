@@ -7,8 +7,8 @@ import java.util.*;
 public class Monopoly {
     
     private HashMap<Integer,Carreau> carreaux = new HashMap<>();
-    private HashMap<String,Groupe> groupes = new HashMap<String,Groupe>();
-    private LinkedList<Joueur> joueurs = new LinkedList<>();
+    private HashMap<String,Groupe> groupes = new HashMap<>();
+    private HashMap<int,Joueur> joueurs = new HashMap<>();
     private int nbMaisons = 32;
     private int nbHotels = 12;
     private ArrayList<Carte> cartesChance = new ArrayList();
@@ -16,7 +16,7 @@ public class Monopoly {
     
     
     public Monopoly() {
-        
+        this.CreerPlateau();
     }
     
     public void CreerPlateau() {
@@ -169,16 +169,16 @@ public class Monopoly {
         return carreaux;
     }
     
-    public LinkedList<Joueur> getJoueurs() {
+    public HashMap<int,Joueur> getJoueurs() {
         return joueurs;
     }
     
-    public void setJoueurs(LinkedList<Joueur> joueurs) {
+    public void setJoueurs(LinkedList<int,Joueur> joueurs) {
         this.joueurs = joueurs;
     }
     
-    public void addJoueur(Joueur j){
-        this.getJoueurs().add(j);
+    public void addJoueur(int num,Joueur j){
+        getJoueurs().put(num, j);
     }
     
     public HashMap<String,Groupe> getGroupes() {
@@ -250,8 +250,21 @@ public class Monopoly {
         rendreMaisons(m);
         rendreHotels(h);
         
-        joueurs.remove(j);
+        joueurs.remove(j.getOrdre);
         
+        if (joueurs.size() > 1){
+            ordonner();
+        }
+        
+    }
+    
+    public void ordonner(){
+        ArrayList<Joueur> temp = joueurs.values();
+        int i = joueurs.size();
+        joueurs.clear();
+        for (int o, o < i, o++){
+            joueurs.put(o, temp.remove(0));
+        }
     }
     
 }

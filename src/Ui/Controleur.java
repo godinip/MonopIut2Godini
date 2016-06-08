@@ -15,6 +15,7 @@ public class Controleur {
     private IhmGraph ihmGraph;
     private JoueurIhm joueurIhm;
     private int etat = 0;
+    private Joueur jTour;
     public Controleur(Monopoly monopoly){
         
         this.monopoly = monopoly;
