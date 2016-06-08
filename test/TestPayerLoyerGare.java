@@ -21,8 +21,8 @@ public class TestPayerLoyerGare {
         
         Propriete g2 = new Gare(2,"Gare une",200);
         Propriete g3 = new Gare(3,"Gare deux",200); 
-        Propriete g4 = new Gare(4,"Gare quatre",200);
-        Propriete g5 = new Gare(5,"Gare cinq",200); 
+        Propriete g4 = new Gare(4,"Gare trois",200);
+        Propriete g5 = new Gare(5,"Gare Quatre",200); 
         
         
         
