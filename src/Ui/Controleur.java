@@ -9,8 +9,8 @@ import javax.swing.*;
 public class Controleur {
     
     private Monopoly monopoly;
+    private Observateur observateur;
     private IhmGraph ihmGraph;
-    private JoueurIhm joueurIhm;
     
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
@@ -20,28 +20,28 @@ public class Controleur {
     
     public void partie() {
         ihmGraph.affiche();
-        //notifier
-        joueurIhm = new JoueurIhm(ihmGraph.getNbJoueur(), this);
-        //notifier
-        monopoly.setJoueurs(joueurIhm.getJoueurs());
-        //notifier
         while (monopoly.getJoueurs().size() > 1) {
             tour();
         }
         if (monopoly.getJoueurs().size() == 1) {
-            IhmMessage.afficherBoiteDialogue(monopoly.getJoueurs().toString()+" a gagné",0);
+            IhmMessage.afficherBoiteDialogue(monopoly.getJoueurs().getFirst().getNomJoueur()+" a gagné",0);
         }
     }
     
     public void tour() {
         for (Joueur joueur : monopoly.getJoueurs()) {
-            IhmMessage.afficherBoiteJoueur(joueur);
-            IhmMessage.afficherBoiteDialogue("\nAu tour de " + joueur.getNomJoueur() + " de jouer",0);
-            jouerUnCoup(joueur);
-            if (joueur.getPerdu()) {
-                IhmMessage.afficherBoiteDialogue(monopoly.getJoueurs().toString()+" a gagné",0);
-            } else {
+            if (monopoly.getJoueurs().toArray().length == 1) {
+                IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a gagné",0);
+            }else {
+                IhmMessage.afficherBoiteDialogue("\nAu tour de " + joueur.getNomJoueur() + " de jouer",0);
                 IhmMessage.afficherBoiteJoueur(joueur);
+                jouerUnCoup(joueur);
+                if (joueur.getPerdu()) {
+                    IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a perdu",0);
+                    monopoly.suppJoueur(joueur);
+                } else {
+                    IhmMessage.afficherBoiteJoueur(joueur);
+                }
             }
         }
     }
@@ -53,15 +53,18 @@ public class Controleur {
                 if (IhmMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte communauté Sortie de prison?", 1)) {
                     joueur.setPrison(0);
                     jouerUnCoup(joueur);
+                } else if (joueur.getChancePrison()) {
+                    if (IhmMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte chance Sortie de prison?", 1)) {
+                       joueur.setPrison(0);
+                       jouerUnCoup(joueur);
+                    }
                 }
-            }
-            if (joueur.getChancePrison()) {
+            } else if (joueur.getChancePrison()) {
                if (IhmMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte chance Sortie de prison?", 1)) {
                    joueur.setPrison(0);
                    jouerUnCoup(joueur);
                 }
             }
-            int a,b;
             if (lancerDé() == lancerDé()) {
                 IhmMessage.afficherBoiteDialogue("Vous lancez les dés, faites un double et sortez de prison", 0);
                 joueur.setPrison(0);
@@ -228,8 +231,8 @@ public class Controleur {
         return monopoly.getJoueurs().size();
     }
     
-    public JoueurIhm getJoueurIhm() {
-        return joueurIhm;
-    } 
+    public void setJoueurs(LinkedList<Joueur> joueurs) {
+        monopoly.setJoueurs(joueurs);
+    }
     
 }
