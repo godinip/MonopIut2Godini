@@ -70,7 +70,7 @@ public class ProprieteAConstruire extends Propriete {
     }
     
     public boolean ajouterMaison(){
-        if (this.getCouleur().LoyerDouble(super.getProprietaire()) && this.getMaisons()<4 && this.getCouleur().maisonUniformePlus(this.getMaisons())){
+        if (this.verificationAjoutMaisons()){
             super.getProprietaire().payer(this.getCoutmaison());
             this.setMaisons(this.getMaisons()+1);
             return true;
@@ -79,7 +79,7 @@ public class ProprieteAConstruire extends Propriete {
     }
     
     public boolean ajouterHotel(){
-        if (this.getCouleur().maisonUniformePlus(this.getMaisons()) && this.getMaisons()==4){
+        if (this.verificationAjoutHotels()){
             this.setMaisons(5);
             return true;
         }
@@ -109,6 +109,11 @@ public class ProprieteAConstruire extends Propriete {
         setHotels(0);
     }
     
+    public boolean verificationAjoutMaisons(){
+         return this.getCouleur().LoyerDouble(super.getProprietaire()) && this.getMaisons()<4 && this.getCouleur().maisonUniformePlus(this.getMaisons());
+    }       
     
-
+    public boolean verificationAjoutHotels(){
+    return (this.getCouleur().maisonUniformePlus(this.getMaisons()) && this.getMaisons()==4);
+    }
 }
