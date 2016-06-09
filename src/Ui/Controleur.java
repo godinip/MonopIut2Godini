@@ -15,11 +15,10 @@ public class Controleur {
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
         ihmGraph = new IhmGraph(this);
-        partie();
+        ihmGraph.affiche();
     }
     
     public void partie() {
-        ihmGraph.affiche();
         while (monopoly.getJoueurs().size() > 1) {
             tour();
         }
