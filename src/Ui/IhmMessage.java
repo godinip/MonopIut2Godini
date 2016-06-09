@@ -25,7 +25,13 @@ public class IhmMessage {
     }
     
     public static void afficherBoiteJoueur(Joueur joueur) {
-        String d = "\nPosition Joueur : "+joueur.getPositionCourante().getNom()
+        String np = joueur.getPositionCourante().getNom();
+        if (np == "Simple Visite / En Prison" && joueur.getPrison() > 0) {
+            np = "En Prison";
+        } else if (np == "Simple Visite / En Prison" && joueur.getPrison() == 0) {
+            np = "Simple Visite en Prison";
+        }
+        String d = "\nPosition Joueur : "+np
                 +"\nArgent actuel : "+joueur.getArgent()+"€"
                 +"\nPropriétés : ";
         if (joueur.getProprietes().isEmpty()){
