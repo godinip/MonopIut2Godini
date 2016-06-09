@@ -53,15 +53,19 @@ public class Controleur {
                 if (IhmMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte communauté Sortie de prison?", 1)) {
                     joueur.setPrison(0);
                     jouerUnCoup(joueur);
-                }
-            }
-            if (joueur.getChancePrison()) {
+                } else if (joueur.getChancePrison()) {
                if (IhmMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte chance Sortie de prison?", 1)) {
                    joueur.setPrison(0);
                    jouerUnCoup(joueur);
                 }
             }
-            int a,b;
+            }
+            else if (joueur.getChancePrison()) {
+               if (IhmMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte chance Sortie de prison?", 1)) {
+                   joueur.setPrison(0);
+                   jouerUnCoup(joueur);
+                }
+            }
             if (lancerDé() == lancerDé()) {
                 IhmMessage.afficherBoiteDialogue("Vous lancez les dés, faites un double et sortez de prison", 0);
                 joueur.setPrison(0);

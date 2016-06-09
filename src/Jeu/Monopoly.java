@@ -263,4 +263,10 @@ public class Monopoly {
     
     //
         
+        public Joueur joueurSuivant(){
+            Joueur j = joueurs.pollFirst();
+            joueurs.offerLast(j);
+            return j;
+        }
+        
 }
