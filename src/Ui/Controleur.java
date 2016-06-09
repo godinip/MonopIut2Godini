@@ -62,7 +62,6 @@ public class Controleur {
                    jouerUnCoup(joueur);
                 }
             }
-            int a,b;
             if (lancerDé() == lancerDé()) {
                 IhmMessage.afficherBoiteDialogue("Vous lancez les dés, faites un double et sortez de prison", 0);
                 joueur.setPrison(0);
