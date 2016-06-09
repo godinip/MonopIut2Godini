@@ -169,6 +169,9 @@ public class Controleur {
                 if (joueur.getPerdu()) {
                     IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a perdu",0);
                     monopoly.suppJoueur(joueur);
+                    
+                } else if(joueur.getJouer()){
+                    jouerUnCoup();
                 } else {
                     IhmMessage.afficherBoiteJoueur(joueur);
                 }
