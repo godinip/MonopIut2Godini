@@ -29,11 +29,7 @@ public class PlateauIhm extends JFrame{
     }
     
     public void initUIComponents() throws IOException {
-       
-       
-       
-       
-       
+
        lDe = new JButton("Lancer les dès");
        lDe.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -55,12 +51,7 @@ public class PlateauIhm extends JFrame{
        achatM.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        achatH = new JButton("Acheter Hotel");
        achatH.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
-       
-       
-                                                                                  //Generation plateau
-      
-       
-       
+
        bouton = new JPanel();
        bouton.setLayout(new BoxLayout(bouton, BoxLayout.PAGE_AXIS));
        bouton.add(lDe);
@@ -117,8 +108,7 @@ public class PlateauIhm extends JFrame{
         gc.weightx =11;
         gc.weighty = 11;
          h = 1;
-         
-         
+
             for (int i = 0; i < 20; i++) {
                 if(i<=10){
                     gc.gridx = i;
@@ -175,7 +165,7 @@ public class PlateauIhm extends JFrame{
         plateau.add(test,gc);
     }
     private void generationCarreau(JPanel carreau,int i,int j){
-        //                                                                                                                                          Gare Partie 1
+        //                                                                                                                                          Gare Partie 
             if (controleur.getCarreau(h)instanceof Gare) {
                 Gare g = (Gare) controleur.getCarreau(h);
                  carreau.addMouseListener(new MouseListener() {
@@ -193,7 +183,7 @@ public class PlateauIhm extends JFrame{
                     public void mouseExited(MouseEvent e) {}
                 });
             }
-//                                                                                                                                          Propriete a Construire Partie 1           
+//                                                                                                                                          Propriete a Construire Partie       
             if (controleur.getCarreau(h) instanceof ProprieteAConstruire) {
                 ProprieteAConstruire p = (ProprieteAConstruire)controleur.getCarreau(h);
                 JPanel panelCouleur = new JPanel();
@@ -235,7 +225,7 @@ public class PlateauIhm extends JFrame{
                 });
                 panelCouleur.setBackground(colorCarreau(p.getCouleur().getCouleur().toString())); 
             }
-//                                                                                                                                          Compagnie Partie 1
+//                                                                                                                                          Compagnie Partie 
             if (controleur.getCarreau(h)instanceof Compagnie) {
                     Compagnie co = (Compagnie) controleur.getCarreau(h);
                     carreau.addMouseListener(new MouseListener() {
@@ -258,7 +248,7 @@ public class PlateauIhm extends JFrame{
                     public void mouseExited(MouseEvent e) {}
                 });
             }
-//                                                                                                                                          Autre Carreau Partie 1
+//                                                                                                                                          Autre Carreau Partie 
               if (controleur.getCarreau(h) instanceof AutreCarreau) {
                     AutreCarreau a = (AutreCarreau) controleur.getCarreau(h);
                     carreau.addMouseListener(new MouseListener() {
@@ -284,7 +274,7 @@ public class PlateauIhm extends JFrame{
                     public void mouseExited(MouseEvent e) {}
                 });
             }
-//                                                                                                                                              Chance Partie 1
+//                                                                                                                                              Chance Partie 
               if (controleur.getCarreau(h) instanceof Chance) {
                     Chance ch = (Chance) controleur.getCarreau(h);
                     carreau.addMouseListener(new MouseListener() {
