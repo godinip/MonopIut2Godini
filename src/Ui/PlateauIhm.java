@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Ui;
 
 import Jeu.AutreCarreau;
@@ -32,11 +27,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author godinip
- */
 public class PlateauIhm extends JFrame{
+    
     private JPanel plateau,information,colorP;
     private Controleur controleur;
     private ArrayList<JPanel> cases = new ArrayList<>();
@@ -53,6 +45,7 @@ public class PlateauIhm extends JFrame{
         gareLabel = new JLabel(new ImageIcon(gare));
          initUIComponents();
     }
+    
     public void initUIComponents() throws IOException {
        plateau = new JPanel();
        plateau();
@@ -74,13 +67,14 @@ public class PlateauIhm extends JFrame{
         add(plateau,BorderLayout.CENTER);
         add(information,BorderLayout.EAST);
     }
+    
     public void affiche(){
         setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         setSize(1040,900);
         setVisible(true);
     }
+    
     public void plateau() throws IOException{
-
         plateau.setLayout(new GridBagLayout());
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.BOTH;
@@ -88,7 +82,6 @@ public class PlateauIhm extends JFrame{
         gc.weightx =11;
         gc.weighty = 11;
          h = 1;
-        
             for (int i = 0; i < 20; i++) {
                 if(i<=10){
                     gc.gridx = i;
@@ -105,7 +98,6 @@ public class PlateauIhm extends JFrame{
                             gc.ipadx = 0;
                             gc.ipady = 0;
                         }
-            
             if (controleur.getCarreau(h)instanceof Gare) {
                Gare g = (Gare) controleur.getCarreau(h);
                 
@@ -180,14 +172,12 @@ public class PlateauIhm extends JFrame{
                                 prix.setText(a.getMontant()+" €");
                             }
                         }
-                        
                     }@Override
                     public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
                     public void mouseExited(MouseEvent e) {}
                 });
-
             }
                         nCarreau.setBackground(Color.white);
                         nCarreau.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -294,6 +284,7 @@ public class PlateauIhm extends JFrame{
         test.setBorder(BorderFactory.createLineBorder(Color.black));
         plateau.add(test,gc);
     }
+    
     private Color colorCarreau(String s){
         Color c = null;
         switch(s){
@@ -316,4 +307,5 @@ public class PlateauIhm extends JFrame{
         }
         return c;
     }
-    }
+    
+}

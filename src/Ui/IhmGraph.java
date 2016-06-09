@@ -14,6 +14,7 @@ public class IhmGraph extends JFrame{
     private JLabel labMonop;
     private int nbJoueur;
     private JPanel bouton;
+    private JoueurIhm joueurIhm;
     
     public IhmGraph(Controleur c){
         super("Monopoly");
@@ -56,7 +57,8 @@ public class IhmGraph extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 setNbJoueur(listJ.getSelectedIndex()+2);
                 setVisible(false);
-                controleur.getJoueurIhm().affiche();
+                joueurIhm = new JoueurIhm(nbJoueur, controleur);
+                joueurIhm.affiche();
             }
         });
         exit.addActionListener(new ActionListener() {
@@ -71,10 +73,6 @@ public class IhmGraph extends JFrame{
         setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         setSize(350,200);
         setVisible(true);   
-    }
-    
-    public void setVisibles(boolean etat){
-        setVisibles(etat);
     }
     
     public int getNbJoueur() {
