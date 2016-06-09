@@ -25,8 +25,7 @@ public class IhmMessage {
     }
     
     public static void afficherBoiteJoueur(Joueur joueur) {
-        String d = "o---------------------------------------------o"
-                +"/nPosition Joueur : "+joueur.getPositionCourante().getNom()
+        String d = "/nPosition Joueur : "+joueur.getPositionCourante().getNom()
                 +"/nArgent actuel : "+joueur.getArgent()+"€"
                 +"/nPropriétés :";
         if (joueur.getProprietes().isEmpty()){
@@ -36,7 +35,6 @@ public class IhmMessage {
                 d = d+"/n"+p.getNom();
             }
         }
-        d = d+"/n----------";
         d = d+"/nGares :";
         if (joueur.getGares().isEmpty()){
             d = d+"/nAucune Gare n'est possédée";
@@ -45,7 +43,6 @@ public class IhmMessage {
                 d = d+"/n"+g.getNom();
             }
         }
-        d = d+"/n----------";
         d = d+"/nCompagnies :";
         if (joueur.getCompagnies().isEmpty()){
             d = d+"/nAucune Compagnie n'est possédée";
@@ -54,7 +51,6 @@ public class IhmMessage {
                 d = d+"/n"+c.getNom();
             }
         }
-        d = d+"/no---------------------------------------------o";
         afficherBoiteDialogue(d, 0);
     }
     

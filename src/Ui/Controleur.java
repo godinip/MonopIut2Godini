@@ -49,6 +49,7 @@ public class Controleur {
     
     public void jouerUnCoup(Joueur joueur) {
         while (joueur.getJouer()) {
+            joueur.setJouer(false);
             if (joueur.getPrison() > 0) {//CAS PRISON
                 IhmMessage.afficherBoiteDialogue("Vous êtes en prison pour encore "+joueur.getPrison()+" tours", 0);
                 if ((joueur.getCommunautePrison() || joueur.getChancePrison()) && IhmMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte Sortie de Prison?", 1)) {
@@ -178,8 +179,13 @@ public class Controleur {
         int m = lancerDé();
         IhmMessage.afficherBoiteDialogue("Vous avez fait " + n + " et "+ m + " avec les dés",0);
         if (n == m ) {
+            joueur.setNbDouble(joueur.getNbDouble()+1);
+            if (joueur.getNbDouble() == 3) {
+                joueur.setPositionCourante(getCarreau(11));
+                joueur.setPrison(3);
+                IhmMessage.afficherBoiteDialogue("Vous avez fait 3 doubles et êtes envoyé en prison",0);
+            }
             joueur.setJouer(true);
-            joueur.setDouble(joueur.getDouble+1);
         }
         joueur.setDernierLancé(n+m);
         if (position+n+m>40) {
