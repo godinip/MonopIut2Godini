@@ -159,10 +159,6 @@ public class Controleur {
                 } else {
                     IhmMessage.afficherBoiteJoueur(joueur);
                 }
-                //ACHETER MAISONS
-                //achatMaison(,);
-                //ACHETER HOTELS
-                //achatHotel(,);
             }
         }
     }
@@ -182,21 +178,21 @@ public class Controleur {
             IhmMessage.afficherBoiteDialogue("Vous avez fait 3 doubles et êtes envoyé en prison",0);
             joueur.setJouer(false);
         } else {
-        joueur.setDernierLancé(n+m);
-        if (position+n+m>40) {
-            joueur.setPositionCourante(getCarreau(position+n+m-40));
-            joueur.gagnerArgent(200);
-            IhmMessage.afficherBoiteDialogue("Vous passez par la case départ et gagnez 200€",0);
-            IhmMessage.afficherBoiteDialogue("Vous arrivez " + joueur.getPositionCourante().getNom(),0);
-            IhmMessage.afficherBoiteDialogue("Votre argent actuel est de " + joueur.getArgent() + "€",0);
-        } else {
-            joueur.setPositionCourante(getCarreau(position+n+m));
-            IhmMessage.afficherBoiteDialogue("Vous arrivez " + joueur.getPositionCourante().getNom(),0);
-            IhmMessage.afficherBoiteDialogue("Votre argent actuel est de " + joueur.getArgent() + "€",0);
+            joueur.setDernierLancé(n+m);
+            if (position+n+m>40) {
+                joueur.setPositionCourante(getCarreau(position+n+m-40));
+                joueur.gagnerArgent(200);
+                IhmMessage.afficherBoiteDialogue("Vous passez par la case départ et gagnez 200€",0);
+                IhmMessage.afficherBoiteDialogue("Vous arrivez sur " + joueur.getPositionCourante().getNom(),0);
+                IhmMessage.afficherBoiteDialogue("Votre argent actuel est de " + joueur.getArgent() + "€",0);
+            } else {
+                joueur.setPositionCourante(getCarreau(position+n+m));
+                IhmMessage.afficherBoiteDialogue("Vous arrivez sur " + joueur.getPositionCourante().getNom(),0);
+                IhmMessage.afficherBoiteDialogue("Votre argent actuel est de " + joueur.getArgent() + "€",0);
+            }
         }
-        }
-            return joueur.getPositionCourante();
-        }
+        return joueur.getPositionCourante();
+    }
     
     private int lancerDé() {
         return (int) (Math.random()*(6)+1);
