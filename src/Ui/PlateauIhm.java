@@ -1,33 +1,13 @@
 package Ui;
 
-import Jeu.AutreCarreau;
-import Jeu.Carreau;
-import Jeu.Chance;
-import Jeu.Communaute;
-import Jeu.Compagnie;
-import Jeu.Gare;
-import Jeu.ProprieteAConstruire;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import Jeu.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.*;
+import java.io.*;
+import java.util.*;
+import javax.imageio.*;
+import javax.swing.*;
 
 public class PlateauIhm extends JFrame{
     
@@ -53,10 +33,23 @@ public class PlateauIhm extends JFrame{
        bouton.setLayout(new BoxLayout(bouton, BoxLayout.PAGE_AXIS));
        carreauInfo = new JPanel();
        carreauInfo.setLayout(new BoxLayout(carreauInfo, BoxLayout.PAGE_AXIS));
+       colorP = new JPanel();
        
        lDe = new JButton("Lancer les dès");
+       lDe.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    controleur.jouerUnCoup();
+                }
+            }
+        );
        lDe.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
-       passerT = new JButton("Passer son Tour");
+       passerT = new JButton("Fin du tour");
+       passerT.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    controleur.tour();
+                }
+            }
+        );
        passerT.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        achatM = new JButton("Acheter Maison");
        achatM.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
@@ -64,7 +57,7 @@ public class PlateauIhm extends JFrame{
        achatH.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        
        plateau = new JPanel();
-       plateau();                                                                               //Generation plateau
+                                                                                  //Generation plateau
        information = new JPanel(new BorderLayout());
        information.setBackground(Color.YELLOW);
        information.add(Box.createRigidArea(new Dimension(285, 0)),BorderLayout.SOUTH);
@@ -72,14 +65,14 @@ public class PlateauIhm extends JFrame{
        information.add(bouton,BorderLayout.CENTER);
        carreauSelecte.setBackground(Color.white);
        carreauSelecte.setBorder(BorderFactory.createLineBorder(Color.black));
-       carreauSelecte.add(colorP = new JPanel(),BorderLayout.NORTH);
+       carreauSelecte.add(colorP,BorderLayout.NORTH);
        carreauSelecte.add(carreauInfo,BorderLayout.CENTER);
        
        bouton.add(lDe);
        bouton.add(passerT);
        bouton.add(achatM);
        bouton.add(achatH);
-//       
+//       colorP = new JPanel();
        colorP.add(Box.createRigidArea(new Dimension(0, 35)));
        
        carreauInfo.add(nom = new JLabel()); // Information carreau survolé 
@@ -93,7 +86,7 @@ public class PlateauIhm extends JFrame{
        carreauInfo.add(prixL5 = new JLabel());
        carreauInfo.add(prixL6 = new JLabel());
        carreauInfo.setBackground(Color.white);
-       
+       plateau();    
        add(plateau,BorderLayout.CENTER);
        add(information,BorderLayout.EAST);
     }
@@ -159,6 +152,7 @@ public class PlateauIhm extends JFrame{
                 carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        resetLabel();
                         colorP.setBackground(colorCarreau(p.getCouleur().getCouleur().toString())); 
                         nom.setText(p.getNom());
                         prix.setText(p.getPrix()+" €");
@@ -204,7 +198,6 @@ public class PlateauIhm extends JFrame{
                     @Override
                     public void mouseEntered(MouseEvent e) {
                         resetLabel();
-                        
                         colorP.setBackground(Color.WHITE); 
                         nom.setText(a.getNom());
                         if(h==1){
@@ -338,8 +331,7 @@ public class PlateauIhm extends JFrame{
                     public void mouseEntered(MouseEvent e) {
                         resetLabel();
                         colorP.setBackground(Color.white);
-                        colorP.add(cElecLabel,BorderLayout.CENTER);  
-                        colorP.setBackground(Color.WHITE); 
+                        colorP.add(cElecLabel,BorderLayout.CENTER);
                         nom.setText(co.getNom());
                         prix.setText(co.getPrix()+" €");
                     }@Override
@@ -394,12 +386,13 @@ public class PlateauIhm extends JFrame{
               //                                                                                                                                           Communaute Partie 2
               if (controleur.getCarreau(h) instanceof Communaute) {
                 Communaute com = (Communaute) controleur.getCarreau(h);
+                resetLabel();
                 carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
-                        resetLabel();
+                        
+                        colorP.setBackground(Color.white);
                         colorP.add(cCoLabel,BorderLayout.CENTER);  
-                        colorP.setBackground(Color.WHITE); 
                         nom.setText(com.getNom());
                         
                     }@Override
@@ -460,12 +453,10 @@ public class PlateauIhm extends JFrame{
         resetImg();
     }
     private void resetImg(){
-//        colorP.remove(chanceLabel);
-//        colorP.remove(cCoLabel);
-//        colorP.remove(cElecLabel);
-//        colorP.remove(cEauLabel);
-//        colorP.remove(gareLabel);
         colorP.removeAll();
+        colorP.repaint();
+        colorP.add(Box.createRigidArea(new Dimension(0, 35)));
+       
     }
     private void generationImage() throws IOException {
         gare = ImageIO.read(new File("./src/Image/Train.png"));

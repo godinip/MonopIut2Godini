@@ -18,6 +18,8 @@ public class Joueur {
     private int                                 prison = 0;
     private boolean                             chancePrison = false;
     private boolean                             communautePrison = false;
+    private boolean                             jouer = false;
+    private int                                 nbDouble = 0;
     
     public Joueur(String nomJoueur,Carreau positionCourante) {
         this.setNomJoueur(nomJoueur);
@@ -155,6 +157,22 @@ public class Joueur {
             }
         }
         return tot;
+    }
+    
+    public void setJouer(boolean jouer) {
+        this.jouer = jouer;
+    }
+    
+    public boolean getJouer() {
+        return jouer;
+    }
+    
+    public void setNbDouble(int nbDouble) {
+        this.nbDouble = nbDouble;
+    }
+    
+    public int getNbDouble() {
+        return nbDouble;
     }
     
 }

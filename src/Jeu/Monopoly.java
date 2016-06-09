@@ -185,28 +185,33 @@ public class Monopoly {
         }
 
         public void suppJoueur(Joueur j){
-        int m = 0;
-        int h = 0;
-        for(Compagnie c : j.getCompagnies()){
-            c.clean();
-        }
-        for (Gare g : j.getGares()){
-            g.clean();
-        }
-        for (ProprieteAConstruire p : j.getProprietes()){
-            int a = p.getMaisons();
-            if (a < 5){
-                m += a;
-            } else {
-                h += 1;
+            int m = 0;
+            int h = 0;
+            for(Compagnie c : j.getCompagnies()){
+                c.clean();
             }
-            p.clean();
+            for (Gare g : j.getGares()){
+                g.clean();
+            }
+            for (ProprieteAConstruire p : j.getProprietes()){
+                int a = p.getMaisons();
+                if (a < 5){
+                    m += a;
+                } else {
+                    h += 1;
+                }
+                p.clean();
+            }
+            rendreMaisons(m);
+            rendreHotels(h);
+            joueurs.remove(j);
         }
-        rendreMaisons(m);
-        rendreHotels(h);
         
-        joueurs.remove(j);
-    }
+        public Joueur joueurSuivant(){
+            Joueur j = joueurs.pollFirst();
+            joueurs.offerLast(j);
+            return j;
+        }
     
     //GESTION GROUPES
         public HashMap<String,Groupe> getGroupes() {
@@ -259,14 +264,6 @@ public class Monopoly {
 
         public void addCarteCommunaute(Carte commmunaute) {
             cartesCommunaute.add(commmunaute);
-        }
-    
-    //
-        
-        public Joueur joueurSuivant(){
-            Joueur j = joueurs.pollFirst();
-            joueurs.offerLast(j);
-            return j;
         }
         
 }
