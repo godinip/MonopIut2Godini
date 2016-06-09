@@ -18,7 +18,7 @@ public class Controleur {
         ihmGraph = new IhmGraph(this);
         ihmGraph.affiche();
     }
-    
+/**    
     public void partie() {
         while (monopoly.getJoueurs().size() > 1) {
             tour();
@@ -26,7 +26,7 @@ public class Controleur {
         if (monopoly.getJoueurs().size() == 1) {
             IhmMessage.afficherBoiteDialogue(monopoly.getJoueurs().getFirst().getNomJoueur()+" a gagné",0);
         }
-    }
+    }**/
     
     public void tour() {
             joueur = monopoly.joueurSuivant();
@@ -37,13 +37,13 @@ public class Controleur {
                 IhmMessage.afficherBoiteJoueur(joueur);
                 joueur.setNbDouble(0);
                 joueur.setJouer(true);
-                jouerUnCoup();
-                if (joueur.getPerdu()) {
+        //        jouerUnCoup();
+        /**        if (joueur.getPerdu()) {
                     IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a perdu",0);
                     monopoly.suppJoueur(joueur);
                 } else {
                     IhmMessage.afficherBoiteJoueur(joueur);
-                }
+                } **/
             }
         
     }
@@ -165,6 +165,12 @@ public class Controleur {
                     }
                 } else {//AUTRE CAS
                     IhmMessage.afficherBoiteDialogue(e.message(),0);
+                }
+                if (joueur.getPerdu()) {
+                    IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a perdu",0);
+                    monopoly.suppJoueur(joueur);
+                } else {
+                    IhmMessage.afficherBoiteJoueur(joueur);
                 }
                 //ACHETER MAISONS
                 //achatMaison(,);
