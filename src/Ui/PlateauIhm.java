@@ -40,7 +40,7 @@ public class PlateauIhm extends JFrame{
             }
         );
        lDe.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
-       passerT = new JButton("Passer son Tour");
+       passerT = new JButton("Fin du tour");
        passerT.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     controleur.tour();

@@ -27,7 +27,7 @@ public class IhmMessage {
     public static void afficherBoiteJoueur(Joueur joueur) {
         String d = "\nPosition Joueur : "+joueur.getPositionCourante().getNom()
                 +"\nArgent actuel : "+joueur.getArgent()+"€"
-                +"\nPropriétés :";
+                +"\nPropriétés : ";
         if (joueur.getProprietes().isEmpty()){
             d = d+"Aucune Propriété constructible n'est possédée";
         } else {
@@ -35,17 +35,17 @@ public class IhmMessage {
                 d = d+"\n"+p.getNom();
             }
         }
-        d = d+"\nGares :";
+        d = d+"\nGares : ";
         if (joueur.getGares().isEmpty()){
-            d = d+"\nAucune Gare n'est possédée";
+            d = d+"Aucune Gare n'est possédée";
         } else {
             for (Gare g : joueur.getGares()){
                 d = d+"\n"+g.getNom();
             }
         }
-        d = d+"\nCompagnies :";
+        d = d+"\nCompagnies : ";
         if (joueur.getCompagnies().isEmpty()){
-            d = d+"\nAucune Compagnie n'est possédée";
+            d = d+"Aucune Compagnie n'est possédée";
         } else {
             for (Compagnie c : joueur.getCompagnies()){
                 d = d+"\n"+c.getNom();
