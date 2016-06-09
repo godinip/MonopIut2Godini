@@ -11,6 +11,7 @@ public class Controleur {
     private Monopoly monopoly;
     private Observateur observateur;
     private IhmGraph ihmGraph;
+    private Joueur joueur;
     
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
@@ -28,7 +29,7 @@ public class Controleur {
     }
     
     public void tour() {
-        for (Joueur joueur : monopoly.getJoueurs()) {
+            joueur = monopoly.joueurSuivant();
             if (monopoly.getJoueurs().toArray().length == 1) {
                 IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a gagné",0);
             }else {
@@ -36,7 +37,7 @@ public class Controleur {
                 IhmMessage.afficherBoiteJoueur(joueur);
                 joueur.setNbDouble(0);
                 joueur.setJouer(true);
-                jouerUnCoup(joueur);
+                jouerUnCoup();
                 if (joueur.getPerdu()) {
                     IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a perdu",0);
                     monopoly.suppJoueur(joueur);
@@ -44,10 +45,10 @@ public class Controleur {
                     IhmMessage.afficherBoiteJoueur(joueur);
                 }
             }
-        }
+        
     }
     
-    public void jouerUnCoup(Joueur joueur) {
+    public void jouerUnCoup() {
         while (joueur.getJouer()) {
             joueur.setJouer(false);
             if (joueur.getPrison() > 0) {//CAS PRISON
@@ -59,19 +60,19 @@ public class Controleur {
                         } else if (joueur.getCommunautePrison()) {
                             joueur.setCommunautePrison(false);
                         }
-                        jouerUnCoup(joueur);
+                        jouerUnCoup();
                 } else {
                     if (lancerDé() == lancerDé()) {
                         IhmMessage.afficherBoiteDialogue("Vous lancez les dés, faites un double et sortez de prison", 0);
                         joueur.setPrison(0);
-                        jouerUnCoup(joueur);
+                        jouerUnCoup();
                     } else {
                         if (joueur.getPrison() == 1) {
                             joueur.payer(50);
                             if (joueur.getPerdu() != true) {
                                 IhmMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et payez 50€ pour sortir de prison", 0);
                                 joueur.setPrison(0);
-                                jouerUnCoup(joueur);
+                                jouerUnCoup();
                             }
                         } else {
                             IhmMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et restez en prison pour encore "+joueur.getPrison()+" tours", 0);

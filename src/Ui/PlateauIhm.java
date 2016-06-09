@@ -12,6 +12,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -53,8 +55,20 @@ public class PlateauIhm extends JFrame{
        bouton = new JPanel();
        bouton.setLayout(new BoxLayout(bouton, BoxLayout.PAGE_AXIS));
        lDe = new JButton("Lancer les dès");
+       lDe.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    controleur.jouerUnCoup();
+                }
+            }
+        );
        lDe.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        passerT = new JButton("Passer son Tour");
+       passerT.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    controleur.tour();
+                }
+            }
+        );
        passerT.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        achatM = new JButton("Acheter Maison");
        achatM.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
