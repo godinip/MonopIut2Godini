@@ -110,10 +110,10 @@ public class ProprieteAConstruire extends Propriete {
     }
     
     public boolean verificationAjoutMaisons(){
-         return this.getCouleur().LoyerDouble(super.getProprietaire()) && this.getMaisons()<4 && this.getCouleur().maisonUniformePlus(this.getMaisons());
+        return (this.getCouleur().LoyerDouble(super.getProprietaire()) && this.getMaisons()<4 && this.getCouleur().maisonUniformePlus(this.getMaisons()));
     }       
     
     public boolean verificationAjoutHotels(){
-    return (this.getCouleur().maisonUniformePlus(this.getMaisons()) && this.getMaisons()==4);
+        return (this.getCouleur().maisonUniformePlus(this.getMaisons()) && this.getMaisons()==4);
     }
 }
