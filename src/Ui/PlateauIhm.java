@@ -7,16 +7,15 @@ package Ui;
 
 import Jeu.AutreCarreau;
 import Jeu.Carreau;
+import Jeu.Chance;
 import Jeu.Compagnie;
 import Jeu.Gare;
 import Jeu.ProprieteAConstruire;
-import com.sun.prism.Graphics;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Label;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -37,42 +36,45 @@ import javax.swing.JPanel;
  * @author godinip
  */
 public class PlateauIhm extends JFrame{
-    private JPanel plateau,information,colorP;
+    
+    private JPanel plateau,information,colorP,carreauSelecte,carreauInfo;
     private Controleur controleur;
     private ArrayList<JPanel> cases = new ArrayList<>();
     private HashMap<Integer,Carreau> Carreaux;
-    private JLabel nom,prix,loyer1,loyer2,loyer3,loyer4,loyer5,hypo,gareLabel;
+    private JLabel nom,prix,loyer;
+    private JLabel gareLabel,departLabel,pfreeLabel,prisonLabel,gardienLabel,cCoLabel,chanceLabel,cElecLabel,cEauLabel;
     private int h;
-    private BufferedImage gare;
+    private BufferedImage gare,depart,pfree,prison,gardien,cCo,chance,cElec,cEau;
  
     public PlateauIhm(Controleur c) throws IOException{
         super("Monopoly");
         controleur = c;
-        
-        gare = ImageIO.read(new File("./src/Image/Train.png"));
-        gareLabel = new JLabel(new ImageIcon(gare));
+        generationImage();
          initUIComponents();
     }
     public void initUIComponents() throws IOException {
+       carreauSelecte = new JPanel(new BorderLayout());
+       carreauInfo = new JPanel(new BorderLayout());
        plateau = new JPanel();
-       plateau();
+       plateau();                                                                               //Generation plateau
        information = new JPanel(new BorderLayout());
        information.setBackground(Color.YELLOW);
        information.add(Box.createRigidArea(new Dimension(200, 0)));
-       JPanel carreauSelecte = new JPanel(new BorderLayout());
-       JPanel carreauInfo = new JPanel(new BorderLayout());
        information.add(carreauSelecte,BorderLayout.NORTH);
        
        carreauSelecte.setBackground(Color.white);
        carreauSelecte.setBorder(BorderFactory.createLineBorder(Color.black));
        carreauSelecte.add(colorP = new JPanel(),BorderLayout.NORTH);
        carreauSelecte.add(carreauInfo,BorderLayout.CENTER);
+       
        colorP.add(Box.createRigidArea(new Dimension(0, 35)));
-       carreauInfo.add(nom = new JLabel(),BorderLayout.NORTH);
+       
+       carreauInfo.add(nom = new JLabel(),BorderLayout.NORTH); // Information carreau survolé 
        carreauInfo.add(prix = new JLabel(),BorderLayout.CENTER);
        carreauInfo.setBackground(Color.white);
-        add(plateau,BorderLayout.CENTER);
-        add(information,BorderLayout.EAST);
+       
+       add(plateau,BorderLayout.CENTER);
+       add(information,BorderLayout.EAST);
     }
     public void affiche(){
         setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
@@ -97,7 +99,7 @@ public class PlateauIhm extends JFrame{
                   gc.gridy = i-10;
                  gc.gridx = 10;
                 }
-                  JPanel nCarreau = new  JPanel(new BorderLayout());
+                  JPanel carreau = new  JPanel(new BorderLayout());
                         if((i==0)||(i==10)){
                             gc.ipadx = 40;
                             gc.ipady = 40;  
@@ -105,11 +107,11 @@ public class PlateauIhm extends JFrame{
                             gc.ipadx = 0;
                             gc.ipady = 0;
                         }
-            
+//                                                                                                                                          Gare Partie 1
             if (controleur.getCarreau(h)instanceof Gare) {
                Gare g = (Gare) controleur.getCarreau(h);
                 
-                 nCarreau.addMouseListener(new MouseListener() {
+                 carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
                         colorP.setBackground(Color.white);
@@ -125,16 +127,17 @@ public class PlateauIhm extends JFrame{
                     }
                 });
             }
+//                                                                                                                                          Propriete a Construire Partie 1           
             if (controleur.getCarreau(h) instanceof ProprieteAConstruire) {
                 ProprieteAConstruire p = (ProprieteAConstruire)controleur.getCarreau(h);
                 
                 JPanel panelCouleur = new JPanel();
                 if(i>10){
-                    nCarreau.add(panelCouleur,BorderLayout.WEST);
+                    carreau.add(panelCouleur,BorderLayout.WEST);
                 }else{
-                    nCarreau.add(panelCouleur,BorderLayout.SOUTH);
+                    carreau.add(panelCouleur,BorderLayout.SOUTH);
                 }     
-                nCarreau.addMouseListener(new MouseListener() {
+                carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
                         colorP.setBackground(colorCarreau(p.getCouleur().getCouleur().toString())); 
@@ -148,9 +151,10 @@ public class PlateauIhm extends JFrame{
                 });
                 panelCouleur.setBackground(colorCarreau(p.getCouleur().getCouleur().toString())); 
             }
+//                                                                                                                                          Compagnie Partie 1
             if (controleur.getCarreau(h)instanceof Compagnie) {
                 Compagnie co = (Compagnie) controleur.getCarreau(h);
-                  nCarreau.addMouseListener(new MouseListener() {
+                  carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
                         colorP.setBackground(Color.WHITE); 
@@ -162,11 +166,11 @@ public class PlateauIhm extends JFrame{
                     public void mouseReleased(MouseEvent e) {}@Override
                     public void mouseExited(MouseEvent e) {}
                 });
-
             }
+//                                                                                                                                          Autre Carreau Partie 1
               if (controleur.getCarreau(h) instanceof AutreCarreau) {
                 AutreCarreau a = (AutreCarreau) controleur.getCarreau(h);
-               nCarreau.addMouseListener(new MouseListener() {
+               carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
                         colorP.setBackground(Color.WHITE); 
@@ -189,12 +193,29 @@ public class PlateauIhm extends JFrame{
                 });
 
             }
-                        nCarreau.setBackground(Color.white);
-                        nCarreau.setBorder(BorderFactory.createLineBorder(Color.black));
-                        plateau.add(nCarreau,gc);
-                        cases.add(nCarreau);
+              if (controleur.getCarreau(h) instanceof Chance) {
+                Chance ch = (Chance) controleur.getCarreau(h);
+               carreau.addMouseListener(new MouseListener() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        colorP.setBackground(Color.WHITE); 
+                        nom.setText(ch.getNom());
+                        
+                    }@Override
+                    public void mouseClicked(MouseEvent e) {}@Override
+                    public void mousePressed(MouseEvent e) {}@Override
+                    public void mouseReleased(MouseEvent e) {}@Override
+                    public void mouseExited(MouseEvent e) {}
+                });
+
+            }
+                        carreau.setBackground(Color.white);
+                        carreau.setBorder(BorderFactory.createLineBorder(Color.black));
+                        plateau.add(carreau,gc);
+                        cases.add(carreau);
                         h++;
             }  
+//                                                                                                                                                             Partie 2
             for (int i = 20; i > 0; i--) {
                 if (i>=10) {
                     gc.gridx = i-10;
@@ -211,6 +232,7 @@ public class PlateauIhm extends JFrame{
                 gc.ipadx = 0;
                 gc.ipady = 0;
             }
+//                                                                                                                                          Prporiete a Construire  Partie 2            
             if (controleur.getCarreau(h) instanceof ProprieteAConstruire) {
                 ProprieteAConstruire p = (ProprieteAConstruire)controleur.getCarreau(h);
                 JPanel panelCouleur = new JPanel();
@@ -233,6 +255,7 @@ public class PlateauIhm extends JFrame{
                 });
                 panelCouleur.setBackground(colorCarreau(p.getCouleur().getCouleur().toString()));
             }
+//                                                                                                                                          Gare Partie 2
             if (controleur.getCarreau(h)instanceof Gare) {
                 Gare g = (Gare) controleur.getCarreau(h);
                 
@@ -252,10 +275,23 @@ public class PlateauIhm extends JFrame{
                     }
                 });
             }
+//                                                                                                                                          Compagnie Partie 2
             if (controleur.getCarreau(h)instanceof Compagnie) {
                 Compagnie co = (Compagnie) controleur.getCarreau(h);
-
-            }
+                carreau.addMouseListener(new MouseListener() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        colorP.setBackground(Color.WHITE); 
+                        nom.setText(co.getNom());
+                        prix.setText(co.getPrix()+" €");
+                    }@Override
+                    public void mouseClicked(MouseEvent e) {}@Override
+                    public void mousePressed(MouseEvent e) {}@Override
+                    public void mouseReleased(MouseEvent e) {}@Override
+                    public void mouseExited(MouseEvent e) {}
+                });
+           }
+//                                                                                                                                           Autre Carreau Partie 2
               if (controleur.getCarreau(h) instanceof AutreCarreau) {
                 AutreCarreau a = (AutreCarreau) controleur.getCarreau(h);
                 carreau.addMouseListener(new MouseListener() {
@@ -315,5 +351,26 @@ public class PlateauIhm extends JFrame{
                 break;
         }
         return c;
+    }
+
+    private void generationImage() throws IOException {
+        gare = ImageIO.read(new File("./src/Image/Train.png"));
+        depart = ImageIO.read(new File("./src/Image/FlecheD.png"));
+        pfree = ImageIO.read(new File("./src/Image/pfree.png"));
+        prison = ImageIO.read(new File("./src/Image/prison.png"));
+        gardien = ImageIO.read(new File("./src/Image/garde.png"));
+        cCo = ImageIO.read(new File("./src/Image/CaisseCommunaute.png"));
+        chance = ImageIO.read(new File("./src/Image/Chance.png"));
+        cElec = ImageIO.read(new File("./src/Image/Compagnie eau.png"));
+        cEau = ImageIO.read(new File("./src/Image/Compagnie elec.png"));
+        gareLabel = new JLabel(new ImageIcon(gare));
+        departLabel = new JLabel(new ImageIcon(depart));
+        pfreeLabel = new JLabel(new ImageIcon(pfree));
+        prisonLabel = new JLabel(new ImageIcon(prison));
+        gardienLabel = new JLabel(new ImageIcon(gardien));
+        cCoLabel = new JLabel(new ImageIcon(cCo));
+        chanceLabel = new JLabel(new ImageIcon(chance));
+        cElecLabel = new JLabel(new ImageIcon(cElec));
+        cEauLabel = new JLabel(new ImageIcon(cEau));
     }
     }
