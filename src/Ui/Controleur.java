@@ -65,14 +65,14 @@ public class Controleur {
                     if (lancerDé() == lancerDé()) {
                         IhmMessage.afficherBoiteDialogue("Vous lancez les dés, faites un double et sortez de prison", 0);
                         joueur.setPrison(0);
-                        jouerUnCoup();
+                        joueur.setJouer(true);
                     } else {
                         if (joueur.getPrison() == 1) {
                             joueur.payer(50);
                             if (joueur.getPerdu() != true) {
                                 IhmMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et payez 50€ pour sortir de prison", 0);
                                 joueur.setPrison(0);
-                                jouerUnCoup();
+                                joueur.setJouer(true);
                             }
                         } else {
                             IhmMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et restez en prison pour encore "+joueur.getPrison()+" tours", 0);
@@ -187,28 +187,29 @@ public class Controleur {
         IhmMessage.afficherBoiteDialogue("Vous avez fait " + n + " et "+ m + " avec les dés",0);
         if (n == m ) {
             joueur.setNbDouble(joueur.getNbDouble()+1);
-            if (joueur.getNbDouble() == 3) {
-                joueur.setPositionCourante(getCarreau(11));
-                joueur.setPrison(3);
-                IhmMessage.afficherBoiteDialogue("Vous avez fait 3 doubles et êtes envoyé en prison",0);
-            }
             joueur.setJouer(true);
         }
+            if (joueur.getNbDouble() == 3) {
+                joueur.setPositionCourante(getCarreau(9));
+                joueur.setPrison(3);
+                IhmMessage.afficherBoiteDialogue("Vous avez fait 3 doubles et êtes envoyé en prison",0);
+                joueur.setJouer(false);
+            } else {
         joueur.setDernierLancé(n+m);
         if (position+n+m>40) {
             joueur.setPositionCourante(getCarreau(position+n+m-40));
             joueur.gagnerArgent(200);
-            IhmMessage.afficherBoiteDialogue("Vous passez par la case départet gagnez 200€",0);
+            IhmMessage.afficherBoiteDialogue("Vous passez par la case départ et gagnez 200€",0);
             IhmMessage.afficherBoiteDialogue("Vous arrivez " + joueur.getPositionCourante().getNom(),0);
             IhmMessage.afficherBoiteDialogue("Votre argent actuel est de " + joueur.getArgent() + "€",0);
-            return joueur.getPositionCourante();
         } else {
             joueur.setPositionCourante(getCarreau(position+n+m));
             IhmMessage.afficherBoiteDialogue("Vous arrivez " + joueur.getPositionCourante().getNom(),0);
             IhmMessage.afficherBoiteDialogue("Votre argent actuel est de " + joueur.getArgent() + "€",0);
+        }
+        }
             return joueur.getPositionCourante();
         }
-    }
     
     private int lancerDé() {
         return (int) (Math.random()*(6)+1);
