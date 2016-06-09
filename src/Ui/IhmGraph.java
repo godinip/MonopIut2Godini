@@ -7,6 +7,7 @@ import java.util.*;
 import javax.swing.*;
 
 public class IhmGraph extends JFrame{
+    
     private JComboBox listJ ;
     private Controleur controleur;
     private JButton play,exit; 
@@ -41,14 +42,11 @@ public class IhmGraph extends JFrame{
         bouton.add(exit);
         play.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
         exit.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
-        
         monopPanel = new JPanel();
         monopPanel.add(labMonop,BorderLayout.NORTH);
         monopPanel.add(panSelection,BorderLayout.CENTER);
         monopPanel.add(bouton);
         add(monopPanel);
-        
-         
     }
     
     private void initUiLIsten(){

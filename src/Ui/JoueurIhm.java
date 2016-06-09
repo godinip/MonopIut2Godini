@@ -1,24 +1,12 @@
 package Ui;
 
-import Jeu.Joueur;
-import Jeu.Monopoly;
-import java.awt.BorderLayout;
-import java.awt.List;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import Jeu.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+import java.util.logging.*;
+import javax.swing.*;
 
 public class JoueurIhm extends  JFrame{
     private JFrame window;
@@ -110,7 +98,6 @@ public class JoueurIhm extends  JFrame{
                     plateauIhm = new PlateauIhm(controleur);
                     plateauIhm.affiche();
                     controleur.tour();
-//                    controleur.partie();
                 } catch (IOException ex) {
                     Logger.getLogger(JoueurIhm.class.getName()).log(Level.SEVERE, null, ex);
                 }

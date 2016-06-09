@@ -18,15 +18,6 @@ public class Controleur {
         ihmGraph = new IhmGraph(this);
         ihmGraph.affiche();
     }
-/**    
-    public void partie() {
-        while (monopoly.getJoueurs().size() > 1) {
-            tour();
-        }
-        if (monopoly.getJoueurs().size() == 1) {
-            IhmMessage.afficherBoiteDialogue(monopoly.getJoueurs().getFirst().getNomJoueur()+" a gagné",0);
-        }
-    }**/
     
     public void tour() {
             joueur = monopoly.joueurSuivant();
@@ -37,13 +28,6 @@ public class Controleur {
                 IhmMessage.afficherBoiteJoueur(joueur);
                 joueur.setNbDouble(0);
                 joueur.setJouer(true);
-        //        jouerUnCoup();
-        /**        if (joueur.getPerdu()) {
-                    IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a perdu",0);
-                    monopoly.suppJoueur(joueur);
-                } else {
-                    IhmMessage.afficherBoiteJoueur(joueur);
-                } **/
             }
         
     }
@@ -192,12 +176,12 @@ public class Controleur {
             joueur.setNbDouble(joueur.getNbDouble()+1);
             joueur.setJouer(true);
         }
-            if (joueur.getNbDouble() == 3) {
-                joueur.setPositionCourante(getCarreau(9));
-                joueur.setPrison(3);
-                IhmMessage.afficherBoiteDialogue("Vous avez fait 3 doubles et êtes envoyé en prison",0);
-                joueur.setJouer(false);
-            } else {
+        if (joueur.getNbDouble() == 3) {
+            joueur.setPositionCourante(getCarreau(11));
+            joueur.setPrison(3);
+            IhmMessage.afficherBoiteDialogue("Vous avez fait 3 doubles et êtes envoyé en prison",0);
+            joueur.setJouer(false);
+        } else {
         joueur.setDernierLancé(n+m);
         if (position+n+m>40) {
             joueur.setPositionCourante(getCarreau(position+n+m-40));
