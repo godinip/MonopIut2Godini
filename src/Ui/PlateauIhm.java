@@ -35,7 +35,7 @@ public class PlateauIhm extends JFrame{
     private Controleur controleur;
     private ArrayList<JPanel> cases = new ArrayList<>();
     private HashMap<Integer,Carreau> Carreaux;
-    private JLabel nom,prix,loyer;
+    private JLabel nom,prix,nbMaison,prixM,prixL1,prixL2,prixL3,prixL4,prixL5,prixL6;
     private JLabel gareLabel,departLabel,pfreeLabel,prisonLabel,gardienLabel,cCoLabel,chanceLabel,cElecLabel,cEauLabel;
     private int h;
     private BufferedImage gare,depart,pfree,prison,gardien,cCo,chance,cElec,cEau;
@@ -49,9 +49,11 @@ public class PlateauIhm extends JFrame{
     
     public void initUIComponents() throws IOException {
        carreauSelecte = new JPanel(new BorderLayout());
-       carreauInfo = new JPanel(new BorderLayout());
        bouton = new JPanel();
        bouton.setLayout(new BoxLayout(bouton, BoxLayout.PAGE_AXIS));
+       carreauInfo = new JPanel();
+       carreauInfo.setLayout(new BoxLayout(carreauInfo, BoxLayout.PAGE_AXIS));
+       
        lDe = new JButton("Lancer les dès");
        lDe.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        passerT = new JButton("Passer son Tour");
@@ -80,8 +82,16 @@ public class PlateauIhm extends JFrame{
 //       
        colorP.add(Box.createRigidArea(new Dimension(0, 35)));
        
-       carreauInfo.add(nom = new JLabel(),BorderLayout.NORTH); // Information carreau survolé 
-       carreauInfo.add(prix = new JLabel(),BorderLayout.CENTER);
+       carreauInfo.add(nom = new JLabel()); // Information carreau survolé 
+       carreauInfo.add(prix = new JLabel());
+       carreauInfo.add(nbMaison = new JLabel());
+       carreauInfo.add(prixM = new JLabel());
+       carreauInfo.add(prixL1 = new JLabel());
+       carreauInfo.add(prixL2 = new JLabel());
+       carreauInfo.add(prixL3 = new JLabel());
+       carreauInfo.add(prixL4 = new JLabel());
+       carreauInfo.add(prixL5 = new JLabel());
+       carreauInfo.add(prixL6 = new JLabel());
        carreauInfo.setBackground(Color.white);
        
        add(plateau,BorderLayout.CENTER);
@@ -124,17 +134,16 @@ public class PlateauIhm extends JFrame{
                  carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        resetLabel();
                         colorP.setBackground(Color.white);
                         colorP.add(gareLabel,BorderLayout.CENTER);
                         nom.setText(g.getNom());
-                        prix.setText(g.getPrix()+"");
+                        prix.setText(g.getPrix()+" €");
                     }@Override
                     public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
-                    public void mouseExited(MouseEvent e) {
-                        colorP.remove(gareLabel);
-                    }
+                    public void mouseExited(MouseEvent e) { }
                 });
             }
 //                                                                                                                                          Propriete a Construire Partie 1           
@@ -153,6 +162,15 @@ public class PlateauIhm extends JFrame{
                         colorP.setBackground(colorCarreau(p.getCouleur().getCouleur().toString())); 
                         nom.setText(p.getNom());
                         prix.setText(p.getPrix()+" €");
+                        nbMaison.setText("Nombre Maison: "+p.getMaisons());
+                        prixM.setText("Prix d'une Maison: "+p.getCoutmaison());
+                        prixL1.setText("Loyer 1: "+p.getLoyers(0));
+                        prixL2.setText("Loyer 2: "+p.getLoyers(1));
+                        prixL3.setText("Loyer 3: "+p.getLoyers(2));
+                        prixL4.setText("Loyer 4: "+p.getLoyers(3));
+                        prixL5.setText("Loyer 5: "+p.getLoyers(4));
+                        prixL6.setText("Loyer 6: "+p.getLoyers(5));
+                        
                     }@Override
                     public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
@@ -167,6 +185,7 @@ public class PlateauIhm extends JFrame{
                   carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        resetLabel();
                         colorP.setBackground(Color.white);
                         colorP.add(cEauLabel,BorderLayout.CENTER);
                         nom.setText(co.getNom());
@@ -175,7 +194,7 @@ public class PlateauIhm extends JFrame{
                     public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
-                    public void mouseExited(MouseEvent e) {colorP.remove(cEauLabel);}
+                    public void mouseExited(MouseEvent e) {}
                 });
             }
 //                                                                                                                                          Autre Carreau Partie 1
@@ -184,6 +203,8 @@ public class PlateauIhm extends JFrame{
                carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        resetLabel();
+                        
                         colorP.setBackground(Color.WHITE); 
                         nom.setText(a.getNom());
                         if(h==1){
@@ -208,16 +229,16 @@ public class PlateauIhm extends JFrame{
                carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        resetLabel();
                         colorP.setBackground(Color.white);
                         colorP.add(chanceLabel,BorderLayout.CENTER);
                         nom.setText(ch.getNom());
-                        prix.setText(" ");
                     }@Override
                     public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
                     public void mouseExited(MouseEvent e) {
-                    colorP.remove(chanceLabel);
+                    
                     }
                 });
 
@@ -228,17 +249,16 @@ public class PlateauIhm extends JFrame{
                 carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
-                        colorP.setBackground(Color.white);
+                        resetLabel();
                         colorP.add(cCoLabel,BorderLayout.CENTER);    
                         colorP.setBackground(Color.WHITE); 
                         nom.setText(com.getNom());
-                        prix.setText(" ");
                     }@Override
                     public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
                     public void mouseExited(MouseEvent e) {
-                    colorP.remove(cCoLabel);
+                    
                     }
                 });
             }
@@ -277,6 +297,7 @@ public class PlateauIhm extends JFrame{
                 carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        resetLabel();
                         colorP.setBackground(colorCarreau(p.getCouleur().getCouleur().toString())); 
                         nom.setText(p.getNom());
                         prix.setText(p.getPrix()+" €");
@@ -295,6 +316,7 @@ public class PlateauIhm extends JFrame{
                  carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        resetLabel();
                         colorP.setBackground(Color.white);
                         colorP.add(gareLabel,BorderLayout.CENTER);
                         nom.setText(g.getNom());
@@ -304,7 +326,7 @@ public class PlateauIhm extends JFrame{
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
                     public void mouseExited(MouseEvent e) {
-                        colorP.remove(gareLabel);
+                       
                     }
                 });
             }
@@ -314,6 +336,7 @@ public class PlateauIhm extends JFrame{
                 carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        resetLabel();
                         colorP.setBackground(Color.white);
                         colorP.add(cElecLabel,BorderLayout.CENTER);  
                         colorP.setBackground(Color.WHITE); 
@@ -323,7 +346,7 @@ public class PlateauIhm extends JFrame{
                     public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
-                    public void mouseExited(MouseEvent e) {colorP.remove(cElecLabel);}
+                    public void mouseExited(MouseEvent e) {}
                 });
            }
 //                                                                                                                                           Autre Carreau Partie 2
@@ -332,6 +355,7 @@ public class PlateauIhm extends JFrame{
                 carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        resetLabel();
                         colorP.setBackground(Color.WHITE); 
                         nom.setText(a.getNom());
                         if(h==1){
@@ -356,15 +380,15 @@ public class PlateauIhm extends JFrame{
                 carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        resetLabel();
                         colorP.setBackground(Color.white);
                         colorP.add(chanceLabel,BorderLayout.CENTER);  
                         nom.setText(ch.getNom());
-                        prix.setText(" ");
                     }@Override
                     public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
-                    public void mouseExited(MouseEvent e) {colorP.remove(chanceLabel);}
+                    public void mouseExited(MouseEvent e) {}
                 });
             }
               //                                                                                                                                           Communaute Partie 2
@@ -373,16 +397,16 @@ public class PlateauIhm extends JFrame{
                 carreau.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
-                        colorP.setBackground(Color.white);
+                        resetLabel();
                         colorP.add(cCoLabel,BorderLayout.CENTER);  
                         colorP.setBackground(Color.WHITE); 
                         nom.setText(com.getNom());
-                        prix.setText(" ");
+                        
                     }@Override
                     public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
-                    public void mouseExited(MouseEvent e) {colorP.remove(cCoLabel);}
+                    public void mouseExited(MouseEvent e) {}
                 });
             }
             carreau.setBackground(Color.white);
@@ -422,7 +446,27 @@ public class PlateauIhm extends JFrame{
         }
         return c;
     }
-
+    private void resetLabel(){
+        nom.setText(" ");
+        prix.setText(" ");
+        nbMaison.setText(" ");
+        prixM.setText(" ");
+        prixL1.setText(" ");
+        prixL2.setText(" ");
+        prixL3.setText(" ");
+        prixL4.setText(" ");
+        prixL5.setText(" ");
+        prixL6.setText(" ");
+        resetImg();
+    }
+    private void resetImg(){
+//        colorP.remove(chanceLabel);
+//        colorP.remove(cCoLabel);
+//        colorP.remove(cElecLabel);
+//        colorP.remove(cEauLabel);
+//        colorP.remove(gareLabel);
+        colorP.removeAll();
+    }
     private void generationImage() throws IOException {
         gare = ImageIO.read(new File("./src/Image/Train.png"));
         depart = ImageIO.read(new File("./src/Image/FlecheD.png"));

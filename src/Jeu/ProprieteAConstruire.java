@@ -36,6 +36,9 @@ public class ProprieteAConstruire extends Propriete {
     public void setLoyer(int[] loyer) {
         this.loyer = loyer;
     }
+    public int getLoyers(int i){
+        return loyer[i];
+    }
     
     public Groupe getCouleur() {
         return couleur;
