@@ -1,6 +1,7 @@
 package Jeu;
 
 import Data.*;
+import java.awt.event.MouseListener;
 
 public abstract class Carreau {
     
