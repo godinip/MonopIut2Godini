@@ -55,7 +55,7 @@ public class Events {
                 message = jjoue.getNomJoueur() + " tire une carte Caisse de Communauté";
                 break;
             case "prison":
-                message = jjoue.getNomJoueur() + " va tout droit à la prison. Eat shit m*therf*cking nigga";
+                message = jjoue.getNomJoueur() + " va tout droit à la prison.";
                 break;
             default:
                 message = "ce cas n'est pas géré";
