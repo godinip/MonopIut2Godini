@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class JoueurIhm extends  JFrame implements Observateur{
+public class JoueurIhm extends  JFrame{
     private JFrame window;
     private int nbJoueur;
     private  JButton play,exit;
@@ -104,13 +104,16 @@ public class JoueurIhm extends  JFrame implements Observateur{
                         }
                         setVisible(false);
                 }
-                //A MODIFIERcontroleur.setJoueurs(joueurs);
+                //A MODIFIER
+                controleur.setJoueurs(joueurs);
                 try {
                     plateauIhm = new PlateauIhm(controleur);
                     plateauIhm.affiche();
+                    controleur.partie();
                 } catch (IOException ex) {
                     Logger.getLogger(JoueurIhm.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                //FIN MODIFICATION
             }
         });
         exit.addActionListener(new ActionListener() {
@@ -134,11 +137,6 @@ public class JoueurIhm extends  JFrame implements Observateur{
 
     public void setJoueurs(LinkedList<Joueur> joueurs) {
         this.joueurs = joueurs;
-    }
-
-    @Override
-    public void notifier(Message msg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

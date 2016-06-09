@@ -40,7 +40,6 @@ public class PlateauIhm extends JFrame{
     public PlateauIhm(Controleur c) throws IOException{
         super("Monopoly");
         controleur = c;
-        
         gare = ImageIO.read(new File("./src/Image/Train.png"));
         gareLabel = new JLabel(new ImageIcon(gare));
          initUIComponents();
