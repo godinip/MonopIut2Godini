@@ -28,6 +28,9 @@ public class Controleur {
                 IhmMessage.afficherBoiteJoueur(joueur);
                 joueur.setNbDouble(0);
                 joueur.setJouer(true);
+                /*Message message = new Message();
+                message.type = Message.Types.PASSER;
+                observateur.notifier(message);*/
             }
     }
     
@@ -43,7 +46,7 @@ public class Controleur {
                         } else if (joueur.getCommunautePrison()) {
                             joueur.setCommunautePrison(false);
                         }
-                        jouerUnCoup();
+                        joueur.setJouer(true);
                 } else {
                     if (lancerDé() == lancerDé()) {
                         IhmMessage.afficherBoiteDialogue("Vous lancez les dés, faites un double et sortez de prison", 0);
@@ -71,6 +74,36 @@ public class Controleur {
         }
     }
     
+    private Carreau lancerDésAvancer(Joueur joueur) {
+        int position = joueur.getPositionCourante().getNumero();
+        int n = lancerDé();
+        int m = lancerDé();
+        IhmMessage.afficherBoiteDialogue("Vous avez fait " + n + " et "+ m + " avec les dés",0);
+        if (n == m ) {
+            joueur.setNbDouble(joueur.getNbDouble()+1);
+            joueur.setJouer(true);
+        }
+        if (joueur.getNbDouble() == 3) {
+            joueur.setPositionCourante(getCarreau(11));
+            joueur.setPrison(3);
+            IhmMessage.afficherBoiteDialogue("Vous avez fait 3 doubles et êtes envoyé en prison",0);
+            joueur.setJouer(false);
+        } else {
+            joueur.setDernierLancé(n+m);
+            if (position+n+m>40) {
+                joueur.setPositionCourante(getCarreau(position+n+m-40));
+                joueur.gagnerArgent(200);
+                IhmMessage.afficherBoiteDialogue("Vous passez par la case départ et gagnez 200€",0);
+                String np = joueur.getPositionCourante().getNom();
+                IhmMessage.afficherBoiteDialogue("Vous arrivez sur " + joueur.getPositionCourante().getNom(),0);
+            } else {
+                joueur.setPositionCourante(getCarreau(position+n+m));
+                IhmMessage.afficherBoiteDialogue("Vous arrivez sur " + joueur.getPositionCourante().getNom(),0);
+            }
+        }
+        return joueur.getPositionCourante();
+    }
+    
     private void gestionEvents(Events e) {
         if (e.getAction() == Actions.acheter) {//CAS ACHETER
                     acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
@@ -85,8 +118,7 @@ public class Controleur {
                         IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
                         joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()-chance.getX()));
                         monopoly.addCarteChance(chance);
-                        e = joueur.getPositionCourante().action(joueur);
-                        gestionEvents(e);
+                        joueur.getPositionCourante().action(joueur);
                     } else if (actionCarte == ActionsCarte.MH) {
                         IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
                         joueur.payer(joueur.getNbMaisons()*chance.getX()+joueur.getNbHotels()*chance.getY());
@@ -113,7 +145,6 @@ public class Controleur {
                         joueur.setPositionCourante(getCarreau(11));
                         joueur.setPrison(3);
                         monopoly.addCarteChance(chance);
-                        joueur.getPositionCourante().action(joueur);
                     }
                 } else if (e.getAction() == Actions.carteCommunaute) {//CAS CARTE COMMUNAUTE
                     IhmMessage.afficherBoiteDialogue(e.message(), 0);
@@ -151,8 +182,6 @@ public class Controleur {
                         joueur.setPositionCourante(getCarreau(11));
                         joueur.setPrison(3);
                         monopoly.addCarteCommunaute(communaute);
-                        e = joueur.getPositionCourante().action(joueur);
-                        gestionEvents(e);
                     } else if (communaute.getAction() == ActionsCarte.AV) {
                         IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
                         if (joueur.getPositionCourante().getNumero() > communaute.getX()) {
@@ -175,35 +204,6 @@ public class Controleur {
                 } else {
                     IhmMessage.afficherBoiteJoueur(joueur);
                 }
-    }
-    
-    private Carreau lancerDésAvancer(Joueur joueur) {
-        int position = joueur.getPositionCourante().getNumero();
-        int n = lancerDé();
-        int m = lancerDé();
-        IhmMessage.afficherBoiteDialogue("Vous avez fait " + n + " et "+ m + " avec les dés",0);
-        if (n == m ) {
-            joueur.setNbDouble(joueur.getNbDouble()+1);
-            joueur.setJouer(true);
-        }
-        if (joueur.getNbDouble() == 3) {
-            joueur.setPositionCourante(getCarreau(11));
-            joueur.setPrison(3);
-            IhmMessage.afficherBoiteDialogue("Vous avez fait 3 doubles et êtes envoyé en prison",0);
-            joueur.setJouer(false);
-        } else {
-            joueur.setDernierLancé(n+m);
-            if (position+n+m>40) {
-                joueur.setPositionCourante(getCarreau(position+n+m-40));
-                joueur.gagnerArgent(200);
-                IhmMessage.afficherBoiteDialogue("Vous passez par la case départ et gagnez 200€",0);
-                IhmMessage.afficherBoiteDialogue("Vous arrivez sur " + joueur.getPositionCourante().getNom(),0);
-            } else {
-                joueur.setPositionCourante(getCarreau(position+n+m));
-                IhmMessage.afficherBoiteDialogue("Vous arrivez sur " + joueur.getPositionCourante().getNom(),0);
-            }
-        }
-        return joueur.getPositionCourante();
     }
     
     private int lancerDé() {
