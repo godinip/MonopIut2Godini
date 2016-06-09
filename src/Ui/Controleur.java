@@ -34,7 +34,8 @@ public class Controleur {
     }
     
     public void tour() {
-        for (Joueur joueur : monopoly.getJoueurs()) {
+        while (monopoly.getJoueurs().size() > 1){
+            Joueur joueur = monopoly.joueurSuivant();
             IhmMessage.afficherBoiteJoueur(joueur);
             IhmMessage.afficherBoiteDialogue("\nAu tour de " + joueur.getNomJoueur() + " de jouer",0);
             jouerUnCoup(joueur);
