@@ -33,8 +33,8 @@ public class Controleur {
             if (monopoly.getJoueurs().toArray().length == 1) {
                 IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a gagné",0);
             }else {
-                IhmMessage.afficherBoiteJoueur(joueur);
                 IhmMessage.afficherBoiteDialogue("\nAu tour de " + joueur.getNomJoueur() + " de jouer",0);
+                IhmMessage.afficherBoiteJoueur(joueur);
                 jouerUnCoup(joueur);
                 if (joueur.getPerdu()) {
                     IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a perdu",0);
@@ -54,13 +54,12 @@ public class Controleur {
                     joueur.setPrison(0);
                     jouerUnCoup(joueur);
                 } else if (joueur.getChancePrison()) {
-               if (IhmMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte chance Sortie de prison?", 1)) {
-                   joueur.setPrison(0);
-                   jouerUnCoup(joueur);
+                    if (IhmMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte chance Sortie de prison?", 1)) {
+                       joueur.setPrison(0);
+                       jouerUnCoup(joueur);
+                    }
                 }
-            }
-            }
-            else if (joueur.getChancePrison()) {
+            } else if (joueur.getChancePrison()) {
                if (IhmMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte chance Sortie de prison?", 1)) {
                    joueur.setPrison(0);
                    jouerUnCoup(joueur);
