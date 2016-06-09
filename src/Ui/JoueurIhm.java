@@ -109,6 +109,7 @@ public class JoueurIhm extends  JFrame{
                 try {
                     plateauIhm = new PlateauIhm(controleur);
                     plateauIhm.affiche();
+                    controleur.tour();
 //                    controleur.partie();
                 } catch (IOException ex) {
                     Logger.getLogger(JoueurIhm.class.getName()).log(Level.SEVERE, null, ex);
