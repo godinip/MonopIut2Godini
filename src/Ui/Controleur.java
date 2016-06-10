@@ -24,9 +24,6 @@ public class Controleur {
             joueur = monopoly.joueurSuivant();
             message.type = Message.Types.EPASSER;
             observateur.notifier(message);
-            if (joueur.) {
-                
-            }
             if (monopoly.getJoueurs().toArray().length == 1) {
                 IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a gagné",0);
             }else {
