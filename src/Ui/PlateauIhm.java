@@ -9,7 +9,7 @@ import java.util.*;
 import javax.imageio.*;
 import javax.swing.*;
 
-public class PlateauIhm extends JFrame{
+public class PlateauIhm extends JFrame /*implements Observateur*/{
     
     private JPanel plateau,information,colorP,carreauSelecte,carreauInfo,bouton;
     private Controleur controleur;
@@ -20,6 +20,7 @@ public class PlateauIhm extends JFrame{
     private int h;
     private BufferedImage gare,depart,pfree,prison,gardien,cCo,chance,cElec,cEau;
     private JButton lDe,passerT,achatM,achatH;
+    
     public PlateauIhm(Controleur c) throws IOException{
         super("Monopoly");
         controleur = c;
@@ -414,7 +415,7 @@ public class PlateauIhm extends JFrame{
         }
         return c;
     }
-
+    
     private void generationImage() throws IOException {
         gare = ImageIO.read(new File("./src/Image/Train.png"));
         depart = ImageIO.read(new File("./src/Image/FlecheD.png"));
@@ -435,4 +436,6 @@ public class PlateauIhm extends JFrame{
         cElecLabel = new JLabel(new ImageIcon(cElec));
         cEauLabel = new JLabel(new ImageIcon(cEau));
     }
-    }
+    
+    
+}
