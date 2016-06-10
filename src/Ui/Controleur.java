@@ -26,6 +26,10 @@ public class Controleur {
             observateur.notifier(message);
             message.type = Message.Types.JOUEUR;
             observateur.notifier(message);
+            message.type = Message.Types.EACHATH;
+            observateur.notifier(message);
+            message.type = Message.Types.EACHATM;
+            observateur.notifier(message);
             if (monopoly.getJoueurs().toArray().length == 1) {
                 IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a gagné",0);
             }else {
