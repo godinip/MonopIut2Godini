@@ -33,6 +33,8 @@ public class Controleur {
             observateur.notifier(message);
             if (monopoly.getJoueurs().toArray().length == 1) {
                 IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a gagné",0);
+                message.type = Message.Types.FIN;
+                observateur.notifier(message);
             }else {
                 IhmMessage.afficherBoiteDialogue("\nAu tour de " + joueur.getNomJoueur() + " de jouer",0);
                 message.type = Message.Types.JOUEUR;
@@ -226,6 +228,7 @@ public class Controleur {
         if (joueur.getPerdu()) {
             IhmMessage.afficherBoiteDialogue("Vous avez perdu",0);
             monopoly.suppJoueur(joueur);
+            tour();
         } else {
             message.type = Message.Types.JOUEUR;
             observateur.notifier(message);
