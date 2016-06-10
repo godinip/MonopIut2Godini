@@ -164,9 +164,9 @@ public class Controleur {
             } else if (actionCarte == ActionsCarte.AV) {
                 IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
                 if (joueur.getPositionCourante().getNumero() > chance.getX()) {
-                    joueur.setPositionCourante(monopoly.getCarreaux().get(chance.getX()));
                     joueur.gagnerArgent(200);
                 }
+                joueur.setPositionCourante(monopoly.getCarreaux().get(chance.getX()));
                 Events ev = joueur.getPositionCourante().action(joueur);
                 gestionEvents(ev);
                 monopoly.addCarteChance(chance);
