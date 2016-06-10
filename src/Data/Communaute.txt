@@ -10,7 +10,7 @@ GA;Vous héritez : 100€;100
 AP;Allez en prison. Avancez tout droit en prison. Ne passez pas par la case Départ. Ne recevez pas 200€
 PA;Payez votre Police d'Assurance : 50€;50
 GA;La vente de votre stock vous rapporte : 50€;50
-AV;Avancez jusqu'à la case Départ.;0
+AV;Avancez jusqu'à la case Départ.;1
 GA;Recevez votre intérêt sur l'emprunt à 7% : 25€;25
 GA;Recevez votre revenu annuel : 100€;100
 GA;Vous avez gagné le deuxième prix de beauté : recevez 10€;10
