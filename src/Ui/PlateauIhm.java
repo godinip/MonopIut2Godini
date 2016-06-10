@@ -15,7 +15,8 @@ public class PlateauIhm extends JFrame implements Observateur{
     private JPanel plateau,information,colorP,carreauSelecte,carreauInfo,bouton,infoJoueur,autreInfo;
     private Controleur controleur;
     private ArrayList<JPanel> cases = new ArrayList<>();
-    private HashMap<Integer,Carreau> Carreaux;
+    private HashMap<Integer,Integer> carreauxNbjoueur = new HashMap<>();
+    private HashMap<String,JPanel> carreauxJpanel = new HashMap<>();
     private JLabel nom,prix,nbMaison,prixM,prixL1,prixL2,prixL3,prixL4,prixL5,prixL6;
     private JLabel gareLabel,departLabel,pfreeLabel,prisonLabel,gardienLabel,cCoLabel,chanceLabel,cElecLabel,cEauLabel;
     private JLabel nomJ,argentJ,posJT,posJ;
@@ -157,69 +158,95 @@ public class PlateauIhm extends JFrame implements Observateur{
     
     public void plateau() throws IOException{
         plateau.setLayout(new GridBagLayout());
-        GridBagConstraints gc = new GridBagConstraints();
-        gc.fill = GridBagConstraints.BOTH;
-        gc.ipady = gc.anchor = GridBagConstraints.CENTER;
-        gc.weightx =11;
-        gc.weighty = 11;
+        GridBagConstraints grideCarreau = new GridBagConstraints();
+        grideCarreau.fill = GridBagConstraints.BOTH;
+        grideCarreau.ipady = grideCarreau.anchor = GridBagConstraints.CENTER;
+        grideCarreau.weightx =11;
+        grideCarreau.weighty = 11;
          h = 1;
 
             for (int i = 0; i < 20; i++) {
                 if(i<=10){
-                    gc.gridx = i;
-                    gc.gridy = 0;
+                    grideCarreau.gridx = i;
+                    grideCarreau.gridy = 0;
                 }else{
-                    gc.gridy = i-10;
-                    gc.gridx = 10;
+                    grideCarreau.gridy = i-10;
+                    grideCarreau.gridx = 10;
                 }
                   JPanel carreau = new  JPanel(new BorderLayout());
+                 carreauxNbjoueur.put(h, 0);
+                 
+                  
                         if((i==0)||(i==10)){
-                                gc.ipadx = 40;
-                                gc.ipady = 40;  
+                                grideCarreau.ipadx = 40;
+                                grideCarreau.ipady = 40;  
                         }else{
-                                gc.ipadx = 0;
-                                gc.ipady = 0;
+                                grideCarreau.ipadx = 0;
+                                grideCarreau.ipady = 0;
                         }
                         generationCarreau(carreau, i,1);
                         carreau.setBackground(Color.white);
                         carreau.setBorder(BorderFactory.createLineBorder(Color.black));
-                        plateau.add(carreau,gc);
+                        plateau.add(carreau,grideCarreau);
                         cases.add(carreau);
                         h++;
             }  
 //                                                                                                                                                             Partie 2
             for (int i = 20; i > 0; i--) {
                 if (i>=10) {
-                    gc.gridx = i-10;
-                    gc.gridy = 10;              
+                    grideCarreau.gridx = i-10;
+                    grideCarreau.gridy = 10;              
                 }else{
-                    gc.gridy = i;
-                    gc.gridx = 0;                  
+                    grideCarreau.gridy = i;
+                    grideCarreau.gridx = 0;                  
                 }
             JPanel carreau = new  JPanel(new BorderLayout());
             if((i==10)){
-                gc.ipadx = 40;
-                gc.ipady = 40;
+                grideCarreau.ipadx = 40;
+                grideCarreau.ipady = 40;
             }else{
-                gc.ipadx = 0;
-                gc.ipady = 0;
+                grideCarreau.ipadx = 0;
+                grideCarreau.ipady = 0;
             }
                 generationCarreau(carreau, i,2);
             carreau.setBackground(Color.white);
             carreau.setBorder(BorderFactory.createLineBorder(Color.black));
-            plateau.add(carreau,gc);
+            plateau.add(carreau,grideCarreau);
             cases.add(carreau);
             h++;
             }  
-        gc.gridx = 1;
-        gc.gridy = 1;
-        gc.gridwidth = 9;
-        gc.gridheight = 9;
+        grideCarreau.gridx = 1;
+        grideCarreau.gridy = 1;
+        grideCarreau.gridwidth = 9;
+        grideCarreau.gridheight = 9;
         JPanel test = new  JPanel();
         test.setBorder(BorderFactory.createLineBorder(Color.black));
-        plateau.add(test,gc);
+        plateau.add(test,grideCarreau);
     }
     private void generationCarreau(JPanel carreau,int i,int j){
+         JPanel carreauPosJ = new JPanel();
+                  carreau.add(carreauPosJ,BorderLayout.CENTER);
+                  carreauPosJ.setLayout(new GridBagLayout());
+                  GridBagConstraints gridePoseJ = new GridBagConstraints();
+                  gridePoseJ.fill = GridBagConstraints.BOTH;
+                  gridePoseJ.ipady =gridePoseJ.ipadx = gridePoseJ.anchor = GridBagConstraints.CENTER;
+                  gridePoseJ.weightx = 3;
+                  gridePoseJ.weighty = 2;
+                  gridePoseJ.insets = new Insets(5, 5, 5, 5);
+                  
+                  for (int k = 1; k < 7; k++) {
+                    
+                    if(k<4){
+                        gridePoseJ.gridx = k;
+                        gridePoseJ.gridy = 0;
+                    }else{
+                        gridePoseJ.gridx = k-3;
+                        gridePoseJ.gridy = 1; 
+                    }
+                    JPanel panelJoueur = new JPanel();
+                    carreauxJpanel.put(""+h+","+k, panelJoueur);
+                    carreauPosJ.add(panelJoueur,gridePoseJ);
+                }
         //                                                                                                                                          Gare Partie 
             if (controleur.getCarreau(h)instanceof Gare) {
                 Gare g = (Gare) controleur.getCarreau(h);
@@ -492,7 +519,7 @@ public class PlateauIhm extends JFrame implements Observateur{
         infoJoueur.add(argentJ = new JLabel("Argent: "));
         
         Joueur j = controleur.getJoueur();
-        
+       
         nomJ.setText("Joueur: "+j.getNomJoueur());
         posJ.setText("- "+j.getPositionCourante().getNom());
         argentJ .setText("Argent: "+j.getArgent()+" €");
