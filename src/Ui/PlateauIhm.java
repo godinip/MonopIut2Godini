@@ -300,13 +300,13 @@ public class PlateauIhm extends JFrame implements Observateur{
                         nom.setText(p.getNom());
                         prix.setText(p.getPrix()+" €");
                         nbMaison.setText("Nombre Maison: "+p.getMaisons());
-                        prixM.setText("Prix d'une Maison: "+p.getCoutmaison());
-                        prixL1.setText("Loyer 1: "+p.getLoyers(0));
-                        prixL2.setText("Loyer 2: "+p.getLoyers(1));
-                        prixL3.setText("Loyer 3: "+p.getLoyers(2));
-                        prixL4.setText("Loyer 4: "+p.getLoyers(3));
-                        prixL5.setText("Loyer 5: "+p.getLoyers(4));
-                        prixL6.setText("Loyer 6: "+p.getLoyers(5));
+                        prixM.setText("Prix d'une Maison: "+p.getCoutmaison()+" €");
+                        prixL1.setText("Terrain nu: "+p.getLoyers(0)+" €");
+                        prixL2.setText("Loyer 1 maison: "+p.getLoyers(1)+" €");
+                        prixL3.setText("Loyer 2 maison: "+p.getLoyers(2)+" €");
+                        prixL4.setText("Loyer 3 maison: "+p.getLoyers(3)+" €");
+                        prixL5.setText("Loyer 4 maison: "+p.getLoyers(4)+" €");
+                        prixL6.setText("Loyer avec Hotel: "+p.getLoyers(5)+" €");
                     }@Override
                     public void mouseClicked(MouseEvent e) {
                         carreauSélectionné = p;
