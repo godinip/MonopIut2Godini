@@ -9,6 +9,7 @@ import java.io.*;
 import java.util.*;
 import javax.imageio.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class PlateauIhm extends JFrame implements Observateur{
     
@@ -174,7 +175,7 @@ public class PlateauIhm extends JFrame implements Observateur{
                     grideCarreau.gridx = 10;
                 }
                   JPanel carreau = new  JPanel(new BorderLayout());
-                 carreauxNbjoueur.put(h, 0);
+                 
                  
                   
                         if((i==0)||(i==10)){
@@ -225,6 +226,7 @@ public class PlateauIhm extends JFrame implements Observateur{
     }
     private void generationCarreau(JPanel carreau,int i,int j){
          JPanel carreauPosJ = new JPanel();
+                  carreauxNbjoueur.put(h, 0);
                   carreau.add(carreauPosJ,BorderLayout.CENTER);
                   carreauPosJ.setLayout(new GridBagLayout());
                   GridBagConstraints gridePoseJ = new GridBagConstraints();
@@ -246,6 +248,7 @@ public class PlateauIhm extends JFrame implements Observateur{
                     JPanel panelJoueur = new JPanel();
                     carreauxJpanel.put(""+h+","+k, panelJoueur);
                     carreauPosJ.add(panelJoueur,gridePoseJ);
+                    panelJoueur.setBorder(BorderFactory.createLineBorder(Color.black));
                 }
         //                                                                                                                                          Gare Partie 
             if (controleur.getCarreau(h)instanceof Gare) {
@@ -519,6 +522,12 @@ public class PlateauIhm extends JFrame implements Observateur{
         infoJoueur.add(argentJ = new JLabel("Argent: "));
         
         Joueur j = controleur.getJoueur();
+
+        int p = carreauxNbjoueur.get(j.getPositionCourante().getNumero());
+        p = p+1;
+        carreauxNbjoueur.replace(j.getPositionCourante().getNumero(),p-1, p);
+        carreauxJpanel.get(""+j.getPositionCourante().getNumero()+","+p).setBackground(Color.red);
+
        
         nomJ.setText("Joueur: "+j.getNomJoueur());
         posJ.setText("- "+j.getPositionCourante().getNom());
