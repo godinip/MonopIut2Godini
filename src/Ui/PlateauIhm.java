@@ -9,7 +9,7 @@ import java.util.*;
 import javax.imageio.*;
 import javax.swing.*;
 
-public class PlateauIhm extends JFrame /*implements Observateur*/{
+public class PlateauIhm extends JFrame implements Observateur{
     
     private JPanel plateau,information,colorP,carreauSelecte,carreauInfo,bouton;
     private Controleur controleur;
@@ -24,6 +24,7 @@ public class PlateauIhm extends JFrame /*implements Observateur*/{
     public PlateauIhm(Controleur c) throws IOException{
         super("Monopoly");
         controleur = c;
+        controleur.setObservateur(this);
         generationImage();
          initUIComponents();
          resetLabel();
@@ -374,5 +375,28 @@ public class PlateauIhm extends JFrame /*implements Observateur*/{
         cEauLabel = new JLabel(new ImageIcon(cEau));
     }
     
-    
+    @Override
+    public void notifier(Message message) {
+        switch(message.type) {
+            case LANCER:
+                System.out.println("Lancer");
+                lDe.setEnabled(false);
+                break;
+            case PASSER:
+                System.out.println("Passer");
+                passerT.setEnabled(false);
+                break;
+            case ACHATM:
+                System.out.println("Acheter maison");
+                achatM.setEnabled(false);
+                break;
+            case ACHATH:
+                System.out.println("Acheter hotel");
+                achatH.setEnabled(false);
+                passerT.setEnabled(false);
+                lDe.setEnabled(true);
+                break;
+        }
+    }
+        
 }

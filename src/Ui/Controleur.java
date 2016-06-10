@@ -9,8 +9,8 @@ import javax.swing.*;
 public class Controleur {
     
     private Monopoly monopoly;
-    private Observateur observateur;
     private IhmGraph ihmGraph;
+    private Observateur observateur;
     private Joueur joueur;
     
     public Controleur(Monopoly monopoly){
@@ -28,9 +28,9 @@ public class Controleur {
                 IhmMessage.afficherBoiteJoueur(joueur);
                 joueur.setNbDouble(0);
                 joueur.setJouer(true);
-                /*Message message = new Message();
+                Message message = new Message();
                 message.type = Message.Types.PASSER;
-                observateur.notifier(message);*/
+                observateur.notifier(message);
             }
     }
     
@@ -240,6 +240,10 @@ public class Controleur {
     
     public void setJoueurs(LinkedList<Joueur> joueurs) {
         monopoly.setJoueurs(joueurs);
+    }
+    
+    public void setObservateur(Observateur observateur) {
+        this.observateur = observateur;
     }
     
 }
