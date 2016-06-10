@@ -1,5 +1,6 @@
 package Ui;
 
+import Data.Message;
 import Data.*;
 import Jeu.*;
 import java.io.*;
@@ -26,8 +27,14 @@ public class Controleur {
             observateur.notifier(message);
             message.type = Message.Types.JOUEUR;
             observateur.notifier(message);
+            message.type = Message.Types.EACHATH;
+            observateur.notifier(message);
+            message.type = Message.Types.EACHATM;
+            observateur.notifier(message);
             if (monopoly.getJoueurs().toArray().length == 1) {
                 IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a gagné",0);
+                message.type = Message.Types.FIN;
+                observateur.notifier(message);
             }else {
                 IhmMessage.afficherBoiteDialogue("\nAu tour de " + joueur.getNomJoueur() + " de jouer",0);
                 message.type = Message.Types.JOUEUR;
@@ -101,7 +108,7 @@ public class Controleur {
             joueur.setPrison(3);
             IhmMessage.afficherBoiteDialogue("C'est votre troisième double, vous êtes envoyé en prison",0);
             joueur.setJouer(false);
-        } else {
+        } else { 
             joueur.setDernierLancé(n+m);
             if (position+n+m>40) {
                 joueur.setPositionCourante(getCarreau(position+n+m-40));
@@ -190,7 +197,7 @@ public class Controleur {
                 monopoly.addCarteCommunaute(communaute);
             } else if (communaute.getAction() == ActionsCarte.DE) {
                 IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
-                joueur.setPositionCourante(getCarreau(communaute.getX()));
+                joueur.setPositionCourante(getCarreau(communaute.getX()+1));
                 e = joueur.getPositionCourante().action(joueur);
                 gestionEvents(e);
             } else if (communaute.getAction() == ActionsCarte.AP) {
@@ -202,10 +209,9 @@ public class Controleur {
             } else if (communaute.getAction() == ActionsCarte.AV) {
                 IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
                 if (joueur.getPositionCourante().getNumero() > communaute.getX()) {
-                    joueur.setPositionCourante(monopoly.getCarreaux().get(communaute.getX()));
                     joueur.gagnerArgent(200);
                 }
-                joueur.setPositionCourante(getCarreau(communaute.getX()));
+                joueur.setPositionCourante(getCarreau(communaute.getX()+1));
                 monopoly.addCarteCommunaute(communaute);
                 e = joueur.getPositionCourante().action(joueur);
                 gestionEvents(e);
@@ -221,6 +227,7 @@ public class Controleur {
         if (joueur.getPerdu()) {
             IhmMessage.afficherBoiteDialogue("Vous avez perdu",0);
             monopoly.suppJoueur(joueur);
+            tour();
         } else {
             message.type = Message.Types.JOUEUR;
             observateur.notifier(message);
@@ -289,6 +296,11 @@ public class Controleur {
             }
         }
         return A;
+    }
+    
+    public void abandonJoueur(){
+        monopoly.suppJoueur(joueur);
+        tour();
     }
     
 }

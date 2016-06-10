@@ -1,5 +1,6 @@
 package Ui;
 
+import Data.Message;
 import Jeu.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -22,6 +23,7 @@ public class PlateauIhm extends JFrame implements Observateur{
     private int h;
     private BufferedImage gare,depart,pfree,prison,gardien,cCo,chance,cElec,cEau;
     private JButton lDe,passerT,achatM,achatH,abandon,exit;
+    private Carreau carreauSélectionné;
     
     public PlateauIhm(Controleur c) throws IOException{
         super("Monopoly");
@@ -42,7 +44,6 @@ public class PlateauIhm extends JFrame implements Observateur{
             }
         );
        lDe.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
-       
        passerT = new JButton("Fin du tour");
        passerT.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -52,10 +53,28 @@ public class PlateauIhm extends JFrame implements Observateur{
         );
        passerT.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        achatM = new JButton("Acheter Maison");
+       achatM.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    controleur.achatMaison((ProprieteAConstruire)carreauSélectionné);
+                }
+            }
+        );
        achatM.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        achatH = new JButton("Acheter Hotel");
+       achatH.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    controleur.achatHotel((ProprieteAConstruire)carreauSélectionné);
+                }
+            }
+        );
        achatH.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        abandon = new JButton("Abandonner");
+       abandon.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    controleur.abandonJoueur();
+                }
+            }
+        );
        abandon.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        
        exit = new JButton("Quitter");
@@ -281,7 +300,18 @@ public class PlateauIhm extends JFrame implements Observateur{
                         prixL5.setText("Loyer 5: "+p.getLoyers(4));
                         prixL6.setText("Loyer 6: "+p.getLoyers(5));
                     }@Override
-                    public void mouseClicked(MouseEvent e) {}@Override
+                    public void mouseClicked(MouseEvent e) {
+                        carreauSélectionné = p;
+                        if (controleur.getListMaisons().contains(carreauSélectionné)){
+                            achatM.setVisible(true);
+                            achatH.setVisible(false);
+                        } else {
+                            achatM.setVisible(false);
+                            if (controleur.getListHotels().contains(carreauSélectionné)){
+                                achatH.setVisible(true);
+                            } else achatH.setVisible(false);
+                        }
+                    }@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
                     public void mouseExited(MouseEvent e) {}
@@ -452,20 +482,25 @@ public class PlateauIhm extends JFrame implements Observateur{
                 passerT.setEnabled(true);
                 break;
             case EACHATM:
-                achatM.setEnabled(false);
+                achatM.setVisible(false);
                 break;
             case AACHATM:
-                achatM.setEnabled(true);
+                achatM.setVisible(true);
                 break;
             case EACHATH:
-                achatH.setEnabled(false);
+                achatH.setVisible(false);
                 break;
             case AACHATH:
-                achatH.setEnabled(true);
+                achatH.setVisible(true);
                 break;
             case JOUEUR:
                 infoJoueur();
                 break;
+            case FIN:
+                System.exit(0);
+                break;
+            default :
+                System.exit(1);
         }
     }
 

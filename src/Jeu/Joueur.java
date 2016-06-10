@@ -35,7 +35,7 @@ public class Joueur {
         if (getArgent()>=prix) {
             setArgent(getArgent()-prix);
         } else {
-            setPerdu((Boolean) true);
+            setPerdu( true);
         }
     }
     
