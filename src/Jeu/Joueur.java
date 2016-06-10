@@ -80,6 +80,19 @@ public class Joueur {
     public void addPropriete(Propriete propriete) {
         if (propriete instanceof ProprieteAConstruire){
             this.getProprietes().add((ProprieteAConstruire)propriete);
+            ArrayList<ProprieteAConstruire> p = new ArrayList();
+            proprietes.sort(new Comparator<ProprieteAConstruire>() {
+        @Override
+        public int compare(ProprieteAConstruire P2, ProprieteAConstruire P1)
+        {
+            if (P1.getNumero() == P2.getNumero()){
+                return 0;
+            } else { return 1;}
+        }
+    });
+            for (ProprieteAConstruire prop : proprietes){
+                
+            }
         }else if(propriete instanceof Gare){
             this.getGares().add((Gare)propriete);
         }else{
