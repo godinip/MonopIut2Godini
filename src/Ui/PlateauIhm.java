@@ -57,7 +57,6 @@ public class PlateauIhm extends JFrame implements Observateur{
             }
         );
        achatM.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
-       
        achatH = new JButton("Acheter Hotel");
        achatH.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -66,7 +65,6 @@ public class PlateauIhm extends JFrame implements Observateur{
             }
         );
        achatH.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
-       
        abandon = new JButton("Abandonner");
        abandon.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        
