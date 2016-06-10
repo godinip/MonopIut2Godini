@@ -20,7 +20,7 @@ public class ProprieteAConstruire extends Propriete {
         this.setMaisons(0);
         this.setLoyer(loyer);
         this.setCouleur(couleur);
-        couleur.addPropriete(this);
+        this.couleur.addPropriete(this);
         coutmaison = cout;
     }
     
