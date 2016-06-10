@@ -20,7 +20,13 @@ public class Controleur {
     }
     
     public void tour() {
+            Message message = new Message();
             joueur = monopoly.joueurSuivant();
+            message.type = Message.Types.EPASSER;
+            observateur.notifier(message);
+            if (joueur.) {
+                
+            }
             if (monopoly.getJoueurs().toArray().length == 1) {
                 IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a gagné",0);
             }else {
@@ -28,25 +34,26 @@ public class Controleur {
                 IhmMessage.afficherBoiteJoueur(joueur);
                 joueur.setNbDouble(0);
                 joueur.setJouer(true);
-                Message message = new Message();
-                message.type = Message.Types.EPASSER;
-                observateur.notifier(message);
             }
+            message.type = Message.Types.ALANCER;
+            observateur.notifier(message);
     }
     
     public void jouerUnCoup() {
-        while (joueur.getJouer()) {
+        Message message = new Message();
+            message.type = Message.Types.ELANCER;
+            observateur.notifier(message);
             joueur.setJouer(false);
             if (joueur.getPrison() > 0) {//CAS PRISON
                 IhmMessage.afficherBoiteDialogue("Vous êtes en prison pour encore "+joueur.getPrison()+" tours", 0);
                 if ((joueur.getCommunautePrison() || joueur.getChancePrison()) && IhmMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte Sortie de Prison?", 1)) {
-                        joueur.setPrison(0);
-                        if (joueur.getChancePrison()) {
-                            joueur.setChancePrison(false);
-                        } else if (joueur.getCommunautePrison()) {
-                            joueur.setCommunautePrison(false);
-                        }
-                        joueur.setJouer(true);
+                    joueur.setPrison(0);
+                    if (joueur.getChancePrison()) {
+                        joueur.setChancePrison(false);
+                    } else if (joueur.getCommunautePrison()) {
+                        joueur.setCommunautePrison(false);
+                    }
+                    joueur.setJouer(true);
                 } else {
                     if (lancerDé() == lancerDé()) {
                         IhmMessage.afficherBoiteDialogue("Vous lancez les dés, faites un double et sortez de prison", 0);
@@ -56,21 +63,27 @@ public class Controleur {
                         if (joueur.getPrison() == 1) {
                             joueur.payer(50);
                             if (joueur.getPerdu() != true) {
-                                IhmMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et payez 50€ pour sortir de prison", 0);
-                                joueur.setPrison(0);
-                                joueur.setJouer(true);
-                            }
-                        } else {
-                            IhmMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et restez en prison pour encore "+joueur.getPrison()+" tours", 0);
-                            joueur.setPrison(joueur.getPrison()-1);
+                            IhmMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et payez 50€ pour sortir de prison", 0);
+                            joueur.setPrison(0);
+                            joueur.setJouer(true);
                         }
+                    } else {
+                        IhmMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et restez en prison pour encore "+joueur.getPrison()+" tours", 0);
+                        joueur.setPrison(joueur.getPrison()-1);
                     }
                 }
-            } else {//CAS NON PRISON
-                Carreau c = lancerDésAvancer(joueur);
-                Events e = c.action(joueur);
-                gestionEvents(e);
             }
+        } else {//CAS NON PRISON
+            Carreau c = lancerDésAvancer(joueur);
+            Events e = c.action(joueur);
+            gestionEvents(e);
+        }
+        if (joueur.getJouer()) {
+            message.type = Message.Types.ALANCER;
+            observateur.notifier(message);
+        } else {
+            message.type = Message.Types.APASSER;
+            observateur.notifier(message);
         }
     }
     
