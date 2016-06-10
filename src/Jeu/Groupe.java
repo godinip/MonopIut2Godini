@@ -10,11 +10,11 @@ public class Groupe {
     
     public Groupe(CouleurPropriete couleur){
         this.setCouleur(couleur);
-        proprietesdugroupe = new ArrayList();
+        proprietesdugroupe = new ArrayList<>();
     }
     
     public void addPropriete(ProprieteAConstruire propriete){
-        this.getProprietesdugroupe().add(propriete);
+        this.proprietesdugroupe.add(propriete);
     }
     
     public CouleurPropriete getCouleur() {

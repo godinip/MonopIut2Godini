@@ -85,7 +85,13 @@ public class Controleur {
             Events e = c.action(joueur);
             gestionEvents(e);
             }
-            if (joueur.getJouer()) {
+            if (joueur.getPerdu()) {
+            IhmMessage.afficherBoiteDialogue("Vous avez perdu",0);
+            monopoly.suppJoueur(joueur);
+            tour();
+        } else if (joueur.getJouer()) {
+                message.type = Message.Types.JOUEUR;
+                observateur.notifier(message);
                 message.type = Message.Types.ALANCER;
                 observateur.notifier(message);
             } else {
@@ -126,6 +132,8 @@ public class Controleur {
     
     private void gestionEvents(Events e) {
         Message message = new Message();
+        message.type = Message.Types.JOUEUR;
+        observateur.notifier(message);
         if (e.getAction() == Actions.acheter) {//CAS ACHETER
             acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
         } else if (e.getAction() == Actions.carteChance) {//CAS CARTE CHANCE
@@ -139,7 +147,8 @@ public class Controleur {
                 IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
                 joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()-chance.getX()));
                 monopoly.addCarteChance(chance);
-                joueur.getPositionCourante().action(joueur);
+                Events ev = joueur.getPositionCourante().action(joueur);
+                gestionEvents(ev);
             } else if (actionCarte == ActionsCarte.MH) {
                 IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
                 joueur.payer(joueur.getNbMaisons()*chance.getX()+joueur.getNbHotels()*chance.getY());
@@ -157,10 +166,9 @@ public class Controleur {
                 if (joueur.getPositionCourante().getNumero() > chance.getX()) {
                     joueur.setPositionCourante(monopoly.getCarreaux().get(chance.getX()));
                     joueur.gagnerArgent(200);
-                e = joueur.getPositionCourante().action(joueur);
-                gestionEvents(e);
                 }
-                joueur.setPositionCourante(getCarreau(chance.getX()));
+                Events ev = joueur.getPositionCourante().action(joueur);
+                gestionEvents(ev);
                 monopoly.addCarteChance(chance);
             } else if (actionCarte == ActionsCarte.AP) {
                 IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
@@ -198,8 +206,8 @@ public class Controleur {
             } else if (communaute.getAction() == ActionsCarte.DE) {
                 IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
                 joueur.setPositionCourante(getCarreau(communaute.getX()));
-                e = joueur.getPositionCourante().action(joueur);
-                gestionEvents(e);
+                Events ev = joueur.getPositionCourante().action(joueur);
+                gestionEvents(ev);
             } else if (communaute.getAction() == ActionsCarte.AP) {
                 IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
                 joueur.setPositionCourante(getCarreau(11));
@@ -213,8 +221,8 @@ public class Controleur {
                 }
                 joueur.setPositionCourante(getCarreau(communaute.getX()));
                 monopoly.addCarteCommunaute(communaute);
-                e = joueur.getPositionCourante().action(joueur);
-                gestionEvents(e);
+                Events ev = joueur.getPositionCourante().action(joueur);
+                gestionEvents(ev);
             }
         } else if (e.getAction() == Actions.prison) {//CAS ENVOYE EN PRISON
             IhmMessage.afficherBoiteDialogue("Vous êtes envoyé en prison",0);
@@ -224,14 +232,7 @@ public class Controleur {
         } else {//AUTRE CAS
             IhmMessage.afficherBoiteDialogue(e.message(),0);
         }
-        if (joueur.getPerdu()) {
-            IhmMessage.afficherBoiteDialogue("Vous avez perdu",0);
-            monopoly.suppJoueur(joueur);
-            tour();
-        } else {
-            message.type = Message.Types.JOUEUR;
-            observateur.notifier(message);
-        }
+        
     }
     
     private int lancerDé() {
