@@ -50,10 +50,25 @@ public class PlateauIhm extends JFrame implements Observateur{
             }
         );
        passerT.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
+       
        achatM = new JButton("Acheter Maison");
+       achatM.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    controleur.tour();
+                }
+            }
+        );
        achatM.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
+       
        achatH = new JButton("Acheter Hotel");
+       achatH.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    controleur.tour();
+                }
+            }
+        );
        achatH.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
+       
        abandon = new JButton("Abandonner");
        abandon.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        
