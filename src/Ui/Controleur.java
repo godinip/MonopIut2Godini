@@ -67,25 +67,25 @@ public class Controleur {
                             joueur.setPrison(0);
                             joueur.setJouer(true);
                         }
-                    } else {
-                        IhmMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et restez en prison pour encore "+joueur.getPrison()+" tours", 0);
-                        joueur.setPrison(joueur.getPrison()-1);
+                        } else {
+                            IhmMessage.afficherBoiteDialogue("Vous lancez les dés, ne faites pas de double et restez en prison pour encore "+joueur.getPrison()+" tours", 0);
+                            joueur.setPrison(joueur.getPrison()-1);
+                        }
                     }
                 }
-            }
-        } else {//CAS NON PRISON
+            } else {//CAS NON PRISON
             Carreau c = lancerDésAvancer(joueur);
             Events e = c.action(joueur);
             gestionEvents(e);
+            }
+            if (joueur.getJouer()) {
+                message.type = Message.Types.ALANCER;
+                observateur.notifier(message);
+            } else {
+                message.type = Message.Types.APASSER;
+                observateur.notifier(message);
+            }
         }
-        if (joueur.getJouer()) {
-            message.type = Message.Types.ALANCER;
-            observateur.notifier(message);
-        } else {
-            message.type = Message.Types.APASSER;
-            observateur.notifier(message);
-        }
-    }
     
     private Carreau lancerDésAvancer(Joueur joueur) {
         int position = joueur.getPositionCourante().getNumero();
@@ -159,6 +159,7 @@ public class Controleur {
                         IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
                         joueur.setPositionCourante(getCarreau(11));
                         joueur.setPrison(3);
+                        joueur.setJouer(false);
                         monopoly.addCarteChance(chance);
                     }
                 } else if (e.getAction() == Actions.carteCommunaute) {//CAS CARTE COMMUNAUTE
@@ -196,6 +197,7 @@ public class Controleur {
                         IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
                         joueur.setPositionCourante(getCarreau(11));
                         joueur.setPrison(3);
+                        joueur.setJouer(false);
                         monopoly.addCarteCommunaute(communaute);
                     } else if (communaute.getAction() == ActionsCarte.AV) {
                         IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
