@@ -145,7 +145,8 @@ public class Controleur {
                 IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
                 joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()-chance.getX()));
                 monopoly.addCarteChance(chance);
-                joueur.getPositionCourante().action(joueur);
+                Events ev = joueur.getPositionCourante().action(joueur);
+                gestionEvents(ev);
             } else if (actionCarte == ActionsCarte.MH) {
                 IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
                 joueur.payer(joueur.getNbMaisons()*chance.getX()+joueur.getNbHotels()*chance.getY());
@@ -163,10 +164,9 @@ public class Controleur {
                 if (joueur.getPositionCourante().getNumero() > chance.getX()) {
                     joueur.setPositionCourante(monopoly.getCarreaux().get(chance.getX()));
                     joueur.gagnerArgent(200);
-                e = joueur.getPositionCourante().action(joueur);
-                gestionEvents(e);
                 }
-                joueur.setPositionCourante(getCarreau(chance.getX()));
+                Events ev = joueur.getPositionCourante().action(joueur);
+                gestionEvents(ev);
                 monopoly.addCarteChance(chance);
             } else if (actionCarte == ActionsCarte.AP) {
                 IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
@@ -204,8 +204,8 @@ public class Controleur {
             } else if (communaute.getAction() == ActionsCarte.DE) {
                 IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
                 joueur.setPositionCourante(getCarreau(communaute.getX()));
-                e = joueur.getPositionCourante().action(joueur);
-                gestionEvents(e);
+                Events ev = joueur.getPositionCourante().action(joueur);
+                gestionEvents(ev);
             } else if (communaute.getAction() == ActionsCarte.AP) {
                 IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
                 joueur.setPositionCourante(getCarreau(11));
@@ -219,8 +219,8 @@ public class Controleur {
                 }
                 joueur.setPositionCourante(getCarreau(communaute.getX()));
                 monopoly.addCarteCommunaute(communaute);
-                e = joueur.getPositionCourante().action(joueur);
-                gestionEvents(e);
+                Events ev = joueur.getPositionCourante().action(joueur);
+                gestionEvents(ev);
             }
         } else if (e.getAction() == Actions.prison) {//CAS ENVOYE EN PRISON
             IhmMessage.afficherBoiteDialogue("Vous êtes envoyé en prison",0);
