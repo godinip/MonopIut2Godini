@@ -21,6 +21,7 @@ public class PlateauIhm extends JFrame implements Observateur{
     private int h;
     private BufferedImage gare,depart,pfree,prison,gardien,cCo,chance,cElec,cEau;
     private JButton lDe,passerT,achatM,achatH,abandon,exit;
+    private Carreau carreauSélectionné;
     
     public PlateauIhm(Controleur c) throws IOException{
         super("Monopoly");
@@ -52,7 +53,7 @@ public class PlateauIhm extends JFrame implements Observateur{
        achatM = new JButton("Acheter Maison");
        achatM.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    controleur.getListMaisons();
+                    controleur.achatMaison((ProprieteAConstruire)carreauSélectionné);
                 }
             }
         );
@@ -60,12 +61,18 @@ public class PlateauIhm extends JFrame implements Observateur{
        achatH = new JButton("Acheter Hotel");
        achatH.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    controleur.getListHotels();
+                    controleur.achatHotel((ProprieteAConstruire)carreauSélectionné);
                 }
             }
         );
        achatH.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        abandon = new JButton("Abandonner");
+       abandon.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    controleur.abandonJoueur();
+                }
+            }
+        );
        abandon.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        
        exit = new JButton("Quitter");
@@ -265,7 +272,18 @@ public class PlateauIhm extends JFrame implements Observateur{
                         prixL5.setText("Loyer 5: "+p.getLoyers(4));
                         prixL6.setText("Loyer 6: "+p.getLoyers(5));
                     }@Override
-                    public void mouseClicked(MouseEvent e) {}@Override
+                    public void mouseClicked(MouseEvent e) {
+                        carreauSélectionné = p;
+                        if (controleur.getListMaisons().contains(carreauSélectionné)){
+                            achatM.setVisible(true);
+                            achatH.setVisible(false);
+                        } else {
+                            achatM.setVisible(false);
+                            if (controleur.getListHotels().contains(carreauSélectionné)){
+                                achatH.setVisible(true);
+                            } else achatH.setVisible(false);
+                        }
+                    }@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
                     public void mouseExited(MouseEvent e) {}

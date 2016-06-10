@@ -291,4 +291,9 @@ public class Controleur {
         return A;
     }
     
+    public void abandonJoueur(){
+        monopoly.suppJoueur(joueur);
+        tour();
+    }
+    
 }
