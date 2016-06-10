@@ -28,6 +28,8 @@ public class Controleur {
                 IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a gagné",0);
             }else {
                 IhmMessage.afficherBoiteDialogue("\nAu tour de " + joueur.getNomJoueur() + " de jouer",0);
+                message.type = Message.Types.JOUEUR;
+                observateur.notifier(message);
                 IhmMessage.afficherBoiteJoueur(joueur);
                 joueur.setNbDouble(0);
                 joueur.setJouer(true);

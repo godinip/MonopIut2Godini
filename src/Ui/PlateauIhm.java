@@ -11,12 +11,13 @@ import javax.swing.*;
 
 public class PlateauIhm extends JFrame implements Observateur{
     
-    private JPanel plateau,information,colorP,carreauSelecte,carreauInfo,bouton;
+    private JPanel plateau,information,colorP,carreauSelecte,carreauInfo,bouton,infoJoueur,autreInfo;
     private Controleur controleur;
     private ArrayList<JPanel> cases = new ArrayList<>();
     private HashMap<Integer,Carreau> Carreaux;
     private JLabel nom,prix,nbMaison,prixM,prixL1,prixL2,prixL3,prixL4,prixL5,prixL6;
     private JLabel gareLabel,departLabel,pfreeLabel,prisonLabel,gardienLabel,cCoLabel,chanceLabel,cElecLabel,cEauLabel;
+    private JLabel nomJ,argentJ,posJ;
     private int h;
     private BufferedImage gare,depart,pfree,prison,gardien,cCo,chance,cElec,cEau;
     private JButton lDe,passerT,achatM,achatH;
@@ -84,11 +85,20 @@ public class PlateauIhm extends JFrame implements Observateur{
        carreauSelecte.add(colorP,BorderLayout.NORTH);
        carreauSelecte.add(carreauInfo,BorderLayout.CENTER);
        
-        information = new JPanel(new BorderLayout());
+       
+       infoJoueur = new JPanel();
+       infoJoueur();
+       carreauInfo.setBackground(Color.white);
+       
+       autreInfo = new JPanel(new  BorderLayout());
+       autreInfo.add(infoJoueur,BorderLayout.NORTH);
+       autreInfo.add(bouton,BorderLayout.CENTER);
+       
+       information = new JPanel(new BorderLayout());
        information.setBackground(Color.YELLOW);
        information.add(Box.createRigidArea(new Dimension(285, 0)),BorderLayout.SOUTH);
        information.add(carreauSelecte,BorderLayout.NORTH);
-       information.add(bouton,BorderLayout.CENTER);
+       information.add(autreInfo,BorderLayout.CENTER);
        
        plateau = new JPanel();
        plateau();    
@@ -379,38 +389,41 @@ public class PlateauIhm extends JFrame implements Observateur{
     public void notifier(Message message) {
         switch(message.type) {
             case ELANCER:
-                System.out.println("Lancer");
                 lDe.setEnabled(false);
                 break;
             case ALANCER:
-                System.out.println("Lancer");
                 lDe.setEnabled(true);
                 break;
             case EPASSER:
-                System.out.println("Passer");
                 passerT.setEnabled(false);
                 break;
             case APASSER:
-                System.out.println("Passer");
                 passerT.setEnabled(true);
                 break;
             case EACHATM:
-                System.out.println("Acheter maison");
                 achatM.setEnabled(false);
                 break;
             case AACHATM:
-                System.out.println("Acheter maison");
                 achatM.setEnabled(true);
                 break;
             case EACHATH:
-                System.out.println("Acheter hotel");
                 achatH.setEnabled(false);
                 break;
             case AACHATH:
-                System.out.println("Acheter hotel");
                 achatH.setEnabled(true);
                 break;
+            case JOUEUR:
+                infoJoueur();
+                break;
         }
+    }
+
+    private void infoJoueur() {
+//        infoJoueur.removeAll();
+        infoJoueur.setLayout(new BoxLayout(infoJoueur, BoxLayout.PAGE_AXIS));
+        infoJoueur.add(nomJ = new JLabel("Au tour de : "+controleur.getJoueur().getNomJoueur()));
+        infoJoueur.add(argentJ = new JLabel("Argent: "+controleur.getJoueur().getArgent()+" €"));
+        
     }
         
 }

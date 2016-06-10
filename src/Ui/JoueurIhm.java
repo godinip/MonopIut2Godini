@@ -92,7 +92,6 @@ public class JoueurIhm extends  JFrame{
                         }
                         setVisible(false);
                 }
-                //A MODIFIER
                 controleur.setJoueurs(joueurs);
                 try {
                     plateauIhm = new PlateauIhm(controleur);
@@ -101,7 +100,6 @@ public class JoueurIhm extends  JFrame{
                 } catch (IOException ex) {
                     Logger.getLogger(JoueurIhm.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //FIN MODIFICATION
             }
         });
         exit.addActionListener(new ActionListener() {
