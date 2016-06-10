@@ -56,6 +56,7 @@ public class PlateauIhm extends JFrame implements Observateur{
        achatM.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     controleur.achatMaison((ProprieteAConstruire)carreauSélectionné);
+                    achatM.setVisible(false);
                 }
             }
         );
@@ -64,6 +65,7 @@ public class PlateauIhm extends JFrame implements Observateur{
        achatH.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     controleur.achatHotel((ProprieteAConstruire)carreauSélectionné);
+                    achatH.setVisible(false);
                 }
             }
         );
