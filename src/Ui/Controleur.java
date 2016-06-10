@@ -132,6 +132,8 @@ public class Controleur {
     
     private void gestionEvents(Events e) {
         Message message = new Message();
+        message.type = Message.Types.JOUEUR;
+        observateur.notifier(message);
         if (e.getAction() == Actions.acheter) {//CAS ACHETER
             acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
         } else if (e.getAction() == Actions.carteChance) {//CAS CARTE CHANCE
