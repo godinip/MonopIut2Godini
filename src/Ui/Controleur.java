@@ -208,9 +208,6 @@ public class Controleur {
                 if (joueur.getPerdu()) {
                     IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a perdu",0);
                     monopoly.suppJoueur(joueur);
-                } else if(joueur.getJouer()){
-                    
-                    jouerUnCoup();
                 } else {
                     IhmMessage.afficherBoiteJoueur(joueur);
                 }
@@ -250,6 +247,10 @@ public class Controleur {
     
     public void setJoueurs(LinkedList<Joueur> joueurs) {
         monopoly.setJoueurs(joueurs);
+    }
+    
+    public Joueur getJoueur() {
+        return joueur;
     }
     
     public void setObservateur(Observateur observateur) {
