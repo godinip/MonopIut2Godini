@@ -91,15 +91,15 @@ public class Controleur {
         int position = joueur.getPositionCourante().getNumero();
         int n = lancerDé();
         int m = lancerDé();
-        IhmMessage.afficherBoiteDialogue("Vous avez fait " + n + " et "+ m + " avec les dés",0);
         if (n == m ) {
             joueur.setNbDouble(joueur.getNbDouble()+1);
             joueur.setJouer(true);
         }
+        IhmMessage.afficherBoiteDialogue("Vous faites "+n+" et "+m,0);
         if (joueur.getNbDouble() == 3) {
             joueur.setPositionCourante(getCarreau(11));
             joueur.setPrison(3);
-            IhmMessage.afficherBoiteDialogue("Vous avez fait 3 doubles et êtes envoyé en prison",0);
+            IhmMessage.afficherBoiteDialogue("C'est votre troisième double, vous êtes envoyé en prison",0);
             joueur.setJouer(false);
         } else {
             joueur.setDernierLancé(n+m);
@@ -120,106 +120,111 @@ public class Controleur {
     private void gestionEvents(Events e) {
         Message message = new Message();
         if (e.getAction() == Actions.acheter) {//CAS ACHETER
-                    acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
-                } else if (e.getAction() == Actions.carteChance) {//CAS CARTE CHANCE
-                    IhmMessage.afficherBoiteDialogue(e.message(), 0);
-                    Carte chance = monopoly.getCarteChance();
-                    ActionsCarte actionCarte = chance.getAction();
-                    if (actionCarte == ActionsCarte.SP) {
-                        IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
-                        joueur.setChancePrison(true);
-                    } else if (actionCarte == ActionsCarte.RE) {
-                        IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
-                        joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()-chance.getX()));
-                        monopoly.addCarteChance(chance);
-                        joueur.getPositionCourante().action(joueur);
-                    } else if (actionCarte == ActionsCarte.MH) {
-                        IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
-                        joueur.payer(joueur.getNbMaisons()*chance.getX()+joueur.getNbHotels()*chance.getY());
-                        monopoly.addCarteChance(chance);
-                    } else if (chance.getAction() == ActionsCarte.GA) {
-                        IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
-                        joueur.gagnerArgent(chance.getX());
-                        monopoly.addCarteChance(chance);
-                    } else if (chance.getAction() == ActionsCarte.PA) {
-                        IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
-                        joueur.payer(chance.getX());
-                        monopoly.addCarteChance(chance);
-                    } else if (actionCarte == ActionsCarte.AV) {
-                        IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
-                        if (joueur.getPositionCourante().getNumero() > chance.getX()) {
-                            joueur.setPositionCourante(monopoly.getCarreaux().get(chance.getX()));
-                            joueur.gagnerArgent(200);
-                        e = joueur.getPositionCourante().action(joueur);
-                        gestionEvents(e);
-                        }
-                        joueur.setPositionCourante(getCarreau(chance.getX()));
-                        monopoly.addCarteChance(chance);
-                    } else if (actionCarte == ActionsCarte.AP) {
-                        IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
-                        joueur.setPositionCourante(getCarreau(11));
-                        joueur.setPrison(3);
-                        joueur.setJouer(false);
-                        monopoly.addCarteChance(chance);
-                    }
-                } else if (e.getAction() == Actions.carteCommunaute) {//CAS CARTE COMMUNAUTE
-                    IhmMessage.afficherBoiteDialogue(e.message(), 0);
-                    Carte communaute = monopoly.getCarteCommunaute();
-                    ActionsCarte actionCarte = communaute.getAction();
-                    if (communaute.getAction() == ActionsCarte.SP) {
-                        IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
-                        joueur.setCommunautePrison(true);
-                    } else if (communaute.getAction() == ActionsCarte.GA) {
-                        IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
-                        joueur.gagnerArgent(communaute.getX());
-                        monopoly.addCarteCommunaute(communaute);
-                    } else if (communaute.getAction() == ActionsCarte.PA) {
-                        IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
-                        joueur.payer(communaute.getX());
-                        monopoly.addCarteCommunaute(communaute);
-                    } else if (communaute.getAction() == ActionsCarte.AN) {
-                        IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
-                        int i = 0;
-                        for (Joueur j : monopoly.getJoueurs()) {
-                            if (j != joueur) {
-                                j.payer(communaute.getX());
-                                i++;
-                            }
-                        }
-                        joueur.gagnerArgent(i*communaute.getX());
-                        monopoly.addCarteCommunaute(communaute);
-                    } else if (communaute.getAction() == ActionsCarte.DE) {
-                        IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
-                        joueur.setPositionCourante(getCarreau(communaute.getX()));
-                        e = joueur.getPositionCourante().action(joueur);
-                        gestionEvents(e);
-                    } else if (communaute.getAction() == ActionsCarte.AP) {
-                        IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
-                        joueur.setPositionCourante(getCarreau(11));
-                        joueur.setPrison(3);
-                        joueur.setJouer(false);
-                        monopoly.addCarteCommunaute(communaute);
-                    } else if (communaute.getAction() == ActionsCarte.AV) {
-                        IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
-                        if (joueur.getPositionCourante().getNumero() > communaute.getX()) {
-                            joueur.setPositionCourante(monopoly.getCarreaux().get(communaute.getX()));
-                            joueur.gagnerArgent(200);
-                        }
-                        joueur.setPositionCourante(getCarreau(communaute.getX()));
-                        monopoly.addCarteCommunaute(communaute);
-                        e = joueur.getPositionCourante().action(joueur);
-                        gestionEvents(e);
-                    }
-                } else {//AUTRE CAS
-                    IhmMessage.afficherBoiteDialogue(e.message(),0);
+            acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
+        } else if (e.getAction() == Actions.carteChance) {//CAS CARTE CHANCE
+            IhmMessage.afficherBoiteDialogue(e.message(), 0);
+            Carte chance = monopoly.getCarteChance();
+            ActionsCarte actionCarte = chance.getAction();
+            if (actionCarte == ActionsCarte.SP) {
+                IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                joueur.setChancePrison(true);
+            } else if (actionCarte == ActionsCarte.RE) {
+                IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()-chance.getX()));
+                monopoly.addCarteChance(chance);
+                joueur.getPositionCourante().action(joueur);
+            } else if (actionCarte == ActionsCarte.MH) {
+                IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                joueur.payer(joueur.getNbMaisons()*chance.getX()+joueur.getNbHotels()*chance.getY());
+                monopoly.addCarteChance(chance);
+            } else if (chance.getAction() == ActionsCarte.GA) {
+                IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                joueur.gagnerArgent(chance.getX());
+                monopoly.addCarteChance(chance);
+            } else if (chance.getAction() == ActionsCarte.PA) {
+                IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                joueur.payer(chance.getX());
+                monopoly.addCarteChance(chance);
+            } else if (actionCarte == ActionsCarte.AV) {
+                IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                if (joueur.getPositionCourante().getNumero() > chance.getX()) {
+                    joueur.setPositionCourante(monopoly.getCarreaux().get(chance.getX()));
+                    joueur.gagnerArgent(200);
+                e = joueur.getPositionCourante().action(joueur);
+                gestionEvents(e);
                 }
-                if (joueur.getPerdu()) {
-                    IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a perdu",0);
-                    monopoly.suppJoueur(joueur);
-                } else {
-                    message.type = Message.Types.JOUEUR;
-                    observateur.notifier(message);
+                joueur.setPositionCourante(getCarreau(chance.getX()));
+                monopoly.addCarteChance(chance);
+            } else if (actionCarte == ActionsCarte.AP) {
+                IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
+                joueur.setPositionCourante(getCarreau(11));
+                joueur.setPrison(3);
+                joueur.setJouer(false);
+                monopoly.addCarteChance(chance);
+            }
+        } else if (e.getAction() == Actions.carteCommunaute) {//CAS CARTE COMMUNAUTE
+            IhmMessage.afficherBoiteDialogue(e.message(), 0);
+            Carte communaute = monopoly.getCarteCommunaute();
+            ActionsCarte actionCarte = communaute.getAction();
+            if (communaute.getAction() == ActionsCarte.SP) {
+                IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                joueur.setCommunautePrison(true);
+            } else if (communaute.getAction() == ActionsCarte.GA) {
+                IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                joueur.gagnerArgent(communaute.getX());
+                monopoly.addCarteCommunaute(communaute);
+            } else if (communaute.getAction() == ActionsCarte.PA) {
+                IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                joueur.payer(communaute.getX());
+                monopoly.addCarteCommunaute(communaute);
+            } else if (communaute.getAction() == ActionsCarte.AN) {
+                IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                int i = 0;
+                for (Joueur j : monopoly.getJoueurs()) {
+                    if (j != joueur) {
+                        j.payer(communaute.getX());
+                        i++;
+                    }
                 }
+                joueur.gagnerArgent(i*communaute.getX());
+                monopoly.addCarteCommunaute(communaute);
+            } else if (communaute.getAction() == ActionsCarte.DE) {
+                IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                joueur.setPositionCourante(getCarreau(communaute.getX()));
+                e = joueur.getPositionCourante().action(joueur);
+                gestionEvents(e);
+            } else if (communaute.getAction() == ActionsCarte.AP) {
+                IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                joueur.setPositionCourante(getCarreau(11));
+                joueur.setPrison(3);
+                joueur.setJouer(false);
+                monopoly.addCarteCommunaute(communaute);
+            } else if (communaute.getAction() == ActionsCarte.AV) {
+                IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
+                if (joueur.getPositionCourante().getNumero() > communaute.getX()) {
+                    joueur.setPositionCourante(monopoly.getCarreaux().get(communaute.getX()));
+                    joueur.gagnerArgent(200);
+                }
+                joueur.setPositionCourante(getCarreau(communaute.getX()));
+                monopoly.addCarteCommunaute(communaute);
+                e = joueur.getPositionCourante().action(joueur);
+                gestionEvents(e);
+            }
+        } else if (e.getAction() == Actions.prison) {//CAS ENVOYE EN PRISON
+            IhmMessage.afficherBoiteDialogue("Vous êtes envoyé en prison",0);
+            joueur.setPositionCourante(getCarreau(11));
+            joueur.setPrison(3);
+            joueur.setJouer(false);
+        } else {//AUTRE CAS
+            IhmMessage.afficherBoiteDialogue(e.message(),0);
+        }
+        if (joueur.getPerdu()) {
+            IhmMessage.afficherBoiteDialogue("Vous avez perdu",0);
+            monopoly.suppJoueur(joueur);
+        } else {
+            message.type = Message.Types.JOUEUR;
+            observateur.notifier(message);
+        }
     }
     
     private int lancerDé() {
