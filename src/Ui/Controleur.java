@@ -197,7 +197,7 @@ public class Controleur {
                 monopoly.addCarteCommunaute(communaute);
             } else if (communaute.getAction() == ActionsCarte.DE) {
                 IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
-                joueur.setPositionCourante(getCarreau(communaute.getX()+1));
+                joueur.setPositionCourante(getCarreau(communaute.getX()));
                 e = joueur.getPositionCourante().action(joueur);
                 gestionEvents(e);
             } else if (communaute.getAction() == ActionsCarte.AP) {
@@ -211,7 +211,7 @@ public class Controleur {
                 if (joueur.getPositionCourante().getNumero() > communaute.getX()) {
                     joueur.gagnerArgent(200);
                 }
-                joueur.setPositionCourante(getCarreau(communaute.getX()+1));
+                joueur.setPositionCourante(getCarreau(communaute.getX()));
                 monopoly.addCarteCommunaute(communaute);
                 e = joueur.getPositionCourante().action(joueur);
                 gestionEvents(e);
@@ -301,6 +301,10 @@ public class Controleur {
     public void abandonJoueur(){
         monopoly.suppJoueur(joueur);
         tour();
+    }
+    
+    public LinkedList<Joueur> getJoueurs(){
+        return monopoly.getJoueurs();
     }
     
 }

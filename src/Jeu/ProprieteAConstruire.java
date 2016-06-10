@@ -15,13 +15,13 @@ public class ProprieteAConstruire extends Propriete {
     
 
     
-    public ProprieteAConstruire(int numero,String nm, int prx,Groupe couleur,int[] loyer) {
+    public ProprieteAConstruire(int numero,String nm, int prx,Groupe couleur,int[] loyer,int cout) {
         super(numero,nm, prx);
         this.setMaisons(0);
         this.setLoyer(loyer);
         this.setCouleur(couleur);
         couleur.addPropriete(this);
-        
+        coutmaison = cout;
     }
     
     @Override
