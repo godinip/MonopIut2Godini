@@ -16,8 +16,8 @@ public class Joueur {
     private ArrayList<Compagnie>                compagnies;
     private Boolean                             perdu = false;
     private int                                 prison = 0;
-    private boolean                             chancePrison = false;
-    private boolean                             communautePrison = false;
+    private Carte                               chancePrison;
+    private Carte                               communautePrison;
     private boolean                             jouer = false;
     private int                                 nbDouble = 0;
     
@@ -122,19 +122,31 @@ public class Joueur {
     }
     
     public boolean getChancePrison() {
-        return chancePrison;
+        return (chancePrison != null);
     }
     
-    public void setChancePrison(boolean chancePrison) {
+    public void setCarteChancePrison(Carte chancePrison) {
         this.chancePrison = chancePrison;
     }
     
-    public boolean getCommunautePrison() {
-        return communautePrison;
+    public Carte getCarteChancePrison(){
+        Carte temp = chancePrison;
+        chancePrison = null;
+        return temp;
     }
     
-    public void setCommunautePrison(boolean communautePrison) {
+    public boolean getCommunautePrison() {
+        return (communautePrison != null);
+    }
+    
+    public void setCarteCommunautePrison(Carte communautePrison) {
         this.communautePrison = communautePrison;
+    }
+    
+    public Carte getCarteCommunautePrison(){
+        Carte temp = communautePrison;
+        communautePrison = null;
+        return temp;
     }
     
     public int getNbMaisons(){
