@@ -29,7 +29,7 @@ public class Controleur {
                 joueur.setNbDouble(0);
                 joueur.setJouer(true);
                 Message message = new Message();
-                message.type = Message.Types.PASSER;
+                message.type = Message.Types.EPASSER;
                 observateur.notifier(message);
             }
     }
