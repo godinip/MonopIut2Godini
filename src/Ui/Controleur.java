@@ -101,7 +101,7 @@ public class Controleur {
             joueur.setPrison(3);
             IhmMessage.afficherBoiteDialogue("C'est votre troisième double, vous êtes envoyé en prison",0);
             joueur.setJouer(false);
-        } else {
+        } else { 
             joueur.setDernierLancé(n+m);
             if (position+n+m>40) {
                 joueur.setPositionCourante(getCarreau(position+n+m-40));
