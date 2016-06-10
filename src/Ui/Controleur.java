@@ -303,4 +303,8 @@ public class Controleur {
         tour();
     }
     
+    public LinkedList<Joueur> getJoueurs(){
+        return monopoly.getJoueurs();
+    }
+    
 }
