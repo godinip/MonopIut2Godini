@@ -41,7 +41,6 @@ public class PlateauIhm extends JFrame implements Observateur{
             }
         );
        lDe.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
-       
        passerT = new JButton("Fin du tour");
        passerT.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -50,11 +49,10 @@ public class PlateauIhm extends JFrame implements Observateur{
             }
         );
        passerT.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
-       
        achatM = new JButton("Acheter Maison");
        achatM.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    controleur.tour();
+                    controleur.getListMaisons();
                 }
             }
         );
@@ -63,7 +61,7 @@ public class PlateauIhm extends JFrame implements Observateur{
        achatH = new JButton("Acheter Hotel");
        achatH.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    controleur.tour();
+                    controleur.getListHotels();
                 }
             }
         );
