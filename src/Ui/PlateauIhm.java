@@ -454,16 +454,16 @@ public class PlateauIhm extends JFrame implements Observateur{
                 passerT.setEnabled(true);
                 break;
             case EACHATM:
-                achatM.setEnabled(false);
+                achatM.setVisible(false);
                 break;
             case AACHATM:
-                achatM.setEnabled(true);
+                achatM.setVisible(true);
                 break;
             case EACHATH:
-                achatH.setEnabled(false);
+                achatH.setVisible(false);
                 break;
             case AACHATH:
-                achatH.setEnabled(true);
+                achatH.setVisible(true);
                 break;
             case JOUEUR:
                 infoJoueur();
