@@ -254,7 +254,7 @@ public class Monopoly {
         public void addCarteChance(Carte chance) {
             cartesChance.add(chance);
         }
-    
+            
     //GESTION CARTES COMMUNAUTE
         public Carte getCarteCommunaute() {
             Carte communaute = cartesCommunaute.get(0);
@@ -265,5 +265,5 @@ public class Monopoly {
         public void addCarteCommunaute(Carte commmunaute) {
             cartesCommunaute.add(commmunaute);
         }
-        
+               
 }

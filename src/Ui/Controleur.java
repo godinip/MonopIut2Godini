@@ -49,9 +49,9 @@ public class Controleur {
                 if ((joueur.getCommunautePrison() || joueur.getChancePrison()) && IhmMessage.afficherBoiteDialogue("Voulez-vous utiliser votre carte Sortie de Prison?", 1)) {
                     joueur.setPrison(0);
                     if (joueur.getChancePrison()) {
-                        joueur.setChancePrison(false);
+                        monopoly.addCarteChance(joueur.getCarteChancePrison());
                     } else if (joueur.getCommunautePrison()) {
-                        joueur.setCommunautePrison(false);
+                        monopoly.addCarteCommunaute(joueur.getCarteCommunautePrison());
                     }
                     joueur.setJouer(true);
                 } else {
@@ -127,7 +127,7 @@ public class Controleur {
             ActionsCarte actionCarte = chance.getAction();
             if (actionCarte == ActionsCarte.SP) {
                 IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
-                joueur.setChancePrison(true);
+                joueur.setCarteChancePrison(chance);
             } else if (actionCarte == ActionsCarte.RE) {
                 IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
                 joueur.setPositionCourante(getCarreau(joueur.getPositionCourante().getNumero()-chance.getX()));
@@ -168,7 +168,7 @@ public class Controleur {
             ActionsCarte actionCarte = communaute.getAction();
             if (communaute.getAction() == ActionsCarte.SP) {
                 IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
-                joueur.setCommunautePrison(true);
+                joueur.setCarteCommunautePrison(communaute);
             } else if (communaute.getAction() == ActionsCarte.GA) {
                 IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
                 joueur.gagnerArgent(communaute.getX());

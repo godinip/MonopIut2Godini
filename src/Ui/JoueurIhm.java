@@ -35,7 +35,7 @@ public class JoueurIhm extends  JFrame{
              affichage.add(panelNom);
              panelNom.add(new JLabel("Joueur "+i+" :"));
              JTextField champNom = new JTextField(20);
-             champNom.setText("Test "+ i);
+             champNom.setText("Joueur "+ i);
              panelNom.add(champNom);
              nomJList.add(champNom);
         }
