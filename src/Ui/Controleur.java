@@ -256,4 +256,24 @@ public class Controleur {
         this.observateur = observateur;
     }
     
+    public ArrayList<ProprieteAConstruire> getListMaisons(){
+        ArrayList<ProprieteAConstruire> A = new ArrayList();
+        for (ProprieteAConstruire p : joueur.getProprietes()){
+            if (p.verificationAjoutMaisons()){
+                A.add(p);
+            }
+        }
+        return A;
+    }
+    
+    public ArrayList<ProprieteAConstruire> getListHotels(){
+        ArrayList<ProprieteAConstruire> A = new ArrayList();
+        for (ProprieteAConstruire p : joueur.getProprietes()){
+            if (p.verificationAjoutHotels()){
+                A.add(p);
+            }
+        }
+        return A;
+    }
+    
 }
