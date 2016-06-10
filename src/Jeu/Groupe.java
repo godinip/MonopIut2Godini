@@ -40,13 +40,14 @@ public class Groupe {
     }
 
     public boolean maisonUniformePlus(int nbMaison){
+        Boolean b = true;
         for(ProprieteAConstruire propriete : this.getProprietesdugroupe()){
             if(propriete.getMaisons()<nbMaison){
-                return false;
+                b = false;
             }
             
         }
-        return true;
+        return b;
     }
     
     public boolean maisonUniformeMoins(int nbMaison){
