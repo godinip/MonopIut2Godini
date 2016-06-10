@@ -20,7 +20,7 @@ public class PlateauIhm extends JFrame implements Observateur{
     private JLabel nomJ,argentJ,posJT,posJ;
     private int h;
     private BufferedImage gare,depart,pfree,prison,gardien,cCo,chance,cElec,cEau;
-    private JButton lDe,passerT,achatM,achatH;
+    private JButton lDe,passerT,achatM,achatH,abandon,exit;
     
     public PlateauIhm(Controleur c) throws IOException{
         super("Monopoly");
@@ -33,7 +33,7 @@ public class PlateauIhm extends JFrame implements Observateur{
     
     public void initUIComponents() throws IOException {
 
-       lDe = new JButton("Lancer les dès");
+       lDe = new JButton("Lancer les dés");
        lDe.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     controleur.jouerUnCoup();
@@ -41,6 +41,7 @@ public class PlateauIhm extends JFrame implements Observateur{
             }
         );
        lDe.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
+       
        passerT = new JButton("Fin du tour");
        passerT.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -48,12 +49,23 @@ public class PlateauIhm extends JFrame implements Observateur{
                 }
             }
         );
-       
        passerT.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        achatM = new JButton("Acheter Maison");
        achatM.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
        achatH = new JButton("Acheter Hotel");
        achatH.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
+       abandon = new JButton("Abandonner");
+       abandon.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
+       
+       exit = new JButton("Quitter");
+       exit.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+              System.exit(0);
+           }
+       });
+       exit.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
+       
 
        bouton = new JPanel();
        bouton.setLayout(new BoxLayout(bouton, BoxLayout.PAGE_AXIS));
@@ -61,6 +73,8 @@ public class PlateauIhm extends JFrame implements Observateur{
        bouton.add(passerT);
        bouton.add(achatM);
        bouton.add(achatH);
+       bouton.add(abandon);
+       bouton.add(exit);
        
        colorP = new JPanel();
        colorP.add(Box.createRigidArea(new Dimension(0, 35)));
@@ -90,20 +104,23 @@ public class PlateauIhm extends JFrame implements Observateur{
         infoJoueur.setBorder(BorderFactory.createTitledBorder("Information joueur"));
         infoJoueur.setBackground(Color.WHITE);
         infoJoueur.setLayout(new BoxLayout(infoJoueur, BoxLayout.PAGE_AXIS));
-        infoJoueur.add(nomJ = new JLabel("Au tour de: "));
+        infoJoueur.add(new JLabel(" "));
+        infoJoueur.add(nomJ = new JLabel("Joueur "));
+        infoJoueur.add(new JLabel(" "));
         infoJoueur.add(posJT =new JLabel("Position courante: "));
-        infoJoueur.add(posJ =new JLabel(" "));
+        infoJoueur.add(posJ = new JLabel(" "));
+        infoJoueur.add(new JLabel(" "));
         infoJoueur.add(argentJ = new JLabel("Argent: "));
        
        carreauInfo.setBackground(Color.white);
        
        autreInfo = new JPanel(new  BorderLayout());
-       autreInfo.add(infoJoueur,BorderLayout.NORTH);
-       autreInfo.add(bouton,BorderLayout.CENTER);
+       autreInfo.add(infoJoueur,BorderLayout.CENTER);
+       autreInfo.add(bouton,BorderLayout.NORTH);
        
        information = new JPanel(new BorderLayout());
        information.setBackground(Color.YELLOW);
-       information.add(Box.createRigidArea(new Dimension(285, 0)),BorderLayout.SOUTH);
+       information.add(Box.createRigidArea(new Dimension(300, 0)),BorderLayout.SOUTH);
        information.add(carreauSelecte,BorderLayout.NORTH);
        information.add(autreInfo,BorderLayout.CENTER);
        
@@ -426,17 +443,52 @@ public class PlateauIhm extends JFrame implements Observateur{
     }
 
     private void infoJoueur() {
+        infoJoueur.removeAll();
+        infoJoueur.repaint();
         infoJoueur.setBorder(BorderFactory.createTitledBorder("Information joueur"));
-        Joueur j = controleur.getJoueur();
         infoJoueur.setBackground(Color.WHITE);
         infoJoueur.setLayout(new BoxLayout(infoJoueur, BoxLayout.PAGE_AXIS));
-        nomJ.setText("Au tour de: "+j.getNomJoueur());
+         infoJoueur.add(new JLabel(" "));
+        infoJoueur.add(nomJ = new JLabel("Joueur: "));
+        infoJoueur.add(new JLabel(" "));
+        infoJoueur.add(posJT =new JLabel("Position courante: "));
+        infoJoueur.add(posJ = new JLabel(" "));
+        infoJoueur.add(new JLabel(" "));
+        infoJoueur.add(argentJ = new JLabel("Argent: "));
+        
+        Joueur j = controleur.getJoueur();
+        
+        nomJ.setText("Joueur: "+j.getNomJoueur());
         posJ.setText("- "+j.getPositionCourante().getNom());
         argentJ .setText("Argent: "+j.getArgent()+" €");
-        if(!controleur.getJoueur().getProprietes().isEmpty()){
-            
+        
+        //affichage Propo Joueur
+        JPanel propoJ = new JPanel();
+        propoJ.setLayout(new BoxLayout(propoJ,BoxLayout.PAGE_AXIS));
+        infoJoueur.add(propoJ);
+        propoJ.add(new JLabel(" "));
+        propoJ.add(new JLabel("Propriete(s): "));
+        if(!j.getProprietes().isEmpty()){
+        
+            for (ProprieteAConstruire prop : j.getProprietes()) {
+                propoJ.add(new JLabel(" - "+prop.getNom()));
+            }
+
+        }else{  
+            propoJ.add(new JLabel(" - Pas de Propriete A Construire"));       
+        }
+        // affichage Gare Joueur
+        JPanel gareJ = new JPanel();
+        gareJ.setLayout(new BoxLayout(gareJ,BoxLayout.PAGE_AXIS));
+        infoJoueur.add(gareJ);
+        gareJ.add(new JLabel(" "));
+        gareJ.add(new JLabel("Gare(s)"));
+        if(!j.getGares().isEmpty()){
+            for (Gare gares : j.getGares()) {
+                gareJ.add(new JLabel(" - "+gares.getNom()));
+            }
         }else{
-            
+            gareJ.add(new JLabel(" - Pas de Gare "));       
         }
 
     }
