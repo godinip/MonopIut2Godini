@@ -378,23 +378,37 @@ public class PlateauIhm extends JFrame implements Observateur{
     @Override
     public void notifier(Message message) {
         switch(message.type) {
-            case LANCER:
+            case ELANCER:
                 System.out.println("Lancer");
                 lDe.setEnabled(false);
                 break;
-            case PASSER:
+            case ALANCER:
+                System.out.println("Lancer");
+                lDe.setEnabled(true);
+                break;
+            case EPASSER:
                 System.out.println("Passer");
                 passerT.setEnabled(false);
                 break;
-            case ACHATM:
+            case APASSER:
+                System.out.println("Passer");
+                passerT.setEnabled(true);
+                break;
+            case EACHATM:
                 System.out.println("Acheter maison");
                 achatM.setEnabled(false);
                 break;
-            case ACHATH:
+            case AACHATM:
+                System.out.println("Acheter maison");
+                achatM.setEnabled(true);
+                break;
+            case EACHATH:
                 System.out.println("Acheter hotel");
                 achatH.setEnabled(false);
-                passerT.setEnabled(false);
-                lDe.setEnabled(true);
+                break;
+            case AACHATH:
+                System.out.println("Acheter hotel");
+                achatH.setEnabled(true);
                 break;
         }
     }
