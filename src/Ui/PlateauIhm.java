@@ -13,7 +13,7 @@ import javax.swing.border.Border;
 
 public class PlateauIhm extends JFrame implements Observateur{
     
-    private JPanel plateau,information,colorP,carreauSelecte,carreauInfo,bouton,infoJoueur,autreInfo;
+    private JPanel plateau,information,colorP,carreauSelecte,carreauInfo,bouton,infoJoueur,autreInfo,couleurJoueur;
     private Controleur controleur;
     private ArrayList<JPanel> cases = new ArrayList<>();
     private HashMap<Integer,Integer> carreauxNbjoueur = new HashMap<>();
@@ -136,8 +136,11 @@ public class PlateauIhm extends JFrame implements Observateur{
         infoJoueur.add(argentJ = new JLabel("Argent: "));
        
        carreauInfo.setBackground(Color.white);
+       couleurJoueur = new JPanel();
+       couleurJoueur.setBackground(Color.white);
        
        autreInfo = new JPanel(new  BorderLayout());
+       autreInfo.add(couleurJoueur,BorderLayout.SOUTH);
        autreInfo.add(infoJoueur,BorderLayout.CENTER);
        autreInfo.add(bouton,BorderLayout.NORTH);
        
@@ -227,7 +230,8 @@ public class PlateauIhm extends JFrame implements Observateur{
         plateau.add(test,grideCarreau);
     }
     private void generationCarreau(JPanel carreau,int i,int j){
-         JPanel carreauPosJ = new JPanel();
+                    JPanel carreauPosJ = new JPanel();
+                    carreauPosJ.setBackground(Color.white);
                   carreauxNbjoueur.put(h, 0);
                   carreau.add(carreauPosJ,BorderLayout.CENTER);
                   carreauPosJ.setLayout(new GridBagLayout());
@@ -250,7 +254,6 @@ public class PlateauIhm extends JFrame implements Observateur{
                     JPanel panelJoueur = new JPanel();
                     carreauxJpanel.put(""+h+","+k, panelJoueur);
                     carreauPosJ.add(panelJoueur,gridePoseJ);
-                    panelJoueur.setBorder(BorderFactory.createLineBorder(Color.black));
                 }
         //                                                                                                                                          Gare Partie 
             if (controleur.getCarreau(h)instanceof Gare) {
@@ -510,6 +513,7 @@ public class PlateauIhm extends JFrame implements Observateur{
     }
 
     private void infoJoueur() {
+         Joueur j = controleur.getJoueur();
         infoJoueur.removeAll();
         infoJoueur.repaint();
         infoJoueur.setBorder(BorderFactory.createTitledBorder("Information joueur"));
@@ -522,13 +526,23 @@ public class PlateauIhm extends JFrame implements Observateur{
         infoJoueur.add(posJ = new JLabel(" "));
         infoJoueur.add(new JLabel(" "));
         infoJoueur.add(argentJ = new JLabel("Argent: "));
+        couleurJoueur.setBackground(j.getJoueurCouleur());
+       
+        LinkedList<Joueur> js = controleur.getJoueurs();
+        for (int i = 1; i < 41; i++) {
+            carreauxNbjoueur.replace(i,carreauxNbjoueur.get(i), 0);
+            for (int k = 1; k < 7; k++) {
+                carreauxJpanel.get(""+i+","+k).setBackground(Color.white);
+            }
+        }
         
-        Joueur j = controleur.getJoueur();
+        for (Joueur j1 : js) {
+        int p = carreauxNbjoueur.get(j1.getPositionCourante().getNumero())+1;
+        carreauxNbjoueur.replace(j1.getPositionCourante().getNumero(),p-1, p);
+        carreauxJpanel.get(""+j1.getPositionCourante().getNumero()+","+p).setBackground(j1.getJoueurCouleur());
+        }
 
-        int p = carreauxNbjoueur.get(j.getPositionCourante().getNumero());
-        p = p+1;
-        carreauxNbjoueur.replace(j.getPositionCourante().getNumero(),p-1, p);
-        carreauxJpanel.get(""+j.getPositionCourante().getNumero()+","+p).setBackground(Color.red);
+        
 
        
         nomJ.setText("Joueur: "+j.getNomJoueur());
