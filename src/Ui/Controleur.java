@@ -148,6 +148,7 @@ public class Controleur {
                     } else if (actionCarte == ActionsCarte.AV) {
                         IhmMessage.afficherBoiteDialogue(chance.getTexte(), 0);
                         if (joueur.getPositionCourante().getNumero() > chance.getX()) {
+                            joueur.setPositionCourante(monopoly.getCarreaux().get(chance.getX()));
                             joueur.gagnerArgent(200);
                         e = joueur.getPositionCourante().action(joueur);
                         gestionEvents(e);
@@ -199,6 +200,7 @@ public class Controleur {
                     } else if (communaute.getAction() == ActionsCarte.AV) {
                         IhmMessage.afficherBoiteDialogue(communaute.getTexte(), 0);
                         if (joueur.getPositionCourante().getNumero() > communaute.getX()) {
+                            joueur.setPositionCourante(monopoly.getCarreaux().get(communaute.getX()));
                             joueur.gagnerArgent(200);
                         }
                         joueur.setPositionCourante(getCarreau(communaute.getX()));
