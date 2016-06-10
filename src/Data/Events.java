@@ -37,7 +37,7 @@ public class Events {
                 message = jjoue.getNomJoueur() + " a gagné " + montant + "€";
                 break;
             case "payerLoyer":
-                message = jjoue.getNomJoueur() + " est arrivé sur la propriete de " + jreceveur.getNomJoueur() + " et lui a versé" + montant + "€";
+                message = jjoue.getNomJoueur() + " est arrivé sur la propriete de " + jreceveur.getNomJoueur() + " et lui a versé " + montant + "€";
                 break;
             case "acheter":
                 message = jjoue.getNomJoueur() + " a acheté la propriete " + jjoue.getPositionCourante().getNom() + " pour " + montant + "€";

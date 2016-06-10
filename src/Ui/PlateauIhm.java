@@ -87,7 +87,6 @@ public class PlateauIhm extends JFrame implements Observateur{
        
        
        infoJoueur = new JPanel();
-       infoJoueur();
        carreauInfo.setBackground(Color.white);
        
        autreInfo = new JPanel(new  BorderLayout());
@@ -419,9 +418,10 @@ public class PlateauIhm extends JFrame implements Observateur{
     }
 
     private void infoJoueur() {
-//        infoJoueur.removeAll();
+        infoJoueur.removeAll();
         infoJoueur.setLayout(new BoxLayout(infoJoueur, BoxLayout.PAGE_AXIS));
-        infoJoueur.add(nomJ = new JLabel("Au tour de : "+controleur.getJoueur().getNomJoueur()));
+        nomJ = new JLabel("Au tour de : "+controleur.getJoueur().getNomJoueur());
+        infoJoueur.add(nomJ);
         infoJoueur.add(argentJ = new JLabel("Argent: "+controleur.getJoueur().getArgent()+" €"));
         
     }

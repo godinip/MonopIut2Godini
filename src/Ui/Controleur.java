@@ -24,13 +24,14 @@ public class Controleur {
             joueur = monopoly.joueurSuivant();
             message.type = Message.Types.EPASSER;
             observateur.notifier(message);
+            message.type = Message.Types.JOUEUR;
+            observateur.notifier(message);
             if (monopoly.getJoueurs().toArray().length == 1) {
                 IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a gagné",0);
             }else {
                 IhmMessage.afficherBoiteDialogue("\nAu tour de " + joueur.getNomJoueur() + " de jouer",0);
                 message.type = Message.Types.JOUEUR;
                 observateur.notifier(message);
-                IhmMessage.afficherBoiteJoueur(joueur);
                 joueur.setNbDouble(0);
                 joueur.setJouer(true);
             }
@@ -117,6 +118,7 @@ public class Controleur {
     }
     
     private void gestionEvents(Events e) {
+        Message message = new Message();
         if (e.getAction() == Actions.acheter) {//CAS ACHETER
                     acheterPropriete(joueur,(Propriete) joueur.getPositionCourante());
                 } else if (e.getAction() == Actions.carteChance) {//CAS CARTE CHANCE
@@ -211,7 +213,8 @@ public class Controleur {
                     IhmMessage.afficherBoiteDialogue(joueur.getNomJoueur()+" a perdu",0);
                     monopoly.suppJoueur(joueur);
                 } else {
-                    IhmMessage.afficherBoiteJoueur(joueur);
+                    message.type = Message.Types.JOUEUR;
+                    observateur.notifier(message);
                 }
     }
     
