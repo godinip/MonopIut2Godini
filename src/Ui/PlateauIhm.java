@@ -17,7 +17,7 @@ public class PlateauIhm extends JFrame implements Observateur{
     private HashMap<Integer,Carreau> Carreaux;
     private JLabel nom,prix,nbMaison,prixM,prixL1,prixL2,prixL3,prixL4,prixL5,prixL6;
     private JLabel gareLabel,departLabel,pfreeLabel,prisonLabel,gardienLabel,cCoLabel,chanceLabel,cElecLabel,cEauLabel;
-    private JLabel nomJ,argentJ,posJ;
+    private JLabel nomJ,argentJ,posJT,posJ;
     private int h;
     private BufferedImage gare,depart,pfree,prison,gardien,cCo,chance,cElec,cEau;
     private JButton lDe,passerT,achatM,achatH;
@@ -87,6 +87,14 @@ public class PlateauIhm extends JFrame implements Observateur{
        
        
        infoJoueur = new JPanel();
+        infoJoueur.setBorder(BorderFactory.createTitledBorder("Information joueur"));
+        infoJoueur.setBackground(Color.WHITE);
+        infoJoueur.setLayout(new BoxLayout(infoJoueur, BoxLayout.PAGE_AXIS));
+        infoJoueur.add(nomJ = new JLabel("Au tour de: "));
+        infoJoueur.add(posJT =new JLabel("Position courante: "));
+        infoJoueur.add(posJ =new JLabel(" "));
+        infoJoueur.add(argentJ = new JLabel("Argent: "));
+       
        carreauInfo.setBackground(Color.white);
        
        autreInfo = new JPanel(new  BorderLayout());
@@ -418,12 +426,19 @@ public class PlateauIhm extends JFrame implements Observateur{
     }
 
     private void infoJoueur() {
-        infoJoueur.removeAll();
+        infoJoueur.setBorder(BorderFactory.createTitledBorder("Information joueur"));
+        Joueur j = controleur.getJoueur();
+        infoJoueur.setBackground(Color.WHITE);
         infoJoueur.setLayout(new BoxLayout(infoJoueur, BoxLayout.PAGE_AXIS));
-        nomJ = new JLabel("Au tour de : "+controleur.getJoueur().getNomJoueur());
-        infoJoueur.add(nomJ);
-        infoJoueur.add(argentJ = new JLabel("Argent: "+controleur.getJoueur().getArgent()+" €"));
-        
+        nomJ.setText("Au tour de: "+j.getNomJoueur());
+        posJ.setText("- "+j.getPositionCourante().getNom());
+        argentJ .setText("Argent: "+j.getArgent()+" €");
+        if(!controleur.getJoueur().getProprietes().isEmpty()){
+            
+        }else{
+            
+        }
+
     }
         
 }
