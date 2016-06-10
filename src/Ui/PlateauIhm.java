@@ -1,5 +1,6 @@
 package Ui;
 
+import Data.Message;
 import Jeu.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -468,6 +469,11 @@ public class PlateauIhm extends JFrame implements Observateur{
             case JOUEUR:
                 infoJoueur();
                 break;
+            case FIN:
+                System.exit(0);
+                break;
+            default :
+                System.exit(1);
         }
     }
 

@@ -1,5 +1,6 @@
 package Ui;
 
+import Data.Message;
 import Data.*;
 import Jeu.*;
 import java.io.*;
