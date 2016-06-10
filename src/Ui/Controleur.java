@@ -85,7 +85,13 @@ public class Controleur {
             Events e = c.action(joueur);
             gestionEvents(e);
             }
-            if (joueur.getJouer()) {
+            if (joueur.getPerdu()) {
+            IhmMessage.afficherBoiteDialogue("Vous avez perdu",0);
+            monopoly.suppJoueur(joueur);
+            tour();
+        } else if (joueur.getJouer()) {
+                message.type = Message.Types.JOUEUR;
+                observateur.notifier(message);
                 message.type = Message.Types.ALANCER;
                 observateur.notifier(message);
             } else {
@@ -224,14 +230,7 @@ public class Controleur {
         } else {//AUTRE CAS
             IhmMessage.afficherBoiteDialogue(e.message(),0);
         }
-        if (joueur.getPerdu()) {
-            IhmMessage.afficherBoiteDialogue("Vous avez perdu",0);
-            monopoly.suppJoueur(joueur);
-            tour();
-        } else {
-            message.type = Message.Types.JOUEUR;
-            observateur.notifier(message);
-        }
+        
     }
     
     private int lancerDé() {
