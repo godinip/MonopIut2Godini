@@ -114,15 +114,16 @@ public class JoueurIhm extends  JFrame{
                          getJoueurs().addLast(j);
                         }
                         setVisible(false);
+                        controleur.setJoueurs(joueurs);
+                        try {
+                            plateauIhm = new PlateauIhm(controleur);
+                            plateauIhm.affiche();
+                            controleur.tour();
+                        } catch (IOException ex) {
+                            Logger.getLogger(JoueurIhm.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                 }
-                controleur.setJoueurs(joueurs);
-                try {
-                    plateauIhm = new PlateauIhm(controleur);
-                    plateauIhm.affiche();
-                    controleur.tour();
-                } catch (IOException ex) {
-                    Logger.getLogger(JoueurIhm.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
             }
         });
         exit.addActionListener(new ActionListener() {
