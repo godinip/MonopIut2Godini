@@ -18,6 +18,7 @@ public class JoueurIhm extends  JFrame{
     private JPanel affichage,panelBouton;
     private LinkedList<Joueur> joueurs = new LinkedList<>();
     private PlateauIhm plateauIhm;
+    private int colorJ ;
     
     public JoueurIhm(int nbj,Controleur c){
         super("Joueurs");
@@ -86,8 +87,30 @@ public class JoueurIhm extends  JFrame{
                     
                     int desMax = 0;
                     int des = 0;
+                    colorJ = 0;
                         for (String string : nomJoueur) {
                           Joueur j = new Joueur(string,controleur.getCarreau(1));
+                          switch(colorJ){
+                              case 0:
+                                  j.setJoueurCouleur(Color.blue);
+                                  break;
+                              case 1:
+                                   j.setJoueurCouleur(Color.red);
+                                  break;
+                              case 2:
+                                   j.setJoueurCouleur(Color.yellow);
+                                  break;
+                              case 3:
+                                   j.setJoueurCouleur(Color.green);
+                                  break;
+                              case 4:
+                                   j.setJoueurCouleur(Color.orange);
+                                  break;
+                              case 5:
+                                   j.setJoueurCouleur(Color.CYAN);
+                                  break;
+                          }
+                          colorJ++;
                          getJoueurs().addLast(j);
                         }
                         setVisible(false);

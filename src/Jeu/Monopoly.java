@@ -39,7 +39,7 @@ public class Monopoly {
                         loyer[3] = Integer.parseInt(data.get(i)[8]);
                         loyer[4] = Integer.parseInt(data.get(i)[9]);
                         loyer[5] = Integer.parseInt(data.get(i)[10]);
-                        if (!groupes.containsValue(data.get(i)[3])) {
+                        if (!groupes.containsKey(data.get(i)[3])) {
                             Groupe nouvGroupe = new Groupe(CouleurPropriete.valueOf(data.get(i)[3]));
                             getGroupes().put(data.get(i)[3], nouvGroupe);
                         }

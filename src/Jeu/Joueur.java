@@ -3,11 +3,13 @@ package Jeu;
 import Jeu.Gare;
 import Jeu.Compagnie;
 import Jeu.Carreau;
+import java.awt.Color;
 import java.util.*;
 
 public class Joueur {
     
     private String                              nomJoueur;
+    private Color                               joueurCouleur;
     private int                                 argent;
     private Carreau                             positionCourante;
     private int                                 dernierLancé;
@@ -185,6 +187,14 @@ public class Joueur {
     
     public int getNbDouble() {
         return nbDouble;
+    }
+
+    public Color getJoueurCouleur() {
+        return joueurCouleur;
+    }
+
+    public void setJoueurCouleur(Color joueurCouleur) {
+        this.joueurCouleur = joueurCouleur;
     }
     
 }

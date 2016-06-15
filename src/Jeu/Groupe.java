@@ -10,11 +10,11 @@ public class Groupe {
     
     public Groupe(CouleurPropriete couleur){
         this.setCouleur(couleur);
-        proprietesdugroupe = new ArrayList();
+        proprietesdugroupe = new ArrayList<>();
     }
     
     public void addPropriete(ProprieteAConstruire propriete){
-        this.getProprietesdugroupe().add(propriete);
+        this.proprietesdugroupe.add(propriete);
     }
     
     public CouleurPropriete getCouleur() {
@@ -40,13 +40,14 @@ public class Groupe {
     }
 
     public boolean maisonUniformePlus(int nbMaison){
+        Boolean b = true;
         for(ProprieteAConstruire propriete : this.getProprietesdugroupe()){
             if(propriete.getMaisons()<nbMaison){
-                return false;
+                b = false;
             }
             
         }
-        return true;
+        return b;
     }
     
     public boolean maisonUniformeMoins(int nbMaison){

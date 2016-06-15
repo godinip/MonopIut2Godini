@@ -9,10 +9,11 @@ import java.io.*;
 import java.util.*;
 import javax.imageio.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class PlateauIhm extends JFrame implements Observateur{
     
-    private JPanel plateau,information,colorP,carreauSelecte,carreauInfo,bouton,infoJoueur,autreInfo;
+    private JPanel plateau,information,colorP,carreauSelecte,carreauInfo,bouton,infoJoueur,autreInfo,couleurJoueur;
     private Controleur controleur;
     private ArrayList<JPanel> cases = new ArrayList<>();
     private HashMap<Integer,Integer> carreauxNbjoueur = new HashMap<>();
@@ -44,6 +45,7 @@ public class PlateauIhm extends JFrame implements Observateur{
             }
         );
        lDe.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
+       
        passerT = new JButton("Fin du tour");
        passerT.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -52,6 +54,7 @@ public class PlateauIhm extends JFrame implements Observateur{
             }
         );
        passerT.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
+       
        achatM = new JButton("Acheter Maison");
        achatM.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -61,6 +64,7 @@ public class PlateauIhm extends JFrame implements Observateur{
             }
         );
        achatM.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
+       
        achatH = new JButton("Acheter Hotel");
        achatH.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -70,6 +74,7 @@ public class PlateauIhm extends JFrame implements Observateur{
             }
         );
        achatH.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.SIZE));
+       
        abandon = new JButton("Abandonner");
        abandon.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -135,8 +140,11 @@ public class PlateauIhm extends JFrame implements Observateur{
         infoJoueur.add(argentJ = new JLabel("Argent: "));
        
        carreauInfo.setBackground(Color.white);
+       couleurJoueur = new JPanel();
+       couleurJoueur.setBackground(Color.white);
        
        autreInfo = new JPanel(new  BorderLayout());
+       autreInfo.add(couleurJoueur,BorderLayout.SOUTH);
        autreInfo.add(infoJoueur,BorderLayout.CENTER);
        autreInfo.add(bouton,BorderLayout.NORTH);
        
@@ -176,7 +184,7 @@ public class PlateauIhm extends JFrame implements Observateur{
                     grideCarreau.gridx = 10;
                 }
                   JPanel carreau = new  JPanel(new BorderLayout());
-                 carreauxNbjoueur.put(h, 0);
+                 
                  
                   
                         if((i==0)||(i==10)){
@@ -226,7 +234,9 @@ public class PlateauIhm extends JFrame implements Observateur{
         plateau.add(test,grideCarreau);
     }
     private void generationCarreau(JPanel carreau,int i,int j){
-         JPanel carreauPosJ = new JPanel();
+                    JPanel carreauPosJ = new JPanel();
+                    carreauPosJ.setBackground(Color.white);
+                  carreauxNbjoueur.put(h, 0);
                   carreau.add(carreauPosJ,BorderLayout.CENTER);
                   carreauPosJ.setLayout(new GridBagLayout());
                   GridBagConstraints gridePoseJ = new GridBagConstraints();
@@ -254,14 +264,14 @@ public class PlateauIhm extends JFrame implements Observateur{
                 Gare g = (Gare) controleur.getCarreau(h);
                  carreau.addMouseListener(new MouseListener() {
                     @Override
-                    public void mouseEntered(MouseEvent e) {
+                    public void mouseEntered(MouseEvent e) {}@Override
+                    public void mouseClicked(MouseEvent e) {
                         resetLabel();
                         colorP.setBackground(Color.white);
                         colorP.add(gareLabel,BorderLayout.CENTER);
                         nom.setText(g.getNom());
                         prix.setText(g.getPrix()+" €");
                     }@Override
-                    public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
                     public void mouseExited(MouseEvent e) {}
@@ -288,21 +298,21 @@ public class PlateauIhm extends JFrame implements Observateur{
                 }     
                 carreau.addMouseListener(new MouseListener() {
                     @Override
-                    public void mouseEntered(MouseEvent e) {
+                    public void mouseEntered(MouseEvent e) {}@Override
+                    public void mouseClicked(MouseEvent e) {
                         resetLabel();
                         colorP.setBackground(colorCarreau(p.getCouleur().getCouleur().toString())); 
                         nom.setText(p.getNom());
                         prix.setText(p.getPrix()+" €");
                         nbMaison.setText("Nombre Maison: "+p.getMaisons());
-                        prixM.setText("Prix d'une Maison: "+p.getCoutmaison());
-                        prixL1.setText("Loyer 1: "+p.getLoyers(0));
-                        prixL2.setText("Loyer 2: "+p.getLoyers(1));
-                        prixL3.setText("Loyer 3: "+p.getLoyers(2));
-                        prixL4.setText("Loyer 4: "+p.getLoyers(3));
-                        prixL5.setText("Loyer 5: "+p.getLoyers(4));
-                        prixL6.setText("Loyer 6: "+p.getLoyers(5));
-                    }@Override
-                    public void mouseClicked(MouseEvent e) {
+                        prixM.setText("Prix d'une Maison: "+p.getCoutmaison()+" €");
+                        prixL1.setText("Terrain nu: "+p.getLoyers(0)+" €");
+                        prixL2.setText("Loyer 1 maison: "+p.getLoyers(1)+" €");
+                        prixL3.setText("Loyer 2 maison: "+p.getLoyers(2)+" €");
+                        prixL4.setText("Loyer 3 maison: "+p.getLoyers(3)+" €");
+                        prixL5.setText("Loyer 4 maison: "+p.getLoyers(4)+" €");
+                        prixL6.setText("Loyer avec Hotel: "+p.getLoyers(5)+" €");
+                    
                         carreauSélectionné = p;
                         if (controleur.getListMaisons().contains(carreauSélectionné)){
                             achatM.setVisible(true);
@@ -325,7 +335,8 @@ public class PlateauIhm extends JFrame implements Observateur{
                     Compagnie co = (Compagnie) controleur.getCarreau(h);
                     carreau.addMouseListener(new MouseListener() {
                     @Override
-                    public void mouseEntered(MouseEvent e) {
+                    public void mouseEntered(MouseEvent e) {}@Override
+                    public void mouseClicked(MouseEvent e) {
                         resetLabel();
                         colorP.setBackground(Color.white);
                         if (co.getNumero() == 13) {
@@ -337,7 +348,6 @@ public class PlateauIhm extends JFrame implements Observateur{
                         nom.setText(co.getNom());
                         prix.setText(co.getPrix()+" €");
                     }@Override
-                    public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
                     public void mouseExited(MouseEvent e) {}
@@ -348,7 +358,8 @@ public class PlateauIhm extends JFrame implements Observateur{
                     AutreCarreau a = (AutreCarreau) controleur.getCarreau(h);
                     carreau.addMouseListener(new MouseListener() {
                     @Override
-                    public void mouseEntered(MouseEvent e) {
+                    public void mouseEntered(MouseEvent e) {}@Override
+                    public void mouseClicked(MouseEvent e) {
                         resetLabel();
                         nom.setText(a.getNom());
                         if(a.getNumero()==1){
@@ -363,7 +374,6 @@ public class PlateauIhm extends JFrame implements Observateur{
                         }
                         colorP.setBackground(Color.WHITE); 
                     }@Override
-                    public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
                     public void mouseExited(MouseEvent e) {}
@@ -374,13 +384,13 @@ public class PlateauIhm extends JFrame implements Observateur{
                     Chance ch = (Chance) controleur.getCarreau(h);
                     carreau.addMouseListener(new MouseListener() {
                     @Override
-                    public void mouseEntered(MouseEvent e) {
+                    public void mouseEntered(MouseEvent e) {}@Override
+                    public void mouseClicked(MouseEvent e) {
                         resetLabel();
                         colorP.setBackground(Color.white);
                         colorP.add(chanceLabel,BorderLayout.CENTER);
                         nom.setText(ch.getNom());
                     }@Override
-                    public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
                     public void mouseExited(MouseEvent e) {}
@@ -392,13 +402,13 @@ public class PlateauIhm extends JFrame implements Observateur{
                     Communaute com = (Communaute) controleur.getCarreau(h);
                     carreau.addMouseListener(new MouseListener() {
                     @Override
-                    public void mouseEntered(MouseEvent e) {
+                    public void mouseEntered(MouseEvent e) {}@Override
+                    public void mouseClicked(MouseEvent e) {
                         resetLabel();
                         colorP.add(cCoLabel,BorderLayout.CENTER);    
                         colorP.setBackground(Color.WHITE); 
                         nom.setText(com.getNom());
                     }@Override
-                    public void mouseClicked(MouseEvent e) {}@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
                     public void mouseExited(MouseEvent e) {}
@@ -507,6 +517,7 @@ public class PlateauIhm extends JFrame implements Observateur{
     }
 
     private void infoJoueur() {
+         Joueur j = controleur.getJoueur();
         infoJoueur.removeAll();
         infoJoueur.repaint();
         infoJoueur.setBorder(BorderFactory.createTitledBorder("Information joueur"));
@@ -519,8 +530,24 @@ public class PlateauIhm extends JFrame implements Observateur{
         infoJoueur.add(posJ = new JLabel(" "));
         infoJoueur.add(new JLabel(" "));
         infoJoueur.add(argentJ = new JLabel("Argent: "));
+        couleurJoueur.setBackground(j.getJoueurCouleur());
+       
+        LinkedList<Joueur> js = controleur.getJoueurs();
+        for (int i = 1; i < 41; i++) {
+            carreauxNbjoueur.replace(i,carreauxNbjoueur.get(i), 0);
+            for (int k = 1; k < 7; k++) {
+                carreauxJpanel.get(""+i+","+k).setBackground(Color.white);
+            }
+        }
         
-        Joueur j = controleur.getJoueur();
+        for (Joueur j1 : js) {
+        int p = carreauxNbjoueur.get(j1.getPositionCourante().getNumero())+1;
+        carreauxNbjoueur.replace(j1.getPositionCourante().getNumero(),p-1, p);
+        carreauxJpanel.get(""+j1.getPositionCourante().getNumero()+","+p).setBackground(j1.getJoueurCouleur());
+        }
+
+        
+
        
         nomJ.setText("Joueur: "+j.getNomJoueur());
         posJ.setText("- "+j.getPositionCourante().getNom());
