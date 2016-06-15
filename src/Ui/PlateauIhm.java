@@ -185,9 +185,7 @@ public class PlateauIhm extends JFrame implements Observateur{
                     grideCarreau.gridx = 10;
                 }
                   JPanel carreau = new  JPanel(new BorderLayout());
-                 
-                 
-                  
+
                         if((i==0)||(i==10)){
                                 grideCarreau.ipadx = 40;
                                 grideCarreau.ipady = 40;  
