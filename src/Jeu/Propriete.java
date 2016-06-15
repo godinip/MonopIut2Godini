@@ -6,7 +6,7 @@ import Jeu.Joueur;
 
 public abstract class Propriete extends Carreau{
     
-    private Joueur  proprietaire;
+    private Joueur  proprietaire = null;
     private int     prix;
     
     public Propriete(int numero,String nom, int prix){

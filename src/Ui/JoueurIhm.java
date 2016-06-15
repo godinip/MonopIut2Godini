@@ -107,7 +107,7 @@ public class JoueurIhm extends  JFrame{
                                    j.setJoueurCouleur(Color.orange);
                                   break;
                               case 5:
-                                   j.setJoueurCouleur(Color.CYAN);
+                                   j.setJoueurCouleur(Color.BLACK);
                                   break;
                           }
                           colorJ++;

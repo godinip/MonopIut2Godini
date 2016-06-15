@@ -18,7 +18,7 @@ public class PlateauIhm extends JFrame implements Observateur{
     private ArrayList<JPanel> cases = new ArrayList<>();
     private HashMap<Integer,Integer> carreauxNbjoueur = new HashMap<>();
     private HashMap<String,JPanel> carreauxJpanel = new HashMap<>();
-    private JLabel nom,prix,nbMaison,prixM,prixL1,prixL2,prixL3,prixL4,prixL5,prixL6;
+    private JLabel nom,prix,propP,nbMaison,prixM,prixL1,prixL2,prixL3,prixL4,prixL5,prixL6;
     private JLabel gareLabel,departLabel,pfreeLabel,prisonLabel,gardienLabel,cCoLabel,chanceLabel,cElecLabel,cEauLabel;
     private JLabel nomJ,argentJ,posJT,posJ;
     private int h;
@@ -110,6 +110,7 @@ public class PlateauIhm extends JFrame implements Observateur{
        carreauInfo.setLayout(new BoxLayout(carreauInfo, BoxLayout.PAGE_AXIS));
        carreauInfo.add(nom = new JLabel()); // Information carreau survolé 
        carreauInfo.add(prix = new JLabel());
+       carreauInfo.add(propP = new JLabel());
        carreauInfo.add(nbMaison = new JLabel());
        carreauInfo.add(prixM = new JLabel());
        carreauInfo.add(prixL1 = new JLabel());
@@ -271,6 +272,11 @@ public class PlateauIhm extends JFrame implements Observateur{
                         colorP.add(gareLabel,BorderLayout.CENTER);
                         nom.setText(g.getNom());
                         prix.setText(g.getPrix()+" €");
+                        if(g.getProprietaire() != null){
+                             propP.setText("Proprietaire: "+g.getProprietaire().getNomJoueur());
+                        }else{
+                             propP.setText("Proprietaire: Aucun");
+                        }
                     }@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
@@ -281,6 +287,7 @@ public class PlateauIhm extends JFrame implements Observateur{
             if (controleur.getCarreau(h) instanceof ProprieteAConstruire) {
                 ProprieteAConstruire p = (ProprieteAConstruire)controleur.getCarreau(h);
                 JPanel panelCouleur = new JPanel();
+                
                 if(i>10){
                     if(j == 1){
                         carreau.add(panelCouleur,BorderLayout.WEST);
@@ -304,7 +311,12 @@ public class PlateauIhm extends JFrame implements Observateur{
                         colorP.setBackground(colorCarreau(p.getCouleur().getCouleur().toString())); 
                         nom.setText(p.getNom());
                         prix.setText(p.getPrix()+" €");
-                        nbMaison.setText("Nombre Maison: "+p.getMaisons());
+                        if(p.getProprietaire() != null){
+                             propP.setText("Proprietaire: "+p.getProprietaire().getNomJoueur());
+                        }else{
+                             propP.setText("Proprietaire: Aucun");
+                        }
+                        nbMaison.setText("Nombre de Maisons: "+p.getMaisons());
                         prixM.setText("Prix d'une Maison: "+p.getCoutmaison()+" €");
                         prixL1.setText("Terrain nu: "+p.getLoyers(0)+" €");
                         prixL2.setText("Loyer 1 maison: "+p.getLoyers(1)+" €");
@@ -347,6 +359,11 @@ public class PlateauIhm extends JFrame implements Observateur{
                         
                         nom.setText(co.getNom());
                         prix.setText(co.getPrix()+" €");
+                        if(co.getProprietaire() != null){
+                             propP.setText("Proprietaire: "+co.getProprietaire().getNomJoueur());
+                        }else{
+                             propP.setText("Proprietaire: Aucun");
+                        }
                     }@Override
                     public void mousePressed(MouseEvent e) {}@Override
                     public void mouseReleased(MouseEvent e) {}@Override
@@ -441,6 +458,7 @@ public class PlateauIhm extends JFrame implements Observateur{
     private void resetLabel(){
         nom.setText(" ");
         prix.setText(" ");
+        propP.setText(" ");
         nbMaison.setText(" ");
         prixM.setText(" ");
         prixL1.setText(" ");
