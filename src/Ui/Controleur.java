@@ -13,6 +13,8 @@ public class Controleur {
     private IhmGraph ihmGraph;
     private Observateur observateur;
     private Joueur joueur;
+    private final int dés[] = {1,1,1,1,4,4,3,3,1,1,3,1,1,1,5,5,2,1,6,3,4,4,1,1,5,1,5,5,2,1,4,6,1,1,5,3,1,3,3,2,6,6,5,6,1,1,2,1,5,5,2,3,5,4,1,1,5,4,4,4,1,1,2,1,5,5,1,2,4,4,6,6,5,5,2,1,5,5,6,6,5,2,3,1,1,1};
+    private int index = 0;
     
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
@@ -85,13 +87,13 @@ public class Controleur {
             Events e = c.action(joueur);
             gestionEvents(e);
             }
+            message.type = Message.Types.JOUEUR;
+            observateur.notifier(message);
             if (joueur.getPerdu()) {
             IhmMessage.afficherBoiteDialogue("Vous avez perdu",0);
             monopoly.suppJoueur(joueur);
             tour();
         } else if (joueur.getJouer()) {
-                message.type = Message.Types.JOUEUR;
-                observateur.notifier(message);
                 message.type = Message.Types.ALANCER;
                 observateur.notifier(message);
             } else {
@@ -236,7 +238,11 @@ public class Controleur {
     }
     
     private int lancerDé() {
-        return (int) (Math.random()*(6)+1);
+        //TEST :
+        index++;
+        return dés[index-1];
+        //FIN TEST
+        //return (int) (Math.random()*(6)+1);
     }
     
     public Carreau getCarreau(int numero) {
@@ -250,14 +256,20 @@ public class Controleur {
     }
     
     public void achatMaison(ProprieteAConstruire p){
+        Message message = new Message();
         if (p.ajouterMaison()){
             IhmMessage.afficherBoiteDialogue("Une maison a été construite sur " + p.getNom(), 0);
+            message.type = Message.Types.JOUEUR;
+                observateur.notifier(message);
         } else { IhmMessage.afficherBoiteDialogue("Il est impossible de construire sur maison sur " + p.getNom(), 0);}
     }
     
     public void achatHotel(ProprieteAConstruire p){
+        Message message = new Message();
         if (p.ajouterHotel()){
             IhmMessage.afficherBoiteDialogue("Un Hotel a été construit sur " + p.getNom(), 0);
+            message.type = Message.Types.JOUEUR;
+            observateur.notifier(message);
         } else {
             IhmMessage.afficherBoiteDialogue("Il est imposible de construire un hotel sur " + p.getNom(), 0);
         }

@@ -69,7 +69,7 @@ public class IhmGraph extends JFrame{
     
     public void affiche(){
         setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        setSize(350,200);
+        setSize(340,200);
         setVisible(true);   
     }
     

@@ -11,8 +11,12 @@ public class Monopoly {
     private HashMap<String,Groupe> groupes = new HashMap<>();
     private int nbMaisons = 32;
     private int nbHotels = 12;
-    private ArrayList<Carte> cartesChance = new ArrayList();
-    private ArrayList<Carte> cartesCommunaute = new ArrayList();
+    //TEST
+    private LinkedList<Carte> cartesChance = new LinkedList();
+    private LinkedList<Carte> cartesCommunaute = new LinkedList();
+    //private ArrayList<Carte> cartesChance = new ArrayList();
+    //private ArrayList<Carte> cartesCommunaute = new ArrayList();
+    //FIN TEST
     
     
     public Monopoly() {
@@ -107,7 +111,9 @@ public class Monopoly {
                         cartesChance.add(nouvelleCarte);
                     }
                 }
-                Collections.shuffle(cartesChance);
+                //TEST
+                //Collections.shuffle(cartesChance);
+                //FIN TEST
             }
             catch (FileNotFoundException e) {
                 System.err.println("[buildGamePlateau()] : File is not found!");
@@ -145,7 +151,9 @@ public class Monopoly {
                         cartesCommunaute.add(nouvelleCarte);
                     }
                 }
-                Collections.shuffle(cartesCommunaute);
+                //TEST
+                //Collections.shuffle(cartesCommunaute);
+                //FIN TEST
             }
             catch (FileNotFoundException e) {
                 System.err.println("[buildGamePlateau()] : File is not found!");
@@ -246,24 +254,22 @@ public class Monopoly {
     
     //GESTION CARTES CHANCE
         public Carte getCarteChance() {
-            Carte chance = cartesChance.get(0);
-            cartesChance.remove(0);
+            Carte chance = cartesChance.pollFirst();
             return chance;
         }
 
         public void addCarteChance(Carte chance) {
-            cartesChance.add(chance);
+            cartesChance.offerLast(chance);
         }
             
     //GESTION CARTES COMMUNAUTE
         public Carte getCarteCommunaute() {
-            Carte communaute = cartesCommunaute.get(0);
-            cartesCommunaute.remove(0);
+            Carte communaute = cartesCommunaute.pollFirst();
             return communaute;
         }
 
         public void addCarteCommunaute(Carte commmunaute) {
-            cartesCommunaute.add(commmunaute);
+            cartesCommunaute.offerLast(commmunaute);
         }
-               
+        
 }

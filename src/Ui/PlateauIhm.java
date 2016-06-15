@@ -555,6 +555,7 @@ public class PlateauIhm extends JFrame implements Observateur{
         
         //affichage Propo Joueur
         JPanel propoJ = new JPanel();
+        propoJ.setBackground(Color.white);
         propoJ.setLayout(new BoxLayout(propoJ,BoxLayout.PAGE_AXIS));
         infoJoueur.add(propoJ);
         propoJ.add(new JLabel(" "));
@@ -570,6 +571,7 @@ public class PlateauIhm extends JFrame implements Observateur{
         }
         // affichage Gare Joueur
         JPanel gareJ = new JPanel();
+        gareJ.setBackground(Color.white);
         gareJ.setLayout(new BoxLayout(gareJ,BoxLayout.PAGE_AXIS));
         infoJoueur.add(gareJ);
         gareJ.add(new JLabel(" "));
@@ -580,6 +582,20 @@ public class PlateauIhm extends JFrame implements Observateur{
             }
         }else{
             gareJ.add(new JLabel(" - Pas de Gare "));       
+        }
+        // affichage Gare Joueur
+        JPanel compJ = new JPanel();
+        compJ.setBackground(Color.white);
+        compJ.setLayout(new BoxLayout(compJ,BoxLayout.PAGE_AXIS));
+        infoJoueur.add(compJ);
+        compJ.add(new JLabel(" "));
+        compJ.add(new JLabel("Compagnie(s)"));
+        if(!j.getCompagnies().isEmpty()){
+            for (Compagnie comp : j.getCompagnies()) {
+                compJ.add(new JLabel(" - "+comp.getNom()));
+            }
+        }else{
+            compJ.add(new JLabel(" - Pas de Compagnie"));       
         }
 
     }
