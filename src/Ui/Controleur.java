@@ -13,8 +13,6 @@ public class Controleur {
     private IhmGraph ihmGraph;
     private Observateur observateur;
     private Joueur joueur;
-    private final int dés[] = {1,1,1,1,4,4,3,3,1,1,3,1,1,1,5,5,2,1,6,3,4,4,1,1,5,1,5,5,2,1,4,6,1,1,5,3,1,3,3,2,6,6,5,6,1,1,2,1,5,5,2,3,5,4,1,1,5,4,4,4,1,1,2,1,5,5,1,2,4,4,6,6,5,5,2,1,5,5,6,6,5,2,3,1,1,1};
-    private int index = 0;
     
     public Controleur(Monopoly monopoly){
         this.monopoly = monopoly;
@@ -238,11 +236,7 @@ public class Controleur {
     }
     
     private int lancerDé() {
-        //TEST :
-        index++;
-        return dés[index-1];
-        //FIN TEST
-        //return (int) (Math.random()*(6)+1);
+        return (int) (Math.random()*(6)+1);
     }
     
     public Carreau getCarreau(int numero) {

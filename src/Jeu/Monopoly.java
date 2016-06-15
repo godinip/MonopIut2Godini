@@ -11,12 +11,9 @@ public class Monopoly {
     private HashMap<String,Groupe> groupes = new HashMap<>();
     private int nbMaisons = 32;
     private int nbHotels = 12;
-    //TEST
     private LinkedList<Carte> cartesChance = new LinkedList();
     private LinkedList<Carte> cartesCommunaute = new LinkedList();
-    //private ArrayList<Carte> cartesChance = new ArrayList();
-    //private ArrayList<Carte> cartesCommunaute = new ArrayList();
-    //FIN TEST
+    
     
     
     public Monopoly() {
@@ -111,9 +108,7 @@ public class Monopoly {
                         cartesChance.add(nouvelleCarte);
                     }
                 }
-                //TEST
-                //Collections.shuffle(cartesChance);
-                //FIN TEST
+                Collections.shuffle(cartesChance);
             }
             catch (FileNotFoundException e) {
                 System.err.println("[buildGamePlateau()] : File is not found!");
@@ -151,9 +146,7 @@ public class Monopoly {
                         cartesCommunaute.add(nouvelleCarte);
                     }
                 }
-                //TEST
-                //Collections.shuffle(cartesCommunaute);
-                //FIN TEST
+                Collections.shuffle(cartesCommunaute);
             }
             catch (FileNotFoundException e) {
                 System.err.println("[buildGamePlateau()] : File is not found!");
